@@ -1,5 +1,5 @@
 ![CI for radarin](https://github.com/arquisoft/radarin_en3a/workflows/CI%20for%20radarin/badge.svg)
-[![codecov](https://codecov.io/gh/arquisoft/radarin_en3a/branch/master/graph/badge.svg?token=MSC5JW0F0K)](https://codecov.io/gh/arquisoft/radarin_en3a)
+[![codecov](https://codecov.io/gh/Arquisoft/radarin_en3a/branch/master/graph/badge.svg?token=ZC1BH8YEOO)](https://codecov.io/gh/Arquisoft/radarin_en3a)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/09f5dcc06a2f48a28aa42af4ab82f949)](https://www.codacy.com/gh/Arquisoft/radarin_en3a/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/radarin_en3a&amp;utm_campaign=Badge_Grade)
 # Radarin project structure
 Link to the deployed sample application: [radarin0](https://radarin0webapp.herokuapp.com/). Note that sometimes **it can take a while to load** because Heroku in the free plan, takes the containers to sleep when they are not used for some time and taking them up takes time.
