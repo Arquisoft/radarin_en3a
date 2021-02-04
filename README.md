@@ -39,8 +39,8 @@ You should be able to access the application in [http://localhost:3000](http://l
 
 # Contributors
 
-Irene Bello Díaz
--[Sergio Fernández López](http://github.com/UO225811)
+-[Irene Bello Díaz](http://github.com/uo269570)
+-[Sergio Fernández López](http:/github.com/UO225811)
 -[Raúl Núñez García](http://github.com/raulng9)
 -[Armando Campa](https://github.com/ArCampa)
 
