@@ -43,4 +43,4 @@ You should be able to access the application in [http://localhost:3000](http://l
 
 Irene Bello Díaz
 -[Raúl Núñez García](http://github.com/raulng9)
->>>>>>> faccd7264d99fd4428c8836dd437ca1f7bb05629
+-[Armando Campa](https://github.com/ArCampa)
