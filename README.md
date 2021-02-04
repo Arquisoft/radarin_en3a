@@ -16,7 +16,7 @@ This will create two docker images as they don't exist in your system (the webap
  - [RestApi raw metrics - http://localhost:5000/metrics](http://localhost:5000/metrics)
  - [Prometheus server - http://localhost:9090](http://localhost:9090)
  - [Grafana server http://localhost:9091](http://localhost:9091)
- 
+
 If you want to run it without docker (even though you still need docker to run the mongo db database):
 ```
 cd restapi
@@ -40,5 +40,5 @@ You should be able to access the application in [http://localhost:3000](http://l
 # Contributors
 
 Irene Bello Díaz
-Sergio Fernández López - github.com/UO225811
-
+[Sergio Fernández López] - github.com/UO225811
+-[Raúl Núñez García](http://github.com/raulng9)
