@@ -1,6 +1,8 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
+This is a project created as part of the Software architecture course. The members of our team are: Irene Bello, Sergio Riestra, and...
+
 [role="arc42help"]
 ****
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
