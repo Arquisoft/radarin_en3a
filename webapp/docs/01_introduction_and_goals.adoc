@@ -1,13 +1,15 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-This is a project created as part of the Software architecture course. 
-The members of our team are: 
+This is a project created as part of the Software architecture course.
+The members of our team are:
 
 * Irene Bello
 * Sergio Riestra
 * Sergio Fernández
-* ...
+* Raúl Núñez García
+* Armando Campa Martínez
+* Francisco Manuel Fernández Suárez
 
 [role="arc42help"]
 ****
