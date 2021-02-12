@@ -24,10 +24,12 @@ Describes the relevant requirements and the driving forces that software archite
 === Requirements Overview
 
 The two main requirements are:
+
 * building a Web application that will run in a server and will store locations in a decentralized way.
 * building an application that will run in a mobile phone speaking to the server and receiving notifications when friends in the app are near.
 
 The other requirements the application will have are:
+
 * The application will store the minimal information about a user; the rest will be on a user pod.
 * The system will be deployed from docker containers and in a cloud service
 * The web application will contain some monitoring system.
