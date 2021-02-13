@@ -22,3 +22,29 @@ Motivate what you have decided and why you decided that way,
 based upon your problem statement, the quality goals and key constraints.
 Refer to details in the following sections.
 ****
+
+=== Technology Decisions
+==== Development tools
+===== Languages, frameworks and Libraries
+
+This section is to be updated as new technologies are incorporated into the project.
+
+* Solid: As the core idea of the project is to used the Solid approach to develop a program, the Solid libraries are employed for user data management, in what are called "user pods".
+
+===== IDEs
+
+Mainly, we use Visual Studio Code, for its versatility to work on many different languajes and document formats. It also provides git integration, which is very useful for version control.
+
+===== Version control
+
+As per specification, and also convenience,  git and GitHub are used for version control.
+
+* Git: being the most used version control system, it is the one we use, in the form of a repository.  
+* GitHub: The above mentioned git repository is synced with a remote repository in GitHub. GitHub also provides a heroku automatic integration system that is in use in this project.
+
+=== Organizational Decisions
+
+Due to the weekly nature of the laboratory classes, the team can work in a semi-agile way. That is, we are not using from the start a specific variant such as Kanban, but the timing allows us to split work among us and set a constant time frame to work, as a sprint.
+
+The sprints consist on the week in-between laboratory classes. In each class a meeting is held (online, due to Covid-19 regulations), and it works as an end-of-sprint meeting as well as a meeting to decide the next assignments. Additional meetings may be held as way of tracking progress and group-decission taking. The meetings logs are registered in the GitHub repository wiki.
+The team is also connected via other channels such as Microsoft Teams for small updates and decisions.
