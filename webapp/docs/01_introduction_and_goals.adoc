@@ -1,7 +1,16 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
+This document is a description of the work done during the course of software architecture in the University of Oviedo. The aim of the course is to create an application called Randarin. The purpose of it is to facilitate meeting between friends using new technologies managing the information of the users in a decentralized way using the SOLID project. The information of the user will only be able to be used if the user give us permission to do so.
 
-This is a project created as part of the Software architecture course. The members of our team are: Irene Bello, Sergio Riestra, and...
+The members of our team are:
+
+* Irene Bello
+* Sergio Riestra
+* Sergio Fernández
+* Raúl Núñez García
+* Armando Campa Martínez
+* Francisco Manuel Fernández Suárez
+
 
 [role="arc42help"]
 ****
@@ -13,6 +22,19 @@ Describes the relevant requirements and the driving forces that software archite
 ****
 
 === Requirements Overview
+
+The two main requirements are:
+
+* building a Web application that will run in a server and will store locations in a decentralized way.
+* building an application that will run in a mobile phone speaking to the server and receiving notifications when friends in the app are near.
+
+The other requirements the application will have are:
+
+* The application will store the minimal information about a user; the rest will be on a user pod.
+* The system will be deployed from docker containers and in a cloud service
+* The web application will contain some monitoring system.
+* It is required to develop unit tests, acceptances test and load test.
+
 
 [role="arc42help"]
 ****
@@ -46,6 +68,14 @@ If you as an architect do not know how the quality of your work will be judged �
 .Form
 A table with quality goals and concrete scenarios, ordered by priorities
 ****
+|===
+|Priority|Goal|Description
+| 1 | Security | It will not store personal information about the user, it will ask permission to access this information.
+| 2 | Usability | The final application should be easy to use for the first time for new users.
+| 3 | Efficiency | The final application should work with small waiting times and doing its functionality without any error.
+| 4 | Testability | We should be able to create and run test to check that the application works as needed.
+|===
+
 
 === Stakeholders
 
@@ -72,6 +102,7 @@ Table with role names, person names, and their expectations with respect to the 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| Teacher | labra@uniovi.es | Oversee the project and check that the requirements are met
+| Developer team | The ones developing the app | Make an usable application and learn about software architecture.
+| Users | People that use the final application | They want a funcitonal application that is easy to use, that does not use information unless they want to.
 |===

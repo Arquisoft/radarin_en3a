@@ -1,6 +1,33 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== Project Constraints
 
+=== Technical constraints
+[options="header",cols="1,2"]
+|===
+|Constraint|Details
+| _Location management_ | The project will allow the users to visualize locations and manage their own.
+| _Notification system_ | The project will notify the users when a friend of theirs is located nearby.
+| _Compliance with the SOLID protocol_ | The project will have to use the SOLID user pods as the only way for data retrieval, and therefore it will have to be compatible with the SOLID technology.
+| _Use of React_ | The project will use React for the front-end of the web and the mobile versions, given the flexibility and reusability of components it allows.
+| _Deployment_ | The project will be ultimately deployed from Docker containers and on Heroku as a continuous integration solution.
+|===
+
+=== Organizational constraints
+[options="header",cols="1,2"]
+|===
+|Constraint|Details
+| _Time frame_ | The project will have to be developed during the second semester of the academic year, and will have to be finished by the 13th laboratory session.
+| _Developer team_ | The team is formed by 7 students of the ASW course.
+| _Testing_ | The project will have be thoroughly tested to assure the expected quality is met. The testing process will include unit tests, acceptance tests and load tests.
+|===
+
+=== Convention constraints
+[options="header",cols="1,2"]
+|===
+|Constraint|Details
+| _Version control_ | _The development of the project will be done with the git version control system using GitHub as the platform._
+| _Documentation_ | _The documentation for the project will be done using the Arc42 templates, and it will use Asciidoctor for publishing purposes._
+|===
 
 [role="arc42help"]
 ****
