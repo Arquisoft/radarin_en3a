@@ -1,7 +1,6 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
-
-
+The following diagram describes the main use case from the user point of view and the ways the information traverses the main services of the application. 
 [role="arc42help"]
 ****
 .Contents
@@ -20,8 +19,8 @@ Various options:
 * Lists of communication partners and their interfaces.
 ****
 
-
 === Business Context
+image:03_Use_case.png["Customers running the application"]
 
 [role="arc42help"]
 ****
@@ -39,9 +38,9 @@ Alternatively (or additionally) you can use a table.
 The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
 ****
 
-**<Diagram or Table>**
+The *User* sends information to the application, and once it finds a close *friend*, both are notified that they are close to each other, so they have the chance to interact and (perhaps) meet. 
 
-**<optionally: Explanation of external domain interfaces>**
+The minimum information consists of the location and the time stamp, leaving the rest of the data like images, chats, videos, etc to be securely at the pod, where the *Application* is communicated with it.
 
 === Technical Context
 
@@ -57,10 +56,21 @@ Many stakeholders make architectural decision based on the technical interfaces 
 E.g. UML deployment diagram describing channels to neighboring systems,
 together with a mapping table showing the relationships between channels and input/output.
 
-****
 
 **<Diagram or Table>**
 
 **<optionally: Explanation of technical interfaces>**
 
 **<Mapping Input/Output to Channels>**
+
+****
+[options="header",cols="1,2"]
+|===
+|Item|Details
+| Customer | The user that interacts with the app.
+| Radarin Server | Where the web application is running.
+| POD | Stores the customer's data and there's one per user.
+| API | i.e Google Maps to get details about the location in the map.
+| Https | Communication protocol for data requests and responses.
+|===
+
