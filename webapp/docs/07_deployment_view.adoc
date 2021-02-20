@@ -34,7 +34,13 @@ when your infrastructure is more complex.
 * When your (hardware) stakeholders prefer other kinds of diagrams rather than the deployment diagram, let them use any kind that is able to show nodes and channels of the infrastructure.
 ****
 
-=== Infrastructure Level 1
+=== Overview
+
+In this case the deployment view will be different depending on the stage the project is in. For the development and testing the environment will be hosted locally by each student, but for the production phase,
+the project will be deployed on a Docker container and hosted on Heroku. Below you can find a deployment diagram showing the mapping of the different building blocks of the system to its infrastructure during the production stage.
+
+image:07-Deployment-Diagram.png["Deployment diagram for the Radarin application"]
+
 
 [role="arc42help"]
 ****
@@ -47,40 +53,3 @@ Describe (usually in a combination of diagrams, tables, and text):
 
 For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.
 ****
-
-_**<Overview Diagram>**_
-
-Motivation::
-
-_<explanation in text form>_
-
-Quality and/or Performance Features::
-
-_<explanation in text form>_
-
-Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
-
-
-=== Infrastructure Level 2
-
-[role="arc42help"]
-****
-Here you can include the internal structure of (some) infrastructure elements from level 1.
-
-Please copy the structure from level 1 for each selected element.
-****
-
-==== _<Infrastructure Element 1>_
-
-_<diagram + explanation>_
-
-==== _<Infrastructure Element 2>_
-
-_<diagram + explanation>_
-
-...
-
-==== _<Infrastructure Element n>_
-
-_<diagram + explanation>_
