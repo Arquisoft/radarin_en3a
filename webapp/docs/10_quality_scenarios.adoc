@@ -11,13 +11,8 @@ This section refers to the conditions we consider the application must fulfill t
 
 === Quality Tree
 
-[role="arc42help"]
-****
 image:10_Quality_Tree.png["Quality tree diagram"]
 
-
-[role="arc42help"]
-****
 
 === Quality Definitions
 .Definitions
