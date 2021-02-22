@@ -13,7 +13,7 @@ This section refers to the conditions we consider the application must fulfill t
 
 [role="arc42help"]
 ****
-Here goes a diagram
+image:10_Quality_Tree.png["Quality tree diagram"]
 
 
 [role="arc42help"]
