@@ -19,14 +19,18 @@ image:10_Quality_Tree.png["Quality tree diagram"]
 [role="arc42help"]
 ****
 
-=== Quality Scenarios
-.Form
+=== Quality Definitions
+.Definitions
 ****
 |===
-|Priority|Goal|Measure
-| High | Security | 
-| Medium | Usability | 
-| 3 | Efficiency | 
-| 4 | Testability | 
+|Priority|Goal|Definition
+| High | Security | Users must not be able to see other users' data unless permitted and only information relevant to the app.
+| High | Security | Non users must not be able to see users' data in any capacity.
+| Medium | Usability | The app must be accesible, using standard concepts for interface design.
+| High | Performance | The program must be responsive in <0.5s, if not possible, the app must demonstrate it is working and not frozen.
+| High | Interoperability | The program must integrate SOLID Pods, to ensure SOLID users can access it without creating new accounts.
+| Medium | Availability | Both a webapp and a mobile phone app are to be developed. The app must be able to be accessed both online and offline, and features where no internet conection is required shall be usable offline also.
+| Medium | Scalability | The final product must work under low and high user traffic.
+| Low | Portability | The project must be easy to translate to other devices.
 |===
 ****
