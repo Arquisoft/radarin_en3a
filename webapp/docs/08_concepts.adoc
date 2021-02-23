@@ -55,7 +55,7 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 image:UmlDiagram.png["Example UML Diagram"]
 
 
-
+As the architecture of the application is decided, this section will be updated.
 === _<Concept 2>_
 
 _<explanation>_

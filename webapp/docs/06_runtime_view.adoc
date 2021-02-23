@@ -31,7 +31,7 @@ There are many notations for describing scenarios, e.g.
 ****
 
 === Log in
-
+This section will be completed once the interface and other design aspects are decided
 
 * _<insert runtime diagram or textual description of the scenario>_
 * _<insert description of the notable aspects of the interactions between the
