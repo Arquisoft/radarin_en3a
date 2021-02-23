@@ -30,3 +30,4 @@ Problems
 In this part we will list the problems we encounter in the project during the implementation process. Since we did not start this at this point, this is going to be filled during the next weeks.
 
 Decisions
+In this part of the documentation we will write the decisions we made to solve the problems that are above. Since we do not have any problem yet we have this part empty.
