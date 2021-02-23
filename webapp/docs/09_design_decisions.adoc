@@ -25,3 +25,8 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+
+Problems
+In this part we will list the problems we encounter in the project during the implementation process. Since we did not start this at this point, this is going to be filled during the next weeks.
+
+Decisions
