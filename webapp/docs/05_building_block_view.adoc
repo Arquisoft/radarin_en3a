@@ -60,7 +60,7 @@ image:05_building_blocks-EN_1.png["Overview Diagram"]
 
 Motivation::
 
-The general structure of the system is an application, where users can see routes that are stored in their PODs, or in their friends PODs.
+The general structure of the system is an application, where users can know that there are friends near them that are stored in their PODs.
 
 
 Contained Building Blocks::

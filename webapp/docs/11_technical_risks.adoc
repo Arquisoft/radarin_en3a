@@ -15,3 +15,13 @@ This should be your motto for systematic detection and evaluation of risks and t
 .Form
 List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
 ****
+
+[options="header",cols="1,2,4,4"]
+|===
+|Prior|Risk/Debt|Consequence| Suggested Solution
+| 1 | New technology |The most important debt is the tecnologies proposed, as both SOLID and React are new to us. | Read and obtain information about them to obtain the ability to program with them.
+| 2 | Working as a team |A possible lack of coordination, due to our inexperience as a working group. | The comunication and the use of tools like github issues to improve as a team.
+| 3 | Lack of time |Time management migth also be hard as we can not be 100% devoted to the project.| Organize our schedules and plan the work to be done is the best solution
+|===
+
+These are the initial risks/debts we can have, probably in the future, we must include another one.
