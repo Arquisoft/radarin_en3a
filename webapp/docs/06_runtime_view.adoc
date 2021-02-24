@@ -30,34 +30,43 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
+This section is aimed to explain the different runtime views of the application.
+
 === Log in
-This section will be completed once the interface and other design aspects are decided
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
+The next diagrams shows how the login works in the app.
 
-It is possible to use a sequence diagram:
+1.The user acceses the application and the login view.
 
-[plantuml,"Sequence diagram",png]
-----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-----
+2.The user enters his or her credentials.
+
+3.Credentials are checked in the login manager.
+
+4.The pod allow or deny the authentication.
+
+image:login.png["Login diagram"]
+
 === Map
+
+The application contains a map view. When opening this view, the user can see the location of his or her nearby friends on a map.
 
 === Friends
 
+This is a view in which the user is able to see his or her list of friends. 
+The user is able to add or delete friends from this view, and also to get in contact with them.
+
 === Add friends
+
+This an option allowed in the friends view. To add a new friend, it is necessary to insert your friend´s username on the application and press add button.
 
 === Delete friends
 
+This an option allowed in the friends view. To delete a friend, you click on the friend you want to delete and press delete button.
+
 === Notifications
 
+This is a view in which you can see all the messages you received in the application from more recent to oldest.
+
 === Get in contact
+
+This is an option to get in contact with friends by sending messages. This option will be able from the map view, and also from friends view.
