@@ -8,7 +8,6 @@
 | _Location management_ | The project will allow the users to visualize locations and manage their own.
 | _Notification system_ | The project will notify the users when a friend of theirs is located nearby.
 | _Compliance with the SOLID protocol_ | The project will have to use the SOLID user pods as the only way for data retrieval, and therefore it will have to be compatible with the SOLID technology.
-| _Use of React_ | The project will use React for the front-end of the web and the mobile versions, given that we are already given a basic skeleton using the framework, as well as its flexibility and reusability.
 | _Deployment_ | The project will be ultimately deployed from Docker containers and on Heroku as a continuous integration solution.
 |===
 
@@ -28,19 +27,3 @@
 | _Version control_ | _The development of the project will be done with the git version control system using GitHub as the platform._
 | _Documentation_ | _The documentation for the project will be done using the Arc42 templates, and it will use Asciidoctor for publishing purposes._
 |===
-
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
-
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
