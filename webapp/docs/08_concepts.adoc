@@ -56,9 +56,14 @@ In order to access and manipulate data in a clean way, the MVC pattern was the c
 
 This way, as it will be developed in React, it is one of the best options for accessing to the solid pods.
 
+<<<<<<< HEAD
 Once it is required, there can also be applied more design patters as needed.
 
 === Security
+=======
+As the architecture of the application is decided, this section will be updated.
+=== _<Concept 2>_
+>>>>>>> 6c46f05af02d69c1779ca40d26090d03ef09efc1
 
 It will be a crutial part to deal with, ensuring the user secure accesses via secure https protocol, having all the time validation constraints to avoid undesirable risks.
 

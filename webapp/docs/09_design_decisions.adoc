@@ -1,6 +1,7 @@
 [[section-design-decisions]]
 == Design Decisions
 
+As the design phases starts and progresses this section will be filled.
 
 [role="arc42help"]
 ****

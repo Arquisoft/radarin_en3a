@@ -1,6 +1,6 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-This document is a description of the work done during the course of software architecture in the University of Oviedo. The aim of the course is to create an application called Randarin. The purpose of it is to facilitate meeting between friends using new technologies managing the information of the users in a decentralized way using the SOLID project. The information of the user will only be able to be used if the user give us permission to do so.
+This document is a description of the work done during the course of Software Architecture in the University of Oviedo. The aim of the course is to create an application called Radarin. The purpose of it is to facilitate meeting between friends using new technologies managing the information of the users in a decentralized way using the SOLID project. The information of the user will only be able to be used if the user give us permission to do so.
 
 The members of our team are:
 

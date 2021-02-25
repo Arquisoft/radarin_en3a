@@ -73,6 +73,8 @@ Contained Building Blocks::
 | APIs | The ones we use to show the routes in the map
 |===
 
+This part will be done as the project progresses and decisions are taken in due time.
+
 [role="arc42help"]
 ****
 Insert your explanations of black boxes from level 1:
