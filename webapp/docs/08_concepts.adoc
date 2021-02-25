@@ -67,7 +67,7 @@ It will be a crutial part to deal with, ensuring the user secure accesses via se
 * Once we start making decisions about tools or functionalities, this part will be fulfilled with all of the most important ones.
 
 === Intenationalization
-From the popular point of view of every application (and specifically for this one which deals with locations and people), it looks like as if it was mandatory to produce a well based multilanguage application, and the best option is always at the begining of the design. 
+From the popular point of view of every application (and specifically for this one which deals with locations and people), it looks like as if it was mandatory to produce a well based multilanguage application, and the best option is always at the beginning of the design. 
 
 Otherwise, during it's lifetime it would be much more expensive to trace if the app gets popular in more regions.
 
