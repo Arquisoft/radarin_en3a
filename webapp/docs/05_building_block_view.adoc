@@ -28,8 +28,10 @@ Contained Building Blocks::
 |===
 |Name|Responsibility
 | User | Interacts with the application
-| Radarin | It's the application. Contains all the functionalities
-| POD | One for each user. Provides all the information
+| Radarin's apps | It's the application. Contains all the functionalities
+| Web server | Recieves all the requests and returns the information provided by the PODs
+| POD provider | Provides all the PODs of our users
+| User POD | One for each user. Provides all the information
 | APIs | The ones we use to show the routes in the map
 |===
 
