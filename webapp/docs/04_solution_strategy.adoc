@@ -22,7 +22,7 @@
 // based upon your problem statement, the quality goals and key constraints.
 // Refer to details in the following sections.
 // ****
-
+=== Technology Used
 === Technology Decisions
 ==== Development tools
 ===== Languages, frameworks and Libraries
@@ -30,17 +30,15 @@
 This section is to be updated as new technologies are incorporated into the project.
 
 * Solid: As the core idea of the project is to used the Solid approach to develop a program, the Solid libraries are employed for user data management, in what are called "user pods".
+* React: For interface design and development, our initial choice is React, which is a Javascript library for interface programming.
 
 ===== IDEs
 
 Mainly, we use Visual Studio Code, for its versatility to work on many different languajes and document formats. It also provides git integration, which is very useful for version control.
 
-===== Version control
-
-As per specification, and also convenience,  git and GitHub are used for version control.
-
-* Git: being the most used version control system, it is the one we use, in the form of a repository.  
-* GitHub: The above mentioned git repository is synced with a remote repository in GitHub. GitHub also provides a heroku automatic integration system that is in use in this project.
+==== Documentation and visual tools
+ 
+For diagrams and other visuals, our initial choice is draw.io, a quite useful tool for drawing graphs and similar media.
 
 === Organizational Decisions
 
