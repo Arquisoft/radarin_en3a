@@ -25,6 +25,6 @@ image:10_Quality_Tree.png["Quality tree diagram"]
 | High | Performance | The product shall provide feedback to user's actions fast. |The program must be responsive in <0.5s, if not possible, the app must demonstrate it is working and not frozen. 
 | High | Interoperability | The product will be accesible to SOLID pod users. |The program must integrate SOLID Pods, to ensure SOLID users can access it without creating new accounts.
 | Medium | Availability | The services must be available as much as possible. | Both a webapp and a mobile phone app are to be developed. The app must be able to be accessed both online and offline, and features where no internet conection is required shall be usable offline also.
-| Medium | Scalability | The final product must work under low and high user traffic.| The performance quality requirements must be met in a traffic between 1 and 500 simultaneous users.
+| Low | Scalability | The final product must work under low and high user traffic.| The performance quality requirements must be met in a traffic between 1 and 500 simultaneous users.
 |===
 ****
