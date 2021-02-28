@@ -45,5 +45,6 @@ The other requirements the application will have are:
 |Role/Name|Contact|Expectations
 | Teacher | labra@uniovi.es | Oversee the project and check that the requirements are met
 | Developer team | The ones developing the app | Make an usable application and learn about software architecture.
-| Users | People that use the final application | They want a funcitonal application that is easy to use, that does not use information unless they want to.
+| End Users | People that use the final application | They want a funcitonal application that is easy to use, that does not use information unless they want to.
+| Administrators | Users that have admin priviledges | They will manage the users and other data throught the web application.
 |===
