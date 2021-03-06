@@ -21,15 +21,10 @@ class App extends React.Component{
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
-          <Welcome name="ASW students"/>
+          <h1>RADARIN</h1>
         </header>
         <div className="App-content">
           <EmailForm refreshUsers={this.refreshUsers.bind(this)}/>
-          <UserList users={this.state.users}/>
-          <a className="App-link"
-            href="https://github.com/pglez82/radarin_0"
-            target="_blank"
-            rel="noopener noreferrer">Source code</a>
         </div>
       </div>
     )

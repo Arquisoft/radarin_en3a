@@ -23,6 +23,11 @@ class EmailForm extends React.Component{
     this.setState({username: username});
   }
 
+  changePassword(e) {
+    const password = e.target.value ;
+    this.setState({password: password});
+  }
+
   async registerUser(){
       let response = await addUser(this.state.username,this.state.email)
       console.log(response)
@@ -50,7 +55,7 @@ class EmailForm extends React.Component{
   async handleSubmit(e) {
     e.preventDefault()
     //Add the user to the database
-    if (this.state.username && this.state.email){
+    if (this.state.username && this.state.email && this.state.password){
       this.registerUser()
     }
     else
@@ -60,24 +65,13 @@ class EmailForm extends React.Component{
   render(){
     return(
           <Form name="register" onSubmit={this.handleSubmit.bind(this)}>
+            <h1>Register</h1>
             <Form.Group>
-              <Form.Label>Email address</Form.Label>
               <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.changeEmail.bind(this)} value={this.state.email}/>
-              <Form.Text className="text-muted">
-                Careful! Your email will be public!
-              </Form.Text>
+              <Form.Control name="username" type="string" placeholder="Enter Name" onChange={this.changeUserName.bind(this)} value={this.state.username} />
+              <Form.Control name="password" type="password" placeholder="Enter password" onChange={this.changePassword.bind(this)} value={this.state.password} />
             </Form.Group>
-        
-            <Form.Group>
-              <Form.Label>Name</Form.Label>
-              <Form.Control name="username" type="string" placeholder="Name" onChange={this.changeUserName.bind(this)} value={this.state.username} />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-            <div>
-              <span hidden={this.state.welcomeMsg===''}>{this.state.welcomeMsg}</span>
-            </div>
+            <input type="submit" name="" value="Register"></input>
           </Form>
     )
   }
