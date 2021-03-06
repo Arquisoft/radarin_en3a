@@ -26,7 +26,11 @@ Potentially more columns in case you need translations.
 [options="header"]
 |===
 | Term         | Definition
-| SOLID     | Social Linked Data
-| PODs     | Personal Online Data Stores
-| API     | Application Programming Interface
+| https://solidproject.org[SOLID]     | Social Linked Data
+| https://solidproject.org/users/get-a-pod[PODs]     | Personal Online Data Stores
+| https://en.wikipedia.org/wiki/API[API]     | Application Programming Interface
+| https://es.reactjs.org[React]   | Javascript library for building user interfaces
+| https://www.docker.com[Docker]   | PaaS that use virtualization to deliver software in containers
+| https://www.heroku.com[Heroku]   | PaaS that allows the usage of containers in a cloud environment
+| https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller[MVC] | Model View Controller pattern
 |===

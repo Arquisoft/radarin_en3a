@@ -1,33 +1,13 @@
 [[section-design-decisions]]
 == Design Decisions
 
-As the design phases starts and progresses this section will be filled.
+.*Problems*
+* Decision making related to the library used to build the application.
+* Decision of doing an internacionalized application
+* Decision about the tecnologies to use in the project
 
-[role="arc42help"]
-****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
 
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
-
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
-
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
-
-.Form
-Various options:
-
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
-
-Problems
-In this part we will list the problems we encounter in the project during the implementation process. Since we did not start this at this point, this is going to be filled during the next weeks.
-
-Decisions
-In this part of the documentation we will write the decisions we made to solve the problems that are above. Since we do not have any problem yet we have this part empty.
+.*Decisions*
+* Use the React framework because we can use it for building user interfaces for the web as well as mobile applicantions. Furthermore, it has a lot of advantages.
+* Start from the beginning with the internacionalization of the application, first researching how to do it with react and the apply it so users from different countries can use our application
+* To decide the different tecnologies we did research to find the most suitable ones. First we already decided that we are going to use react for as the framework. We are going to use docker containers because they are a requirement for the project. Also we are going to use MongoDB, even if we are not usesrs of this database daily it has multiple advantages the main one to go further and faster when developing software.

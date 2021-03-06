@@ -3,11 +3,15 @@
 //
 // ====================================
 
-= image:LogoASW.png[arc42] Radarin 0
+= image:LogoASW.png[arc42] Radarin EN3A
 // toc-title definition MUST follow document title without blank line!
 :toc: left
 :toc-title: Table of Contents
 :imagesdir: ./images
+
+
+// horizontal line
+***
 
 
 //additional style for arc42 help callouts
@@ -38,6 +42,7 @@ It is used for familiarization with arc42 and the understanding of the concepts.
 For documentation of your own system you use better the _plain_ version.
 ====
 ****
+
 
 
 // numbering from here on
