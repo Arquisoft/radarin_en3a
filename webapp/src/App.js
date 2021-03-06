@@ -5,6 +5,7 @@ import Welcome from './components/Welcome';
 import EmailForm from "./components/EmailForm";
 import UserList from "./components/UserList";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/fragments/Navigation';
 
 class App extends React.Component{
   constructor(){
@@ -20,6 +21,7 @@ class App extends React.Component{
     return(
       <div className="App">
         <header className="App-header">
+          <Navigation/>
           <img src={logo} className="App-logo" alt="logo"/>
           <h1>RADARIN</h1>
         </header>
