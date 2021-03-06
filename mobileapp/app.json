@@ -1,0 +1,12 @@
+{
+  "name": "movileApp",
+  "displayName": "movileApp",
+  "expo": {
+    "name": "movileApp",
+    "slug": "movileApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
