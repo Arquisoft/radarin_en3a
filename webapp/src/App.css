@@ -43,6 +43,10 @@ html, body, .App, .App>div {
   align-items: center;
 }
 
+.mr-auto{
+  float: left;
+}
+
 .UserList{
   padding-top:5vh;
 }
