@@ -75,6 +75,18 @@
   background: #2ecc71;
 }
 
+.mr-auto{
+  float: left;
+
+}
+
+.mr-auto{
+  float: left;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
 .UserList{
   padding-top:5vh;
 }

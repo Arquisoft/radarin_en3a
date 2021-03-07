@@ -21,7 +21,7 @@ class App extends React.Component{
     return(
       <div className="App">
         <header className="App-header">
-          <Navigation/>
+          <Navigation/><br></br>
           <img src={logo} className="App-logo" alt="logo"/>
           <h1>RADARIN</h1>
         </header>
