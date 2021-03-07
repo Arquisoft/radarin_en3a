@@ -4,13 +4,13 @@ import Navbar from 'react-bootstrap/Navbar';
 
 class Navigation extends React.Component {
     render(){
-        return <Navbar collapseOnSelect bg="dark" expand="lg" fixed="top">
+        return <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
         <Navbar.Brand href="#home">Radarin</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link className="home" to="/" >Home</Nav.Link>
-                <Nav.Link to="/about" >About us</Nav.Link>
+                <Nav.Link  to="/" >Home</Nav.Link>
+                <Nav.Link  to="/about" >About us</Nav.Link>
             </Nav>
         </Navbar.Collapse>
     </Navbar> 
