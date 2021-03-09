@@ -26,7 +26,7 @@ class Navigation extends React.Component {
                     <Nav className="mr-auto">
                         <Nav.Link  href="https://github.com/Arquisoft/radarin_en3a" target="_blank">About us</Nav.Link>
                         <Nav.Link className="mt-1 mr-2" href="#/register">Register</Nav.Link>
-                        <AuthButton className="btn btn-outline-dark" popup="https://inrupt.net/login" login="Login In" logout="Log Out" />
+                        <AuthButton className="btn btn-outline-dark" popup="https://solidcommunity.net/common/popup.html" login="Login In" logout="Log Out" />
                     </Nav>
                 </Navbar.Collapse>
             </Navbar> 
