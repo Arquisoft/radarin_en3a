@@ -1,0 +1,17 @@
+#register-nav-link{
+    margin-top: 0 !important;
+}
+
+.btn-outline-dark{
+    color: rgba(0,0,0,.5) !important;
+}
+
+.btn-outline-dark:hover{
+    color: white !important;
+}
+
+.radarin-title{
+    display: inline;
+    position: relative;
+    top: 5px;
+}

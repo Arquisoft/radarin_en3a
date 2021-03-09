@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/fragments/Navigation';
-import { LoggedIn, LoggedOut } from '@solid/react';
+import { LoggedIn, LoggedOut, LogoutButton, Value } from '@solid/react';
 import { HashRouter } from "react-router-dom";
 
 class App extends React.Component{
@@ -12,9 +12,14 @@ class App extends React.Component{
         <HashRouter basename="/">
           <LoggedOut>
             <Navigation/>
+            <p>You are logged out of your POD.</p>
           </LoggedOut>
-          <LoggedIn>
-            <h1>HELLO WORLD</h1>
+          <LoggedIn >
+            <div className="logged-in-panel">
+              <h1>Hello there!</h1>
+              <h2>Logged into your POD: <Value src="user.name"/></h2>
+              <LogoutButton className="log-out-btn"></LogoutButton>
+            </div>
           </LoggedIn>
         </HashRouter>
       </div>

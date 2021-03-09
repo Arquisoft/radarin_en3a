@@ -15,6 +15,31 @@ html, body, .App, .App>div {
   background-color: #282c34;
 }
 
+.logged-in-panel{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  color: white !important;
+}
+
+.log-out-btn{
+  margin-top: 100px;
+  background-color: #007bff;
+  border: 1px solid black;
+  color: rgba(0,0,0,.7);
+  padding: 10px 20px;
+  border-radius: .25rem;
+}
+
+.log-out-btn:hover{
+  background-color:#343a40;
+  border: 1px solid white;
+  color: white;
+}
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;
