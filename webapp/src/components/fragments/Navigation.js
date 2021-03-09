@@ -30,7 +30,7 @@ class Navigation extends React.Component {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar> 
-            <div id="container" style={{ backgroundColor: "black" }}>
+            <div id="container" style={{ backgroundColor: "black"}}>
                 <Route exact path="/register" component={SignUp} />
                 <Route exact path="/" component={InitialWelcome} />
             </div>
