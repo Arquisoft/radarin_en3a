@@ -24,8 +24,8 @@ class Navigation extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link  to="/" >Home</Nav.Link>
                         <Nav.Link  href="https://github.com/Arquisoft/radarin_en3a" target="_blank">About us</Nav.Link>
+                        <Nav.Link className="mt-1 mr-2" href="#/register">Register</Nav.Link>
                         <AuthButton className="btn btn-outline-dark" popup="https://inrupt.net/login" login="Login In" logout="Log Out" />
                     </Nav>
                 </Navbar.Collapse>
@@ -37,4 +37,6 @@ class Navigation extends React.Component {
         </HashRouter>
     }
 }
+
+// We can add a logo of Radarin in the Brand and also use a img instead of text
 export default Navigation;

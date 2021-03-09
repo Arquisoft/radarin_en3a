@@ -26,7 +26,7 @@ html, body, .App, .App>div {
   }
 }
 
-.InitialWelcome {
+.InitialWelcome, .App-header {
   min-height: 20vh;
   flex-direction: row;
   align-items: center;
