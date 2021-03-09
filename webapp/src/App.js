@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/fragments/Navigation';
 import { LoggedIn, LoggedOut } from '@solid/react';
