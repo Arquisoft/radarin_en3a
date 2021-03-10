@@ -2,14 +2,12 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../logo.svg';
-import { AuthButton } from '@solid/react';
+import { LogoutButton } from '@solid/react';
 import { HashRouter, Route, Redirect } from 'react-router-dom';
-import InitialWelcome from '../InitialWelcome';
-import SignUp from '../SignUp';
+import Welcome from '../Welcome';
 import '../../css/Navigation.css';
 
-
-class Navigation extends React.Component {
+class NavAuthenticated extends React.Component {
     render(){
         return <HashRouter basename="/">
             <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
@@ -26,15 +24,14 @@ class Navigation extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link   href="https://github.com/Arquisoft/radarin_en3a" target="_blank">About us</Nav.Link>
-                        <Nav.Link  activeClassName="active-nav-link"  activeStyle={{ color: 'red !important' }}id="register-nav-link" className="mt-1 mr-2" href="#/register">Register</Nav.Link>
-                        <AuthButton className="btn btn-outline-dark" popup="https://solidcommunity.net/common/popup.html" login="Log In" logout="Log Out" />
+                        <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">Profile</Nav.Link>
+                        <LogoutButton className="log-out-btn"/>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar> 
             <div id="container" style={{ backgroundColor: "black"}}>
-                <Route exact path="/register" component={SignUp} />
-                <Route exact path="/" component={InitialWelcome} />
+                <Route exact path="/" component={Welcome} />
+                <Route exact path="/profile" component={Welcome} />
                 <Redirect path="/" exact to="/" />
             </div>
         </HashRouter>
@@ -42,4 +39,4 @@ class Navigation extends React.Component {
 }
 
 // We can add a logo of Radarin in the Brand and also use a img instead of text
-export default Navigation;
+export default NavAuthenticated;

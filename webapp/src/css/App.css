@@ -1,6 +1,10 @@
 html, body, .App, .App>div {
-  height: 100%;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
   margin: 0;
 }
 
