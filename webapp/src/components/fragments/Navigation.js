@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../logo.svg';
+import logo from '../../simple_logo.png';
 import { AuthButton } from '@solid/react';
 import { HashRouter, Route } from 'react-router-dom';
 import InitialWelcome from '../InitialWelcome';

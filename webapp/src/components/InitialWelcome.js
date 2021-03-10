@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from '../logo.svg';
+//import logo from '../logo.svg';
+import logo from '../simple_logo.png';
 
 
 class InitialWelcome extends React.Component{
