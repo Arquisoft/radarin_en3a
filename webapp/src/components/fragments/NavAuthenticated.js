@@ -7,7 +7,6 @@ import { HashRouter, Route, Redirect } from 'react-router-dom';
 import Welcome from '../Welcome';
 import '../../css/Navigation.css';
 
-
 class NavAuthenticated extends React.Component {
     render(){
         return <HashRouter basename="/">
@@ -25,8 +24,8 @@ class NavAuthenticated extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link  activeClassName="active-nav-link"  activeStyle={{ color: 'red !important' }} id="profile-nav-link" className="mt-1 mr-2" href="#/profile">Profile</Nav.Link>
-                        <LogoutButton className="log-out-btn"></LogoutButton>
+                        <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">Profile</Nav.Link>
+                        <LogoutButton className="log-out-btn"/>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar> 

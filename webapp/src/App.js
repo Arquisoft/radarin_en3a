@@ -3,7 +3,7 @@ import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/fragments/Navigation';
 import NavAuthenticated from './components/fragments/NavAuthenticated';
-import { LoggedIn, LoggedOut } from '@solid/react';
+import {LoggedIn, LoggedOut} from '@solid/react';
 import { HashRouter } from "react-router-dom";
 
 class App extends React.Component{
