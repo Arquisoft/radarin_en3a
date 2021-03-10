@@ -1,39 +1,32 @@
 import React from 'react';
-import './App.css';
-import logo from './logo.svg';
-import Welcome from './components/Welcome';
-import EmailForm from "./components/EmailForm";
-import UserList from "./components/UserList";
+import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/fragments/Navigation';
+import { LoggedIn, LoggedOut, LogoutButton, Value } from '@solid/react';
+import { HashRouter } from "react-router-dom";
 
 class App extends React.Component{
-  constructor(){
-    super()
-    this.state = {users:[]}
-  }
-
-  refreshUsers(users){
-    this.setState({users:users})
-  }
-
   render(){
     return(
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <Welcome name="ASW students"/>
-        </header>
-        <div className="App-content">
-          <EmailForm refreshUsers={this.refreshUsers.bind(this)}/>
-          <UserList users={this.state.users}/>
-          <a className="App-link"
-            href="https://github.com/pglez82/radarin_0"
-            target="_blank"
-            rel="noopener noreferrer">Source code</a>
-        </div>
+        <HashRouter basename="/">
+          <LoggedOut>
+            <Navigation/>
+            <p>You are logged out of your POD.</p>
+          </LoggedOut>
+          <LoggedIn >
+            <div className="logged-in-panel">
+              <h1>Hello there!</h1>
+              <h2>Logged into your POD: <Value src="user.name"/></h2>
+              <LogoutButton className="log-out-btn"></LogoutButton>
+            </div>
+          </LoggedIn>
+        </HashRouter>
       </div>
     )
   }
 }
+
+/* We must change the HELLO WORLD to a new Nav component when we are logged in*/
 
 export default App;

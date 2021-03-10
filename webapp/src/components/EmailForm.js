@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import {addUser,getUsers} from '../api/api'
+import '../css/formStyles.css';
 
 class EmailForm extends React.Component{
   constructor(props) {
@@ -21,6 +21,29 @@ class EmailForm extends React.Component{
   changeUserName(e) {
     const username = e.target.value ;
     this.setState({username: username});
+  }
+
+  changePassword(e) {
+    const password = e.target.value ;
+    this.setState({password: password});
+  }
+
+  changePasswordConfirm(e) {
+    const passwordConfirm = e.target.value ;
+    this.setState({passwordConfirm: passwordConfirm});
+  }
+
+  validateFormData(){
+    console.log("Validating data");
+    if(this.state.password.length < 8){
+      console.log("The password is not long enough");
+      return false;
+    }
+    if(this.state.password !== this.state.passwordConfirm){
+      console.log("The passwords don't match");
+      return false;
+    }
+    return true;
   }
 
   async registerUser(){
@@ -50,34 +73,29 @@ class EmailForm extends React.Component{
   async handleSubmit(e) {
     e.preventDefault()
     //Add the user to the database
-    if (this.state.username && this.state.email){
+    if (this.validateFormData()){
+      console.log("Form data validated correctly");
       this.registerUser()
     }
-    else
-        this.setState({welcomeMsg:'ERROR: You must fill both fields!'})
+    else{
+      console.log("A validation error occurred");
+      this.setState({welcomeMsg:'ERROR: You must fill both fields!'})
+    }
+
+
   }
 
   render(){
     return(
-          <Form name="register" onSubmit={this.handleSubmit.bind(this)}>
+          <Form className="formItem" name="register" onSubmit={this.handleSubmit.bind(this)}>
+            <h1>Register</h1>
             <Form.Group>
-              <Form.Label>Email address</Form.Label>
               <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.changeEmail.bind(this)} value={this.state.email}/>
-              <Form.Text className="text-muted">
-                Careful! Your email will be public!
-              </Form.Text>
+              <Form.Control name="username" type="string" placeholder="Enter Name" onChange={this.changeUserName.bind(this)} value={this.state.username} />
+              <Form.Control name="password" type="password" placeholder="Enter password" onChange={this.changePassword.bind(this)} value={this.state.password} />
+              <Form.Control name="passwordConfirm" type="password" placeholder="Enter password again" onChange={this.changePasswordConfirm.bind(this)} value={this.state.passwordConfirm} />
             </Form.Group>
-        
-            <Form.Group>
-              <Form.Label>Name</Form.Label>
-              <Form.Control name="username" type="string" placeholder="Name" onChange={this.changeUserName.bind(this)} value={this.state.username} />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-            <div>
-              <span hidden={this.state.welcomeMsg===''}>{this.state.welcomeMsg}</span>
-            </div>
+            <input type="submit" name="" value="Register"></input>
           </Form>
     )
   }

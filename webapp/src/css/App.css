@@ -1,0 +1,83 @@
+html, body, .App, .App>div {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-align: center;
+  background-color: #282c34;
+}
+
+.logged-in-panel{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  color: white !important;
+}
+
+.log-out-btn{
+  margin-top: 100px;
+  background-color: #007bff;
+  border: 1px solid black;
+  color: rgba(0,0,0,.7);
+  padding: 10px 20px;
+  border-radius: .25rem;
+}
+
+.log-out-btn:hover{
+  background-color:#343a40;
+  border: 1px solid white;
+  color: white;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.InitialWelcome, .App-header {
+  min-height: 20vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-top: 70px;
+}
+
+.App-content {
+  padding-top:5vh;
+  display: flex;
+  justify-content: center; 
+  color: white;
+  align-items: center;
+}
+
+.mr-auto{
+  float: left;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
