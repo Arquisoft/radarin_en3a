@@ -6,7 +6,7 @@ import { Button } from 'react-native-elements'
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Welcome to my FIRST React Natice App! How are you?</Text>
+      <Text>Welcome to my FIRST React Natice App!</Text>
       <StatusBar style="auto" />
       <Button title='My First Button' icon={{name: 'code'}}/>
     </View>
