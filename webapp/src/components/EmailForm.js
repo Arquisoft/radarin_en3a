@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "react-bootstrap/Form";
 import {addUser,getUsers} from '../api/api'
-import '../css/formStyles.css';
+import '../css/FormStyles.css';
 
 class EmailForm extends React.Component{
   constructor(props) {

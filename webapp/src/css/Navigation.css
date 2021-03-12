@@ -18,4 +18,14 @@
 
 .log-out-btn{
     margin-top: 0;
+    position: absolute;
+    right: 2em;
+}
+
+
+@media (max-width: 975px) {
+    .log-out-btn {
+       position: relative;
+        left: 1em;
+    }
 }

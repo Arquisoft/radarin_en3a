@@ -1,6 +1,6 @@
 import React from 'react';
 import {List, Value, useWebId, useLDflexList} from '@solid/react';
-import "../css/welcome.css";
+import "../css/Welcome.css";
 
 function Welcome() {
     const webId = useWebId();
@@ -9,7 +9,7 @@ function Welcome() {
             <h1>Hello there!</h1>
             <h2>Logged as <Value src="user.name"/></h2>
             <span>Your webID is: {webId}</span>
-            <h3>You have {friends.length} friends added:</h3>
+            <h3 className="title-number-friends">You have {friends.length} friends added:</h3>
       <List src={`[${webId}].friends`}>
           {friend =>
               <li key={friend} onClick={(e) => window.location.href=friend}>
