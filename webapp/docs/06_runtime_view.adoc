@@ -46,7 +46,7 @@ The next diagrams shows how the login works in the app.
 
 image:login.png["Login diagram"]
 
-=== Map
+=== UserMap
 
 The application contains a map view. When opening this view, the user can see the location of his or her nearby friends on a map.
 

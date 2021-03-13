@@ -6,6 +6,7 @@ import { LogoutButton } from '@solid/react';
 import { HashRouter, Route, Redirect } from 'react-router-dom';
 import Welcome from '../Welcome';
 import '../../css/Navigation.css';
+import UserMap from "../UserMap";
 
 class NavAuthenticated extends React.Component {
     render(){
@@ -25,6 +26,7 @@ class NavAuthenticated extends React.Component {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">Profile</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/map">Map</Nav.Link>
                         <LogoutButton className="log-out-btn"/>
                     </Nav>
                 </Navbar.Collapse>
@@ -32,6 +34,7 @@ class NavAuthenticated extends React.Component {
             <div id="container" style={{ backgroundColor: "black"}}>
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/profile" component={Welcome} />
+                <Route exact path="/map" component={UserMap} />
                 <Redirect path="/" exact to="/" />
             </div>
         </HashRouter>
