@@ -1,5 +1,6 @@
+/*
 const express = require("express")
-const User = require("./models/users")
+const User = require("./models/userModel")
 const router = express.Router()
 
 // Get all users
@@ -29,3 +30,24 @@ router.post("/users/add", async (req, res) => {
 })
 
 module.exports = router
+*/
+const express = require('express'),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser');
+
+const app = express(),
+    port = 5000;
+
+const User = require('./restapi/models/userModel'),
+    routes = require('./restapi/routes/userRoutes');
+
+mongoose.connect('mongodb://database/27017/mongo_data', {useNewUrlParser: true});
+
+app.use(bodyParser.urlencoded({ extended:true }));
+
+app.use(bodyParser.json());
+
+app.use(routes);
+
+app.listen(port, () => console.log(`API server listening on port ${port}`));
+
