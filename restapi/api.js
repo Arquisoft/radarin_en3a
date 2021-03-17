@@ -12,6 +12,8 @@ router.get("/users/list", async (req, res) => {
 router.post("/users/add", async (req, res) => {
     let name = req.body.name;
     let email = req.body.email;
+    await user.save()
+    res.send(user)
     //Check if the device is already in the db
     let user = await User.findOne({ email: email })
     if (user)
