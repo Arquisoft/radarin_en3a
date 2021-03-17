@@ -19,7 +19,7 @@ export default function Enter({navigation}) {
         <View style={{flexDirection:'row', margin: 20, paddingVertical: 20}}>
             <TouchableOpacity
               style={{backgroundColor:"#50555e", padding: 10, width: 150, borderRadius:30,
-              marginHorizontal:10}}>
+              marginHorizontal:10}} onPress={() => navigation.navigate('Log In')}>
               <Text style={{textAlign:'center', color:"#fff", fontSize:18}}>Login</Text>
             </TouchableOpacity>
 
