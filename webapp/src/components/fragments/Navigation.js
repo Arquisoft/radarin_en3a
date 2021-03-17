@@ -1,9 +1,9 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../logo.svg';
+import logo from '../../simple_logo.png';
 import { AuthButton } from '@solid/react';
-import { HashRouter, Route } from 'react-router-dom';
+import { HashRouter, Route, Redirect } from 'react-router-dom';
 import InitialWelcome from '../InitialWelcome';
 import SignUp from '../SignUp';
 import '../../css/Navigation.css';
@@ -27,14 +27,15 @@ class Navigation extends React.Component {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link   href="https://github.com/Arquisoft/radarin_en3a" target="_blank">About us</Nav.Link>
-                        <Nav.Link  activeClassName="active-nav-link"  activeStyle={{ color: 'red !important' }}id="register-nav-link" className="mt-1 mr-2" href="#/register">Register</Nav.Link>
+                        <Nav.Link  id="register-nav-link" className="mt-1 mr-2" href="#/register">Register</Nav.Link>
                         <AuthButton className="btn btn-outline-dark" popup="https://solidcommunity.net/common/popup.html" login="Log In" logout="Log Out" />
                     </Nav>
                 </Navbar.Collapse>
             </Navbar> 
-            <div id="container" style={{ backgroundColor: "black"}}>
+            <div id="container">
                 <Route exact path="/register" component={SignUp} />
                 <Route exact path="/" component={InitialWelcome} />
+                <Redirect path="/" exact to="/" />
             </div>
         </HashRouter>
     }

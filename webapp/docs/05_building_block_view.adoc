@@ -35,4 +35,19 @@ Contained Building Blocks::
 | APIs | The ones we use to show the routes in the map
 |===
 
-This part will be done as the project progresses and decisions are taken in due time.
+=== Level 2 
+
+Motivation::
+
+Show the decomposition of the Application in the relevant parts of the main part of the system. We use only one level by now because the web and mobile app are almost the same
+
+Contained Building Blocks::
+[options="header",cols="1,3"]
+|===
+|**Name** | **Responsability**
+|Components | JavaScript components created by React that are used like building blocks of code.
+
+|Tests | Tests included in the web application to ensure the proper functioning of the React components (folder not yet).
+
+|Css | Style worksheets that are used to style the application. 
+|===

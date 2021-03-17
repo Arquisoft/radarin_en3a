@@ -15,25 +15,25 @@ class GetUsersExample extends Simulation {
 		.acceptLanguageHeader("en-US,en;q=0.5")
 		.userAgentHeader("Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0")
 
-	val headers_1 = Map(
+	val headers_1 = UserMap(
 		"Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
 		"If-Modified-Since" -> "Tue, 19 Jan 2021 11:59:09 GMT",
 		"If-None-Match" -> """W/"c05-1771a834ec8"""",
 		"Upgrade-Insecure-Requests" -> "1")
 
-	val headers_2 = Map("Accept" -> "text/css,*/*;q=0.1")
+	val headers_2 = UserMap("Accept" -> "text/css,*/*;q=0.1")
 
-	val headers_3 = Map(
+	val headers_3 = UserMap(
 		"If-Modified-Since" -> "Tue, 19 Jan 2021 11:59:09 GMT",
 		"If-None-Match" -> """W/"1569-1771a834ec8"""")
 
-	val headers_5 = Map(
+	val headers_5 = UserMap(
 		"If-Modified-Since" -> "Tue, 19 Jan 2021 11:59:09 GMT",
 		"If-None-Match" -> """W/"2704a-1771a834ec8"""")
 
-	val headers_6 = Map("Accept" -> "image/webp,*/*")
+	val headers_6 = UserMap("Accept" -> "image/webp,*/*")
 
-	val headers_7 = Map("Origin" -> "https://radarin0webapp.herokuapp.com")
+	val headers_7 = UserMap("Origin" -> "https://radarin0webapp.herokuapp.com")
 
     val uri1 = "https://radarin0webapp.herokuapp.com"
     val uri3 = "https://radarin0restapi.herokuapp.com/api/users/list"

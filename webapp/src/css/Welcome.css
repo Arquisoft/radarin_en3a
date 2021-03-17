@@ -1,0 +1,55 @@
+h1{
+    margin-bottom: 60px;
+}
+
+h3{
+    margin-top: 70px;
+}
+
+/*
+ul{
+    overflow: hidden;
+    padding-left: 0;
+    margin-top: 70px;
+    overflow-y: scroll !important;
+}
+*/
+
+.title-number-friends{
+    margin-top: 100px;
+}
+
+ul{
+    margin-top: 40px;
+    padding-left: 0;
+    overflow: auto;
+}
+
+button{
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+li{
+    margin: 20px auto;
+    display: block;
+    width: 500px;
+    padding: 20px;
+    list-style-type: none;
+    border: 1px solid white;
+}
+
+li:hover{
+    background-color: white;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+li:hover button{
+    background-color: white;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}

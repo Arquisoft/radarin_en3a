@@ -36,17 +36,17 @@ This section is aimed to explain the different runtime views of the application.
 
 The next diagrams shows how the login works in the app.
 
-1.The user acceses the application and the login view.
+1.The user presses the login button.
 
-2.The user enters his or her credentials.
+2.The user is redirected to solidcommunity to choose a provider.
 
-3.Credentials are checked in the login manager.
+3.Then the user inserts his/her credentials abd presses log in.
 
 4.The pod allow or deny the authentication.
 
 image:login.png["Login diagram"]
 
-=== Map
+=== UserMap
 
 The application contains a map view. When opening this view, the user can see the location of his or her nearby friends on a map.
 
