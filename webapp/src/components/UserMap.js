@@ -3,7 +3,7 @@ import "../css/UserMap.css";
 import L from 'leaflet';
 
 
-function UserMap() {
+function UserMap(props) {
 
     // Map creation after the mounting of the div#map-panel element on the DOM
     useEffect(() => {

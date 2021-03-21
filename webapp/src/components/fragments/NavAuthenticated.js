@@ -4,13 +4,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../simple_logo.png';
 import { LogoutButton } from '@solid/react';
 import { HashRouter, Route, Redirect } from 'react-router-dom';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { useTranslation } from 'react-i18next';
 import Welcome from '../Welcome';
 import '../../css/Navigation.css';
 import UserMap from "../UserMap";
 
-class NavAuthenticated extends React.Component {
-    render(){
-        return <HashRouter basename="/">
+function NavAuthenticated(){
+        const { t, i18n } = useTranslation();
+        const changeLanguage = (lng) => {
+            i18n.changeLanguage(lng);
+        };
+        return (<HashRouter basename="/">
             <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
                 <Navbar.Brand href="#">
                     <img
@@ -25,8 +31,12 @@ class NavAuthenticated extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">Profile</Nav.Link>
-                        <Nav.Link  className="mt-1 mr-2" href="#/map">Map</Nav.Link>
+                        <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
+                        <DropdownButton style={{ margin: "16px" }} id="dropdown-item-button" variant="secondary" title={t('navBarLanguage')}>
+                            <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
+                        </DropdownButton>
                         <LogoutButton className="log-out-btn"/>
                     </Nav>
                 </Navbar.Collapse>
@@ -37,9 +47,7 @@ class NavAuthenticated extends React.Component {
                 <Route exact path="/map" component={UserMap} />
                 <Redirect path="/" exact to="/" />
             </div>
-        </HashRouter>
-    }
+        </HashRouter>)
 }
 
-// We can add a logo of Radarin in the Brand and also use a img instead of text
 export default NavAuthenticated;

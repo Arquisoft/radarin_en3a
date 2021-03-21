@@ -2,7 +2,7 @@ import React from 'react';
 import {List, Value, useWebId, useLDflexList} from '@solid/react';
 import "../css/Welcome.css";
 
-function Welcome() {
+function Welcome(props) {
     const webId = useWebId();
     const friends = useLDflexList('user.friends');
   return (<div className="logged-in-panel">
