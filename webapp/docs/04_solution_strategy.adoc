@@ -32,6 +32,7 @@ This section is to be updated as new technologies are incorporated into the proj
 * Solid: As the core idea of the project is to used the Solid approach to develop a program, the Solid libraries are employed for user data management, in what are called "user pods".
 * React: For interface design and development, our initial choice is React, which is a Javascript library for interface programming.
 * React Native: this is the version of React used to develop for mobile devices.
+* Leaflet: we'll use this Javascript library for doing the maps.
 
 ===== IDEs
 
