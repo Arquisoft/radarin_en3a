@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../simple_logo.png';
+import { Translation } from 'react-i18next';
 
 
 class InitialWelcome extends React.Component {
@@ -8,7 +9,12 @@ class InitialWelcome extends React.Component {
             <div className="InitialWelcome" style={{ position: "absolute", left: "50%", top: "40%", transform: 'translate(-50%, -50%)' }}>
                 <img src={logo} className="App-logo" alt="logo" />
                 <h1>RADARIN</h1>
-                <p>You are logged out of your POD.</p>
+                <Translation>
+                    {
+                        (t) => <p>{t('InitialWelcomeMessage')}</p>
+                    }
+                </Translation>
+                
             </div>
         )
     }
