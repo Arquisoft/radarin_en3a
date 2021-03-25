@@ -7,6 +7,7 @@ In order to access and manipulate data in a clean way, the MVC pattern was the c
 
 This way, as it will be developed in React, it is one of the best options for accessing to the solid pods.
 
+Regarding the backend part, there will be a model to define the database skelleton and routes to get every action. This way, a controller will orchestrate the main crud functionality apart from the ones that would be potentially required.
 
 Once it is required, there can also be applied more design patters as needed.
 
