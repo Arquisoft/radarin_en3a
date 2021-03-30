@@ -9,7 +9,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
 import Welcome from '../Welcome';
 import '../../css/Navigation.css';
-import UserMap from "../UserMap";
+import 'leaflet/dist/leaflet.css';
+import MapView from "../MapView";
+import "../../css/MapView.css";
 
 function NavAuthenticated(){
         const { t, i18n } = useTranslation();
@@ -44,7 +46,7 @@ function NavAuthenticated(){
             <div id="container" style={{ backgroundColor: "black"}}>
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/profile" component={Welcome} />
-                <Route exact path="/map" component={UserMap} />
+                <Route exact path="/map" component={MapView} />
                 <Redirect path="/" exact to="/" />
             </div>
         </HashRouter>)

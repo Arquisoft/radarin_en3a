@@ -2,6 +2,7 @@ import React from 'react';
 import {List, Value, useWebId, useLDflexList, Image, useLDflex} from '@solid/react';
 import "../css/Welcome.css";
 import defaultProfilePic from '../assets/default_profile_pic.svg';
+
 function Welcome(props) {
     //const {default: data} = require('@solid/query-ldflex');
     const webId = useWebId();
