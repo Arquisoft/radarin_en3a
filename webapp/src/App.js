@@ -11,12 +11,7 @@ class App extends React.Component{
     return(
       <div className="App">
         <HashRouter basename="/">
-          <LoggedOut>
             <Navigation/>
-          </LoggedOut>
-          <LoggedIn >
-            <NavAuthenticated/>
-          </LoggedIn>
         </HashRouter>
       </div>
     )

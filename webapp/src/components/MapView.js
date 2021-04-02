@@ -12,8 +12,13 @@ const MapView = () => {
         shadowUrl: iconShadow
     });
 
+
     const position = [51.505, 0.09];
     return (
+        <div>
+            <div className="logged-in-panel">
+                <h2>Map of locations saved for logged user: </h2>
+            </div>
         <div className="user-map-panel">
             <MapContainer center={position} zoom={13} style={{ height: "100vh" }}>
                 <TileLayer
@@ -22,10 +27,11 @@ const MapView = () => {
                 />
                 <Marker position={position}>
                     <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
+                        Fake location for a user of Radarin
                     </Popup>
                 </Marker>
             </MapContainer>
+        </div>
         </div>
     );
 };

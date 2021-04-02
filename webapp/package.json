@@ -5,6 +5,7 @@
   "dependencies": {
     "@inrupt/solid-client": "^1.6.0",
     "@inrupt/solid-client-authn-browser": "^1.7.2",
+    "@inrupt/solid-ui-react": "^2.1.1",
     "@inrupt/vocab-common-rdf": "^0.7.2",
     "@solid/react": "^1.10.0",
     "@testing-library/jest-dom": "^5.11.9",
