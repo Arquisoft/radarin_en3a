@@ -4,5 +4,5 @@ import EmailForm from "./EmailForm";
 
 test('check that everything is rendering propertly', async () => {
   const { getByText } = render(<EmailForm/>);
-  expect(getByText("Submit")).toBeInTheDocument();
+  expect(getByLabelText("Submit")).toBeInTheDocument();
 });

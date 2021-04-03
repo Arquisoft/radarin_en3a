@@ -19,18 +19,18 @@ jobs:
     - run: npm run build
     - run: npm test
     - uses: codecov/codecov-action@v1
-  # build-test-restapi:
-  #   runs-on: ubuntu-latest
-  #   defaults:
-  #     run:
-  #       working-directory: restapi
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 12.14.1
-  #   - run: npm ci
-  #   - run: npm test
+  build-test-restapi:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: restapi
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.14.1
+    - run: npm ci
+    - run: npm test
   e2e-tests:
     needs: [build-test-webapp, build-test-restapi]
     runs-on: ubuntu-latest
