@@ -15,7 +15,7 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../../simple_logo.png";
 import LocationsView from "../LocationsView";
 import Button from "react-bootstrap/Button";
-import {onLogout} from "@inrupt/solid-client-authn-browser";
+import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 
 function NavAuthenticated(){
 
@@ -24,6 +24,21 @@ function NavAuthenticated(){
         const changeLanguage = (lng) => {
             i18n.changeLanguage(lng);
         };
+
+    const [data, setData] = useState(null);
+    const [webId, setWebId] = useState(getDefaultSession().info.webId);
+    const [resource, setResource] = useState(webId);
+
+    const handleLogout = (e) => {
+        console.log(webId);
+        e.preventDefault();
+        logout();
+        // The following has no impact on the logout, it just resets the UI.
+        setWebId(undefined);
+        setData("");
+        setResource("");
+        window.location.reload();
+    };
 
         return (
             <div>
@@ -48,7 +63,7 @@ function NavAuthenticated(){
                     <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
-                    <LogoutButton />
+                    <Button onClick={(e) => handleLogout(e)}>Log Out</Button>
                 </Nav>
                     </Navbar.Collapse>
                 </Navbar>
@@ -58,7 +73,7 @@ function NavAuthenticated(){
                 >
                 <div>
                     <div className="logged-in-msg-panel">
-                        <span>Iniciaste sesión como: </span>
+                        <span>Sesión iniciada como: </span>
                         <Text
                             properties={[
                                 "http://www.w3.org/2006/vcard/ns#fn",

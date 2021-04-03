@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@inrupt/solid-client": "^1.6.0",
+    "@inrupt/solid-client": "^1.6.1",
     "@inrupt/solid-client-authn-browser": "^1.7.2",
     "@inrupt/solid-ui-react": "^2.1.1",
     "@inrupt/vocab-common-rdf": "^0.7.2",
@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "solid-auth-cli": "^1.0.15",
+    "solid-auth-client": "^2.5.5",
     "solid-file-client": "^1.2.4",
     "web-vitals": "^0.2.4"
   },

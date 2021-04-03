@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../simple_logo.png';
@@ -8,7 +8,7 @@ import { HashRouter} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
 import NavAuthenticated from '../../components/fragments/NavAuthenticated';
-
+import { handleIncomingRedirect, login, logout, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 
 import {
     LoginButton,
@@ -21,13 +21,41 @@ import {
 import { useState } from 'react';
 
 function Navigation () {
-        const { t, i18n } = useTranslation();
-        const changeLanguage = (lng) => {
-            i18n.changeLanguage(lng);
-        };
+    const { t, i18n } = useTranslation();
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    };
 
-    const authOptions = {
-        clientName: "Radarin web app"
+    const REDIRECT_URL = window.location;
+    const [webId, setWebId] = useState(getDefaultSession().info.webId);
+    const [issuer, setIssuer] = useState("Enter your pod URL here");
+    const [resource, setResource] = useState(webId);
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        // After redirect, the current URL contains login information.
+        handleIncomingRedirect({
+            restorePreviousSession: true,
+        }).then((info) => {
+            setWebId(info.webId);
+            setResource(webId);
+        });
+    }, [webId]);
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        login({
+            redirectUrl: REDIRECT_URL,
+            oidcIssuer: issuer,
+            clientName: "Radarin app",
+        });
+    };
+
+    const handleFetch = (e) => {
+        e.preventDefault();
+        fetch(resource)
+            .then((response) => response.text())
+            .then(setData);
     };
 
     const { session } = useSession();
@@ -35,7 +63,6 @@ function Navigation () {
     const handleChange = (event) => {
         setOidcIssuer(event.target.value);
     };
-    //<AuthButton className="btn btn-outline-dark" popup="https://solidcommunity.net/common/popup.html" login={t('navBarLogIn')}  logout={t('navBarLogOut')} />
 
     return(<HashRouter basename="/">
         <div>
@@ -62,31 +89,21 @@ function Navigation () {
                     </DropdownButton>
                     <Nav className="mr-auto">
                             <div>
-                               <div>
-                                   <Nav.Link   href="https://github.com/Arquisoft/radarin_en3a" target="_blank">{t('navBarAbout')}</Nav.Link>
-                                   <Nav.Link  id="register-nav-link" className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>
-                                   <span>
-                            Inicia Sesión con:
-                    <input
-                        className="oidc-issuer-input"
-                        type="text"
-                        name="oidcIssuer"
-                        list="providers"
-                        value={oidcIssuer}
-                        onChange={handleChange}
-                    />
-                    <datalist id="providers">
-                        <option value="https://solidcommunity.net/" />
-                        <option value="https://inrupt.net/" />
-                    </datalist>
-                    </span>
-                                            <LoginButton
-                                                oidcIssuer={oidcIssuer}
-                                                redirectUrl={window.location.href}
-                                                authOptions={authOptions}
-                                            />
+                                <div>
+                                        <p>{webId ? `Logged in as ${webId}` : "Not authenticated"}</p>
+                                        <div>
+                                            <form>
+                                                <input
+                                                    type="text"
+                                                    value={issuer}
+                                                    onChange={(e) => {
+                                                        setIssuer(e.target.value);
+                                                    }}
+                                                />
+                                                <button onClick={(e) => handleLogin(e)}>Log In</button>
+                                            </form>
                                         </div>
-
+                                </div>
                             </div>
                     </Nav>
                 </Navbar.Collapse>
