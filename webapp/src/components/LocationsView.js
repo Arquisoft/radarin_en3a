@@ -21,8 +21,8 @@ import "../css/LocationsView.css";
 
 async function createLocationsFile() {
     const currentUserUrl = getDefaultSession().info.webId;
-    const podUrl = currentUserUrl;
-    //const podUrl = "https://radarintest.solidcommunity.net/";
+    //const podUrl = currentUserUrl;
+    const podUrl = "https://radarintest.solidcommunity.net/";
     const locationsFileUrl = `${podUrl}locations`;
     let locationsFile = createSolidDataset();
     let newLocation = createThing({name: "test"});
