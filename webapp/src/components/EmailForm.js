@@ -95,7 +95,7 @@ class EmailForm extends React.Component{
               <Form.Control name="password" type="password" placeholder="Enter password" onChange={this.changePassword.bind(this)} value={this.state.password} />
               <Form.Control name="passwordConfirm" type="password" placeholder="Enter password again" onChange={this.changePasswordConfirm.bind(this)} value={this.state.passwordConfirm} />
             </Form.Group>
-            <input type="submit" name="" value="Register"></input>
+            <input type="submit" name="" value="Submit"></input>
           </Form>
     )
   }
