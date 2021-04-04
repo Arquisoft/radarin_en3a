@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 import EmailForm from "./EmailForm";
 
 test('check that everything is rendering propertly', async () => {
-  const { getByText } = render(<EmailForm/>);
+  const { getByText, getByLabelText } = render(<EmailForm/>);
   // expect(getByText("Register")).toBeInTheDocument();
-  screen.getByText("Register").toBeInTheDocument();
+  screen.getByLabelText("Register").toBeInTheDocument();
 });
