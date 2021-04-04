@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Link, LogoutButton} from '@solid/react';
-import { HashRouter, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Welcome from '../Welcome';
 import '../../css/Navigation.css';
 import 'leaflet/dist/leaflet.css';
@@ -19,18 +18,17 @@ import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 
 function NavAuthenticated(){
 
-        const { session } = useSession();
-        const { t, i18n } = useTranslation();
-        const changeLanguage = (lng) => {
-            i18n.changeLanguage(lng);
-        };
+    const { session } = useSession();
+    const { t, i18n } = useTranslation();
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    };
 
     const [data, setData] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [resource, setResource] = useState(webId);
 
     const handleLogout = (e) => {
-        console.log(webId);
         e.preventDefault();
         logout();
         // The following has no impact on the logout, it just resets the UI.

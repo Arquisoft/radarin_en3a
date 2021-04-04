@@ -8,12 +8,9 @@ import { HashRouter} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
 import NavAuthenticated from '../../components/fragments/NavAuthenticated';
-import { handleIncomingRedirect, login, logout, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 
 import {
-    LoginButton,
-    LogoutButton,
-    Text,
     useSession,
     CombinedDataProvider
 } from '@inrupt/solid-ui-react';
@@ -33,7 +30,6 @@ function Navigation () {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        // After redirect, the current URL contains login information.
         handleIncomingRedirect({
             restorePreviousSession: true,
         }).then((info) => {

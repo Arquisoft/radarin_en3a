@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
     createSolidDataset,
     createThing,
@@ -20,11 +20,13 @@ import "../css/LocationsView.css";
 //https://radarintest.solidcommunity.net/locationForTest.json
 
 async function createLocationsFile() {
-    const podUrl = "https://radarintest.solidcommunity.net/";
+    const currentUserUrl = getDefaultSession().info.webId;
+    const podUrl = currentUserUrl;
+    //const podUrl = "https://radarintest.solidcommunity.net/";
     const locationsFileUrl = `${podUrl}locations`;
     let locationsFile = createSolidDataset();
     let newLocation = createThing({name: "test"});
-    newLocation = addUrl(newLocation, RDF.type, AS.Article);
+    newLocation = addUrl(newLocation, RDF.type, AS.objectType);
     newLocation = addDatetime(newLocation, "http://www.w3.org/2002/12/cal/ical#created", new Date());
     newLocation = addStringNoLocale(newLocation, SCHEMA_INRUPT_EXT.name, "location from pod");
     locationsFile = setThing(locationsFile, newLocation);
@@ -51,10 +53,13 @@ let locationsListElements = undefined;
 
 function LocationsView(props) {
     let [locationsForDisplay, setLocationsForDisplay] = useState([]);
+    console.log(getDefaultSession().info.webId);
 
     async function retrieveLocationsFromPod(){
+        const currentUserUrl = getDefaultSession().info.webId;
         locationsForDisplay = [];
-        const podUrl = "https://radarintest.solidcommunity.net/";
+        //const podUrl = "https://radarintest.solidcommunity.net/";
+        const podUrl = currentUserUrl;
         const locationsFileUrl = `${podUrl}locations`;
         let savedLocations = await getSolidDataset(
             locationsFileUrl,
