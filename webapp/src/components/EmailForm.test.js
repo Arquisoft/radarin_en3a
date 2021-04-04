@@ -4,5 +4,6 @@ import EmailForm from "./EmailForm";
 
 test('check that everything is rendering propertly', async () => {
   const { getByText } = render(<EmailForm/>);
-  expect(getByText("Register")).toBeInTheDocument();
+  // expect(getByText("Register")).toBeInTheDocument();
+  screen.getByText("Register").toBeInTheDocument();
 });
