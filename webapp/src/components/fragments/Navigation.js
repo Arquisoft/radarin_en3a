@@ -16,6 +16,7 @@ import {
 } from '@inrupt/solid-ui-react';
 
 import { useState } from 'react';
+import Button from "react-bootstrap/Button";
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -25,7 +26,7 @@ function Navigation () {
 
     const REDIRECT_URL = window.location;
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
-    const [issuer, setIssuer] = useState("Enter your pod URL here");
+    const [issuer, setIssuer] = useState("");
     const [resource, setResource] = useState(webId);
     const [data, setData] = useState(null);
 
@@ -85,18 +86,19 @@ function Navigation () {
                     </DropdownButton>
                     <Nav className="mr-auto">
                             <div>
-                                <div>
-                                        <p>{webId ? `Logged in as ${webId}` : "Not authenticated"}</p>
+                                <div className="log-in-panel">
+                                        <p>{webId ? `Logged in as ${webId}` : ""}</p>
                                         <div>
                                             <form>
                                                 <input
+                                                    placeholder="Enter your POD URL here"
                                                     type="text"
                                                     value={issuer}
                                                     onChange={(e) => {
                                                         setIssuer(e.target.value);
                                                     }}
                                                 />
-                                                <button onClick={(e) => handleLogin(e)}>Log In</button>
+                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>Log In</Button>
                                             </form>
                                         </div>
                                 </div>

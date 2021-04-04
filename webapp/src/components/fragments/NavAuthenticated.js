@@ -15,6 +15,7 @@ import logo from "../../simple_logo.png";
 import LocationsView from "../LocationsView";
 import Button from "react-bootstrap/Button";
 import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
+import Friends from "../Friends";
 
 function NavAuthenticated(){
 
@@ -31,7 +32,6 @@ function NavAuthenticated(){
     const handleLogout = (e) => {
         e.preventDefault();
         logout();
-        // The following has no impact on the logout, it just resets the UI.
         setWebId(undefined);
         setData("");
         setResource("");
@@ -61,7 +61,8 @@ function NavAuthenticated(){
                     <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
-                    <Button onClick={(e) => handleLogout(e)}>Log Out</Button>
+                    <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>Log Out</Button>
                 </Nav>
                     </Navbar.Collapse>
                 </Navbar>
@@ -82,7 +83,8 @@ function NavAuthenticated(){
                         <Route exact path="/profile" component={Welcome}/>
                         <Route exact path="/map" component={MapView}/>
                         <Route exact path="/locations" component={LocationsView}/>
-                        <Redirect path="/" exact to="/" />
+                        <Route exact path="/friends" component={Friends}/>
+                        <Redirect path="/" exact to="/profile" />
                     </div>
                 </div>
             </CombinedDataProvider>

@@ -20,8 +20,12 @@
     margin-top: 0;
     position: absolute;
     right: 2em;
+    background-color: lightcoral;
 }
 
+.log-out-btn:hover{
+   background-color: red;
+}
 
 @media (max-width: 975px) {
     .log-out-btn {
@@ -35,3 +39,24 @@
     z-index: 10;
     color:white;
 }
+
+.log-in-panel{
+    margin-left: 50px;
+    margin-top: -10px;
+}
+
+.log-in-panel input{
+    padding: 10px;
+    width: 20em;
+}
+
+.log-in-btn{
+    color: black;
+    margin-left: 10px;
+    background-color: lightgreen;
+}
+
+.log-in-btn:hover{
+    background-color: darkgreen;
+}
+

@@ -8,25 +8,8 @@ import defaultProfilePic from '../assets/default_profile_pic.svg';
 function Welcome(props) {
     const { session } = useSession();
     const { default: data } = require('@solid/query-ldflex');
-    const webIdCurrentUser = session.info.webId;
-    const loggedUserData = data[webIdCurrentUser];
-    console.log(webIdCurrentUser);
-    showProfile(loggedUserData);
-
     const { webId } = session.info;
 
-    async function showProfile(person) {
-        const label = await person.label;
-        console.log(`\nNAME: ${label}`);
-
-        console.log('\nTYPES');
-        for await (const type of person.type)
-            console.log(`  - ${type}`);
-
-        console.log('\nFRIENDS');
-        for await (const name of person.friends.firstName)
-            console.log(`  - ${name} is a friend`);
-    }
     return (
         <div className="logged-in-panel">
             <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
@@ -39,7 +22,7 @@ function Welcome(props) {
                     ]}
                 />
                 <br/>
-                <Image className="owner-profile-pic" property={VCARD.hasPhoto.iri.value}  defaultSrc={defaultProfilePic} />
+                <Image className="owner-profile-pic" property={VCARD.hasPhoto.iri.value}  onError={(e)=>{e.target.onerror = null; e.target.src={defaultProfilePic}}} />
                 <h3>Your webID is: </h3>
                 <h4>{ session.info.webId }</h4>
             </CombinedDataProvider>

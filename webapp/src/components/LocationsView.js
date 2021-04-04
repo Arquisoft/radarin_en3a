@@ -16,6 +16,8 @@ import {
 } from "@inrupt/solid-client-authn-browser";
 import { SCHEMA_INRUPT_EXT, RDF, AS } from "@inrupt/vocab-common-rdf";
 import "../css/LocationsView.css";
+import AddLocation from "./AddLocation";
+import Button from "react-bootstrap/Button";
 
 //https://radarintest.solidcommunity.net/locationForTest.json
 
@@ -78,10 +80,12 @@ function LocationsView(props) {
 
     return (
         <div className="locations-panel">
-            <button className="create-locations-btn" onClick={createLocationsFile}>Save or create location in the POD</button>
+            <AddLocation/>
             <br/>
-            <button className="retrieve-locations-btn" onClick={retrieveLocationsFromPod}>Retrieve locations from the POD</button>
-            <h2>Location retrieved from POD:</h2>
+            <Button className="save-locations-btn" onClick={createLocationsFile}>Save current location in the POD</Button>
+            <br/>
+            <Button className="retrieve-locations-btn" onClick={retrieveLocationsFromPod}>Retrieve all locations from the POD</Button>
+            <h2>Locations retrieved from POD:</h2>
             <ul>{ locationsListElements }</ul>
         </div>
     );
