@@ -2,6 +2,9 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
 
+const Session = require("@inrupt/solid-client-authn-node");
+const session = new Session();
+
 export default function LogIn({navigation}) {
   return (
     <View style={styles.container}>

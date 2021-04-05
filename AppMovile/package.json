@@ -8,6 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@inrupt/solid-client": "^1.6.1",
+    "@inrupt/solid-client-authn-node": "^1.7.2",
+    "@inrupt/vocab-common-rdf": "^0.7.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/native": "^5.9.3",
@@ -19,6 +22,7 @@
     "expo-location": "^10.0.0",
     "expo-permissions": "^10.0.0",
     "expo-status-bar": "~1.0.3",
+    "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "fs-extra": "^9.0.0",
     "graceful-fs": "^4.2.6",
