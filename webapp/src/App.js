@@ -8,7 +8,7 @@ import { SessionProvider } from "@inrupt/solid-ui-react";
 class App extends React.Component{
   render(){
     return(
-        <SessionProvider sessionId="Radarin">
+        <SessionProvider sessionId="solid-radarin">
       <div className="App">
         <HashRouter basename="/">
             <Navigation/>

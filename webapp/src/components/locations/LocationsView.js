@@ -15,9 +15,11 @@ import {
     fetch
 } from "@inrupt/solid-client-authn-browser";
 import { SCHEMA_INRUPT_EXT, RDF, AS } from "@inrupt/vocab-common-rdf";
-import "../css/LocationsView.css";
+import "../../css/LocationsView.css";
 import AddLocation from "./AddLocation";
 import Button from "react-bootstrap/Button";
+import LocationSaver from "./LocationSaver";
+import LocationList from "./LocationList";
 
 //https://radarintest.solidcommunity.net/locationForTest.json
 
@@ -55,7 +57,6 @@ let locationsListElements = undefined;
 
 function LocationsView(props) {
     let [locationsForDisplay, setLocationsForDisplay] = useState([]);
-    console.log(getDefaultSession().info.webId);
 
     async function retrieveLocationsFromPod(){
         const currentUserUrl = getDefaultSession().info.webId;
@@ -82,11 +83,8 @@ function LocationsView(props) {
         <div className="locations-panel">
             <AddLocation/>
             <br/>
-            <Button className="save-locations-btn" onClick={createLocationsFile}>Save current location in the POD</Button>
+            <LocationSaver/>
             <br/>
-            <Button className="retrieve-locations-btn" onClick={retrieveLocationsFromPod}>Retrieve all locations from the POD</Button>
-            <h2>Locations retrieved from POD:</h2>
-            <ul>{ locationsListElements }</ul>
         </div>
     );
 }

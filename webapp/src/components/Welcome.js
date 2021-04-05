@@ -1,7 +1,7 @@
 import React from 'react';
 import "../css/Welcome.css";
-import { CombinedDataProvider, Text, Image } from "@inrupt/solid-ui-react";
-import {useSession} from "@inrupt/solid-ui-react";
+import { CombinedDataProvider, Text, useSession } from "@inrupt/solid-ui-react";
+import { Image} from "@solid/react";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
 import defaultProfilePic from '../assets/default_profile_pic.svg';
 
@@ -22,7 +22,7 @@ function Welcome(props) {
                     ]}
                 />
                 <br/>
-                <Image className="owner-profile-pic" property={VCARD.hasPhoto.iri.value}  onError={(e)=>{e.target.onerror = null; e.target.src={defaultProfilePic}}} />
+                <Image className="owner-profile-pic" property={VCARD.hasPhoto.iri.value} defaultSrc={defaultProfilePic}>{webId}</Image>
                 <h3>Your webID is: </h3>
                 <h4>{ session.info.webId }</h4>
             </CombinedDataProvider>

@@ -1,21 +1,21 @@
 import React, {useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import MapView from "../MapView";
+import LocationsView from "../locations/LocationsView";
 import Welcome from '../Welcome';
+import FriendsView from "../friends/FriendsView";
 import '../../css/Navigation.css';
 import 'leaflet/dist/leaflet.css';
-import MapView from "../MapView";
 import "../../css/MapView.css";
-import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
+import logo from "../../simple_logo.png";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
-import { useTranslation } from 'react-i18next';
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../../simple_logo.png";
-import LocationsView from "../LocationsView";
 import Button from "react-bootstrap/Button";
 import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
-import Friends from "../Friends";
+import { useTranslation } from 'react-i18next';
+import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 
 function NavAuthenticated(){
 
@@ -83,7 +83,7 @@ function NavAuthenticated(){
                         <Route exact path="/profile" component={Welcome}/>
                         <Route exact path="/map" component={MapView}/>
                         <Route exact path="/locations" component={LocationsView}/>
-                        <Route exact path="/friends" component={Friends}/>
+                        <Route exact path="/friends" component={FriendsView}/>
                         <Redirect path="/" exact to="/profile" />
                     </div>
                 </div>

@@ -17,6 +17,7 @@ import {
 
 import { useState } from 'react';
 import Button from "react-bootstrap/Button";
+import InitialWelcome from "../InitialWelcome";
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -67,7 +68,8 @@ function Navigation () {
                     <NavAuthenticated/>
                 ) :
                     (
-            <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
+                        <div>
+            <Navbar className="navbar-main" collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
                 <Navbar.Brand href="#">
                     <img
                         src={logo}
@@ -105,7 +107,9 @@ function Navigation () {
                             </div>
                     </Nav>
                 </Navbar.Collapse>
-            </Navbar>)}
+            </Navbar>
+                            <InitialWelcome/>
+                        </div>)}
                     </div>
     </HashRouter>)
 }

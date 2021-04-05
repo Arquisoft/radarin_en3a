@@ -13,7 +13,7 @@ function AddLocation(props) {
         if([currentLatitude].toString() !== "") {
             return (
                 <div>
-                    <h5>Latitude: {currentLatitude} deg, Longitude: {currentLongitude} deg</h5>
+                    <h5>Latitude: <span id="lat-span">{currentLatitude}</span> deg, Longitude: <span id="long-span">{currentLongitude}</span> deg</h5>
                     <p>Timestamp: {currentTimestamp}</p>
                 </div>);
         }else if(!locationAvailable){
