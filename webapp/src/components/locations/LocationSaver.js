@@ -58,7 +58,6 @@ function LocationSaver(props) {
     }, [session]);
 
     const addLocation = async (text) => {
-        console.log("About to add location " + text);
         const indexUrl = getSourceUrl(locationList);
         const locationWithText = addStringNoLocale(createThing(), TEXT_PREDICATE, text);
         const locationWithDate = addDatetime(
@@ -72,7 +71,6 @@ function LocationSaver(props) {
             fetch: session.fetch,
         });
         setLocationList(updatedDataset);
-        console.log("Location added to POD");
     };
 
     function getLocationAndSave(){
