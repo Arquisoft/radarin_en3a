@@ -10,6 +10,9 @@ const User = require('./models/userModel'),
       routes = require('./routes/userRoutes'),
       router = express.Router();
 
+const client = new SolidNodeClient();
+
+
 // Get all users
 router.get("/users/list", async (req, res) => {
     const users = await User.find({}).sort('-_id') //Inverse order
@@ -32,6 +35,15 @@ router.post("/users/add", async (req, res) => {
         }
     }
 });
+
+//Login 
+router.post("users/login", async(req,res) => {
+    try{
+        let client = await.client.login({
+            profile: 
+        })
+    }
+})
 
 // add a new location associated to an user
 router.post("locations/add", async(req, res) => {
