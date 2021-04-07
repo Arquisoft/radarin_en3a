@@ -13,7 +13,7 @@ import {
     saveSolidDatasetAt
 } from "@inrupt/solid-client";
 import {useSession} from "@inrupt/solid-ui-react";
-import MarkerGenerator from "./map/MarkerGenerator";
+import MarkerGenerator from "./MarkerGenerator";
 
 
 const MapView = () => {

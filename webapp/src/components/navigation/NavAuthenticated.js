@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import MapView from "../MapView";
+import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
-import Welcome from '../Welcome';
+import WelcomeAuth from '../welcome/WelcomeAuth';
 import FriendsView from "../friends/FriendsView";
 import '../../css/Navigation.css';
 import 'leaflet/dist/leaflet.css';
 import "../../css/MapView.css";
-import logo from "../../simple_logo.png";
+import logo from "../../assets/simple_logo.png";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
@@ -80,7 +80,7 @@ function NavAuthenticated(){
                         />
                     </div>
                     <div id="container" style={{ backgroundColor: "black"}}>
-                        <Route exact path="/profile" component={Welcome}/>
+                        <Route exact path="/profile" component={WelcomeAuth}/>
                         <Route exact path="/map" component={MapView}/>
                         <Route exact path="/locations" component={LocationsView}/>
                         <Route exact path="/friends" component={FriendsView}/>

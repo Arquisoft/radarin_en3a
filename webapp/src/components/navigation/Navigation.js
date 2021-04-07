@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../simple_logo.png';
+import logo from '../../assets/simple_logo.png';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { HashRouter} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
-import NavAuthenticated from '../../components/fragments/NavAuthenticated';
+import NavAuthenticated from './/NavAuthenticated';
 import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 
 import {
@@ -17,7 +17,7 @@ import {
 
 import { useState } from 'react';
 import Button from "react-bootstrap/Button";
-import InitialWelcome from "../InitialWelcome";
+import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -108,7 +108,7 @@ function Navigation () {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-                            <InitialWelcome/>
+                            <WelcomeNoAuth/>
                         </div>)}
                     </div>
     </HashRouter>)

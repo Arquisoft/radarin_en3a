@@ -1,11 +1,11 @@
 import React from 'react';
-import "../css/Welcome.css";
+import "../../css/Welcome.css";
 import { CombinedDataProvider, Text, useSession } from "@inrupt/solid-ui-react";
 import { Image} from "@solid/react";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
-import defaultProfilePic from '../assets/default_profile_pic.svg';
+import defaultProfilePic from '../../assets/default_profile_pic.svg';
 
-function Welcome(props) {
+function WelcomeAuth(props) {
     const { session } = useSession();
     const { default: data } = require('@solid/query-ldflex');
     const { webId } = session.info;
@@ -30,4 +30,4 @@ function Welcome(props) {
     );
 }
 
-export default Welcome;
+export default WelcomeAuth;
