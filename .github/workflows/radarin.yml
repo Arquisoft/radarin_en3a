@@ -2,7 +2,7 @@ name: CI for radarin
 
 on:
   push:
-    branches: [ master ]
+    branches: [ armando ]
 
 jobs:
   build-test-webapp:
@@ -75,3 +75,17 @@ jobs:
         env:
           MONGO_URI: ${{secrets.MONGO_URI}}
 
+build-test-mobileapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: AppMovile
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.14.1
+    - run: npm ci
+    - run: npm run build
+    - run: npm test
+    - uses: codecov/codecov-action@v1
