@@ -2,15 +2,19 @@ const express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
+
+const $rdf = require('rdflib');
+const auth = require('solid-auth-cli');
+const store = $rdf.graph();
+const fetcher = $rdf.fetcher( store, {fetch:auth.fetch} );
+const client = new SolidNodeClient();
+
 const app = express(),
     port = 5000;
 
 const User = require('./models/userModel'),
-      Location = require ("./models/locationModel"),
       routes = require('./routes/userRoutes'),
       router = express.Router();
-
-const client = new SolidNodeClient();
 
 
 // Get all users
@@ -22,10 +26,10 @@ router.get("/users/list", async (req, res) => {
 //register a new user
 router.post("/users/add", async (req, res) => {
     //Check if the user is already in the db
-    let user = await User.findOne({ email: email })
+    let user = await User.findOne({ profile: profile })
     if (user)
-        res.send({error:"Error: This user is already registered"})
-    else{
+        await User.updateOne({'profile':profile}, { $set: req.body }); //Just update the location
+    else { //Create a new user
         const user = new User(req.body);
         try{
             await user.save();
@@ -40,8 +44,10 @@ router.post("/users/add", async (req, res) => {
 router.post("users/login", async(req,res) => {
     try{
         let client = await.client.login({
-            profile: 
-        })
+            profile: req.body.profile,
+            email: req.body.email,
+            password: req.body.password
+        });
     }
 })
 

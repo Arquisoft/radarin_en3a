@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 var bcrypt = require('bcryptjs'); //To encrypt the password in mongoose
 
 const UserSchema = new Schema({
+    profile: String,
     email: {
         type: String,
         unique: true,

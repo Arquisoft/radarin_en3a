@@ -17,7 +17,8 @@ As the architecture of the application is decided, this section will be updated.
 It will be a crutial part to deal with, ensuring the user secure accesses via secure https protocol, having all the time validation constraints to avoid undesirable risks.
 
 === Technical decisions
-* Once we start making decisions about tools or functionalities, this part will be fulfilled with all of the most important ones.
+* In the data model of the restapi, we unified the user model with the location model, since the user is always going to have the latest location available.
+* When dealing with the api in the restapi, we coult just ommit the controller part working directly in the api part thanks to the solid-node-client. This way, we would be able to let the webapp and the mobile app working directly with the pods that this layer provides. 
 
 === Intenationalization
 From the popular point of view of every application (and specifically for this one which deals with locations and people), it looks like as if it was mandatory to produce a well based multilanguage application, and the best option is always at the beginning of the design. 
