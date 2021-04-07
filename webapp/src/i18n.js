@@ -14,6 +14,8 @@ const resources = {
         "navBarProfile": "Profile",
         "navBarAbout": "About us",
         "navBarMap": "Map",
+          "navBarLocations": "Locations",
+          "navBarFriends": "Friends",
         "InitialWelcomeMessage": "You are logged out of your POD.",
         "registerFormTitle": "Get your SOLID pod"
         }
@@ -29,6 +31,8 @@ const resources = {
         "navBarProfile": "Perfil",
         "navBarAbout": "Acerca de nosotros",
         "navBarMap": "Mapa",
+          "navBarLocations": "Ubicaciones",
+          "navBarFriends": "Amigos",
         "InitialWelcomeMessage": "Te has desvinculado de tu POD.",
         "registerFormTitle": "Consigue SOLID pod"
       }
