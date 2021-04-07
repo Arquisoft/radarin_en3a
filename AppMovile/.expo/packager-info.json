@@ -2,9 +2,9 @@
   "expoServerPort": 19000,
   "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://ve-u8x.anonymous.appmovile.exp.direct",
+  "packagerNgrokUrl": "https://packager.ve-u8x.anonymous.appmovile.exp.direct",
+  "ngrokPid": 16556,
   "webpackServerPort": null,
   "devToolsPort": 19002
 }
