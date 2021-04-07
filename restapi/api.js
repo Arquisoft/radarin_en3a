@@ -2,8 +2,13 @@ const express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
-//const User = require("./models/userModel")
-const router = express.Router()
+const app = express(),
+    port = 5000;
+
+const User = require('./models/userModel'),
+      Location = require ("./models/locationModel"),
+      routes = require('./routes/userRoutes'),
+      router = express.Router();
 
 // Get all users
 router.get("/users/list", async (req, res) => {
@@ -13,30 +18,29 @@ router.get("/users/list", async (req, res) => {
 
 //register a new user
 router.post("/users/add", async (req, res) => {
-    let name = req.body.name;
-    let email = req.body.email;
-    await user.save()
-    res.send(user)
-    //Check if the device is already in the db
+    //Check if the user is already in the db
     let user = await User.findOne({ email: email })
     if (user)
         res.send({error:"Error: This user is already registered"})
     else{
-        user = new User({
-            name: name,
-            email: email,
-        })
-        await user.save()
-        res.send(user)
+        const user = new User(req.body);
+        try{
+            await user.save();
+            res.status(201).send({user});
+        }catch (e){
+            res.status(400).send(e);
+        }
     }
+});
+
+// add a new location associated to an user
+router.post("locations/add", async(req, res) => {
+    let user = req.body.user;
+    let locName = req.body.location;
+    let long = req.body.longitude;
+    let lat = req.body.latitude;
+    //Check if the device is already in the db
 })
-
-const app = express(),
-    port = 5000;
-
-const User = require('./models/userModel'),
-      location = require ("./models/location"),
-    routes = require('./routes/userRoutes');
 
 mongoose.connect('mongodb://database/27017/mongo_data', {useNewUrlParser: true});
 
