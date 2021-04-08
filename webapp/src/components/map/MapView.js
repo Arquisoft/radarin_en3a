@@ -70,7 +70,7 @@ const MapView = () => {
                 <h2>Map of locations saved for logged user: </h2>
             </div>
         <div className="user-map-panel">
-            <MapContainer center={state.mapCenter} zoom={13} style={{ height: "100vh" }}>
+            <MapContainer center={state.mapCenter} zoom={10} style={{ height: "100vh" }}>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -1,11 +1,12 @@
 import {List, useLDflexList, Value, Image} from "@solid/react";
 import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
 import defaultProfilePic from '../../assets/default_profile_pic.svg';
+import '../../css/FriendsView.css'
 
 function FriendsView(){
     const friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
     return(
-        <div>
+        <div className="friends-main-panel">
         <h2>Friend list (total {friendsOfLoggedUser.length})</h2>
         <List src={`[${getDefaultSession().info.webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
             <li key={friend} onClick={(e) => window.location.href=friend}>
