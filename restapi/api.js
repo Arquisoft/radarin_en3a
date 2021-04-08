@@ -23,12 +23,12 @@ router.get("/users/list", async (req, res) => {
 	res.send(users)
 })
 
-//register a new user
+//register a new user / update location
 router.post("/users/add", async (req, res) => {
     //Check if the user is already in the db
     let user = await User.findOne({ profile: profile })
     if (user)
-        await User.updateOne({'profile':profile}, { $set: req.body }); //Just update the location
+        await User.updateOne({'profile':profile}, { $set: req.body }); //Update user
     else { //Create a new user
         const user = new User(req.body);
         try{
@@ -40,35 +40,39 @@ router.post("/users/add", async (req, res) => {
     }
 });
 
-//Login 
+//Login info by https://aspgems.com/descubriendo-solid-inrupt/
 router.post("users/login", async(req,res) => {
     try{
-        let client = await.client.login({
+        let client = await client.login({
             profile: req.body.profile,
             email: req.body.email,
             password: req.body.password
         });
+        const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/'); //Relationships between entities
+        const store = $rdf.graph();
+        const fetcher = new $rdf.Fetcher(store);
+        const theUser = store.sym(client.webId); //WebID: Es el concepto de identidad encapsulado en una URI. Cada usuario tendrá un webID.
+        const profile = me.doc();
+
+        await fetcher.load(profile);
+        const name = store.any(me, FOAF('name'));
+        res.send({webId: session.webId, name: name.value});
     }
-})
+    catch(error){
+        console.log(error);
+        res.send(error);
+    }
+});
 
-// add a new location associated to an user
-router.post("locations/add", async(req, res) => {
-    let user = req.body.user;
-    let locName = req.body.location;
-    let long = req.body.longitude;
-    let lat = req.body.latitude;
-    //Check if the device is already in the db
-})
+// mongoose.connect('mongodb://database/27017/mongo_data', {useNewUrlParser: true});
 
-mongoose.connect('mongodb://database/27017/mongo_data', {useNewUrlParser: true});
+// app.use(bodyParser.urlencoded({ extended:true }));
 
-app.use(bodyParser.urlencoded({ extended:true }));
+// app.use(bodyParser.json());
 
-app.use(bodyParser.json());
+// app.use(routes);
 
-app.use(routes);
-
-app.listen(port, () => console.log(`API server listening on port ${port}`));
+// app.listen(port, () => console.log(`API server listening on port ${port}`));
 
 module.exports = router
 
