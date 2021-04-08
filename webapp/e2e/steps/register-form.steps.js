@@ -24,7 +24,7 @@ defineFeature(feature, test => {
         email: email,
       })
       await expect(page).toClick('button', { text: 'Submit' })
-      await expect(page).toMatch('Welcome to ASW')
+      await expect(page).toMatch('WelcomeAuth to ASW')
     });
 
     then('A welcome message should be shown in the screen', async () => {
