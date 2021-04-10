@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
+import './i18n';
 import reportWebVitals from './reportWebVitals';
+import { SessionProvider } from "@inrupt/solid-ui-react";
 
 ReactDOM.render(
-    <App />,
+    <SessionProvider sessionId="solid-radarin">
+        <App />
+    </SessionProvider>,
     document.getElementById('root')
 );
 
