@@ -32,7 +32,7 @@ function NavAuthenticated(){
     const [resource, setResource] = useState(webId);
 
     useEffect(() => {
-        if(role == null){
+        if(role === null){
             navigator.geolocation.getCurrentPosition(async function (position) {
                 await addUser(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
                 await getUserByWebId(webId).then((user) => setRole(user.role));
@@ -81,12 +81,11 @@ function NavAuthenticated(){
                     })
                 }
                 <Nav className="mr-auto">
-                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
                     <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
-                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>Log Out</Button>
+                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
                 </Nav>
                     </Navbar.Collapse>
                 </Navbar>

@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     webId: String,
-    location: {type: Schema.Types.Point},
+    location: {
+        type: {
+          type: String,
+          enum: ['Point'],
+          required: true
+        }
+    },
     role: {
         type: String,
         enum: ['Admin','User'],

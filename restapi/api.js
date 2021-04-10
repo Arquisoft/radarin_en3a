@@ -1,19 +1,6 @@
-const express = require('express'),
-    mongoose = require('mongoose'),
-    bodyParser = require('body-parser');
-
-
-const $rdf = require('rdflib');
-const auth = require('solid-auth-cli');
-const store = $rdf.graph();
-const fetcher = $rdf.fetcher( store, {fetch:auth.fetch} );
-const client = new SolidNodeClient();
-
-const app = express(),
-    port = 5000;
+const express = require('express');
 
 const User = require('./models/userModel'),
-      routes = require('./routes/userRoutes'),
       router = express.Router();
 
 
