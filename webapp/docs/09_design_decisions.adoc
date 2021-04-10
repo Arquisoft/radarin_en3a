@@ -5,9 +5,11 @@
 * Decision making related to the library used to build the application.
 * Decision of doing an internacionalized application
 * Decision about the tecnologies to use in the project
+* Decision do the mobile part of the application together with the webapp.
 
 
 .*Decisions*
 * Use the React framework because we can use it for building user interfaces for the web as well as mobile applicantions. Furthermore, it has a lot of advantages.
 * Start from the beginning with the internacionalization of the application, first researching how to do it with react and the apply it so users from different countries can use our application
 * To decide the different tecnologies we did research to find the most suitable ones. First we already decided that we are going to use react for as the framework. We are going to use docker containers because they are a requirement for the project. Also we are going to use MongoDB, even if we are not usesrs of this database daily it has multiple advantages the main one to go further and faster when developing software.
+* This decision was made in the last week of the firt delivery because while we thought thta react-native was a good framework to work and to implement the mobile app we run into a big problem. The log in with solid pods was not a very easy task to do and there weren't any working implementations we came up with, so in order to have the minimal implementation of the app working we decided that the best solution was integrating the funtionality to the webapp. Here we know that the login with the pods works properly so this will not be a problem for us.
