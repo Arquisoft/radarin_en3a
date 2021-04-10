@@ -17,7 +17,10 @@ const resources = {
           "navBarLocations": "Locations",
           "navBarFriends": "Friends",
         "InitialWelcomeMessage": "You are logged out of your POD.",
-        "registerFormTitle": "Get your SOLID pod"
+        "registerFormTitle": "Get your SOLID pod",
+        "InitSession": "Session started as: ",
+        "AdminDelete": "Delete",
+        "AdminList": "Users List"
         }
     },
     es: {
@@ -34,7 +37,10 @@ const resources = {
           "navBarLocations": "Ubicaciones",
           "navBarFriends": "Amigos",
         "InitialWelcomeMessage": "Te has desvinculado de tu POD.",
-        "registerFormTitle": "Consigue SOLID pod"
+        "registerFormTitle": "Consigue SOLID pod",
+        "InitSession": "Sesión iniciada como: ",
+        "AdminDelete": "Borrar",
+        "AdminList": "Lista de Usuarios"
       }
     }
 };
