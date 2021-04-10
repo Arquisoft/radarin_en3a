@@ -26,53 +26,49 @@ router.get("/users/list", async (req, res) => {
 //register a new user / update location
 router.post("/users/add", async (req, res) => {
     //Check if the user is already in the db
-    let user = await User.findOne({ profile: profile })
+    let user = await User.findOne({webId : req.body.webId});
     if (user)
-        await User.updateOne({'profile':profile}, { $set: req.body }); //Update user
+        res.send({error: "Error: user already taken"});
     else { //Create a new user
-        const user = new User(req.body);
+        const newUser = new User(req.body);
         try{
-            await user.save();
-            res.status(201).send({user});
+            await newUser.save();
+            res.status(201).send({newUser});
         }catch (e){
             res.status(400).send(e);
         }
     }
 });
 
-//Login info by https://aspgems.com/descubriendo-solid-inrupt/
-router.post("users/login", async(req,res) => {
-    try{
-        let client = await client.login({
-            profile: req.body.profile,
-            email: req.body.email,
-            password: req.body.password
-        });
-        const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/'); //Relationships between entities
-        const store = $rdf.graph();
-        const fetcher = new $rdf.Fetcher(store);
-        const theUser = store.sym(client.webId); //WebID: Es el concepto de identidad encapsulado en una URI. Cada usuario tendrá un webID.
-        const profile = me.doc();
-
-        await fetcher.load(profile);
-        const name = store.any(me, FOAF('name'));
-        res.send({webId: session.webId, name: name.value});
-    }
-    catch(error){
-        console.log(error);
-        res.send(error);
-    }
+//Delete a specific user
+router.post("/users/remove", async (req,res) => {
+    let id = req.body.webId;
+    let user = await User.deleteOne({webId: id});
+    res.json(user);
 });
 
-// mongoose.connect('mongodb://database/27017/mongo_data', {useNewUrlParser: true});
+//Get user by webId
+router.post("/users/getByWebId", async (req,res) => {
+    let id = req.body.webId;
+    let user = await User.findOne({webId: id});
+    res.json(user);
+});
 
-// app.use(bodyParser.urlencoded({ extended:true }));
+//Add a location to a specific user
+router.post("/locations/add", async(req, res) => {
+    let user = await User.findOne({webId: req.body.webId});
+    user.location = req.body.location;
+    await user.save();
+    res.json(user);
+});
 
-// app.use(bodyParser.json());
-
-// app.use(routes);
-
-// app.listen(port, () => console.log(`API server listening on port ${port}`));
+//Update a location to a specific user
+router.post("users/location/update", async(req, res) => {
+    let user = await User.findOne({webId: req.body.webId});
+    user.location = req.body.location;
+    await user.save();
+    res.json(user);
+});
 
 module.exports = router
 
