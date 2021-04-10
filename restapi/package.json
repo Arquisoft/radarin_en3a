@@ -22,7 +22,6 @@
     "prom-client": "^13.1.0",
     "rdflib": "^2.2.0",
     "solid": "^0.2.1",
-    "solid-auth-cli": "^1.0.15",
     "solid-node-client": "^2.0.2"
   },
   "devDependencies": {
