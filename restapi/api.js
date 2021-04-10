@@ -37,7 +37,10 @@ router.post("/users/remove", async (req,res) => {
 //Get user by webId
 router.post("/users/getByWebId", async (req,res) => {
     let id = req.body.webId;
-    let user = await User.findOne({webId: id});
+    if (id != null)
+        let user = await User.findOne({webId: id});
+    else 
+        let user = null;
     res.json(user);
 });
 

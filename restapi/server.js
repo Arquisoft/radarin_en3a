@@ -7,9 +7,12 @@ const api = require("./api")
 //const metricsMiddleware = promBundle({includeMethod: true});
 //app.use(metricsMiddleware);
 
+const connection = "mongodb+srv://mongouser:ADMSIS123@cluster0.fnhsy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 function connect(){
     //The MONGO_URI variable is the connection string to MongoDB Atlas (for production). This env variable is created in heroku.
-    mongo_uri = process.env.MONGO_URI || "mongodb://localhost:27017/api"
+    // mongo_uri = process.env.MONGO_URI || "mongodb://localhost:27017/api"
+    mongo_uri = process.env.MONGO_URI || connection;
     mongoose.connect(mongo_uri, { useNewUrlParser: true,useUnifiedTopology: true }).then(() => {
         const app = express()
 

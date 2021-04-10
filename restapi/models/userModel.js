@@ -1,19 +1,9 @@
 const mongoose = require("mongoose");
-
+mongoose.set('useCreateIndex', true)
 const UserSchema = new mongoose.Schema({
     webId: String,
-    location: {
-        type: {
-          type: String,
-          enum: ['Point'],
-          required: true
-        }
-    },
-    role: {
-        type: String,
-        enum: ['Admin','User'],
-        default: 'User'
-    }
+    longitude: Number,
+    latitude: Number
 });
 
 UserSchema.index({location:'2dsphere'});

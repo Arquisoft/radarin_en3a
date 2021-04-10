@@ -32,17 +32,19 @@ function NavAuthenticated(){
     const [resource, setResource] = useState(webId);
 
     useEffect(() => {
-        if(role === null){
+        var user = getUserByWebId(webId);
+        if(user === null){
             navigator.geolocation.getCurrentPosition(async function (position) {
-                await addUser(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
+                await addUser(webId, position.coords.longitude, position.coords.latitude );
                 await getUserByWebId(webId).then((user) => setRole(user.role));
             });
         }else{
             const interval = setInterval(() => {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    updateLocation(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
+                    updateLocation(webId, position.coords.longitude, position.coords.latitude );
                 });
             }, 30000);
+            setRole(user.role);
             return () => clearInterval(interval);
         }
     }, [role, webId]);
