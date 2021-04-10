@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/simple_logo.png';
@@ -15,7 +15,6 @@ import {
     CombinedDataProvider
 } from '@inrupt/solid-ui-react';
 
-import { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
 

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { Route, Redirect, Link } from 'react-router-dom';
 import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
 import WelcomeAuth from '../welcome/WelcomeAuth';
@@ -16,6 +16,8 @@ import Button from "react-bootstrap/Button";
 import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
+import ManageUsers from '../admin/ManageUsers';
+import { updateLocation, addUser, getUserByWebId } from '../../api/api.js';
 
 function NavAuthenticated(){
 
@@ -25,15 +27,31 @@ function NavAuthenticated(){
         i18n.changeLanguage(lng);
     };
 
-    const [data, setData] = useState(null);
+    const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [resource, setResource] = useState(webId);
+
+    useEffect(() => {
+        if(role == null){
+            navigator.geolocation.getCurrentPosition(async function (position) {
+                await addUser(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
+                await getUserByWebId(webId).then((user) => setRole(user.role));
+            });
+        }else{
+            const interval = setInterval(() => {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    updateLocation(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
+                });
+            }, 30000);
+            return () => clearInterval(interval);
+        }
+    }, [role, webId]);
 
     const handleLogout = (e) => {
         e.preventDefault();
         logout();
         setWebId(undefined);
-        setData("");
+        setRole("");
         setResource("");
         window.location.reload();
     };
@@ -57,6 +75,11 @@ function NavAuthenticated(){
                             <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
                         </DropdownButton>
+                {(() => {
+                    if (role != null && role === "Admin")
+                        return(<Link id="ManageUsers" href="/manageUsers">{t('navBarProfile')}</Link>);
+                    })
+                }
                 <Nav className="mr-auto">
                     <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
@@ -72,7 +95,7 @@ function NavAuthenticated(){
                 >
                 <div>
                     <div className="logged-in-msg-panel">
-                        <span>Sesión iniciada como: </span>
+                        <span>{t('InitSession')}</span>
                         <Text
                             properties={[
                                 "http://www.w3.org/2006/vcard/ns#fn",
@@ -84,6 +107,7 @@ function NavAuthenticated(){
                         <Route exact path="/map" component={MapView}/>
                         <Route exact path="/locations" component={LocationsView}/>
                         <Route exact path="/friends" component={FriendsView}/>
+                        <Route exact path="/manageUsers" component={ManageUsers}/>
                         <Redirect path="/" exact to="/profile" />
                     </div>
                 </div>
