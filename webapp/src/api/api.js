@@ -27,7 +27,7 @@ export async function removeUser(webId){
 export async function getUserByWebId(webId){
     const apiEndPoint= process.env.REACT_APP_API_URI || "http://localhost:5000/api";
     let response = await fetch(apiEndPoint + "/users/getByWebId", {
-        method: "GET",
+        method: "POST",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify({"webId": webId})
     });
