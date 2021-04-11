@@ -47,7 +47,7 @@ router.post("/users/remove", async (req,res) => {
 });
 
 //Get user by webId
-router.get("/users/getByWebId", async (req,res) => {
+router.post("/users/getByWebId", async (req,res) => {
     let id = req.body.webId;
     let user = null;
     if (id != null)
