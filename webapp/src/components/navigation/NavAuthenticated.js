@@ -30,21 +30,24 @@ function NavAuthenticated(){
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [resource, setResource] = useState(webId);
+    const [usuario, setUser] = useState(null);
 
     useEffect(() => {
-        var user = getUserByWebId(webId);
-        if(user === null){
+        if(role === null){
             navigator.geolocation.getCurrentPosition(async function (position) {
+                console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
                 await addUser(webId, position.coords.longitude, position.coords.latitude );
-                await getUserByWebId(webId).then((user) => setRole(user.role));
+                await getUserByWebId(webId).then((user) => setUser(user));
+                console.log(usuario);
             });
         }else{
             const interval = setInterval(() => {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                navigator.geolocation.getCurrentPosition(async function (position) {
+                    await updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                    await getUserByWebId(webId).then((user) => setUser(user));
                 });
             }, 30000);
-            setRole(user.role);
+            setRole(usuario.role);
             return () => clearInterval(interval);
         }
     }, [role, webId]);

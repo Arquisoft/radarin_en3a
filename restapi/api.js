@@ -1,7 +1,7 @@
 const express = require('express');
 
-const User = require('./models/userModel'),
-      router = express.Router();
+const User = require('./models/userModel');
+const router = express.Router();
 
 
 // Get all users
@@ -12,15 +12,27 @@ router.get("/users/list", async (req, res) => {
 
 //register a new user / update location
 router.post("/users/add", async (req, res) => {
+    console.log("entramos en restapi");
     //Check if the user is already in the db
-    let user = await User.findOne({webId : req.body.webId});
+    let id = req.body.webId;
+    let long = req.body.longitude;
+    let lat = req.body.latitude;
+    let user = await User.findOne({webId : id});
+    console.log("encontramos el usuario");
     if (user)
         res.send({error: "Error: user already taken"});
     else { //Create a new user
-        const newUser = new User(req.body);
+        console.log("creamos un nuevo usuario");
+        user = new User({
+            webId: id,
+            longitude: long,
+            latitude: lat
+        });
         try{
-            await newUser.save();
-            res.status(201).send({newUser});
+            console.log("guardando al usuario");
+            await user.save();
+            res.send(user);
+            console.log("usuario añadido");
         }catch (e){
             res.status(400).send(e);
         }
@@ -35,12 +47,13 @@ router.post("/users/remove", async (req,res) => {
 });
 
 //Get user by webId
-router.post("/users/getByWebId", async (req,res) => {
+router.get("/users/getByWebId", async (req,res) => {
     let id = req.body.webId;
+    let user = null;
     if (id != null)
-        let user = await User.findOne({webId: id});
+        user = await User.findOne({webId: id});
     else 
-        let user = null;
+        user = null;
     res.json(user);
 });
 
