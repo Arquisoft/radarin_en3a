@@ -69,9 +69,10 @@ router.post("/locations/add", async(req, res) => {
 //Update a location to a specific user
 router.post("users/location/update", async(req, res) => {
     let user = await User.findOne({webId: req.body.webId});
-    user.location = req.body.location;
+    user.longitude = req.body.longitude;
+    user.latitude = req.body.latitude;
     await user.save();
-    res.json(user);
+    res.send(user);
 });
 
 module.exports = router

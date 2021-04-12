@@ -26,25 +26,20 @@ function NavAuthenticated(){
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
-
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
-
     useEffect(() => {
+        
         navigator.geolocation.getCurrentPosition(async function (position) {
             console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
-            let usuario = await getUserByWebId(webId).then((user) => setUser(user));
-            if(usuario != null){
-            usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
-            console.log(usuario);
-            }else{
-                const interval = setInterval(() => {
-                    navigator.geolocation.getCurrentPosition(async function (position) {
-                        await updateLocation(webId, position.coords.longitude, position.coords.latitude );
-                    });
-                }, 30000);
+            let usuario = await getUserByWebId(webId);
+            if(usuario == null){
+                usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
+                console.log(usuario);
                 setRole(usuario.role);
-                return () => clearInterval(interval);
+            }else{
+                await updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                setRole(usuario.role);
             }
         });
     }, [role, webId]);
@@ -53,7 +48,6 @@ function NavAuthenticated(){
         e.preventDefault();
         logout();
         setWebId(undefined);
-        setRole("");
         window.location.reload();
     };
 
@@ -76,13 +70,15 @@ function NavAuthenticated(){
                             <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
                         </DropdownButton>
-                {(() => {
-                    if (role != null && role === "Admin")
-                        return(<Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>);
-                    })
-                }
+                
                 <Nav className="mr-auto">
-                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                    {(() => {
+                        if (role != null && role === "Admin") {
+                            return (
+                                <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                            );
+                        }
+                    })()}
                     <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>

@@ -13,21 +13,19 @@ function ManageUsers () {
     
     getUsers().then((value) => setUserList(value));
 
-    deleteUser = (user) => {
-        removeUser(user.webId);
-        usersList.splice(usersList.indexOf(user), 1);
-        setUserList(usersList);
-    };
-
     return(<div>
         <h2>{t('AdminList')}</h2>
-            {state.usersList.map((user) => 
+            {usersList.map((user) => 
                 {return <ListGroup horizontal style={{ margin: "20px" }}>
                             <ListGroup.Item style={{ minWidth: "500px", textAlign: "center" }}>
                                 {user.webId}
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button data-testid={user.webId} onClick={()=>deleteUser(user)}>{t('AdminDelete')}</Button>
+                                <Button data-testid={user.webId} onClick={(user)=>{
+                                    removeUser(user.webId);
+                                    usersList.splice(usersList.indexOf(user), 1);
+                                    setUserList(usersList);
+                                }}>{t('AdminDelete')}</Button>
                             </ListGroup.Item>
                         </ListGroup>      
                 }
