@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
 import WelcomeAuth from '../welcome/WelcomeAuth';
@@ -31,23 +31,22 @@ function NavAuthenticated(){
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
 
     useEffect(() => {
-        if(role === null){
-            navigator.geolocation.getCurrentPosition(async function (position) {
-                console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
-                await addUser(webId, position.coords.longitude, position.coords.latitude );
-                await getUserByWebId(webId).then((user) => setUser(user));
-                console.log(usuario);
-            });
-        }else{
-            const interval = setInterval(() => {
-                navigator.geolocation.getCurrentPosition(async function (position) {
-                    await updateLocation(webId, position.coords.longitude, position.coords.latitude );
-                    await getUserByWebId(webId).then((user) => setUser(user));
-                });
-            }, 30000);
-            setRole(usuario.role);
-            return () => clearInterval(interval);
-        }
+        navigator.geolocation.getCurrentPosition(async function (position) {
+            console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
+            let usuario = await getUserByWebId(webId).then((user) => setUser(user));
+            if(usuario != null){
+            usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
+            console.log(usuario);
+            }else{
+                const interval = setInterval(() => {
+                    navigator.geolocation.getCurrentPosition(async function (position) {
+                        await updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                    });
+                }, 30000);
+                setRole(usuario.role);
+                return () => clearInterval(interval);
+            }
+        });
     }, [role, webId]);
 
     const handleLogout = (e) => {
