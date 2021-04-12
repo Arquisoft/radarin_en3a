@@ -4,7 +4,6 @@
 webapp/node_modules
 /.pnp
 .pnp.js
-node_modules
 # testing
 /webapp/coverage
 
