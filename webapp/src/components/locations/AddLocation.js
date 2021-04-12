@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from "react-bootstrap";
-
+import "../../css/AddLocation.css";
 
 function AddLocation(props) {
 
@@ -15,6 +15,7 @@ function AddLocation(props) {
                 <div>
                     <h5>Latitude: <span id="lat-span">{currentLatitude}</span> deg, Longitude: <span id="long-span">{currentLongitude}</span> deg</h5>
                     <p>Timestamp: {currentTimestamp}</p>
+                    <input type="text" id="location-text-input" placeholder="Tag your location here"/>
                 </div>);
         }else if(!locationAvailable){
             return (

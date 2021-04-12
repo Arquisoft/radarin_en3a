@@ -25,12 +25,6 @@ html, body, .App, .App>div {
 .logged-in-panel{
   width: 100%;
   height: 100%;
-  /*
-  position: relative;
-  left: 50%;
-  top: 80%;
-  transform: translate(-50%, -50%);
-  */
   margin-top: 100px;
   color: white !important;
 }

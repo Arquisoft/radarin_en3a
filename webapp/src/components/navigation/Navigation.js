@@ -8,11 +8,10 @@ import { HashRouter} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
 import NavAuthenticated from './/NavAuthenticated';
-import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import { handleIncomingRedirect, login, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 
 import {
-    useSession,
-    CombinedDataProvider
+    useSession
 } from '@inrupt/solid-ui-react';
 
 import Button from "react-bootstrap/Button";
@@ -27,15 +26,13 @@ function Navigation () {
     const REDIRECT_URL = window.location;
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [issuer, setIssuer] = useState("");
-    const [resource, setResource] = useState(webId);
-    const [data, setData] = useState(null);
+
 
     useEffect(() => {
         handleIncomingRedirect({
             restorePreviousSession: true,
         }).then((info) => {
             setWebId(info.webId);
-            setResource(webId);
         });
     }, [webId]);
 
@@ -48,18 +45,9 @@ function Navigation () {
         });
     };
 
-    const handleFetch = (e) => {
-        e.preventDefault();
-        fetch(resource)
-            .then((response) => response.text())
-            .then(setData);
-    };
 
     const { session } = useSession();
-    const [oidcIssuer, setOidcIssuer] = useState("");
-    const handleChange = (event) => {
-        setOidcIssuer(event.target.value);
-    };
+
 
     return(<HashRouter basename="/">
         <div>
