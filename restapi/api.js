@@ -1,78 +1,78 @@
-const express = require('express'),
-    mongoose = require('mongoose'),
-    bodyParser = require('body-parser');
+const express = require('express');
+const { where } = require('./models/userModel');
 
-
-const $rdf = require('rdflib');
-const auth = require('solid-auth-cli');
-const store = $rdf.graph();
-const fetcher = $rdf.fetcher( store, {fetch:auth.fetch} );
-const client = new SolidNodeClient();
-
-const app = express(),
-    port = 5000;
-
-const User = require('./models/userModel'),
-      routes = require('./routes/userRoutes'),
-      router = express.Router();
+const User = require('./models/userModel');
+const router = express.Router();
 
 
 // Get all users
 router.get("/users/list", async (req, res) => {
     const users = await User.find({}).sort('-_id') //Inverse order
-	res.send(users)
+	res.send(users.filter(user => user.rol === "User"))
 })
 
 //register a new user / update location
 router.post("/users/add", async (req, res) => {
+    console.log("entramos en restapi");
     //Check if the user is already in the db
-    let user = await User.findOne({ profile: profile })
+    let id = req.body.webId;
+    let long = req.body.longitude;
+    let lat = req.body.latitude;
+    let user = await User.findOne({webId : id});
+    console.log("encontramos el usuario");
     if (user)
-        await User.updateOne({'profile':profile}, { $set: req.body }); //Update user
+        res.send({error: "Error: user already taken"});
     else { //Create a new user
-        const user = new User(req.body);
+        console.log("creamos un nuevo usuario");
+        user = new User({
+            webId: id,
+            longitude: long,
+            latitude: lat
+        });
         try{
+            console.log("guardando al usuario");
             await user.save();
-            res.status(201).send({user});
+            res.send(user);
+            console.log("usuario añadido");
         }catch (e){
             res.status(400).send(e);
         }
     }
 });
 
-//Login info by https://aspgems.com/descubriendo-solid-inrupt/
-router.post("users/login", async(req,res) => {
-    try{
-        let client = await client.login({
-            profile: req.body.profile,
-            email: req.body.email,
-            password: req.body.password
-        });
-        const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/'); //Relationships between entities
-        const store = $rdf.graph();
-        const fetcher = new $rdf.Fetcher(store);
-        const theUser = store.sym(client.webId); //WebID: Es el concepto de identidad encapsulado en una URI. Cada usuario tendrá un webID.
-        const profile = me.doc();
-
-        await fetcher.load(profile);
-        const name = store.any(me, FOAF('name'));
-        res.send({webId: session.webId, name: name.value});
-    }
-    catch(error){
-        console.log(error);
-        res.send(error);
-    }
+//Delete a specific user
+router.post("/users/remove", async (req,res) => {
+    let id = req.body.webId;
+    let user = await User.deleteOne({webId: id});
+    res.send(user);
 });
 
-// mongoose.connect('mongodb://database/27017/mongo_data', {useNewUrlParser: true});
+//Get user by webId
+router.post("/users/getByWebId", async (req,res) => {
+    let id = req.body.webId;
+    let user = null;
+    if (id != null)
+        user = await User.findOne({webId: id});
+    else 
+        user = null;
+    res.send(user);
+});
 
-// app.use(bodyParser.urlencoded({ extended:true }));
+//Add a location to a specific user
+router.post("/locations/add", async(req, res) => {
+    let user = await User.findOne({webId: req.body.webId});
+    user.location = req.body.location;
+    await user.save();
+    res.send(user);
+});
 
-// app.use(bodyParser.json());
-
-// app.use(routes);
-
-// app.listen(port, () => console.log(`API server listening on port ${port}`));
+//Update a location to a specific user
+router.post("users/location/update", async(req, res) => {
+    let user = await User.findOne({webId: req.body.webId});
+    user.location = req.body.location;
+    await user.save();
+    res.send(user);
+});
 
 module.exports = router
 
