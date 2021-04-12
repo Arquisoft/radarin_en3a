@@ -51,14 +51,13 @@ describe('user ', () => {
     Deletion test
     */
     it('can be deleted correctly', async () => {
-        username = 'Pablo'
-        email = 'pablo@uniovi.es'
-        await request(app).post('/api/users/add').send({ name: username, email: email }).set('Accept', 'application/json')
+        webId = 'Pablo'
+        await request(app).post('/api/users/add').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
 
 
-        await request(app).post('/api/users/delete').send({ name: username, email: email }).set('Accept', 'application/json')
+        await request(app).post('/api/users/delete').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
 
-        const user = await (await request(app).get('/api/users/list')).body.find(u => u.email === email);
+        const user = await (await request(app).get('/api/users/list')).body.find(u => u.webId === webId);
         expect(user).toBe(null);
     });
 });
