@@ -80,14 +80,14 @@ function Navigation () {
                                         <div>
                                             <form>
                                                 <input
-                                                    placeholder="Enter your POD URL here"
+                                                    placeholder={t("LogInPlaceholder")}
                                                     type="text"
                                                     value={issuer}
                                                     onChange={(e) => {
                                                         setIssuer(e.target.value);
                                                     }}
                                                 />
-                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>Log In</Button>
+                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
                                             </form>
                                         </div>
                                 </div>

@@ -10,12 +10,14 @@ import {
 import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
+import {useTranslation} from "react-i18next";
 
 
 function LocationManager(props) {
 
     const { session } = useSession();
     const [locationList, setLocationList] = useState();
+    const { t } = useTranslation();
 
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
     const TEXT_PREDICATE = "http://schema.org/text";
@@ -102,25 +104,25 @@ function LocationManager(props) {
         const { thing } = useThing();
         return (
             <Button className="delete-button btn-danger" onClick={() => deleteTodo(thing)}>
-                Delete
+                {t('Delete')}
             </Button>
         );
     }
 
     return (<div>
-        <Button className="add-location-button" onClick={getLocationAndSave}>Add current location to pod</Button>
+        <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button>
         <div className="locations-displayed-panel">
-            <h3>Your locations</h3>
-            <h6>There are currently {locationThings.length} locations stored on your POD</h6>
+            <h3>{t('YourLocations')}</h3>
+            <h6>{t('LocationCount1')}{locationThings.length} {t('LocationCount2')}</h6>
             <Table className="table locations-table" things={thingsArray}>
-                <TableColumn property={TEXT_PREDICATE} header="Location coordinates"
+                <TableColumn property={TEXT_PREDICATE} header={t('LocationCoordinates')}
                              body={function({ value }) {
                                  let separateCoords = value.split(" / ")
                                  return "Lat:" + separateCoords[0] + "  Lon: " + separateCoords[1]
                              }
                              }
                 />
-                <TableColumn property={TEXT_PREDICATE} header="Tag"
+                <TableColumn property={TEXT_PREDICATE} header={t('Tag')}
                              body={function({ value }) {
                                  let separateCoords = value.split(" / ")
                                  if(separateCoords[2] === ""){
@@ -134,7 +136,7 @@ function LocationManager(props) {
                 <TableColumn
                     property={CREATED_PREDICATE}
                     dataType="datetime"
-                    header="Created at"
+                    header={t('CreatedAt')}
                     body={({ value }) => value.toUTCString()}
                 />
                 <TableColumn

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
 import WelcomeAuth from '../welcome/WelcomeAuth';
@@ -17,7 +17,7 @@ import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
-import { updateLocation, addUser, getUserByWebId } from '../../api/api.js';
+import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
 
 function NavAuthenticated(){
 
@@ -26,76 +26,71 @@ function NavAuthenticated(){
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
-
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
-
     useEffect(() => {
-        if(role === null){
-            navigator.geolocation.getCurrentPosition(async function (position) {
-                console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
-                await addUser(webId, position.coords.longitude, position.coords.latitude );
-                await getUserByWebId(webId).then((user) => setUser(user));
+
+        navigator.geolocation.getCurrentPosition(async function (position) {
+            console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
+            let usuario = await getUserByWebId(webId);
+            if(usuario == null){
+                usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
                 console.log(usuario);
-            });
-        }else{
-            const interval = setInterval(() => {
-                navigator.geolocation.getCurrentPosition(async function (position) {
-                    await updateLocation(webId, position.coords.longitude, position.coords.latitude );
-                    await getUserByWebId(webId).then((user) => setUser(user));
-                });
-            }, 30000);
-            setRole(usuario.role);
-            return () => clearInterval(interval);
-        }
+                setRole(usuario.role);
+            }else{
+                await addLocation(webId, position.coords.longitude, position.coords.latitude );
+                setRole(usuario.role);
+            }
+        });
     }, [role, webId]);
 
     const handleLogout = (e) => {
         e.preventDefault();
         logout();
         setWebId(undefined);
-        setRole("");
         window.location.reload();
     };
 
-        return (
-            <div>
-                <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
-                    <Navbar.Brand href="#">
-                        <img
-                            src={logo}
-                            width="40"
-                            height="40"
-                            className="d-inline-block align-top"
-                            alt="Radarin logo"
-                        />
-                        <p className="radarin-title">Radarin</p>
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <DropdownButton id="dropdown-item-button" style={{margin: "16px"}} variant="secondary" title={t('navBarLanguage')}>
-                            <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
-                            <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
-                        </DropdownButton>
-                {(() => {
-                    if (role != null && role === "Admin")
-                        return(<Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>);
-                    })
-                }
-                <Nav className="mr-auto">
-                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
-                    <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
-                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
-                </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-                <CombinedDataProvider
-                    datasetUrl={session.info.webId}
-                    thingUrl={session.info.webId}
-                >
+    return (
+        <div>
+            <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
+                <Navbar.Brand href="#">
+                    <img
+                        src={logo}
+                        width="40"
+                        height="40"
+                        className="d-inline-block align-top"
+                        alt="Radarin logo"
+                    />
+                    <p className="radarin-title">Radarin</p>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <DropdownButton id="dropdown-item-button" style={{margin: "16px"}} variant="secondary" title={t('navBarLanguage')}>
+                        <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
+                        <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
+                    </DropdownButton>
+
+                    <Nav className="mr-auto">
+                        {(() => {
+                            if (role != null && role === "Admin") {
+                                return (
+                                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                                );
+                            }
+                        })()}
+                        <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                        <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+            <CombinedDataProvider
+                datasetUrl={session.info.webId}
+                thingUrl={session.info.webId}
+            >
                 <div>
                     <div className="logged-in-msg-panel">
                         <span>{t('InitSession')}</span>
@@ -115,7 +110,7 @@ function NavAuthenticated(){
                     </div>
                 </div>
             </CombinedDataProvider>
-    </div>
-        )}
+        </div>
+    )}
 
 export default NavAuthenticated;
