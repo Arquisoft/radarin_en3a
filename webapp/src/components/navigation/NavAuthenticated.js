@@ -29,7 +29,6 @@ function NavAuthenticated(){
 
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
-    const [resource, setResource] = useState(webId);
 
     useEffect(() => {
         if(role == null){
@@ -52,7 +51,6 @@ function NavAuthenticated(){
         logout();
         setWebId(undefined);
         setRole("");
-        setResource("");
         window.location.reload();
     };
 

@@ -7,7 +7,6 @@ import defaultProfilePic from '../../assets/default_profile_pic.svg';
 
 function WelcomeAuth(props) {
     const { session } = useSession();
-    const { default: data } = require('@solid/query-ldflex');
     const { webId } = session.info;
 
     return (
