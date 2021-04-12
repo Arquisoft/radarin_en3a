@@ -17,7 +17,7 @@ import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
-import { updateLocation, addUser, getUserByWebId } from '../../api/api.js';
+import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
 
 function NavAuthenticated(){
 
@@ -38,7 +38,7 @@ function NavAuthenticated(){
                 console.log(usuario);
                 setRole(usuario.role);
             }else{
-                await updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                await addLocation(webId, position.coords.longitude, position.coords.latitude );
                 setRole(usuario.role);
             }
         });
