@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@comunica/utils-datasource": "^1.20.0",
     "@inrupt/lit-generated-vocab-common": "^0.3.11",
     "@inrupt/solid-client": "^1.6.1",
     "@inrupt/solid-client-authn-browser": "^1.7.2",
