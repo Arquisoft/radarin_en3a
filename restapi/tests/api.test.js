@@ -29,7 +29,7 @@ describe('user ', () => {
     /**
      * Test that we can list users without any error.
      */
-    it('can be listed',async () => {
+    it('can be listed', async () => {
         const response = await request(app).get("/api/users/list");
         expect(response.statusCode).toBe(200);
     });
@@ -40,9 +40,26 @@ describe('user ', () => {
     it('can be created correctly', async () => {
         username = 'Pablo'
         email = 'pablo@uniovi.es'
-        const response = await request(app).post('/api/users/add').send({name: username,email: email}).set('Accept', 'application/json')
+        const response = await request(app).post('/api/users/add').send({ name: username, email: email }).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
         expect(response.body.name).toBe(username);
         expect(response.body.email).toBe(email);
+    });
+
+    //tests started by armando started here
+
+    /*
+    Deletion test
+    */
+    it('can be deleted correctly', async () => {
+        username = 'Pablo'
+        email = 'pablo@uniovi.es'
+        await request(app).post('/api/users/add').send({ name: username, email: email }).set('Accept', 'application/json')
+
+
+        await request(app).post('/api/users/delete').send({ name: username, email: email }).set('Accept', 'application/json')
+
+        const user = await (await request(app).get('/api/users/list')).body.find(u => u.email === email);
+        expect(user).toBe(null);
     });
 });
