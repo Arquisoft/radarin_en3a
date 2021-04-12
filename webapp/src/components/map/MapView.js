@@ -8,7 +8,6 @@ import {
     createSolidDataset,
     getSolidDataset,
     getThing,
-    getThingAll,
     getUrlAll,
     saveSolidDatasetAt
 } from "@inrupt/solid-client";

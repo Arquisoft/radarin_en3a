@@ -2,7 +2,7 @@ import React from 'react';
 import "../../css/Welcome.css";
 import { CombinedDataProvider, Text, useSession } from "@inrupt/solid-ui-react";
 import { Image} from "@solid/react";
-import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
+import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import defaultProfilePic from '../../assets/default_profile_pic.svg';
 
 function WelcomeAuth(props) {

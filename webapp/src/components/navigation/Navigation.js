@@ -11,8 +11,7 @@ import NavAuthenticated from './/NavAuthenticated';
 import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 
 import {
-    useSession,
-    CombinedDataProvider
+    useSession
 } from '@inrupt/solid-ui-react';
 
 import Button from "react-bootstrap/Button";

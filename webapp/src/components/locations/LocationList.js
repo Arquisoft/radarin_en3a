@@ -1,6 +1,6 @@
 import { getThingAll } from "@inrupt/solid-client";
 import { Table, TableColumn } from "@inrupt/solid-ui-react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 const TEXT_PREDICATE = "http://schema.org/text";
 const CREATED_PREDICATE = "http://www.w3.org/2002/12/cal/ical#created";
 
