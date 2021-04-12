@@ -7,14 +7,13 @@ import { getUsers, removeUser } from "../../api/api.js"
 
 function ManageUsers () {
     let state = {
-        usersList: [],
+        usersList: []
       };
     const {t} = useTranslation();  
     
     getUsers().then((value) => {
         for(var i = 0; i < value.length; i++){
-            if(value[i].role)
-                state.usersList[i] = value[i];
+            state.usersList[i] = value[i];
         }
     });
 
