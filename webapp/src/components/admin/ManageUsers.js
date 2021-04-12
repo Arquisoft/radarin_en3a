@@ -32,7 +32,7 @@ function ManageUsers () {
                                 {user.webId}
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button data-testid={user.webId} onClick={()=>this.deleteUser(user)}>{t('AdminDelete')}</Button>
+                                <Button data-testid={user.webId} onClick={()=>deleteUser(user)}>{t('AdminDelete')}</Button>
                             </ListGroup.Item>
                         </ListGroup>      
                 }
