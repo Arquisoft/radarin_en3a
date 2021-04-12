@@ -2,7 +2,7 @@
 == System Scope and Context
 Radarin is an app that let's the user know in real time when and where another friend is near by being both notified in their smartphones.
 
-This way, two user friends can chat through the app, maybe meet and share experiences together.
+This way, two user friends can chat through the app, maybe meet and share their experiences together.
 
 It also allows the user to see multimedia content from the places their friends posted, being able to interact with those publications.
 
@@ -10,7 +10,6 @@ It also allows the user to see multimedia content from the places their friends 
 The following diagram describes the main use case from the user point of view and the ways the information traverses the main services of the application. 
 
 image:03_scope.png["Customers running the application"]
-
 
 
 The *User* sends information to the application, and once it finds a close *friend*, both are notified that they are close to each other, so they have the chance to interact and (perhaps) meet.
@@ -21,7 +20,7 @@ The minimum information consists of the location and the time stamp, leaving the
 
 === Technical Context
 
-For this app, we are using the solid pods to store information about each of the users so they can later access to add or modify their data once authenticated, JavaScript using React libarary to develop the user interface 
+For this app, we are using the solid pods to store information about each of the users so they can later access to add or modify their data once authenticated, JavaScript using React libarary to develop the user interfaces for the web and the mobile application.
 
 
 

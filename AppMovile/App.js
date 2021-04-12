@@ -1,22 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements'
+import 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import EnterScreen from './EnterScreen';
+import SignInScreen from './SignInScreen';
+import LogInScreen from './LogInScreen';
+import HomeScreen from './Screens/HomeScreen';
+const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Welcome to my FIRST React Natice App! How are you?</Text>
-      <StatusBar style="auto" />
-      <Button title='My First Button' icon={{name: 'code'}}/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown:false,
+        }}
+        initialRouteName={'Radarin'}
+        >
+        <Stack.Screen
+          name="Radarin"
+          component={EnterScreen}
+        />
+        <Stack.Screen
+          name="Sign In"
+          component={SignInScreen}
+        />
+        <Stack.Screen
+          name="Log In"
+          component={LogInScreen}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#282c34',
     alignItems: 'center',
     justifyContent: 'center',
   },
