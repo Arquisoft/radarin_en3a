@@ -10,19 +10,23 @@ function MarkerGenerator(props) {
     return locationThings.map(function(locThing,index){
         let coordinatesOfThing = locThing._entities[5];
         coordinatesOfThing = coordinatesOfThing.replace(/^"(.*)"$/, '$1');
-        let coordinatesSplit = coordinatesOfThing.split(" ");
+        let coordinatesSplit = coordinatesOfThing.split(" / ");
         let latitudeParsed = parseFloat(coordinatesSplit[0]);
         let longitudeParsed = parseFloat(coordinatesSplit[1]);
+        let tagForMarker = coordinatesSplit[2];
         let timestampOfThing = locThing._entities[7];
         let timestampOfThingSplit = timestampOfThing.split("^")
         let timestampOfThingFormatted = timestampOfThingSplit[0];
         timestampOfThingFormatted = timestampOfThingFormatted.replace(/^"(.*)"$/, '$1');
+        timestampOfThingFormatted = timestampOfThingFormatted.split(".")[0];
+        timestampOfThingFormatted = timestampOfThingFormatted.replace("T"," ");
         let coordinatesForCurrentMarker = [ latitudeParsed, longitudeParsed];
 
     return (<div>
         <Marker key={index} position={coordinatesForCurrentMarker}>
-            <Popup>
-                Location for time {timestampOfThingFormatted}
+            <Popup>{tagForMarker}
+            <br/>
+                {timestampOfThingFormatted}
             </Popup>
         </Marker>
     </div>)

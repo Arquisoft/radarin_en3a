@@ -8,7 +8,6 @@ import {
     createSolidDataset,
     getSolidDataset,
     getThing,
-    getThingAll,
     getUrlAll,
     saveSolidDatasetAt
 } from "@inrupt/solid-client";
@@ -22,7 +21,7 @@ const MapView = () => {
     const { session } = useSession();
     const [locationList, setLocationList] = useState();
 
-    const [state, setState] = useState({
+    const [state] = useState({
         mapCenter: [43.542, -6.594]
     });
 

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
 import WelcomeAuth from '../welcome/WelcomeAuth';
@@ -29,22 +29,24 @@ function NavAuthenticated(){
 
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
-    const [resource, setResource] = useState(webId);
 
     useEffect(() => {
-        if(role == null){
-            navigator.geolocation.getCurrentPosition(async function (position) {
-                await addUser(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
-                await getUserByWebId(webId).then((user) => setRole(user.role));
-            });
-        }else{
-            const interval = setInterval(() => {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    updateLocation(webId, { type: "Point", coordinates: [position.coords.latitude, position.coords.longitude] });
-                });
-            }, 30000);
-            return () => clearInterval(interval);
-        }
+        navigator.geolocation.getCurrentPosition(async function (position) {
+            console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
+            let usuario = await getUserByWebId(webId).then((user) => setUser(user));
+            if(usuario != null){
+            usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
+            console.log(usuario);
+            }else{
+                const interval = setInterval(() => {
+                    navigator.geolocation.getCurrentPosition(async function (position) {
+                        await updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                    });
+                }, 30000);
+                setRole(usuario.role);
+                return () => clearInterval(interval);
+            }
+        });
     }, [role, webId]);
 
     const handleLogout = (e) => {
@@ -52,7 +54,6 @@ function NavAuthenticated(){
         logout();
         setWebId(undefined);
         setRole("");
-        setResource("");
         window.location.reload();
     };
 
@@ -77,15 +78,16 @@ function NavAuthenticated(){
                         </DropdownButton>
                 {(() => {
                     if (role != null && role === "Admin")
-                        return(<Link id="ManageUsers" href="/manageUsers">{t('navBarProfile')}</Link>);
+                        return(<Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>);
                     })
                 }
                 <Nav className="mr-auto">
+                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
                     <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
-                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>Log Out</Button>
+                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
                 </Nav>
                     </Navbar.Collapse>
                 </Navbar>

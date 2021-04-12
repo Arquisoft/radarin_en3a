@@ -13,7 +13,6 @@ h1{
   
 
 input[type = "email"],.App-content input[type = "string"],.App-content input[type = "password"]{
-    border:0;
     background: none;
     display: block;
     margin: 20px auto;
