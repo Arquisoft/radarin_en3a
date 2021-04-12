@@ -40,9 +40,9 @@ describe('user ', () => {
     it('can be created correctly', async () => {
         username = 'Pablo'
         email = 'pablo@uniovi.es'
-        const response = await request(app).post('/api/users/add').send({ webId: username}).set('Accept', 'application/json')
+        const response = await request(app).post('/api/users/add').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
-        expect(response.webId).toBe(username);
+        expect(response.body.webId).toBe(username);
     });
 
     //tests started by armando started here
