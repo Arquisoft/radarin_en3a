@@ -55,7 +55,7 @@ describe('user ', () => {
         await request(app).post('/api/users/add').send({ webId: webId, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
 
 
-        await request(app).post('/api/users/delete').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
+        await request(app).post('/api/users/remove').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
 
         const user = await (await request(app).get('/api/users/list')).body.find(u => u.webId === webId);
         expect(user).toBe(null);
@@ -64,7 +64,7 @@ describe('user ', () => {
     /*
     Location deletion test
     */
-    it('can be deleted correctly', async () => { });
+    it('location can be deleted correctly', async () => { });
 
     /*
 Adding a location
@@ -75,7 +75,7 @@ Adding a location
         latitude = 0
 
         await request(app).post('/api/users/add').send({ webId: webId, longitude: longitude, latitude: latitude }).set('Accept', 'application/json')
-        const update = await request(app).post('/api/users/add').send({ webId: webId, longitude: 9, latitude: 8 }).set('Accept', 'application/json')
+        const update = await request(app).post('/api/locations/add').send({ webId: webId, longitude: 9, latitude: 8 }).set('Accept', 'application/json')
         expect(update.body.latitude).toBe(8);
         expect(update.body.longitude).toBe(9);
     });
