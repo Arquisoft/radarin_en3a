@@ -22,6 +22,12 @@ function connect(){
         app.use(express.json());
         app.use("/api", api);
 
+        app.use( (request, response) => {
+            request.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Origin", "*");
+        });
+
+
         app.listen(process.env.PORT || 5000, () => {
             console.log("Server has started! Using db in "+mongo_uri)
         })
