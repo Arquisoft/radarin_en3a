@@ -1,3 +1,11 @@
 .friends-main-panel{
     margin: 100px auto 0;
 }
+
+.friend-profile-pic{
+    filter: invert(100%);
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+

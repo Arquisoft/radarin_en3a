@@ -30,7 +30,7 @@ function NavAuthenticated(){
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(async function (position) {
-            console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
+            console.log("Esto es lo que le estamos añadiendo al usuario: " + webId + " localización longitud: " + position.coords.longitude + " latitud: " + position.coords.latitude);
             let usuario = await getUserByWebId(webId);
             if(usuario == null){
                 usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
