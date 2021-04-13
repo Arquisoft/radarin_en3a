@@ -15,7 +15,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "jest": "^26.6.0",
     "mongodb-memory-server": "^6.9.6",
     "supertest": "^6.1.3"
   },

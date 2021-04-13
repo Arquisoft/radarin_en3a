@@ -54,16 +54,3 @@ export async function addLocation(webId,long,lat){
       })
     return await response.json()
 }
-
-export async function updateLocation(webId,long,lat){
-    const apiEndPoint= process.env.REACT_APP_API_URI || "http://localhost:5000/api";
-    let response = await fetch(apiEndPoint + "/users/location/update", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-                'webId':webId, 
-                'longitude':long,
-                'latitude':lat})
-    });
-    return await response.json();
-};

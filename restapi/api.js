@@ -60,18 +60,18 @@ router.post("/users/getByWebId", async (req,res) => {
 
 //Add a location to a specific user
 router.post("/locations/add", async(req, res) => {
-    let user = await User.findOne({webId: req.body.webId});
-    user.location = req.body.location;
-    await user.save();
-    res.json(user);
-});
-
-//Update a location to a specific user
-router.post("users/location/update", async(req, res) => {
-    let user = await User.findOne({webId: req.body.webId});
-    user.location = req.body.location;
-    await user.save();
-    res.json(user);
+    let id = req.body.webId;
+    console.log(id);
+    let user = await User.findOne({webId: id});
+    console.log(user);
+    if(user != null){
+        console.log(req.body.longitude);
+        console.log(req.body.latitude);
+        user.longitude = req.body.longitude;
+        user.latitude = req.body.latitude;
+        await user.save();
+    }
+    res.send(user);
 });
 
 module.exports = router
