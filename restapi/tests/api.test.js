@@ -29,7 +29,7 @@ describe('user ', () => {
     /**
      * Test that we can list users without any error.
      */
-    it('can be listed',async () => {
+    it('can be listed', async () => {
         const response = await request(app).get("/api/users/list");
         expect(response.statusCode).toBe(200);
     });
@@ -40,9 +40,44 @@ describe('user ', () => {
     it('can be created correctly', async () => {
         username = 'Pablo'
         email = 'pablo@uniovi.es'
-        const response = await request(app).post('/api/users/add').send({name: username,email: email}).set('Accept', 'application/json')
+        const response = await request(app).post('/api/users/add').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
-        expect(response.body.name).toBe(username);
-        expect(response.body.email).toBe(email);
+        expect(response.body.webId).toBe(username);
     });
+
+    //tests started by armando started here
+
+    /*
+    Deletion test
+    */
+    it('can be deleted correctly', async () => {
+        webId = 'Pablo'
+        await request(app).post('/api/users/add').send({ webId: webId, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
+
+
+        await request(app).post('/api/users/remove').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
+
+        const user = await (await request(app).get('/api/users/list')).body.find(u => u.webId === webId);
+        expect(user).toBe(undefined);
+    });
+
+    /*
+    Location deletion test
+    */
+    it('location can be deleted correctly', async () => { });
+
+    /*
+Adding a location
+*/
+    it('locations can be saved', async () => {
+        webId = 'Pablo'
+        longitude = 0
+        latitude = 0
+
+        await request(app).post('/api/users/add').send({ webId: webId, longitude: longitude, latitude: latitude }).set('Accept', 'application/json')
+        const update = await request(app).post('/api/locations/add').send({ webId: webId, longitude: 9, latitude: 8 }).set('Accept', 'application/json')
+        expect(update.body.latitude).toBe(8);
+        expect(update.body.longitude).toBe(9);
+    });
+
 });
