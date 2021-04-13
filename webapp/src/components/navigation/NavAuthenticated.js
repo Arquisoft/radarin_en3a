@@ -37,7 +37,7 @@ function NavAuthenticated(){
                 console.log(usuario);
                 setRole(usuario.role);
             }else{
-                await addLocation(webId, position.coords.longitude, position.coords.latitude );
+                await addLocation(usuario._id, position.coords.longitude, position.coords.latitude );
                 setRole(usuario.role);
             }
         });

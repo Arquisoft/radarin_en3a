@@ -41,13 +41,13 @@ export async function getUsers(){
     return await response.json();
 }
 
-export async function addLocation(webId,long,lat){
+export async function addLocation(id,long,lat){
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/locations/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
-            'webId':webId, 
+            '_id':id, 
             'longitude':long,
             'latitude':lat
         })

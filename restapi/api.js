@@ -60,9 +60,9 @@ router.post("/users/getByWebId", async (req,res) => {
 
 //Add a location to a specific user
 router.post("/locations/add", async(req, res) => {
-    let id = req.body.webId;
+    let id = req.body._id;
     console.log(id);
-    let user = await User.findOne({webId: id});
+    let user = await User.findOne({_id: id});
     console.log(user);
     if(user != null){
         console.log(req.body.longitude);
