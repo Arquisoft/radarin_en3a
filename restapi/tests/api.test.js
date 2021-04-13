@@ -58,7 +58,7 @@ describe('user ', () => {
         await request(app).post('/api/users/remove').send({ webId: username, longitude: 0, latitude: 0 }).set('Accept', 'application/json')
 
         const user = await (await request(app).get('/api/users/list')).body.find(u => u.webId === webId);
-        expect(user).toBe(null);
+        expect(user.body).toBe(null);
     });
 
     /*
