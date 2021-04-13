@@ -13,13 +13,13 @@ import {
 } from "@inrupt/solid-client";
 import {useSession} from "@inrupt/solid-ui-react";
 import MarkerGenerator from "./MarkerGenerator";
-
+import {useTranslation} from "react-i18next";
 
 const MapView = () => {
-
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
     const { session } = useSession();
     const [locationList, setLocationList] = useState();
+    const { t } = useTranslation();
 
     const [state] = useState({
         mapCenter: [43.542, -6.594]
@@ -66,7 +66,7 @@ const MapView = () => {
     return (
         <div>
             <div className="logged-in-panel">
-                <h2>Map of locations saved for logged user: </h2>
+                <h2>{t('MapOfLocations')}</h2>
             </div>
         <div className="user-map-panel">
             <MapContainer center={state.mapCenter} zoom={10} style={{ height: "100vh" }}>

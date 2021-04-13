@@ -9,9 +9,8 @@ function ManageUsers () {
 
     const [usersList, setUserList] = useState(null);
 
-    const t = useTranslation();  
-    
-    getUsers().then((value) => setUserList(value));
+    const t = useTranslation();
+
 
     return(<div>
         <h2>{t('AdminList')}</h2>
@@ -30,6 +29,7 @@ function ManageUsers () {
                         </ListGroup>      
                 }
             )}
+
     </div>)
 }
 

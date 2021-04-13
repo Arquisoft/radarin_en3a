@@ -4,16 +4,18 @@ import { CombinedDataProvider, Text, useSession } from "@inrupt/solid-ui-react";
 import { Image} from "@solid/react";
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import defaultProfilePic from '../../assets/default_profile_pic.svg';
+import {useTranslation} from "react-i18next";
 
 function WelcomeAuth(props) {
     const { session } = useSession();
     const { webId } = session.info;
+    const { t } = useTranslation();
 
     return (
         <div className="logged-in-panel">
             <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>
-            <h1>Hello there!</h1>
-                <h2>You are logged in as: </h2>
+            <h1>{t('Welcome')}</h1>
+                <h2>{t('LoggedInAs')}</h2>
                 <Text
                     properties={[
                         "http://www.w3.org/2006/vcard/ns#fn",
@@ -22,7 +24,7 @@ function WelcomeAuth(props) {
                 />
                 <br/>
                 <Image className="owner-profile-pic" property={VCARD.hasPhoto.iri.value} defaultSrc={defaultProfilePic}>{webId}</Image>
-                <h3>Your webID is: </h3>
+                <h3>{t('WebIdIs')}</h3>
                 <h4>{ session.info.webId }</h4>
             </CombinedDataProvider>
         </div>

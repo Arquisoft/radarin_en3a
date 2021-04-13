@@ -83,7 +83,7 @@ function Navigation () {
                                         <div>
                                             <form>
                                                 <input
-                                                    placeholder={t('navBarPlaceHolder')}
+                                                    placeholder={t("LogInPlaceholder")}
                                                     type="text"
                                                     value={issuer}
                                                     onChange={(e) => {
