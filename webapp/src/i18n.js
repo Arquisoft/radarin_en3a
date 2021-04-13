@@ -45,6 +45,7 @@ const resources = {
           "Welcome":"Welcome!",
           "LogInPlaceholder":"Enter your POD URL here",
           "LogIn": "Log In",
+          "DefaultProfilePic": "Default profile pic for users"
         }
     },
     es: {
@@ -85,10 +86,11 @@ const resources = {
           "FriendList":"Lista de amigos ",
           "MapOfLocations":"Mapa de tus ubicaciones: ",
           "LoggedInAs": "Iniciaste sesión como: ",
-          "WebIdIs":"Tu webId es: ",
+          "WebIdIs":"Tu webID es: ",
           "Welcome":"Bienvenido!",
           "LogInPlaceholder":"Introduce aquí la URL de tu POD",
           "LogIn": "Iniciar sesión",
+          "DefaultProfilePic": "Icono por defecto para usuarios"
       }
     }
 };
