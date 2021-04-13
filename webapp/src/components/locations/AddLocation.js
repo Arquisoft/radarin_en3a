@@ -2,11 +2,15 @@ import React, {useState} from 'react';
 import {Button} from "react-bootstrap";
 import "../../css/AddLocation.css";
 import {useTranslation} from "react-i18next";
+import {useSession} from "@inrupt/solid-ui-react";
+import {addLocation} from "../../api/api";
 
-function AddLocation(props) {
+function AddLocation() {
 
     const { t } = useTranslation();
 
+    const { session } = useSession();
+    const { webId } = session.info;
 
     let [currentLatitude, setLatitude] = useState("");
     let [currentLongitude, setLongitude] = useState("");
@@ -32,13 +36,16 @@ function AddLocation(props) {
         return null;
     }
 
-   function getUserLocation(){
+   async function getUserLocation(){
        if ("geolocation" in navigator) {
            locationAvailable = true;
             navigator.geolocation.getCurrentPosition(function(position) {
-                setLatitude((Math.floor(position.coords.latitude * 1000) / 1000).toString());
-                setLongitude((Math.floor(position.coords.longitude * 1000) / 1000).toString());
+                let latitude = Math.floor(position.coords.latitude * 1000) / 1000;
+                let longitude = Math.floor(position.coords.longitude * 1000) / 1000;
+                setLatitude(latitude.toString());
+                setLongitude(longitude.toString());
                 setTimestamp(new Date().toUTCString());
+                addLocation(webId,latitude,longitude);
             });
         } else {
             locationAvailable = false;
