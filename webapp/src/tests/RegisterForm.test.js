@@ -4,5 +4,5 @@ import RegisterForm from "./../components/RegisterForm";
 
 test('check that everything is rendering propertly', async () => {
   const { getByText } = render(<RegisterForm/>);
-  expect(getByText("Inrupt")).toBeInTheDocument();
-});
+  expect(getByText("Solid Community")).toBeInTheDocument();
+}); 
