@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-import { getUsers, removeUser } from "../../api/api.js"
+import { removeUser } from "../../api/api.js"
 
 function ManageUsers () {
 
