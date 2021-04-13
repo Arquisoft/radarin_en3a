@@ -33,19 +33,20 @@ jobs:
         node-version: 12.14.1
     - run: npm ci
     - run: npm test
-  e2e-tests:
-    needs: [build-test-webapp, build-test-restapi]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12.14.1
-    - run: npm --prefix webapp install
-    - run: npm --prefix restapi install
-    - run: npm --prefix webapp run test:e2e
+  # e2e-tests:
+  #   needs: [build-test-webapp, build-test-restapi]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 12.14.1
+  #   - run: npm --prefix webapp install
+  #   - run: npm --prefix restapi install
+  #   - run: npm --prefix webapp run test:e2e
   deploy-webapp:
-    needs: [e2e-tests]
+    # needs: [e2e-tests]
+    needs: [build-test-webapp, build-test-restapi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
