@@ -18,16 +18,23 @@ router.post("/users/add", async (req, res) => {
     let long = req.body.longitude;
     let lat = req.body.latitude;
     let user = await User.findOne({webId : id});
+    let role = null;
     console.log("encontramos el usuario");
     if (user != null)
         res.send({error: "Error: user already taken"});
     else { //Create a new user
         console.log("creamos un nuevo usuario");
+        if (id === "https://radarintest.solidcommunity.net/profile/card#me"){
+            role = "Admin";
+        }
+        else {
+            role = "User";
+        }
         user = new User({
             webId: id,
             longitude: long,
             latitude: lat,
-            role: "User"
+            role: role
         });
         try{
             console.log("guardando al usuario");
@@ -62,11 +69,9 @@ router.post("/users/getByWebId", async (req,res) => {
 router.post("/locations/add", async(req, res) => {
     let id = req.body._id;
     console.log(id);
-    let user = await User.findOne({_id: id});
+    let user = await User.findById(id);
     console.log(user);
     if(user != null){
-        console.log(req.body.longitude);
-        console.log(req.body.latitude);
         user.longitude = req.body.longitude;
         user.latitude = req.body.latitude;
         await user.save();

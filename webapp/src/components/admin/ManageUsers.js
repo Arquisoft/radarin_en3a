@@ -7,12 +7,12 @@ import { getUsers, removeUser } from "../../api/api.js"
 
 function ManageUsers () {
 
-    const [usersList, setUserList] = useState(null);
+    let [usersList, setUserList] = useState(null);
 
-    const t = useTranslation();
+    const { t } = useTranslation();
     
      getUsers().then((value) => setUserList(value));
-
+  
     return(<div>
         <h2>{t('AdminList')}</h2>
             {usersList.map((user) => 
