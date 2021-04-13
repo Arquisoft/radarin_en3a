@@ -74,8 +74,9 @@ Adding a location
         longitude = 0
         latitude = 0
 
-        await request(app).post('/api/users/add').send({ webId: webId, longitude: longitude, latitude: latitude }).set('Accept', 'application/json')
-        const update = await request(app).post('/api/locations/add').send({ webId: webId, longitude: 9, latitude: 8 }).set('Accept', 'application/json')
+       const start = await request(app).post('/api/users/add').send({ webId: webId, longitude: longitude, latitude: latitude }).set('Accept', 'application/json')
+       id = start.body._id
+        const update = await request(app).post('/api/locations/add').send({ _id: id, longitude: 9, latitude: 8 }).set('Accept', 'application/json')
         expect(update.body.latitude).toBe(8);
         expect(update.body.longitude).toBe(9);
     });
