@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import {Button} from "react-bootstrap";
 import "../../css/AddLocation.css";
+import {useTranslation} from "react-i18next";
 
 function AddLocation(props) {
+
+    const { t } = useTranslation();
+
 
     let [currentLatitude, setLatitude] = useState("");
     let [currentLongitude, setLongitude] = useState("");
@@ -13,14 +17,16 @@ function AddLocation(props) {
         if([currentLatitude].toString() !== "") {
             return (
                 <div>
-                    <h5>Latitude: <span id="lat-span">{currentLatitude}</span> deg, Longitude: <span id="long-span">{currentLongitude}</span> deg</h5>
-                    <p>Timestamp: {currentTimestamp}</p>
-                    <input type="text" id="location-text-input" placeholder="Tag your location here"/>
+                    <h5>{t('lat')} <span id="lat-span">{currentLatitude}</span> {t('deg')}, {t('long')} <span id="long-span">{currentLongitude}</span> {t('long')}</h5>
+                    <p>{t('timestamp')} {currentTimestamp}</p>
+                    <input type="text" id="location-text-input" placeholder={t('TagLocation')}/>
                 </div>);
         }else if(!locationAvailable){
             return (
                 <div>
-                <h3>Location is not available right now on this device</h3>
+                <h3>
+                    { t('LocationNotAvailable')}
+                </h3>
                 </div>);
         }
         return null;
@@ -36,13 +42,12 @@ function AddLocation(props) {
             });
         } else {
             locationAvailable = false;
-            console.log("Location not available");
         }
     }
 
     return (
         <div className="last-location-panel">
-            <Button className="get-location-btn" onClick={getUserLocation}>Get current location</Button>
+            <Button className="get-location-btn" onClick={getUserLocation}> { t('GetCurrentLocation')}</Button>
             <LocationComponent />
         </div>
     );

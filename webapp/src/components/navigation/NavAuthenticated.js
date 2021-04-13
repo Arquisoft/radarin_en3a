@@ -17,7 +17,7 @@ import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
-import { updateLocation, addUser, getUserByWebId } from '../../api/api.js';
+import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
 
 function NavAuthenticated(){
 
@@ -29,7 +29,6 @@ function NavAuthenticated(){
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     useEffect(() => {
-        
         navigator.geolocation.getCurrentPosition(async function (position) {
             console.log("esto es lo que le estamos añadiendo al usuario: " + webId + " localicacion longitute: " + position.coords.longitude + " latitud: " + position.coords.latitude);
             let usuario = await getUserByWebId(webId);
@@ -38,7 +37,7 @@ function NavAuthenticated(){
                 console.log(usuario);
                 setRole(usuario.role);
             }else{
-                await updateLocation(webId, position.coords.longitude, position.coords.latitude );
+                await addLocation(webId, position.coords.longitude, position.coords.latitude );
                 setRole(usuario.role);
             }
         });
@@ -50,6 +49,7 @@ function NavAuthenticated(){
         setWebId(undefined);
         window.location.reload();
     };
+
 
         return (
             <div>
@@ -91,6 +91,7 @@ function NavAuthenticated(){
                     datasetUrl={session.info.webId}
                     thingUrl={session.info.webId}
                 >
+
                 <div>
                     <div className="logged-in-msg-panel">
                         <span>{t('InitSession')}</span>
@@ -110,7 +111,7 @@ function NavAuthenticated(){
                     </div>
                 </div>
             </CombinedDataProvider>
-    </div>
-        )}
+        </div>
+    )}
 
 export default NavAuthenticated;

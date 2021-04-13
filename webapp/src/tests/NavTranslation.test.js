@@ -21,5 +21,5 @@ test('check that language is changing', async () => {
   const changeToEnglish = c.getByText("Inglés");
   fireEvent.click(changeToEnglish);
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.navBarLanguage)).toBeDefined(); 
-
+ 
 });

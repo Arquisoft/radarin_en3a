@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/simple_logo.png';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { HashRouter} from 'react-router-dom';
+import { HashRouter, Redirect, Route} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
 import NavAuthenticated from './/NavAuthenticated';
@@ -16,6 +16,7 @@ import {
 
 import Button from "react-bootstrap/Button";
 import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
+import SignUp from '../SignUp';
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -74,20 +75,22 @@ function Navigation () {
                         <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
                     </DropdownButton>
                     <Nav className="mr-auto">
+                        <Nav.Link  className="mt-1 mr-2" href="https://github.com/Arquisoft/radarin_en3a">{t('navBarAbout')}</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>
                             <div>
                                 <div className="log-in-panel">
                                         <p>{webId ? `Logged in as ${webId}` : ""}</p>
                                         <div>
                                             <form>
                                                 <input
-                                                    placeholder="Enter your POD URL here"
+                                                    placeholder={t("LogInPlaceholder")}
                                                     type="text"
                                                     value={issuer}
                                                     onChange={(e) => {
                                                         setIssuer(e.target.value);
                                                     }}
                                                 />
-                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>Log In</Button>
+                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
                                             </form>
                                         </div>
                                 </div>
@@ -95,7 +98,9 @@ function Navigation () {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-                            <WelcomeNoAuth/>
+                <Route exact path="/" component={WelcomeNoAuth} />
+                <Route exact path="/register" component={SignUp} />
+                <Redirect path="/" exact to="/" />
                         </div>)}
                     </div>
     </HashRouter>)
