@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
 import Button from "react-bootstrap/Button";
@@ -7,30 +7,38 @@ import { getUsers, removeUser } from "../../api/api.js"
 
 function ManageUsers () {
 
-    let [usersList, setUserList] = useState(null);
+    let usersList = null;
 
     const { t } = useTranslation();
     
-     getUsers().then((value) => setUserList(value));
+    async function ReturnUsers() {
+        usersList = await getUsers();
+    }
+
+    async function DeleteUser(user) {
+        removeUser(user.webId);
+        ReturnUsers();
+    }
+
+    useEffect(() => {
+        ReturnUsers();
+    });
   
     return(<div>
         <h2>{t('AdminList')}</h2>
-            {usersList.map((user) => 
-                {return <ListGroup horizontal style={{ margin: "20px" }}>
-                            <ListGroup.Item style={{ minWidth: "500px", textAlign: "center" }}>
-                                {user.webId}
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Button data-testid={user.webId} onClick={(user)=>{
-                                    removeUser(user.webId);
-                                    usersList.splice(usersList.indexOf(user), 1);
-                                    setUserList(usersList);
-                                }}>{t('AdminDelete')}</Button>
-                            </ListGroup.Item>
-                        </ListGroup>      
-                }
-            )}
-
+        {usersList.map((user) => 
+            {return <ListGroup horizontal style={{ margin: "20px" }}>
+                        <ListGroup.Item style={{ minWidth: "500px", textAlign: "center" }}>
+                            {user.webId}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Button data-testid={user.webId} onClick={(user)=>{
+                                DeleteUser(user);
+                            }}>{t('AdminDelete')}</Button>
+                        </ListGroup.Item>
+                    </ListGroup>      
+            }
+        )}
     </div>)
 }
 
