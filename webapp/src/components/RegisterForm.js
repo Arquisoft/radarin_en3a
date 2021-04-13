@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import './../css/RegisterForm.css';
 import { useTranslation } from 'react-i18next';
 
-function RegisterForm(props) {
+function RegisterForm() {
     const { t } = useTranslation();
     return (
         <Card className="register-card" bg="dark" style={{  }}>

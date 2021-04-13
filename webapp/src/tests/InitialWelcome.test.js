@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import WelcomeNoAuth from "./../components/welcome/WelcomeNoAuth";
 import i18n from '../i18n'
 import { I18nextProvider } from 'react-i18next'
