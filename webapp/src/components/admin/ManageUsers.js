@@ -1,18 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import '../../css/Navigation.css';
-import {getUsers, removeUser} from "../../api/api.js"
+import {getUsers} from "../../api/api.js"
 import RegUserComponent from "./RegUserComponent";
 
 function ManageUsers () {
 
     const [usersList, setUserList] = useState([]);
     const { t } = useTranslation();
-
-    async function DeleteUser(user) {
-        await removeUser(user.webId);
-        setUserList(getUsers());
-    }
 
     useEffect(() => {
         (async () => {
