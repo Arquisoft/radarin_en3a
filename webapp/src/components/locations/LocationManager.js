@@ -79,7 +79,7 @@ function LocationManager(props) {
         })();
     }, [session]);
 
-    const addLocation = async (text) => {
+    const addLocations = async (text) => {
         const indexUrl = getSourceUrl(locationList);
         const locationWithText = addStringNoLocale(createThing(), TEXT_PREDICATE, text);
         const locationWithDate = addDatetime(
@@ -111,7 +111,7 @@ function LocationManager(props) {
         let latitudeValue = document.getElementById("lat-span").textContent;
         let longitudeValue = document.getElementById("long-span").textContent;
         let locationText = document.getElementById("location-text-input").value;
-        addLocation(latitudeValue + " / " + longitudeValue + " / " + locationText);
+        addLocations(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
     function DeleteButton({ deleteTodo }) {
