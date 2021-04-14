@@ -39,14 +39,14 @@ function AddLocation() {
    async function getUserLocation(){
        if ("geolocation" in navigator) {
            locationAvailable = true;
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(async function(position) {
                 let latitude = Math.floor(position.coords.latitude * 1000) / 1000;
                 let longitude = Math.floor(position.coords.longitude * 1000) / 1000;
                 setLatitude(latitude.toString());
                 setLongitude(longitude.toString());
                 setTimestamp(new Date().toUTCString());
                 let findUser = await getUserByWebId(webId);
-                await addLocation(findUser._id,latitude,longitude);
+                addLocation(findUser._id,latitude,longitude);
             });
         } else {
             locationAvailable = false;

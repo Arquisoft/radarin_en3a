@@ -11,10 +11,10 @@ import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
-import {useLDflexList} from "@solid/react";
-import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
-import { nearFriends } from "../../api/api.js"
-import { useAlert } from 'react-alert'
+//import {useLDflexList} from "@solid/react";
+//import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
+//import { nearFriends } from "../../api/api.js"
+//import {NotificationManager} from 'react-notifications';
 
 
 
@@ -23,7 +23,6 @@ function LocationManager(props) {
     const { session } = useSession();
     const [locationList, setLocationList] = useState();
     const { t } = useTranslation();
-    const alert = useAlert();
 
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
     const TEXT_PREDICATE = "http://schema.org/text";
@@ -38,14 +37,15 @@ function LocationManager(props) {
     });
     const { fetch } = useSession();
 
-    async function FindNearFriends(){
-        let webId = session.info.webId;
-        let friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
-        let response = await nearFriends(friendsOfLoggedUser,webId);
-        return () => {
-            alert.show(response)
-        };
-    }
+    //const webId = session.info.webId;
+    //const friendsNear = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
+
+    //async function FindNearFriends(){
+        //let amigos = [];
+        //friendsNear.map((friend) => amigos.push(friend));
+        //let amigo = await nearFriends(friendsNear,webId);
+        //NotificationManager.info("amigo");
+    //}
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -65,18 +65,19 @@ function LocationManager(props) {
     }
 
     useEffect(() => {
-        if (!session) return;
-        (async () => {
-            const profileDataset = await getSolidDataset(session.info.webId, {
-                fetch: session.fetch,
-            });
-            const profileThing = getThing(profileDataset, session.info.webId);
-            const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
-            const pod = podsUrls[0];
-            const containerUri = `${pod}radarin/`;
-            const list = await getOrCreateLocationList(containerUri, session.fetch);
-            setLocationList(list);
-        })();
+        if (session){
+            (async () => {
+                const profileDataset = await getSolidDataset(session.info.webId, {
+                    fetch: session.fetch,
+                });
+                const profileThing = getThing(profileDataset, session.info.webId);
+                const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
+                const pod = podsUrls[0];
+                const containerUri = `${pod}radarin/`;
+                const list = await getOrCreateLocationList(containerUri, session.fetch);
+                setLocationList(list);
+            })();
+        }
     }, [session]);
 
     const addLocations = async (text) => {
@@ -123,9 +124,11 @@ function LocationManager(props) {
         );
     }
 
+    //tenemos que añadir el boton de las notificaciones
+    //<Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
+
     return (<div>
         <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button><br/>
-        <Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
             <h6>{t('LocationCount1')}{locationThings.length} {t('LocationCount2')}</h6>
