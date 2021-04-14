@@ -4,7 +4,7 @@ Radarin is an app that let's the user know in real time when and where another f
 
 This way, two user friends can chat through the app, maybe meet and share their experiences together.
 
-It also allows the user to see multimedia content from the places their friends posted, being able to interact with those publications.
+It also allows the user to see it's location history to track the visited places.
 
 === Business Context
 The following diagram describes the main use case from the user point of view and the ways the information traverses the main services of the application. 
@@ -28,6 +28,7 @@ For this app, we are using the solid pods to store information about each of the
 |===
 |Item|Details
 | Customer | The person that uses the app and interacts with other users.
+| Admin | The administrator that can list users and delete any of them.
 | Radarin Server | Where the web application is running.
 | POD | The solid POD that stores the customer's data and there's one per user.
 | API | i.e Google Maps to get details about the location in the map.
