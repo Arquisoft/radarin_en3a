@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 import {useLDflexList} from "@solid/react";
 import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
 import { nearFriends } from "../../api/api.js"
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationManager} from 'react-notifications';
 
 
 function LocationManager(props) {
