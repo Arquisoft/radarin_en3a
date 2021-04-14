@@ -16,4 +16,4 @@
 
 .*MobileApp*
 * Choosing the framework to work. We decided to use react-native with expo to do this. We can see the changes in the emulator and also in physical device. Also expo has a lot of libraries that are going to be used to implement this app.
-* Usage of the pods. We had several issues to do this, there seems to be some errors and dificulties to implement this. So we decided this part of the applications is being suspenden at the moment.
+* Usage of the pods. We had several issues to do this, there seems to be some errors and difficulties to implement this. So we decided this part of the application is being suspended at the moment. Some errors we encountered where the use of the solid components with react-native. The libreries we used work with Node.js without any problem. But since we do not work with a node.js framework perse some libraries do not work properly.
