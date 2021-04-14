@@ -14,6 +14,7 @@ import {
 import {useSession} from "@inrupt/solid-ui-react";
 import MarkerGenerator from "./MarkerGenerator";
 import {useTranslation} from "react-i18next";
+import {getUserByWebId} from "../../api/api";
 
 const MapView = () => {
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
@@ -43,6 +44,13 @@ const MapView = () => {
         }
     }
 
+    async function getLastLocationForCurrentUser(webIdCurrentUser) {
+       await allUserData = getUserByWebId(webIdCurrentUser);
+       let lat = allUserData.latitude;
+       let long = allUserData.longitude;
+       state.mapCenter= [lat,long];
+    }
+
     useEffect(() => {
         if (!session) return;
         (async () => {
@@ -56,7 +64,10 @@ const MapView = () => {
             const list = await getOrCreateLocationList(containerUri, session.fetch);
             setLocationList(list);
         })();
+        getLastLocationForCurrentUser(session.info.webId);
     }, [session]);
+
+
 
     L.Marker.prototype.options.icon = L.icon({
         iconUrl: icon,
@@ -69,7 +80,7 @@ const MapView = () => {
                 <h2>{t('MapOfLocations')}</h2>
             </div>
         <div className="user-map-panel">
-            <MapContainer center={state.mapCenter} zoom={10} style={{ height: "100vh" }}>
+            <MapContainer center={state.mapCenter} zoom={9} style={{ height: "100vh" }}>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
