@@ -3,7 +3,7 @@ import {Button} from "react-bootstrap";
 import "../../css/AddLocation.css";
 import {useTranslation} from "react-i18next";
 import {useSession} from "@inrupt/solid-ui-react";
-import {addLocation} from "../../api/api";
+import {addLocation, getUserByWebId} from "../../api/api";
 
 function AddLocation() {
 
@@ -45,7 +45,8 @@ function AddLocation() {
                 setLatitude(latitude.toString());
                 setLongitude(longitude.toString());
                 setTimestamp(new Date().toUTCString());
-                addLocation(webId,latitude,longitude);
+                let findUser = await getUserByWebId(webId);
+                await addLocation(findUser._id,latitude,longitude);
             });
         } else {
             locationAvailable = false;
