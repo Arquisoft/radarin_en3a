@@ -36,7 +36,7 @@ function LocationManager(props) {
     });
     const { fetch } = useSession();
 
-    async function findNearFriends(){
+    async function FindNearFriends(){
         let webId = session.info.webId;
         let friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
         let response = await nearFriends(friendsOfLoggedUser,webId);
@@ -124,7 +124,7 @@ function LocationManager(props) {
 
     return (<div>
         <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button>
-        <Button className="add-location-button" onClick={findNearFriends}>{t('FindNearFriends')}</Button>
+        <Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
             <h6>{t('LocationCount1')}{locationThings.length} {t('LocationCount2')}</h6>
