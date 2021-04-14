@@ -2,6 +2,7 @@ const express = require('express');
 
 const User = require('./models/userModel');
 const router = express.Router();
+const async = require("async");
 
 
 // Get all users
@@ -78,6 +79,56 @@ router.post("/locations/add", async(req, res) => {
     }
     res.send(user);
 });
+
+router.post("/users/findNearest", async(req, res) => {
+    let friends = req.body.friends;
+    let id = req.body.webId;
+    let user = await User.findOne({webId: id});
+    let nearUser = null;
+    let distance = 0;
+    async.each(friends, async function(nearFriend){
+        const friend = await User.findOne({webId: nearFriend.webId});
+        let dis = distanceInKmBetweenEarthCoordinates(user.latitude,user.longitude,friend.latitude,friend.longitude);
+        if(nearUser == null){
+            nearUser = friend;
+            distance = dis;
+        }else if(dis<distance){
+                nearUser = friend;
+                distance = dis;
+        }
+    }, async function(err){
+        if(err){
+            res.status(500).send(err);
+        }else{
+            if(nearUser == null){
+                res.send("No nearby user");
+            }else{
+                res.send(nearUser.webId + " is near you");
+            }
+        }
+    });
+    
+
+});
+
+function degreesToRadians(degrees) {
+    return degrees * Math.PI / 180;
+  }
+  
+function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
+    var earthRadiusKm = 6371;
+  
+    var dLat = degreesToRadians(lat2-lat1);
+    var dLon = degreesToRadians(lon2-lon1);
+  
+    lat1 = degreesToRadians(lat1);
+    lat2 = degreesToRadians(lat2);
+  
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    return earthRadiusKm * c;
+}
 
 module.exports = router
 

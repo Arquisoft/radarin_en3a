@@ -54,3 +54,16 @@ export async function addLocation(id,long,lat){
       })
     return await response.json()
 }
+
+export async function nearFriends(friends,id){
+    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    let response = await fetch(apiEndPoint+'/users/findNearest', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            'friends':friends, 
+            'webId':id
+        })
+      })
+    return await response.json()
+}
