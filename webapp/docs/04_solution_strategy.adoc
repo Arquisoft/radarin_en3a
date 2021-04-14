@@ -48,3 +48,5 @@ Due to the weekly nature of the laboratory classes, the team can work in a semi-
 
 The sprints consist on the week in-between laboratory classes. In each class a meeting is held (online, due to Covid-19 regulations), and it works as an end-of-sprint meeting as well as a meeting to decide the next assignments. Additional meetings may be held as way of tracking progress and group-decission taking. The meetings logs are registered in the GitHub repository wiki.
 The team is also connected via other channels such as Microsoft Teams for small updates and decisions.
+
+Initially, personal git branches were made, with everyone making pull requests to the master branch. Later, it was decided that it was best to make a branch for each implementation (one for the webapp, one for the restapi, and so on), seeing as we swapped branches to work together on multiple things. They were periodically committed to the master branch.
