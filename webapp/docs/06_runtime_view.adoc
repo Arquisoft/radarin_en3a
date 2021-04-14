@@ -30,7 +30,9 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-This section is aimed to explain the different runtime views of the application.
+This section is aimed to explain the different runtime views of the application. In the following diagram an inteface mockup can be seen.
+
+image:webapp mockup editable.png["Mockup interface"]
 
 === Log in
 
