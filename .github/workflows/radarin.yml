@@ -4,7 +4,7 @@ on:
   push:
     branches: 
       - master 
-      - restapi-testing 
+      # - restapi-testing 
 
 jobs:
   build-test-webapp:
