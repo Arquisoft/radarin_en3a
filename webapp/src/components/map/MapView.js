@@ -65,7 +65,7 @@ const MapView = () => {
             setLocationList(list);
         })();
         getLastLocationForCurrentUser(session.info.webId);
-    }, [session]);
+    }, [session, getLastLocationForCurrentUser()]);
 
     L.Marker.prototype.options.icon = L.icon({
         iconUrl: icon,
