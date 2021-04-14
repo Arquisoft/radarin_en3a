@@ -45,7 +45,8 @@ const resources = {
           "Welcome":"Welcome!",
           "LogInPlaceholder":"Enter your POD URL here",
           "LogIn": "Log In",
-          "DefaultProfilePic": "Default profile pic for users"
+          "DefaultProfilePic": "Default profile pic for users",
+          "FindNearFriends": "Find near friends"
         }
     },
     es: {
@@ -90,7 +91,8 @@ const resources = {
           "Welcome":"Bienvenido!",
           "LogInPlaceholder":"Introduce aquí la URL de tu POD",
           "LogIn": "Iniciar sesión",
-          "DefaultProfilePic": "Icono por defecto para usuarios"
+          "DefaultProfilePic": "Icono por defecto para usuarios",
+          "FindNearFriends": "Encuentra amigos cercanos"
       }
     }
 };
