@@ -46,6 +46,7 @@ const resources = {
           "LogInPlaceholder":"Enter your POD URL here",
           "LogIn": "Log In",
           "DefaultProfilePic": "Default profile pic for users",
+          "MessageAdmin": "No users currently registered",
           "FindNearFriends": "Find near friends"
         }
     },
@@ -92,6 +93,7 @@ const resources = {
           "LogInPlaceholder":"Introduce aquí la URL de tu POD",
           "LogIn": "Iniciar sesión",
           "DefaultProfilePic": "Icono por defecto para usuarios",
+          "MessageAdmin": "Ningún usuario registrado",
           "FindNearFriends": "Encuentra amigos cercanos"
       }
     }

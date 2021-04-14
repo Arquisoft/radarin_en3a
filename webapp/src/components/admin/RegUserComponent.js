@@ -15,7 +15,7 @@ function RegUserComponent(props) {
         await removeUser(user);
     }
 
-    if(usersList.length === 0){return <h3>No users currently registered</h3>}
+    if(usersList.length === 0){return <h3>{t('MessageAdmin')}</h3>}
     return usersList.map(function(user,index){
         return (
         <li key={index}>
