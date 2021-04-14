@@ -96,7 +96,6 @@ function LocationManager(props) {
         let latitudeValue = document.getElementById("lat-span").textContent;
         let longitudeValue = document.getElementById("long-span").textContent;
         let locationText = document.getElementById("location-text-input").value;
-        console.log(locationText);
         addLocation(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
