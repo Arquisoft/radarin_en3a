@@ -14,7 +14,6 @@ import {
 import {useSession} from "@inrupt/solid-ui-react";
 import MarkerGenerator from "./MarkerGenerator";
 import {useTranslation} from "react-i18next";
-import {getUserByWebId} from "../../api/api";
 
 const MapView = () => {
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
@@ -44,12 +43,6 @@ const MapView = () => {
         }
     }
 
-    async function getLastLocationForCurrentUser(webIdCurrentUser) {
-        let allUserData = await getUserByWebId(webIdCurrentUser);
-       let lat = allUserData.latitude;
-       let long = allUserData.longitude;
-       state.mapCenter= [lat,long];
-    }
 
     useEffect(() => {
         if (!session) return;
@@ -64,8 +57,7 @@ const MapView = () => {
             const list = await getOrCreateLocationList(containerUri, session.fetch);
             setLocationList(list);
         })();
-        getLastLocationForCurrentUser(session.info.webId);
-    }, [session, getLastLocationForCurrentUser()]);
+    }, [session]);
 
     L.Marker.prototype.options.icon = L.icon({
         iconUrl: icon,
