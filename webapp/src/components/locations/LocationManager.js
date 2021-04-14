@@ -11,16 +11,10 @@ import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
-<<<<<<< HEAD
 //import {useLDflexList} from "@solid/react";
 //import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
 //import { nearFriends } from "../../api/api.js"
 //import {NotificationManager} from 'react-notifications';
-=======
-import {useLDflexList} from "@solid/react";
-import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
-import { nearFriends } from "../../api/api.js"
->>>>>>> 49e432fd7a3250205c7c0615fb1c7a1cb4529f07
 
 
 
