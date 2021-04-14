@@ -45,7 +45,7 @@ const MapView = () => {
     }
 
     async function getLastLocationForCurrentUser(webIdCurrentUser) {
-       await allUserData = getUserByWebId(webIdCurrentUser);
+        let allUserData = await getUserByWebId(webIdCurrentUser);
        let lat = allUserData.latitude;
        let long = allUserData.longitude;
        state.mapCenter= [lat,long];
@@ -66,8 +66,6 @@ const MapView = () => {
         })();
         getLastLocationForCurrentUser(session.info.webId);
     }, [session]);
-
-
 
     L.Marker.prototype.options.icon = L.icon({
         iconUrl: icon,
