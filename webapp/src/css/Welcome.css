@@ -51,9 +51,18 @@ li:hover{
     cursor: pointer;
 }
 
-li:hover button{
-    background-color: white;
-    color: black;
+.registered-user-list-item:hover{
+    text-decoration: none;
+    cursor: auto;
+    background-color: rgb(40,44,52);
+    color: white;
+}
+
+.friend-list-element:hover{
+    background-color:  rgb(40,44,52);
     text-decoration: underline;
-    cursor: pointer;
+}
+
+.friend-list-element:hover button{
+    text-decoration: underline;
 }
