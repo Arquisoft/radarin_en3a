@@ -5,11 +5,12 @@
 |===
 |Prior|Risk/Debt|Consequence| Suggested Solution
 | 1 | New technology |The most important debt is the tecnologies proposed, as both SOLID and React are new to us. | Read and obtain information about them to obtain the ability to program with them.
-| 2 | Working as a team |A possible lack of coordination, due to our inexperience as a working group. | The comunication and the use of tools like github issues to improve as a team.
-| 3 | Lack of time |Time management migth also be hard as we can not be 100% devoted to the project. | Organize our schedules and plan the work to be done is the best solution
-| 4 | Bad interaction with the app | Non-technical users will interact with it is important to make a good product. | Make a clean application were all the interactive things had a clear intention.
-| 5 | Poor performance of the application | The application may receive a lot of requests at the same time. | It is necessary to apply techniques that increase effectively the performance of the application.
-| 6 | The real geolocalization of the user | We cannot know if the GPS of our device return the exact position. | Try to return the exact position with the minimum error, checking it in different devices.
+| 2 | Log in Mobile App |Time comsumed trying to fix it could be used to add more features in the webapp | Make all the implementation in the web and try to solve the login in the future
+| 3 | Working as a team |A possible lack of coordination, due to our inexperience as a working group. | The comunication and the use of tools like github issues to improve as a team.
+| 4 | Lack of time |Time management migth also be hard as we can not be 100% devoted to the project. | Organize our schedules and plan the work to be done is the best solution
+| 5 | Bad interaction with the app | Non-technical users will interact with it is important to make a good product. | Make a clean application were all the interactive things had a clear intention.
+| 6 | Poor performance of the application | The application may receive a lot of requests at the same time. | It is necessary to apply techniques that increase effectively the performance of the application.
+| 7 | The real geolocalization of the user | We cannot know if the GPS of our device return the exact position. | Try to return the exact position with the minimum error, checking it in different devices.
 |===
 
-These are the initial risks/debts we can have, probably in the future, we must include another one.
+These are the risks/debts we have during the implementation, probably in the future, we must include another one.
