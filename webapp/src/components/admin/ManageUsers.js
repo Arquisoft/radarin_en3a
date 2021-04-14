@@ -19,7 +19,7 @@ function ManageUsers () {
     return(
         <div>
             <h2>{t('AdminList')}</h2>
-            <ul className="list-group">
+            <ul>
                 <RegUserComponent usersList={usersList}/>
             </ul>
         </div>

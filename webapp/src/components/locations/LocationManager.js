@@ -14,7 +14,6 @@ import {useTranslation} from "react-i18next";
 import {useLDflexList} from "@solid/react";
 import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
 import { nearFriends } from "../../api/api.js"
-import { useAlert } from 'react-alert'
 
 
 
@@ -23,7 +22,6 @@ function LocationManager(props) {
     const { session } = useSession();
     const [locationList, setLocationList] = useState();
     const { t } = useTranslation();
-    const alert = useAlert();
 
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
     const TEXT_PREDICATE = "http://schema.org/text";
@@ -42,9 +40,6 @@ function LocationManager(props) {
         let webId = session.info.webId;
         let friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
         let response = await nearFriends(friendsOfLoggedUser,webId);
-        return () => {
-            alert.show(response)
-        };
     }
 
     async function getOrCreateLocationList(containerUri, fetch) {
@@ -124,7 +119,9 @@ function LocationManager(props) {
     }
 
     return (<div>
-        <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button><br/>
+        <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button>
+        <br/>
+        <br />
         <Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
