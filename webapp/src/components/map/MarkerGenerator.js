@@ -15,13 +15,12 @@ function MarkerGenerator(props) {
         let longitudeParsed = parseFloat(coordinatesSplit[1]);
         let tagForMarker = coordinatesSplit[2];
         let timestampOfThing = locThing._entities[7];
-        let timestampOfThingSplit = timestampOfThing.split("^")
+        let timestampOfThingSplit = timestampOfThing.split("^");
         let timestampOfThingFormatted = timestampOfThingSplit[0];
         timestampOfThingFormatted = timestampOfThingFormatted.replace(/^"(.*)"$/, '$1');
         timestampOfThingFormatted = timestampOfThingFormatted.split(".")[0];
         timestampOfThingFormatted = timestampOfThingFormatted.replace("T"," ");
         let coordinatesForCurrentMarker = [ latitudeParsed, longitudeParsed];
-
     return (<div>
         <Marker key={index} position={coordinatesForCurrentMarker}>
             <Popup>{tagForMarker}

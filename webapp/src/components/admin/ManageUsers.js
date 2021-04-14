@@ -28,7 +28,7 @@ function ManageUsers () {
     return(
         <div>
             <h2>{t('AdminList')}</h2>
-            {usersList.map((user) => 
+            {usersList.stringify().map((user) =>
                 {return <ListGroup horizontal style={{ margin: "20px" }}>
                             <ListGroup.Item style={{ minWidth: "500px", textAlign: "center" }}>
                                 {user.webId}
@@ -41,7 +41,6 @@ function ManageUsers () {
                         </ListGroup>      
                 }
             )}
-
         </div>
     );
 }
