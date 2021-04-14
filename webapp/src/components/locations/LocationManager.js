@@ -11,6 +11,10 @@ import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
+import {useLDflexList} from "@solid/react";
+import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
+import { nearFriends } from "../../api/api.js"
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 
 function LocationManager(props) {
@@ -31,6 +35,15 @@ function LocationManager(props) {
         return { dataset: locationList, thing: t };
     });
     const { fetch } = useSession();
+
+    async function findNearFriends(){
+        let webId = session.info.webId;
+        let friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
+        let response = await nearFriends(friendsOfLoggedUser,webId);
+        return () => {
+            NotificationManager.info(response);
+        };
+    }
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -111,6 +124,7 @@ function LocationManager(props) {
 
     return (<div>
         <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button>
+        <Button className="add-location-button" onClick={findNearFriends}>{t('FindNearFriends')}</Button>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
             <h6>{t('LocationCount1')}{locationThings.length} {t('LocationCount2')}</h6>

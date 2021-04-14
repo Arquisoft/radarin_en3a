@@ -9,7 +9,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.10",
-    "react-leaflet": "^3.1.0"
+    "react-leaflet": "^3.1.0",
+    "react-notifications": "^1.7.2"
   },
   "name": "radarin_en3a",
   "description": "![CI for radarin](https://github.com/arquisoft/radarin_en3a/workflows/CI%20for%20radarin/badge.svg)\r [![codecov](https://codecov.io/gh/Arquisoft/radarin_en3a/branch/master/graph/badge.svg?token=ZC1BH8YEOO)](https://codecov.io/gh/Arquisoft/radarin_en3a)\r [![Codacy Badge](https://app.codacy.com/project/badge/Grade/09f5dcc06a2f48a28aa42af4ab82f949)](https://www.codacy.com/gh/Arquisoft/radarin_en3a/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/radarin_en3a&amp;utm_campaign=Badge_Grade)\r # Radarin project structure\r Link to the deployed sample application: [radarinen3a](https://radarinen3awebapp.herokuapp.com/). Note that sometimes **it can take a while to load** because Heroku in the free plan, takes the containers to sleep when they are not used for some time and taking them up takes time.",
