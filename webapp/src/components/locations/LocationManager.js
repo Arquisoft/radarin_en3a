@@ -11,12 +11,15 @@ import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 //import {useLDflexList} from "@solid/react";
 //import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
 //import { nearFriends } from "../../api/api.js"
 //import {NotificationManager} from 'react-notifications';
 
 
+toast.configure();
 
 function LocationManager(props) {
 
@@ -40,12 +43,13 @@ function LocationManager(props) {
     //const webId = session.info.webId;
     //const friendsNear = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
 
-    //async function FindNearFriends(){
+    async function FindNearFriends(){
         //let amigos = [];
         //friendsNear.map((friend) => amigos.push(friend));
         //let amigo = await nearFriends(friendsNear,webId);
         //NotificationManager.info("amigo");
-    //}
+        toast("Here comes the message");
+    }
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -128,6 +132,7 @@ function LocationManager(props) {
     //<Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
 
     return (<div>
+        <Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
         <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button><br/>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
