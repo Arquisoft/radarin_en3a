@@ -15,9 +15,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //import {useLDflexList} from "@solid/react";
 //import { getDefaultSession} from '@inrupt/solid-client-authn-browser';
-//import { nearFriends } from "../../api/api.js"
-//import {NotificationManager} from 'react-notifications';
-
+import { nearFriends } from "../../api/api.js"
+import { FOAF } from "@inrupt/vocab-common-rdf";
+//import { fetch } from "@inrupt/solid-client-authn-browser";
 
 toast.configure();
 
@@ -40,15 +40,20 @@ function LocationManager(props) {
     });
     const { fetch } = useSession();
 
-    //const webId = session.info.webId;
+    const webId = session.info.webId;
     //const friendsNear = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
 
     async function FindNearFriends(){
-        //let amigos = [];
-        //friendsNear.map((friend) => amigos.push(friend));
-        //let amigo = await nearFriends(friendsNear,webId);
-        //NotificationManager.info("amigo");
+        let amigos = [];
+        const profileDataset = await getSolidDataset(webId, { fetch: fetch });
+        const profile = getThing(profileDataset, webId);
+        let promises = new Promise((resolve, reject) => {
+            resolve(getUrlAll(profile, FOAF.knows));
+        });
+        promises.forEach(friend => amigos.push(friend + "/profile/card#me" ));
+        let amigo = await nearFriends(amigos,webId);
         toast("Here comes the message");
+        toast(amigo);
     }
 
     async function getOrCreateLocationList(containerUri, fetch) {
