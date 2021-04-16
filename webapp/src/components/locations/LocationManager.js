@@ -45,12 +45,13 @@ function LocationManager(props) {
 
     async function FindNearFriends(){
         let amigos = [];
-        const profileDataset = await getSolidDataset(webId, { fetch: fetch });
+        const profileDataset = await getSolidDataset(webId, {fetch: session.fetch} );
         const profile = getThing(profileDataset, webId);
         let promises = new Promise((resolve, reject) => {
             resolve(getUrlAll(profile, FOAF.knows));
         });
-        promises.forEach(friend => amigos.push(friend + "/profile/card#me" ));
+        Object.values(promises).forEach(friend => amigos.push(friend));
+        //promises.forEach(friend => amigos.push(friend));
         let amigo = await nearFriends(amigos,webId);
         toast("Here comes the message");
         toast(amigo);
