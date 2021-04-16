@@ -89,7 +89,7 @@ router.post("/users/findNearest", async(req, res) => {
     console.log(friends);
     async.each(friends, async function(nearFriend){
         console.log(nearFriend);
-        const friend = await User.findOne({webId: nearFriend});
+        const friend = await User.findOne({webId: nearFriend.webId});
         if(friend != null){
             let dis = distanceInKmBetweenEarthCoordinates(user.latitude,user.longitude,friend.latitude,friend.longitude);
             if(nearUser == null){

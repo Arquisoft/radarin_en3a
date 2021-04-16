@@ -65,5 +65,5 @@ export async function nearFriends(friends,id){
             'webId':id
         })
       })
-    return await response.json()
+    return await response.text();
 }
