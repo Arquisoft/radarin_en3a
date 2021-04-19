@@ -52,7 +52,7 @@ function LocationManager(props) {
     async function FindNearFriends(){
         let amigos = {};
         let promises = await getFriendsForPOD().then(function(list){return list;});
-        promises.forEach(friend => amigos.webId = friend);
+        promises.forEach(friend => amigos.push(friend));
         let amigo = await nearFriends(amigos,webId);
         toast(amigo);
     }
