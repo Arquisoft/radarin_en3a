@@ -14,6 +14,8 @@ import {
 import {useSession} from "@inrupt/solid-ui-react";
 import MarkerGenerator from "./MarkerGenerator";
 import {useTranslation} from "react-i18next";
+import FriendMarkerGenerator from "./FriendMarkerGenerator";
+
 
 const MapView = () => {
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
@@ -24,7 +26,6 @@ const MapView = () => {
     const [state] = useState({
         mapCenter: [43.542, -6.594]
     });
-
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -42,7 +43,6 @@ const MapView = () => {
             }
         }
     }
-
 
     useEffect(() => {
         if (!session) return;
@@ -76,6 +76,7 @@ const MapView = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <MarkerGenerator locationList={locationList} />
+                <FriendMarkerGenerator />
             </MapContainer>
         </div>
         </div>

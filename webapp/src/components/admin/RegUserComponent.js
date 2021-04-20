@@ -20,6 +20,7 @@ function RegUserComponent(props) {
         return (
         <li key={index} className="registered-user-list-item">
             {user.webId}
+            <br/>
             <Button className="btn-danger" data-testid={user.webId} onClick={
                 () => DeleteUser(user.webId)
             }>{t('AdminDelete')}</Button>

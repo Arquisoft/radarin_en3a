@@ -1,20 +1,26 @@
 import {
-    addDatetime, addStringNoLocale, addUrl,
-    createSolidDataset, createThing,
+    addDatetime,
+    addStringNoLocale,
+    addUrl,
+    createSolidDataset,
+    createThing,
     getSolidDataset,
     getSourceUrl,
-    getThing, getThingAll,
-    getUrlAll, removeThing,
-    saveSolidDatasetAt, setThing
+    getThing,
+    getThingAll,
+    getUrlAll,
+    removeThing,
+    saveSolidDatasetAt,
+    setThing
 } from "@inrupt/solid-client";
 import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { nearFriends } from "../../api/api.js"
-import { FOAF } from "@inrupt/vocab-common-rdf";
+import {nearFriends} from "../../api/api.js"
+import {FOAF} from "@inrupt/vocab-common-rdf";
 
 toast.configure();
 
@@ -42,11 +48,9 @@ function LocationManager(props) {
     async function getFriendsForPOD(){
         const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
         const profile = getThing(profileDataset, webId);
-        let promises = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             resolve(getUrlAll(profile, FOAF.knows));
         });
-
-        return promises;
     }
 
     async function FindNearFriends(){

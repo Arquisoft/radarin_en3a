@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { HashRouter, Redirect, Route} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../css/Navigation.css';
-import NavAuthenticated from './/NavAuthenticated';
+import NavAuthenticated from './NavAuthenticated';
 import { handleIncomingRedirect, login, getDefaultSession } from '@inrupt/solid-client-authn-browser'
 
 import {
