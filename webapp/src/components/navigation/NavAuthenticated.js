@@ -18,6 +18,17 @@ import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
 import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
+import "react-toastify/dist/ReactToastify.css";
+import { nearFriends } from "../../api/api.js";
+import { toast } from "react-toastify";
+import { FOAF } from "@inrupt/vocab-common-rdf";
+import {
+    getSolidDataset, getThing, getUrlAll,
+} from "@inrupt/solid-client";
+import not from "../../assets/notificación.png";
+import notRed from "../../assets/notificaciónPunto.png";
+import Popover from '@material-ui/core/Popover';
+import UserNotification from "./UserNotification";
 
 function NavAuthenticated(){
 
@@ -50,6 +61,42 @@ function NavAuthenticated(){
         window.location.reload();
     };
 
+    async function getFriendsForPOD(){
+        const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
+        const profile = getThing(profileDataset, webId);
+        let promises = new Promise((resolve, reject) => {
+            resolve(getUrlAll(profile, FOAF.knows));
+        });
+
+        return promises;
+    }
+
+    const [amigo, setAmigo] = useState([])
+    const [notificaciones, setNotificaciones]= useState(not);
+
+    async function FindNearFriends(){
+        let amigos = [];
+        let promises = await getFriendsForPOD().then(function(list){return list;});
+        promises.forEach(friend => amigos.push(friend));
+        setNotificaciones(notRed);
+        setAmigo(amigo);
+        await nearFriends(amigos,webId).then((amg) => {amigo.push(amg); toast(amg);});
+        console.log(amigo);
+    }
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        setNotificaciones(not);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
         return (
             <div>
@@ -70,21 +117,48 @@ function NavAuthenticated(){
                             <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
                         </DropdownButton>
-                
-                <Nav className="mr-auto">
-                    {(() => {
-                        if (role != null && role === "Admin") {
-                            return (
-                                <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
-                            );
-                        }
-                    })()}
-                    <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
-                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
-                </Nav>
+
+                        <Nav className="mr-auto">
+                            {(() => {
+                                if (role != null && role === "Admin") {
+                                    return (
+                                        <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                                    );
+                                }
+                            })()}
+                            <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                            <Button className="mt-1 mr-2" id="friends" onClick={() => FindNearFriends()}>Find near friends</Button>
+                            <Button className="notification-button" onClick={handleClick}><img
+                                            src={notificaciones}
+                                            width="40"
+                                            height="40"
+                                            className="d-inline-block align-top"
+                                            alt="notificacion"
+                                        />
+                            </Button>
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                                }}
+                            >
+                                <ul>
+                                    <UserNotification notif={amigo}/>
+                                </ul>
+                            </Popover>
+                            <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
+                        </Nav>
                     </Navbar.Collapse>
                 </Navbar>
                 <CombinedDataProvider
