@@ -10,7 +10,7 @@ import {Marker, Popup} from "react-leaflet";
 function FriendMarkerGenerator(props) {
 
     let [friendList] = useState([]);
-    let [friendLocationList] = useState([]);
+    let [friendLocationList,setFriendLocationList] = useState([]);
 
     const LeafIcon = L.Icon.extend({
         options: {}
@@ -34,17 +34,21 @@ function FriendMarkerGenerator(props) {
 
     async function retrieveFriendLocations(){
         for(let i = 0; i < friendList.length; i++){
+            console.log(friendList[i]);
             const friendInAPI = await getUserByWebId(friendList[i]);
             if(friendInAPI != null) {
                 let friendWithDataToAdd = {"friendId": friendList[i], "latitude": friendInAPI.latitude,
                     "longitude" : friendInAPI.longitude};
-                friendLocationList.push(friendWithDataToAdd);
+                setFriendLocationList([...friendLocationList,friendWithDataToAdd]);
             }
         }
     }
 
     useEffect(() => {
         (async () => {
+            if(friendLocationList.length !== 0){
+                return;
+            }
             let retrievedFriends = await getFriendsForPOD().then(function(list){return list;});
             retrievedFriends.forEach(friend => friendList.push(friend));
             await retrieveFriendLocations();

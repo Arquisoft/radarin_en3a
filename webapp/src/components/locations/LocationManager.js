@@ -126,6 +126,9 @@ function LocationManager(props) {
         let latitudeValue = document.getElementById("lat-span").textContent;
         let longitudeValue = document.getElementById("long-span").textContent;
         let locationText = document.getElementById("location-text-input").value;
+        if(locationText === ""){
+            locationText = "No tag";
+        }
         addLocations(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
@@ -158,11 +161,7 @@ function LocationManager(props) {
                 <TableColumn property={TEXT_PREDICATE} header={t('Tag')}
                              body={function({ value }) {
                                  let separateCoords = value.split(" / ")
-                                 if(separateCoords[2] === ""){
-                                     return "No tag";
-                                 }else{
-                                     return separateCoords[2];
-                                 }
+                                 return separateCoords[2];
                              }
                              }
                 />
