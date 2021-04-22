@@ -25,6 +25,7 @@ function Navigation () {
     };
 
     const REDIRECT_URL = window.location;
+    let user_url = "";
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [issuer, setIssuer] = useState("");
 
@@ -37,18 +38,13 @@ function Navigation () {
         });
     }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    /*
-    let start="https://";
-    let uid = start.concat('',info.clientAppId);
-    let end = uid.concat('',"@solidcommunity.net");
-    setWebId(end);
-    */ 
-
     const handleLogin = (e) => {
+        if(!user_url.startsWith("http://"))
+            autoCompleteSolidLogin(issuer);
         e.preventDefault();
         login({
             redirectUrl: REDIRECT_URL,
-            oidcIssuer: issuer,
+            oidcIssuer: user_url,
             clientName: "Radarin app",
         });
     };
@@ -57,14 +53,14 @@ function Navigation () {
         let start="https://";
         let uid = start.concat('',name);
         let end = uid.concat('',".solidcommunity.net");
-        setIssuer(end);
+        user_url = end;
     }
 
     const autoCompleteInruptLogin = (name) => {
         let start="https://";
         let uid = start.concat('',name);
         let end = uid.concat('',".inrupt.net");
-        setIssuer(end);
+        user_url = end;
     }
 
 
@@ -112,7 +108,6 @@ function Navigation () {
                                             type="text"
                                             value={issuer}
                                             onChange={(e) => {
-                                                //autoCompleteLogin(e.target.value);
                                                 setIssuer(e.target.value);
                                             }}                                
                                         />
