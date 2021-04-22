@@ -14,7 +14,7 @@ const resources = {
         "navBarProfile": "Profile",
         "navBarAbout": "About us",
         "navBarMap": "Map",
-        "navBarPlaceHolder": "Enter your POD URL here",
+        "navBarPlaceHolder": "Enter your POD user here",
           "navBarLocations": "Locations",
           "navBarFriends": "Friends",
         "InitialWelcomeMessage": "You are logged out of your POD.",
@@ -47,7 +47,10 @@ const resources = {
           "LogIn": "Log In",
           "DefaultProfilePic": "Default profile pic for users",
           "MessageAdmin": "No users currently registered",
-          "FindNearFriends": "Find near friends"
+          "FindNearFriends": "Find near friends",
+          "navBarService" : "Choose POD",
+          "navBarSolid" :"Solid",
+          "navBarInrupt" :"Inrupt"
         }
     },
     es: {
@@ -61,7 +64,7 @@ const resources = {
         "navBarProfile": "Perfil",
         "navBarAbout": "Acerca de nosotros",
         "navBarMap": "Mapa",
-        "navBarPlaceHolder": "Introduce tu POD URL aquí",
+        "navBarPlaceHolder": "Introduzca su usuario del POD aquí",
           "navBarLocations": "Ubicaciones",
           "navBarFriends": "Amigos",
         "InitialWelcomeMessage": "Te has desvinculado de tu POD.",
@@ -94,7 +97,10 @@ const resources = {
           "LogIn": "Iniciar sesión",
           "DefaultProfilePic": "Icono por defecto para usuarios",
           "MessageAdmin": "Ningún usuario registrado",
-          "FindNearFriends": "Encuentra amigos cercanos"
+          "FindNearFriends": "Encuentra amigos cercanos",
+          "navBarService" : "Elegir POD",
+          "navBarSolid" :"Solid",
+          "navBarInrupt" :"Inrupt"
       }
     }
 };

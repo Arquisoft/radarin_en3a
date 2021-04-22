@@ -32,10 +32,17 @@ function Navigation () {
     useEffect(() => {
         handleIncomingRedirect({
             restorePreviousSession: true,
-        }).then((info) => {
+        }).then((info) => {                        
             setWebId(info.webId);
         });
-    }, [webId]);
+    }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    /*
+    let start="https://";
+    let uid = start.concat('',info.clientAppId);
+    let end = uid.concat('',"@solidcommunity.net");
+    setWebId(end);
+    */ 
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -45,6 +52,20 @@ function Navigation () {
             clientName: "Radarin app",
         });
     };
+
+    const autoCompleteSolidLogin = (name) => {
+        let start="https://";
+        let uid = start.concat('',name);
+        let end = uid.concat('',".solidcommunity.net");
+        setIssuer(end);
+    }
+
+    const autoCompleteInruptLogin = (name) => {
+        let start="https://";
+        let uid = start.concat('',name);
+        let end = uid.concat('',".inrupt.net");
+        setIssuer(end);
+    }
 
 
     const { session } = useSession();
@@ -76,25 +97,30 @@ function Navigation () {
                     </DropdownButton>
                     <Nav className="mr-auto">
                         <Nav.Link  className="mt-1 mr-2" href="https://github.com/Arquisoft/radarin_en3a">{t('navBarAbout')}</Nav.Link>
-                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>
-                            <div>
-                                <div className="log-in-panel">
-                                        <p>{webId ? `Logged in as ${webId}` : ""}</p>
-                                        <div>
-                                            <form>
-                                                <input
-                                                    placeholder={t("LogInPlaceholder")}
-                                                    type="text"
-                                                    value={issuer}
-                                                    onChange={(e) => {
-                                                        setIssuer(e.target.value);
-                                                    }}
-                                                />
-                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
-                                            </form>
-                                        </div>
+                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>                                                    
+                        <DropdownButton id="dropdown-service-button" style={{margin: "16px"}} variant="secondary" title={t('navBarService')}>
+                            <Dropdown.Item as="button" onClick={() => autoCompleteSolidLogin(issuer)}>{t('navBarSolid')}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={() => autoCompleteInruptLogin(issuer)}>{t('navBarInrupt')}</Dropdown.Item>
+                        </DropdownButton>
+                        <div>
+                            <div className="log-in-panel">
+                                <p>{webId ? `Logged in as ${webId}` : ""}</p>
+                                <div>
+                                    <form>
+                                        <input
+                                            placeholder={t("LogInPlaceholder")}
+                                            type="text"
+                                            value={issuer}
+                                            onChange={(e) => {
+                                                //autoCompleteLogin(e.target.value);
+                                                setIssuer(e.target.value);
+                                            }}                                
+                                        />
+                                        <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
+                                    </form>
                                 </div>
                             </div>
+                        </div>                        
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
