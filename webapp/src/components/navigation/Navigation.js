@@ -102,8 +102,9 @@ function Navigation () {
                             <div className="log-in-panel">
                                 <p>{webId ? `Logged in as ${webId}` : ""}</p>
                                 <div>
-                                    <form>
+                                    <form className="log-in-form">
                                         <input
+                                            name = "user-name"
                                             placeholder={t("LogInPlaceholder")}
                                             type="text"
                                             value={issuer}

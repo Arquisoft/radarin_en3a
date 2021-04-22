@@ -48,10 +48,11 @@ defineFeature(feature, test => {
             waitUntil: "networkidle2",
           })
         ]);
-        await expect(await page.url()).toBe("https://test2e.localhost:3000/");
+        await expect(await page.url()).toBe("https://teste2e.localhost:3000/");
     });
 
     then('I should be redirected to your Solid POD', async () => {
+      
     });
     
   });
