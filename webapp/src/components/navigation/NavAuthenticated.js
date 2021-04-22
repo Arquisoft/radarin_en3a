@@ -18,6 +18,17 @@ import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
 import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
+import "react-toastify/dist/ReactToastify.css";
+import { nearFriends } from "../../api/api.js";
+import { toast } from "react-toastify";
+import { FOAF } from "@inrupt/vocab-common-rdf";
+import {
+    getSolidDataset, getThing, getUrlAll,
+} from "@inrupt/solid-client";
+import not from "../../assets/notificación.png";
+import notRed from "../../assets/notificaciónPunto.png";
+import Popover from '@material-ui/core/Popover';
+import UserNotification from "./UserNotification";
 
 function NavAuthenticated(){
 
@@ -28,6 +39,34 @@ function NavAuthenticated(){
     };
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
+
+    const [amigo, setAmigo] = useState([])
+    const [notificaciones, setNotificaciones]= useState(not);
+
+    async function getFriendsForPOD(){
+        const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
+        const profile = getThing(profileDataset, webId);
+        let promises = new Promise((resolve, reject) => {
+            resolve(getUrlAll(profile, FOAF.knows));
+        });
+
+        return promises;
+    }
+
+    async function FindNearFriends(){
+        let amigos = [];
+        let promises = await getFriendsForPOD().then(function(list){return list;});
+        promises.forEach(friend => amigos.push(friend));
+        setAmigo(amigo);
+        var mensaje = await nearFriends(amigos,webId)
+        if(mensaje !== "No nearby user"){
+            amigo.push(mensaje);
+            toast(mensaje);
+            setNotificaciones(notRed);
+        }
+        console.log(amigo);
+    }
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(async function (position) {
             console.log("Esto es lo que le estamos añadiendo al usuario: " + webId + " localización longitud: " + position.coords.longitude + " latitud: " + position.coords.latitude);
@@ -40,7 +79,12 @@ function NavAuthenticated(){
                 await addLocation(usuario._id, position.coords.longitude, position.coords.latitude );
                 setRole(usuario.role);
             }
+            const interval = setInterval(() => {
+                FindNearFriends();
+            }, 30000);
+            return () => clearInterval(interval);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role, webId]);
 
     const handleLogout = (e) => {
@@ -48,8 +92,21 @@ function NavAuthenticated(){
         logout();
         setWebId(undefined);
         window.location.reload();
+    };   
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        setNotificaciones(not);
     };
 
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
         return (
             <div>
@@ -70,21 +127,47 @@ function NavAuthenticated(){
                             <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
                         </DropdownButton>
-                
-                <Nav className="mr-auto">
-                    {(() => {
-                        if (role != null && role === "Admin") {
-                            return (
-                                <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
-                            );
-                        }
-                    })()}
-                    <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
-                    <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
-                    <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
-                </Nav>
+
+                        <Nav className="mr-auto">
+                            {(() => {
+                                if (role != null && role === "Admin") {
+                                    return (
+                                        <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                                    );
+                                }
+                            })()}
+                            <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                            <Button className="notification-button" onClick={handleClick}><img
+                                            src={notificaciones}
+                                            width="40"
+                                            height="40"
+                                            className="d-inline-block align-top"
+                                            alt="notificacion"
+                                        />
+                            </Button>
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                                }}
+                            >
+                                <ul>
+                                    <UserNotification notif={amigo}/>
+                                </ul>
+                            </Popover>
+                            <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
+                        </Nav>
                     </Navbar.Collapse>
                 </Navbar>
                 <CombinedDataProvider

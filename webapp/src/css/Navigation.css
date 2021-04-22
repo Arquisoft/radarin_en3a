@@ -59,3 +59,12 @@
 .log-in-btn:hover{
     background-color: darkgreen;
 }
+
+#friends{
+    margin-top: 0;
+    background-color: navy;
+}
+
+.notification-button{
+    background-color: grey;
+}
