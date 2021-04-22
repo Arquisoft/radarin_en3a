@@ -39,6 +39,34 @@ function NavAuthenticated(){
     };
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
+
+    const [amigo, setAmigo] = useState([])
+    const [notificaciones, setNotificaciones]= useState(not);
+
+    async function getFriendsForPOD(){
+        const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
+        const profile = getThing(profileDataset, webId);
+        let promises = new Promise((resolve, reject) => {
+            resolve(getUrlAll(profile, FOAF.knows));
+        });
+
+        return promises;
+    }
+
+    async function FindNearFriends(){
+        let amigos = [];
+        let promises = await getFriendsForPOD().then(function(list){return list;});
+        promises.forEach(friend => amigos.push(friend));
+        setAmigo(amigo);
+        var mensaje = await nearFriends(amigos,webId)
+        if(mensaje !== "No nearby user"){
+            amigo.push(mensaje);
+            toast(mensaje);
+            setNotificaciones(notRed);
+        }
+        console.log(amigo);
+    }
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(async function (position) {
             console.log("Esto es lo que le estamos añadiendo al usuario: " + webId + " localización longitud: " + position.coords.longitude + " latitud: " + position.coords.latitude);
@@ -51,7 +79,12 @@ function NavAuthenticated(){
                 await addLocation(usuario._id, position.coords.longitude, position.coords.latitude );
                 setRole(usuario.role);
             }
+            const interval = setInterval(() => {
+                FindNearFriends();
+            }, 30000);
+            return () => clearInterval(interval);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [role, webId]);
 
     const handleLogout = (e) => {
@@ -59,30 +92,7 @@ function NavAuthenticated(){
         logout();
         setWebId(undefined);
         window.location.reload();
-    };
-
-    async function getFriendsForPOD(){
-        const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
-        const profile = getThing(profileDataset, webId);
-        let promises = new Promise((resolve, reject) => {
-            resolve(getUrlAll(profile, FOAF.knows));
-        });
-
-        return promises;
-    }
-
-    const [amigo, setAmigo] = useState([])
-    const [notificaciones, setNotificaciones]= useState(not);
-
-    async function FindNearFriends(){
-        let amigos = [];
-        let promises = await getFriendsForPOD().then(function(list){return list;});
-        promises.forEach(friend => amigos.push(friend));
-        setNotificaciones(notRed);
-        setAmigo(amigo);
-        await nearFriends(amigos,webId).then((amg) => {amigo.push(amg); toast(amg);});
-        console.log(amigo);
-    }
+    };   
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -130,7 +140,6 @@ function NavAuthenticated(){
                             <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                             <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
                             <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
-                            <Button className="mt-1 mr-2" id="friends" onClick={() => FindNearFriends()}>Find near friends</Button>
                             <Button className="notification-button" onClick={handleClick}><img
                                             src={notificaciones}
                                             width="40"
