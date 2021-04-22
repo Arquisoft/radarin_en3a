@@ -1,4 +1,4 @@
-const { setup: setupDevServer } = require("jest-dev-server")
+const { setup: setupDevServer } = require("jest-dev-server");
 module.exports = async () => {
     await setupDevServer([
     {
@@ -18,5 +18,5 @@ module.exports = async () => {
         launchTimeout: 60000,
         debug: true,
         port: 3000
-    }])
-}
+    }]);
+};
