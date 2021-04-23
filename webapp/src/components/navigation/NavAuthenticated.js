@@ -30,6 +30,8 @@ import notRed from "../../assets/notificaciónPunto.png";
 import Popover from '@material-ui/core/Popover';
 import UserNotification from "./UserNotification";
 
+toast.configure();
+
 function NavAuthenticated(){
 
     const { session } = useSession();
@@ -59,7 +61,7 @@ function NavAuthenticated(){
         promises.forEach(friend => amigos.push(friend));
         setAmigo(amigo);
         var mensaje = await nearFriends(amigos,webId)
-        if(mensaje !== "No nearby user"){
+        if(mensaje === "No nearby user"){
             amigo.push(mensaje);
             toast(mensaje);
             setNotificaciones(notRed);
@@ -85,7 +87,7 @@ function NavAuthenticated(){
             return () => clearInterval(interval);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [role, webId]);
+    }, []);
 
     const handleLogout = (e) => {
         e.preventDefault();
