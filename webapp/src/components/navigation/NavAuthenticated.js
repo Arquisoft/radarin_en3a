@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
 import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
+import '../Help.js';
 
 function NavAuthenticated(){
 
@@ -83,6 +84,7 @@ function NavAuthenticated(){
                     <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
                     <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                    <Nav.Link  className="mt-1 mr-2" href="#/help">{t('navBarHelp')}</Nav.Link>
                     <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
                 </Nav>
                     </Navbar.Collapse>
@@ -106,7 +108,8 @@ function NavAuthenticated(){
                         <Route exact path="/map" component={MapView}/>
                         <Route exact path="/locations" component={LocationsView}/>
                         <Route exact path="/friends" component={FriendsView}/>
-                        <Route exact path="/manageUsers" component={ManageUsers}/>
+                        <Route exact path="/manageUsers" component={ManageUsers}/>                        
+                        <Route exact path="/help" component={Help}/>
                         <Redirect path="/" exact to="/profile" />
                     </div>
                 </div>
