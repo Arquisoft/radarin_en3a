@@ -72,7 +72,7 @@ function Navigation () {
             {session.info.isLoggedIn ? (
                     <NavAuthenticated/>
                 ) :
-<<<<<<< HEAD
+
                 (
                     <div>
                         <Navbar className="navbar-main" collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
@@ -125,7 +125,7 @@ function Navigation () {
                         <Redirect path="/" exact to="/" />
                     </div>)}
         </div>
-=======
+
                     (
                         <div>
             <Navbar className="navbar-main" collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
@@ -178,7 +178,7 @@ function Navigation () {
                 <Redirect path="/" exact to="/" />
                         </div>)}
                     </div>
->>>>>>> master
+
     </HashRouter>)
 }
 
