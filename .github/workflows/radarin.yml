@@ -4,7 +4,7 @@ on:
   push:
     branches: 
       - master 
-      - Help-page 
+      # - Help-page 
 
 jobs:
   build-test-webapp:
