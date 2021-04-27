@@ -17,6 +17,7 @@ import {
 import Button from "react-bootstrap/Button";
 import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
 import SignUp from '../SignUp';
+import Help from '../help/Help';
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -93,7 +94,8 @@ function Navigation () {
                     </DropdownButton>
                     <Nav className="mr-auto">
                         <Nav.Link  className="mt-1 mr-2" href="https://github.com/Arquisoft/radarin_en3a">{t('navBarAbout')}</Nav.Link>
-                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>                                                    
+                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>    
+                        <Nav.Link  className="mt-1 mr-2" href="#/help">{t('navBarHelp')}</Nav.Link>                                                 
                         <DropdownButton id="dropdown-service-button" style={{margin: "16px"}} variant="secondary" title={t('navBarService')}>
                             <Dropdown.Item as="button" onClick={() => autoCompleteSolidLogin(issuer)}>{t('navBarSolid')}</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => autoCompleteInruptLogin(issuer)}>{t('navBarInrupt')}</Dropdown.Item>
@@ -121,6 +123,7 @@ function Navigation () {
             </Navbar>
                 <Route exact path="/" component={WelcomeNoAuth} />
                 <Route exact path="/register" component={SignUp} />
+                <Route exact path="/help" component={Help} />
                 <Redirect path="/" exact to="/" />
                         </div>)}
                     </div>
