@@ -17,7 +17,7 @@ function ManageUsers () {
     }, []);
 
     return(
-        <div>
+        <div className="registered-user-container">
             <h2>{t('AdminList')}</h2>
             <ul>
                 <RegUserComponent usersList={usersList}/>
