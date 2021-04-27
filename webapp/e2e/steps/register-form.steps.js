@@ -20,6 +20,7 @@ defineFeature(feature, test => {
       //If there were someday buttons below here, the world would be a better place...
       //await expect(page).toClick('button', {text : 'Solid Community'});      
       await page.goto('https://solidcommunity.net/register');
+      await expect(page).toMatch('Already have an account?');
     });
   });
 

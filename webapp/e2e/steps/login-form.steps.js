@@ -14,17 +14,18 @@ defineFeature(feature, test => {
         });
     
         when('I fill in the user name field and press the login button', async () => {
-            console.log('filling the user name...');
-            await expect(page).toFillForm('form[name="form"]',
-                {
-                    userName: username
-                });
-            console.log('Clicking Log in...');
-            await expect(page).toClick('button', { text: 'Log in' });            
+            await page.waitForSelector('input[name="userName"]');
+            await expect(page).toFill('input[name="userName"]', username);            
+            
+            await page.waitForSelector('button[text="Log in"]');
+            await expect(page).toClick('button', { text: 'Log in' }); 
+            
+            await page.goto('https://solidcommunity.net/login');
+            await page.toMatch('Login');
         });
     
         then('I should enter in my radarin profile', async () => {
-            //await expect(page).toMatch('http://localhost:3000/#/profile');
+            await expect(page).toMatch('http://localhost:3000/#/profile');
         });
     });
 });
