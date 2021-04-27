@@ -25,6 +25,7 @@ const MapView = () => {
     const forceUpdate = React.useCallback(function(){
         updateState({});
         updateLocationList();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //TODO center map on last location in the POD
@@ -62,6 +63,7 @@ const MapView = () => {
 
     useEffect(() => {
        updateLocationList();
+       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
     L.Marker.prototype.options.icon = L.icon({
