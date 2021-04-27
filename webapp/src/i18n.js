@@ -14,7 +14,7 @@ const resources = {
         "navBarProfile": "Profile",
         "navBarAbout": "About us",
         "navBarMap": "Map",
-        "navBarPlaceHolder": "Enter your POD URL here",
+        "navBarPlaceHolder": "Enter your POD user here",
           "navBarLocations": "Locations",
           "navBarFriends": "Friends",
           "navBarHelp": "Help",
@@ -44,11 +44,14 @@ const resources = {
           "LoggedInAs": "You are logged in as: ",
           "WebIdIs":"Your webID is: ",
           "Welcome":"Welcome!",
-          "LogInPlaceholder":"Enter your POD URL here",
+          "LogInPlaceholder":"Enter your POD username here",
           "LogIn": "Log In",
           "DefaultProfilePic": "Default profile pic for users",
           "MessageAdmin": "No users currently registered",
-          "FindNearFriends": "Find near friends"
+          "FindNearFriends": "Find near friends",
+          "navBarService" : "Choose POD",
+          "navBarSolid" :"Solid",
+          "navBarInrupt" :"Inrupt"
         }
     },
     es: {
@@ -62,7 +65,7 @@ const resources = {
         "navBarProfile": "Perfil",
         "navBarAbout": "Acerca de nosotros",
         "navBarMap": "Mapa",
-        "navBarPlaceHolder": "Introduce tu POD URL aquí",
+        "navBarPlaceHolder": "Introduzca su usuario del POD aquí",
           "navBarLocations": "Ubicaciones",
           "navBarFriends": "Amigos",
           "navBarHelp": "Ayuda",
@@ -92,11 +95,14 @@ const resources = {
           "LoggedInAs": "Iniciaste sesión como: ",
           "WebIdIs":"Tu webID es: ",
           "Welcome":"Bienvenido!",
-          "LogInPlaceholder":"Introduce aquí la URL de tu POD",
+          "LogInPlaceholder":"Introduce aquí el nombre de tu POD",
           "LogIn": "Iniciar sesión",
           "DefaultProfilePic": "Icono por defecto para usuarios",
           "MessageAdmin": "Ningún usuario registrado",
-          "FindNearFriends": "Encuentra amigos cercanos"
+          "FindNearFriends": "Encuentra amigos cercanos",
+          "navBarService" : "Elegir POD",
+          "navBarSolid" :"Solid",
+          "navBarInrupt" :"Inrupt"
       }
     }
 };

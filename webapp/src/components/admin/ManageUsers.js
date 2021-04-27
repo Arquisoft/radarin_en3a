@@ -14,7 +14,7 @@ function ManageUsers () {
             let usuarios =  await getUsers();
             setUserList(usuarios);
         })();
-    }, [usersList]);
+    }, []);
 
     return(
         <div>
