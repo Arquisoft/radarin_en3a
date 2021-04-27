@@ -61,7 +61,7 @@ function NavAuthenticated(){
         promises.forEach(friend => amigos.push(friend));
         setAmigo(amigo);
         var mensaje = await nearFriends(amigos,webId)
-        if(mensaje === "No nearby user"){
+        if(mensaje !== "No nearby user"){
             amigo.push(mensaje);
             toast(mensaje);
             setNotificaciones(notRed);
@@ -98,7 +98,7 @@ function NavAuthenticated(){
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
+    const handleClick =  (event) => {
         setAnchorEl(event.currentTarget);
         setNotificaciones(not);
     };
