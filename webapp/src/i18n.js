@@ -51,7 +51,20 @@ const resources = {
           "FindNearFriends": "Find near friends",
           "navBarService" : "Choose POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+
+          "helpLanguageTitle":"Language",
+          "helpLanguage":"placeholder",
+          "helpLogInTitle":"How to log in and out",
+          "helpLogIn":"placeholder",
+          "helpLocationSaveTitle":"How to save your location ",
+          "helpLocationSave":"placeholder",
+          "helpLocationCheckTitle":"How to see your locations",
+          "helpLocationCheck":"placeholder",
+          "helpFriendsTitle":"How to see your friends list",
+          "helpFriends":"placeholder",
+          "helpNotificationsTitle":"Notifications",
+          "helpNotifications":"placeholder"
         }
     },
     es: {
@@ -102,7 +115,20 @@ const resources = {
           "FindNearFriends": "Encuentra amigos cercanos",
           "navBarService" : "Elegir POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+
+          "helpLanguageTitle":"Lenguaje",
+          "helpLanguage":"placeholder",
+          "helpLogInTitle":"Cómo iniciar y salir de la sesión",
+          "helpLogIn":"placeholder",
+          "helpLocationSaveTitle":"Cómo guardar la localización",
+          "helpLocationSave":"placeholder",
+          "helpLocationCheckTitle":"Cómo ver las localizaciones guardadas",
+          "helpLocationCheck":"placeholder",
+          "helpFriendsTitle":"Cómo ver tu lista de amigos",
+          "helpFriends":"placeholder",
+          "helpNotificationsTitle":"Notificaciones",
+          "helpNotifications":"placeholder"
       }
     }
 };
