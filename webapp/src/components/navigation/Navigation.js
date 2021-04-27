@@ -33,7 +33,7 @@ function Navigation () {
     useEffect(() => {
         handleIncomingRedirect({
             restorePreviousSession: true,
-        }).then((info) => {
+        }).then((info) => {                        
             setWebId(info.webId);
         });
     }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -72,6 +72,7 @@ function Navigation () {
             {session.info.isLoggedIn ? (
                     <NavAuthenticated/>
                 ) :
+<<<<<<< HEAD
                 (
                     <div>
                         <Navbar className="navbar-main" collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
@@ -124,6 +125,60 @@ function Navigation () {
                         <Redirect path="/" exact to="/" />
                     </div>)}
         </div>
+=======
+                    (
+                        <div>
+            <Navbar className="navbar-main" collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">
+                <Navbar.Brand href="#">
+                    <img
+                        src={logo}
+                        width="40"
+                        height="40"
+                        className="d-inline-block align-top"
+                        alt="Radarin logo"
+                    />
+                    <p className="radarin-title">Radarin</p>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <DropdownButton id="dropdown-item-button" style={{margin: "16px"}} variant="secondary" title={t('navBarLanguage')}>
+                        <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
+                        <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
+                    </DropdownButton>
+                    <Nav className="mr-auto">
+                        <Nav.Link  className="mt-1 mr-2" href="https://github.com/Arquisoft/radarin_en3a">{t('navBarAbout')}</Nav.Link>
+                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>                                                    
+                        <DropdownButton id="dropdown-service-button" style={{margin: "16px"}} variant="secondary" title={t('navBarService')}>
+                            <Dropdown.Item as="button" onClick={() => autoCompleteSolidLogin(issuer)}>{t('navBarSolid')}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={() => autoCompleteInruptLogin(issuer)}>{t('navBarInrupt')}</Dropdown.Item>
+                        </DropdownButton>
+                        <div>
+                            <div className="log-in-panel">
+                                <p>{webId ? `Logged in as ${webId}` : ""}</p>
+                                <div>
+                                    <form>
+                                        <input
+                                            placeholder={t("LogInPlaceholder")}
+                                            type="text"
+                                            value={issuer}
+                                            onChange={(e) => {
+                                                setIssuer(e.target.value);
+                                            }}                                
+                                        />
+                                        <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>                        
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+                <Route exact path="/" component={WelcomeNoAuth} />
+                <Route exact path="/register" component={SignUp} />
+                <Redirect path="/" exact to="/" />
+                        </div>)}
+                    </div>
+>>>>>>> master
     </HashRouter>)
 }
 
