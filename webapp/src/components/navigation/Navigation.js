@@ -29,6 +29,8 @@ function Navigation () {
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [issuer, setIssuer] = useState("");
 
+    let [currentIssuerText, setIssuerText] = useState(t('navBarService'));
+
 
     useEffect(() => {
         handleIncomingRedirect({
@@ -50,6 +52,7 @@ function Navigation () {
     };
 
     const autoCompleteSolidLogin = (name) => {
+        setIssuerText("Solid");
         let start="https://";
         let uid = start.concat('',name);
         let end = uid.concat('',".solidcommunity.net");
@@ -57,12 +60,12 @@ function Navigation () {
     }
 
     const autoCompleteInruptLogin = (name) => {
+        setIssuerText("Inrupt");
         let start="https://";
         let uid = start.concat('',name);
         let end = uid.concat('',".inrupt.net");
         user_url = end;
     }
-
 
     const { session } = useSession();
 
@@ -94,7 +97,7 @@ function Navigation () {
                                 <Nav className="mr-auto">
                                     <Nav.Link  className="mt-1 mr-2" href="https://github.com/Arquisoft/radarin_en3a">{t('navBarAbout')}</Nav.Link>
                                     <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>
-                                    <DropdownButton id="dropdown-service-button" style={{margin: "16px"}} variant="secondary" title={t('navBarService')}>
+                                    <DropdownButton id="dropdown-service-button" style={{margin: "16px"}} variant="secondary" title={currentIssuerText}>
                                         <Dropdown.Item as="button" onClick={() => autoCompleteSolidLogin(issuer)}>{t('navBarSolid')}</Dropdown.Item>
                                         <Dropdown.Item as="button" onClick={() => autoCompleteInruptLogin(issuer)}>{t('navBarInrupt')}</Dropdown.Item>
                                     </DropdownButton>
