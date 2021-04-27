@@ -7,7 +7,7 @@ import { I18nextProvider } from 'react-i18next'
 test('check that everything is rendering propertly', async () => {
   const c = render(
     <I18nextProvider i18n={i18n}> // actually give translation to your component
-       <WelcomeNoAuth />
+       <WelcomeNoAuth /> 
     </I18nextProvider>
   );
   //const { getByText } = render(<WelcomeNoAuth/>);

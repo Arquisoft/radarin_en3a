@@ -11,4 +11,4 @@ test('check that everything is rendering propertly', async () => {
     </I18nextProvider>
   );
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.registerFormTitle)).toBeDefined();
-}); 
+});  
