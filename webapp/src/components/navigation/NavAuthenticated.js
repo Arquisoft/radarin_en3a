@@ -108,12 +108,11 @@ function NavAuthenticated(){
         setAnchorEl(null);
     };
 
-<<<<<<< HEAD
     const [anchorEl, setAnchorEl] = React.useState(null);
-=======
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
->>>>>>> master
+
 
     const handleClick =  (event) => {
         setAnchorEl(event.currentTarget);
@@ -166,7 +165,7 @@ function NavAuthenticated(){
                             className="d-inline-block align-top"
                             alt="notificacion"
                         />
-<<<<<<< HEAD
+
                         </Button>
                         <Popover
                             id={id}
@@ -198,7 +197,7 @@ function NavAuthenticated(){
                 <div>
                     <div className="logged-in-msg-panel">
 
-=======
+
                         <p className="radarin-title">Radarin</p>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -258,7 +257,7 @@ function NavAuthenticated(){
                 <div>
                     <div className="logged-in-msg-panel">
                         
->>>>>>> master
+
                     </div>
                     <div id="container" style={{ backgroundColor: "black"}}>
                         <Route exact path="/profile" component={WelcomeAuth}/>
