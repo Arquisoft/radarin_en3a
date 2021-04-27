@@ -3,7 +3,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 
-function Help(props) {
+function Help(props) {    
+    const { t, i18n } = useTranslation();
     return (
         <div className="Hello trying">
             <h1>{t('helpLanguageTitle')}</h1>
