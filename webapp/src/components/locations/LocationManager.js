@@ -1,28 +1,16 @@
 import {
-    addDatetime,
-    addStringNoLocale,
-    addUrl,
-    createSolidDataset,
-    createThing,
+    addDatetime, addStringNoLocale, addUrl,
+    createSolidDataset, createThing,
     getSolidDataset,
     getSourceUrl,
-    getThing,
-    getThingAll,
-    getUrlAll,
-    removeThing,
-    saveSolidDatasetAt,
-    setThing
+    getThing, getThingAll,
+    getUrlAll, removeThing,
+    saveSolidDatasetAt, setThing
 } from "@inrupt/solid-client";
 import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
-import {toast} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import {nearFriends} from "../../api/api.js"
-import {FOAF} from "@inrupt/vocab-common-rdf";
-
-toast.configure();
 
 function LocationManager(props) {
 
@@ -42,24 +30,6 @@ function LocationManager(props) {
         return { dataset: locationList, thing: t };
     });
     const { fetch } = useSession();
-
-    const webId = session.info.webId;
-
-    async function getFriendsForPOD(){
-        const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
-        const profile = getThing(profileDataset, webId);
-        return new Promise((resolve, reject) => {
-            resolve(getUrlAll(profile, FOAF.knows));
-        });
-    }
-
-    async function FindNearFriends(){
-        let amigos = [];
-        let promises = await getFriendsForPOD().then(function(list){return list;});
-        promises.forEach(friend => amigos.push(friend));
-        let amigo = await nearFriends(amigos,webId);
-        toast(amigo);
-    }
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -116,7 +86,7 @@ function LocationManager(props) {
         const updatedDataset = await saveSolidDatasetAt(locationsUrl, updatedTodos, {
             fetch,
         });
-       setLocationList(updatedDataset);
+        setLocationList(updatedDataset);
     };
 
     function getLocationAndSave(){
@@ -126,9 +96,6 @@ function LocationManager(props) {
         let latitudeValue = document.getElementById("lat-span").textContent;
         let longitudeValue = document.getElementById("long-span").textContent;
         let locationText = document.getElementById("location-text-input").value;
-        if(locationText === ""){
-            locationText = "No tag";
-        }
         addLocations(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
@@ -141,11 +108,8 @@ function LocationManager(props) {
         );
     }
 
-    //tenemos que añadir el boton de las notificaciones
-    //<Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
 
     return (<div>
-        <Button className="add-location-button" onClick={FindNearFriends}>{t('FindNearFriends')}</Button>
         <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button><br/>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
@@ -161,7 +125,11 @@ function LocationManager(props) {
                 <TableColumn property={TEXT_PREDICATE} header={t('Tag')}
                              body={function({ value }) {
                                  let separateCoords = value.split(" / ")
-                                 return separateCoords[2];
+                                 if(separateCoords[2] === ""){
+                                     return "No tag";
+                                 }else{
+                                     return separateCoords[2];
+                                 }
                              }
                              }
                 />
