@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
@@ -15,7 +16,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
-import {CombinedDataProvider, useSession} from "@inrupt/solid-ui-react";
+import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
 import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
 import "react-toastify/dist/ReactToastify.css";
@@ -29,6 +30,8 @@ import not from "../../assets/notificación.png";
 import notRed from "../../assets/notificaciónPunto.png";
 import Popover from '@material-ui/core/Popover';
 import UserNotification from "./UserNotification";
+
+toast.configure();
 
 function NavAuthenticated(){
 
@@ -85,7 +88,7 @@ function NavAuthenticated(){
             return () => clearInterval(interval);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [role, webId]);
+    }, []);
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -96,7 +99,7 @@ function NavAuthenticated(){
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
+    const handleClick =  (event) => {
         setAnchorEl(event.currentTarget);
         setNotificaciones(not);
     };
@@ -177,7 +180,12 @@ function NavAuthenticated(){
 
                 <div>
                     <div className="logged-in-msg-panel">
-                        
+                        <span>{t('InitSession')}</span>
+                        <Text
+                            properties={[
+                                "http://www.w3.org/2006/vcard/ns#fn",
+                                "http://xmlns.com/foaf/0.1/name",]}
+                        />
                     </div>
                     <div id="container" style={{ backgroundColor: "black"}}>
                         <Route exact path="/profile" component={WelcomeAuth}/>

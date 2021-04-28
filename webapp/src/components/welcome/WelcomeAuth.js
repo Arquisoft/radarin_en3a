@@ -1,8 +1,8 @@
 import React from 'react';
 import "../../css/Welcome.css";
-import { CombinedDataProvider, Text, useSession } from "@inrupt/solid-ui-react";
-import defaultProfilePic from '../../assets/default_profile_pic.svg';
+import {CombinedDataProvider, Image, Text, useSession} from "@inrupt/solid-ui-react";
 import {useTranslation} from "react-i18next";
+import { VCARD } from "@inrupt/lit-generated-vocab-common";
 
 function WelcomeAuth() {
     const { session } = useSession();
@@ -21,7 +21,13 @@ function WelcomeAuth() {
                     ]}
                 />
                 <br/>
-                <img className="friend-profile-pic" src={defaultProfilePic} alt={t('DefaultProfilePic')}/>
+                <Text
+                    property={VCARD.organization_name.iri.value}
+                />
+                <br/>
+                <Image className="owner-profile-pic" property={VCARD.hasPhoto.iri.value} width={100} />
+                <br/>
+                <br/>
                 <h3>{t('WebIdIs')}</h3>
                 <h4>{ session.info.webId }</h4>
             </CombinedDataProvider>

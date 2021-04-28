@@ -69,7 +69,7 @@ function Navigation () {
 
     return(<HashRouter basename="/">
         <div>
-                {session.info.isLoggedIn ? (
+            {session.info.isLoggedIn ? (
                     <NavAuthenticated/>
                 ) :
                     (

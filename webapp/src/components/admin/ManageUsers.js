@@ -14,10 +14,10 @@ function ManageUsers () {
             let usuarios =  await getUsers();
             setUserList(usuarios);
         })();
-    }, [usersList]);
+    }, []);
 
     return(
-        <div>
+        <div className="registered-user-container">
             <h2>{t('AdminList')}</h2>
             <ul>
                 <RegUserComponent usersList={usersList}/>
