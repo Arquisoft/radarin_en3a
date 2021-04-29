@@ -59,9 +59,9 @@ function FriendMarkerGenerator(props) {
     return friendLocationList.map(function(friend,index){
         return (<div>
             <Marker key={index} position={[friend.latitude,friend.longitude]} icon={blueIcon}>
-                <Popup>Friend:
+                <Popup><h6>Friend:</h6>
                     <br/>
-                    {friend.friendId}
+                    <b>{friend.friendId}</b>
                 </Popup>
             </Marker>
         </div>)

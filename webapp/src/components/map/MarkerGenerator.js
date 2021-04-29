@@ -75,12 +75,11 @@ function MarkerGenerator(props) {
 
     function DeleteButton({ locToDelete }) {
         return (
-            <Button className="delete-button btn-danger" onClick={() => deleteLocation(locToDelete)}>
+            <Button className="delete-button btn-danger" style={{ marginLeft: "15px"}} onClick={() => deleteLocation(locToDelete)}>
                 Delete from POD
             </Button>
         );
     }
-
 
     if(locationThings.length === 0){
         return <h3>No locations currently saved on your POD</h3>
@@ -101,7 +100,7 @@ function MarkerGenerator(props) {
         let coordinatesForCurrentMarker = [ latitudeParsed, longitudeParsed];
     return (<div>
         <Marker key={index} position={coordinatesForCurrentMarker} icon={greenIcon}>
-            <Popup>{tagForMarker}
+            <Popup><h6>{tagForMarker}</h6>
             <br/>
                 {timestampOfThingFormatted}
                 <DeleteButton locToDelete={locThing}/>
