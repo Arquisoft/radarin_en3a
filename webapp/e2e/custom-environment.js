@@ -1,5 +1,6 @@
 var NodeEnvironemnt = require('jest-environment-node');
 var puppeteer = require('puppeteer');
+
 class CustomEnvironment extends NodeEnvironemnt {
     constructor(config, context){
         super(config, context);
@@ -10,7 +11,7 @@ class CustomEnvironment extends NodeEnvironemnt {
             ignoreHTTPSErrors: true,
             headless: false,
             slowMo: 100,
-            args: ['--window-size=960,540']
+            args: ['--window-size=1400,900']
         });
         this.global.page = await this.global.browser.newPage();
     }
