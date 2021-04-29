@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
@@ -26,8 +25,8 @@ import { FOAF } from "@inrupt/vocab-common-rdf";
 import {
     getSolidDataset, getThing, getUrlAll,
 } from "@inrupt/solid-client";
-import not from "../../assets/notificación.png";
-import notRed from "../../assets/notificaciónPunto.png";
+import not from "../../assets/notification.png";
+import notRed from "../../assets/notification_dot.png";
 import Popover from '@material-ui/core/Popover';
 import UserNotification from "./UserNotification";
 
@@ -149,6 +148,7 @@ function NavAuthenticated(){
                                             height="40"
                                             className="d-inline-block align-top"
                                             alt="notificacion"
+                                            style={{backgroundColor: "transparent"}}
                                         />
                             </Button>
                             <Popover

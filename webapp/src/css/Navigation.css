@@ -78,5 +78,7 @@
 }
 
 .notification-button{
-    background-color: grey;
+    background-color: transparent;
+    position: absolute;
+    right: 10em;
 }
