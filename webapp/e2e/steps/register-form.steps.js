@@ -11,7 +11,7 @@ defineFeature(feature, test => {
 
     given('An unregistered user without a POD', () => {})
 
-    when('I click on the Sign up link', async () => {
+    when('I click on the Sign up link', async () => {      
       await page.goto('http://localhost:3000/#/register');      
     });
 
