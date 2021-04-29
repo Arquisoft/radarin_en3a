@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
+import React from "react";
 
 const resources = {
     en: {
@@ -52,7 +53,8 @@ const resources = {
           "navBarSolid" :"Solid",
           "navBarInrupt" :"Inrupt",
           "CurrentLocation": "Your current location is",
-          "CalculatingLocation": "Calculating your location"
+          "CalculatingLocation": "Calculating your location",
+          "FilterLocations":"Filter locations by tag"
         }
     },
     es: {
@@ -104,7 +106,8 @@ const resources = {
           "navBarSolid" :"Solid",
           "navBarInrupt" :"Inrupt",
           "CurrentLocation": "Tu ubicación actual es",
-          "CalculatingLocation": "Calculando tu ubicación"
+          "CalculatingLocation": "Calculando tu ubicación",
+          "FilterLocations": "Filtrar ubicaciones por etiqueta"
       }
     }
 };
