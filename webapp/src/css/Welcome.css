@@ -37,7 +37,7 @@ button {
   color: white;
 }
 
-li{
+li {
   margin: 20px auto;
   display: block;
   width: 500px;
@@ -61,7 +61,7 @@ li:hover {
 }
 
 .friend-list-element:hover {
-  background-color:  rgb(40, 44, 52);
+  background-color: rgb(40, 44, 52);
   text-decoration: underline;
 }
 
