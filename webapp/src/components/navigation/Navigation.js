@@ -17,6 +17,7 @@ import {
 import Button from "react-bootstrap/Button";
 import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
 import SignUp from '../SignUp';
+import Help from "../help/Help.js";
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -124,11 +125,13 @@ function Navigation () {
                                             </div>
                                         </div>
                                     </div>
+                                    <Nav.Link  className="mt-1 mr-2" href="#/help">{t('navBarHelp')}</Nav.Link> 
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
                         <Route exact path="/" component={WelcomeNoAuth} />
                         <Route exact path="/register" component={SignUp} />
+                        <Route exact path="/help" component={Help} />
                         <Redirect path="/" exact to="/" />
                     </div>)}
         </div>
