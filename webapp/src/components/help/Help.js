@@ -1,7 +1,6 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
+import languageHelp from '../../assets/languajeGuide.png';
 
 function Help(props) {
     const { t, i18n } = useTranslation();
@@ -9,19 +8,51 @@ function Help(props) {
         i18n.changeLanguage(lng);
     };
     return (
-        <div className="Hello trying">
+        <div className="Help page">
+            <div/>
             <h1>{t('helpLanguageTitle')}</h1>
             <p>{t('helpLanguage')}</p>
+            <img
+                src={languageHelp}
+                alt="Whoops, something went wrong loading this element"
+                width="600"
+                height="auto"
+            />
             <h1>{t('helpLogInTitle')}</h1>
-            <p>{t('helpLogIn')}</p>
+            <p>{t('helpLogIn')}</p> <img
+                src={languageHelp}
+                alt="Whoops, something went wrong loading this element"
+                width="600"
+                height="auto"
+            />
             <h1>{t('helpLocationSaveTitle')}</h1>
-            <p>{t('helpLocationSave')}</p>
+            <p>{t('helpLocationSave')}</p> <img
+                src={languageHelp}
+                alt="Whoops, something went wrong loading this element"
+                width="600"
+                height="auto"
+            />
             <h1>{t('helpLocationCheckTitle')}</h1>
-            <p>{t('helpLocationCheck')}</p>
+            <p>{t('helpLocationCheck')}</p> <img
+                src={languageHelp}
+                alt="Whoops, something went wrong loading this element"
+                width="600"
+                height="auto"
+            />
             <h1>{t('helpFriendsTitle')}</h1>
-            <p>{t('helpFriends')}</p>
+            <p>{t('helpFriends')}</p> <img
+                src={languageHelp}
+                alt="Whoops, something went wrong loading this element"
+                width="600"
+                height="auto"
+            />
             <h1>{t('helpNotificationsTitle')}</h1>
-            <p>{t('helpNotifications')}</p>
+            <p>{t('helpNotifications')}</p> <img
+                src={languageHelp}
+                alt="Whoops, something went wrong loading this element"
+                width="600"
+                height="auto"
+            />
         </div>
     );
 }

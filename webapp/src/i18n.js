@@ -54,17 +54,17 @@ const resources = {
           "navBarInrupt" :"Inrupt",
 
           "helpLanguageTitle":"Language",
-          "helpLanguage":"placeholder",
+          "helpLanguage":"To change the language, click the grey box next to 'Profile' and select the one you want.",
           "helpLogInTitle":"How to log in and out",
-          "helpLogIn":"placeholder",
+          "helpLogIn":"To log in: select you pod provider on the grey box next to the white text box. The write your username on the white box and click 'Log In'. Just the name is sufficient.",
           "helpLocationSaveTitle":"How to save your location ",
-          "helpLocationSave":"placeholder",
+          "helpLocationSave":"To save your location, you first have to be logged in. Once you are, go to the 'Locations' tab. Select 'Get current location' and set a name for it, then click on 'Add current location to POD'. Your location is now saved.",
           "helpLocationCheckTitle":"How to see your locations",
-          "helpLocationCheck":"placeholder",
+          "helpLocationCheck":"To see your saved locations, click on 'Map', and browse the map to see them. Alternatively, in 'Locations' you can see them in form of coordinates with their tags, you can delete them by clicking on 'Delete'. This can not be undone.",
           "helpFriendsTitle":"How to see your friends list",
-          "helpFriends":"placeholder",
+          "helpFriends":"To see your friends list, click on 'Friends' ",
           "helpNotificationsTitle":"Notifications",
-          "helpNotifications":"placeholder"
+          "helpNotifications":"When you have a notification, the bell will have a red dot, click on the bell to see them."
         }
     },
     es: {
@@ -118,17 +118,17 @@ const resources = {
           "navBarInrupt" :"Inrupt",
 
           "helpLanguageTitle":"Lenguaje",
-          "helpLanguage":"placeholder",
+          "helpLanguage":"Para cambiar el lenguaje haga click en el recuadro gris al lado de 'Perfil' y selecciona el que quieras.",
           "helpLogInTitle":"Cómo iniciar y salir de la sesión",
-          "helpLogIn":"placeholder",
+          "helpLogIn":"Para iniciar sesión, seleccione su proveedor de PODs en el recuadro gris, después escriba su nombre de usuario en el cuadro de texto blanco, y haga click en 'Iniciar sesión'",
           "helpLocationSaveTitle":"Cómo guardar la localización",
-          "helpLocationSave":"placeholder",
+          "helpLocationSave":"Para guardar la localización es necesario haber iniciado sesión. Una vez lo haya hecho, haga click en 'Ubicaciones'. Haga click en 'Obtener ubicación actual' y ponga un nombre a la etiqueta. Cuando lo haya hecho haga click en 'Añadir ubicación actua al POD'.",
           "helpLocationCheckTitle":"Cómo ver las localizaciones guardadas",
-          "helpLocationCheck":"placeholder",
+          "helpLocationCheck":"Para consultar las localizaciones guardadas, haga click en 'Mapa' y navegue en el mapa para verlas. Alternativamente, en 'Ubicaciones' puede consultarlas en forma de coordenadas con sus etiquetas, aquí puede borrarlas con el botón 'Eliminar'. Esta acción no es reversible.",
           "helpFriendsTitle":"Cómo ver tu lista de amigos",
-          "helpFriends":"placeholder",
+          "helpFriends":"Para ver la lista de amigos, haga click en 'Amigos'",
           "helpNotificationsTitle":"Notificaciones",
-          "helpNotifications":"placeholder"
+          "helpNotifications":"Cuando tenga una notificación, la campana tendrás un círculo rojo. Haga click en la campana para abrir un desplegable con las notificaciones."
       }
     }
 };
