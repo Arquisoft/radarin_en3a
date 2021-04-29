@@ -41,8 +41,13 @@ function Navigation () {
     }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleLogin = (e) => {
-        if(!user_url.startsWith("http://"))
-            autoCompleteSolidLogin(issuer);
+        if(!user_url.startsWith("https://")){
+            if(currentIssuerText === 'Inrupt')
+                autoCompleteInruptLogin(issuer);
+            else
+                autoCompleteSolidLogin(issuer);
+        }else
+            user_url = issuer;
         e.preventDefault();
         login({
             redirectUrl: REDIRECT_URL,
