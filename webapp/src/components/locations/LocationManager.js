@@ -86,7 +86,7 @@ function LocationManager(props) {
         const updatedDataset = await saveSolidDatasetAt(locationsUrl, updatedTodos, {
             fetch,
         });
-       setLocationList(updatedDataset);
+        setLocationList(updatedDataset);
     };
 
     function getLocationAndSave(){

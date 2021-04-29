@@ -70,7 +70,7 @@ function Navigation () {
 
     return(<HashRouter basename="/">
         <div>
-                {session.info.isLoggedIn ? (
+            {session.info.isLoggedIn ? (
                     <NavAuthenticated/>
                 ) :
                     (
@@ -104,8 +104,9 @@ function Navigation () {
                             <div className="log-in-panel">
                                 <p>{webId ? `Logged in as ${webId}` : ""}</p>
                                 <div>
-                                    <form>
+                                    <form name = "form" className="log-in-form">
                                         <input
+                                            name = "userName"
                                             placeholder={t("LogInPlaceholder")}
                                             type="text"
                                             value={issuer}

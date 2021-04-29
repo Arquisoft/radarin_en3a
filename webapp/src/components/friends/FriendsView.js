@@ -7,7 +7,6 @@ import {useTranslation} from "react-i18next";
 function FriendsView(){
     const friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
     const { t } = useTranslation();
-
     return(
         <div className="friends-main-panel">
         <h2>{t('FriendList')} (total {friendsOfLoggedUser.length})</h2>
