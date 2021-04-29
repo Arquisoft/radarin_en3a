@@ -59,3 +59,20 @@
 .log-in-btn:hover{
     background-color: darkgreen;
 }
+
+.navbar-brand{
+    pointer-events: none;
+    cursor: default;
+}
+
+.registered-user-container{
+    margin-top: 50px;
+}
+#friends{
+    margin-top: 0;
+    background-color: navy;
+}
+
+.notification-button{
+    background-color: grey;
+}

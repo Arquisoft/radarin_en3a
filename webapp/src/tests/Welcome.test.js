@@ -9,7 +9,7 @@ test('check that everything is rendering propertly', async () => {
     <I18nextProvider i18n={i18n}> // actually give translation to your component
        <WelcomeAuth />
     </I18nextProvider>
-  );
+  ); 
   //We are not logged in
 
   /*

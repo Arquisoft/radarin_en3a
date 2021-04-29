@@ -7,12 +7,11 @@ import {useTranslation} from "react-i18next";
 function FriendsView(){
     const friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
     const { t } = useTranslation();
-
     return(
         <div className="friends-main-panel">
         <h2>{t('FriendList')} (total {friendsOfLoggedUser.length})</h2>
-        <List src={`[${getDefaultSession().info.webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
-            <li key={friend} onClick={(e) => window.location.href=friend}>
+        <List src={`[${getDefaultSession().info.webId}].friends`} className="friend-list" padding-inline-start="0">{(friend) =>
+            <li className="friend-list-element" key={friend} onClick={(e) => window.location.href=friend}>
                 <button >
                     <Value src={`[${friend}].name`}>{`${friend}`}</Value>
                     <br/>

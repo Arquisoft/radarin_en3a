@@ -30,7 +30,9 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-This section is aimed to explain the different runtime views of the application.
+This section is aimed to explain the different runtime views of the application. In the following diagram an inteface mockup can be seen.
+
+image:webapp mockup editable.png["Mockup interface"]
 
 === Log in
 
@@ -46,27 +48,40 @@ The next diagrams shows how the login works in the app.
 
 image:login.png["Login diagram"]
 
+image:login.png["login"]
+
+=== Sign up
+
+The application provides you the funcionality to sign up in solidcommunity in order to get a pod.
+To do that, the user goes into sign up section and presses solidcommunity button, which redirects you to solidcommunity provider. Then, you need to fill the register form and go back to the app to log in when registered.
+
+image:login.png["register"]
+
 === UserMap
 
-The application contains a map view. When opening this view, the user can see the location of his or her nearby friends on a map.
+The application contains a map view. When opening this view, the user can see the his or her stored locations on a map.
+To do this, the user needs to be logged in.
+
+image:login.png["map"]
+
+=== Locations
+
+This is a view where you can manage your locations. 
+This view allows you to get your current location, save it to the pod and also shows all your stored locations in a list, where you are able to delete them.
+To do this, the user needs to be logged in.
+
+image:login.png["locations"]
 
 === Friends
 
 This is a view in which the user is able to see his or her list of friends. 
-The user is able to add or delete friends from this view, and also to get in contact with them.
+The user is able to see the name and picture of each friend, and access its pod profile by clicking on it.
+To do this, the user needs to be logged in.
 
-=== Add friends
+image:login.png["friends"]
 
-This an option allowed in the friends view. To add a new friend, it is necessary to insert your friend´s username on the application and press add button.
+=== Profile
 
-=== Delete friends
+This is a view where the user is able to see his or her profile in the application.
 
-This an option allowed in the friends view. To delete a friend, you click on the friend you want to delete and press delete button.
-
-=== Notifications
-
-This is a view in which you can see all the messages you received in the application from more recent to oldest.
-
-=== Get in contact
-
-This is an option to get in contact with friends by sending messages. This option will be able from the map view, and also from friends view.
+image:login.png["welcome"]

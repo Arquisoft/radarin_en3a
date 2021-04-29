@@ -34,7 +34,6 @@ function connect(){
             request.header("Access-Control-Allow-Origin", "http://localhost:3000/*");
             request.header("Access-Control-Allow-Origin", "http://localhost:5000/api/*");
             request.header("GET, POST");
-             
         });
 
 

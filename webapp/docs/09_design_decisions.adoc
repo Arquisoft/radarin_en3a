@@ -1,13 +1,19 @@
 [[section-design-decisions]]
 == Design Decisions
 
-.*Problems*
-* Decision making related to the library used to build the application.
-* Decision of doing an internacionalized application
-* Decision about the tecnologies to use in the project
+.*Webapp*
+* Choosing framework and libraries we are going to work with. We decided to use the React framework because we can use it for building great user interfaces for the web, has a lot of libraries that can be used to facilitate the implementation on the web and has a lot of other advantages that we thought were very importat to have.
+* Deciding wether or not start the implementation of the internacionalization from the beggining. Event thought it is not a requirement for this project, we decided to do the internacionalization of this application from the begginig. This is because in other courses we attended doing the internacionalization at the end of the implentation of the appliaction was very time consuming and doing it while implementing is not so much. This is a task that is easily done, so we started to implement this from day one.
+* Choosing the provider of the pods that we are going to use. At the first working application deployed was being implemented we encoutered some problems with some of the providers of the solid providers. For example while using a map we needed a fixed provider and also to do the automatic login also. So we decided to use the solid comunity provider.
+* Making the log in authomated using solid. While doing the log in in the app we found that doing this with the solid components was the better option. This is used because because it is more secure that doing it without this components.
+* Admin options. While implementing the admin user and the thing this role was able to do we found that forbidding this users to log in/ register again in the app was not a good practice. So we decided to remove de imformation about the user in the database but that the user was free to log in again if they want.
+* Choosing whether or not the user is going to be able to see the locations stored it the pod in the map. We decided that we are going to display all the locations a user has in its pod because we are also going to list them and it is going to be easier for the user to see the location in the map and not only whith the coordinates.
+* Choosing wich kind of map provider we are going to use. We decided to use leaflet because it has a library with component of react that is very complete. Also because the api lets us do several daily request. 
 
+.*Restapi*
+* Using controllers in the api. We decided that the use of the controllers and the routes was not a good implementation because the methods in the api where a few and in this way we have all the code in one place so it is easier to understand and change.
+* Pods access. Even if there is a posibility to work with the pods directly from the restapi we decided we where going to do them in the webapp. Whis is uncomplicated to do this in the webapp.
 
-.*Decisions*
-* Use the React framework because we can use it for building user interfaces for the web as well as mobile applicantions. Furthermore, it has a lot of advantages.
-* Start from the beginning with the internacionalization of the application, first researching how to do it with react and the apply it so users from different countries can use our application
-* To decide the different tecnologies we did research to find the most suitable ones. First we already decided that we are going to use react for as the framework. We are going to use docker containers because they are a requirement for the project. Also we are going to use MongoDB, even if we are not usesrs of this database daily it has multiple advantages the main one to go further and faster when developing software.
+.*MobileApp*
+* Choosing the framework to work. We decided to use react-native with expo to do this. We can see the changes in the emulator and also in physical device. Also expo has a lot of libraries that are going to be used to implement this app.
+* Usage of the pods. We had several issues to do this, there seems to be some errors and difficulties to implement this. So we decided this part of the application is being suspended at the moment. Some errors we encountered where the use of the solid components with react-native. The libreries we used work with Node.js without any problem. But since we do not work with a node.js framework perse some libraries do not work properly.

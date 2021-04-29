@@ -16,9 +16,14 @@ As the architecture of the application is decided, this section will be updated.
 
 It will be a crutial part to deal with, ensuring the user secure accesses via secure https protocol, having all the time validation constraints to avoid undesirable risks.
 
+Mainly, security is assured thanks to the solid pods in where each user has it's own individual place of safe information by using the authentication solid library.
+
 === Technical decisions
 * In the data model of the restapi, we unified the user model with the location model, since the user is always going to have the latest location available.
 * When dealing with the api in the restapi, we coult just ommit the controller part working directly in the api part thanks to the solid-node-client. This way, we would be able to let the webapp and the mobile app working directly with the pods that this layer provides. 
+* To manage locations, we just use longitude and latitude in order to track the user and it's closest friend.
+* First, we were planning to use geolib to find the nearest friend, but finally we just calculated it directly by taking it's coordinates and returning it's closest friend.
+* We mainly developed the webapp part as the mobile was having troubles with the login part, so we've put the effort by just putting the webapp to work well.
 
 === Intenationalization
 From the popular point of view of every application (and specifically for this one which deals with locations and people), it looks like as if it was mandatory to produce a well based multilanguage application, and the best option is always at the beginning of the design. 

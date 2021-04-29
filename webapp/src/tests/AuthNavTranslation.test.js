@@ -5,7 +5,6 @@ import i18n from '../i18n'
 import { I18nextProvider } from 'react-i18next'
 
 test('check that language is changing', async () => {
-  //We are not logged in
   
   const c = render(
     <I18nextProvider i18n={i18n}> // actually give translation to your component
@@ -13,7 +12,7 @@ test('check that language is changing', async () => {
     </I18nextProvider>
   );
   expect(c.getByText("Radarin")).toBeInTheDocument();
-
+ 
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.navBarMap)).toBeDefined(); 
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.navBarFriends)).toBeDefined(); 
   const dropdown = c.getByText("Language");
@@ -28,5 +27,7 @@ test('check that language is changing', async () => {
   fireEvent.click(changeToEnglish);
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.navBarMap)).toBeDefined(); 
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.navBarFriends)).toBeDefined();
+  const button = c.getByText(i18n.getDataByLanguage('en').translation.navBarLogOut);
+  fireEvent.click(button);
    
 });

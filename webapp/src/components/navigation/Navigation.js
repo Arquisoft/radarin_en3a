@@ -25,6 +25,7 @@ function Navigation () {
     };
 
     const REDIRECT_URL = window.location;
+    let user_url = "";
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
     const [issuer, setIssuer] = useState("");
 
@@ -32,19 +33,35 @@ function Navigation () {
     useEffect(() => {
         handleIncomingRedirect({
             restorePreviousSession: true,
-        }).then((info) => {
+        }).then((info) => {                        
             setWebId(info.webId);
         });
-    }, [webId]);
+    }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleLogin = (e) => {
+        if(!user_url.startsWith("http://"))
+            autoCompleteSolidLogin(issuer);
         e.preventDefault();
         login({
             redirectUrl: REDIRECT_URL,
-            oidcIssuer: issuer,
+            oidcIssuer: user_url,
             clientName: "Radarin app",
         });
     };
+
+    const autoCompleteSolidLogin = (name) => {
+        let start="https://";
+        let uid = start.concat('',name);
+        let end = uid.concat('',".solidcommunity.net");
+        user_url = end;
+    }
+
+    const autoCompleteInruptLogin = (name) => {
+        let start="https://";
+        let uid = start.concat('',name);
+        let end = uid.concat('',".inrupt.net");
+        user_url = end;
+    }
 
 
     const { session } = useSession();
@@ -52,7 +69,7 @@ function Navigation () {
 
     return(<HashRouter basename="/">
         <div>
-                {session.info.isLoggedIn ? (
+            {session.info.isLoggedIn ? (
                     <NavAuthenticated/>
                 ) :
                     (
@@ -76,25 +93,30 @@ function Navigation () {
                     </DropdownButton>
                     <Nav className="mr-auto">
                         <Nav.Link  className="mt-1 mr-2" href="https://github.com/Arquisoft/radarin_en3a">{t('navBarAbout')}</Nav.Link>
-                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>
-                            <div>
-                                <div className="log-in-panel">
-                                        <p>{webId ? `Logged in as ${webId}` : ""}</p>
-                                        <div>
-                                            <form>
-                                                <input
-                                                    placeholder={t("LogInPlaceholder")}
-                                                    type="text"
-                                                    value={issuer}
-                                                    onChange={(e) => {
-                                                        setIssuer(e.target.value);
-                                                    }}
-                                                />
-                                                <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
-                                            </form>
-                                        </div>
+                        <Nav.Link  className="mt-1 mr-2" href="#/register">{t('navBarSignUp')}</Nav.Link>                                                    
+                        <DropdownButton id="dropdown-service-button" style={{margin: "16px"}} variant="secondary" title={t('navBarService')}>
+                            <Dropdown.Item as="button" onClick={() => autoCompleteSolidLogin(issuer)}>{t('navBarSolid')}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={() => autoCompleteInruptLogin(issuer)}>{t('navBarInrupt')}</Dropdown.Item>
+                        </DropdownButton>
+                        <div>
+                            <div className="log-in-panel">
+                                <p>{webId ? `Logged in as ${webId}` : ""}</p>
+                                <div>
+                                    <form name = "form" className="log-in-form">
+                                        <input
+                                            name = "userName"
+                                            placeholder={t("LogInPlaceholder")}
+                                            type="text"
+                                            value={issuer}
+                                            onChange={(e) => {
+                                                setIssuer(e.target.value);
+                                            }}                                
+                                        />
+                                        <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t('navBarLogIn')}</Button>
+                                    </form>
                                 </div>
                             </div>
+                        </div>                        
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

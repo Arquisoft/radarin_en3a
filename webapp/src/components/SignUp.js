@@ -1,7 +1,7 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
 
-function SignUp(props) {
+function SignUp() {
     return (
         <div className="App-header">
             <RegisterForm />

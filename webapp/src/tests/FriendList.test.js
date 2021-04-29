@@ -13,4 +13,4 @@ test('check that everything is rendering propertly', async () => {
   );
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.FriendList + "(total 0)")).toBeDefined();
   //expect(getByText("Friend list (total 0)")).toBeDefined();
-});
+}); 

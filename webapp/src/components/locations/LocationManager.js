@@ -12,7 +12,6 @@ import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
 
-
 function LocationManager(props) {
 
     const { session } = useSession();
@@ -50,21 +49,22 @@ function LocationManager(props) {
     }
 
     useEffect(() => {
-        if (!session) return;
-        (async () => {
-            const profileDataset = await getSolidDataset(session.info.webId, {
-                fetch: session.fetch,
-            });
-            const profileThing = getThing(profileDataset, session.info.webId);
-            const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
-            const pod = podsUrls[0];
-            const containerUri = `${pod}radarin/`;
-            const list = await getOrCreateLocationList(containerUri, session.fetch);
-            setLocationList(list);
-        })();
+        if (session){
+            (async () => {
+                const profileDataset = await getSolidDataset(session.info.webId, {
+                    fetch: session.fetch,
+                });
+                const profileThing = getThing(profileDataset, session.info.webId);
+                const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
+                const pod = podsUrls[0];
+                const containerUri = `${pod}radarin/`;
+                const list = await getOrCreateLocationList(containerUri, session.fetch);
+                setLocationList(list);
+            })();
+        }
     }, [session]);
 
-    const addLocation = async (text) => {
+    const addLocations = async (text) => {
         const indexUrl = getSourceUrl(locationList);
         const locationWithText = addStringNoLocale(createThing(), TEXT_PREDICATE, text);
         const locationWithDate = addDatetime(
@@ -86,7 +86,7 @@ function LocationManager(props) {
         const updatedDataset = await saveSolidDatasetAt(locationsUrl, updatedTodos, {
             fetch,
         });
-       setLocationList(updatedDataset);
+        setLocationList(updatedDataset);
     };
 
     function getLocationAndSave(){
@@ -96,8 +96,7 @@ function LocationManager(props) {
         let latitudeValue = document.getElementById("lat-span").textContent;
         let longitudeValue = document.getElementById("long-span").textContent;
         let locationText = document.getElementById("location-text-input").value;
-        console.log(locationText);
-        addLocation(latitudeValue + " / " + longitudeValue + " / " + locationText);
+        addLocations(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
     function DeleteButton({ deleteTodo }) {
@@ -109,8 +108,9 @@ function LocationManager(props) {
         );
     }
 
+
     return (<div>
-        <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button>
+        <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button><br/>
         <div className="locations-displayed-panel">
             <h3>{t('YourLocations')}</h3>
             <h6>{t('LocationCount1')}{locationThings.length} {t('LocationCount2')}</h6>

@@ -39,12 +39,18 @@ Contained Building Blocks::
 
 Motivation::
 
-Show the decomposition of the Application in the relevant parts of the main part of the system. We use only one level by now because the web and mobile app are almost the same
+Show the decomposition of the Application in the relevant parts of the main part of the system.
 
 Contained Building Blocks::
 [options="header",cols="1,3"]
 |===
 |**Name** | **Responsability**
+|Interface layer | It is composed by 2 nav bars offering different options like the profile, a map view, a list of your locations and a list of friends.
+
+|Data access layer | It sends and replies the needed information from the PODs and MongoDB.
+
+|Notifications | It notifies that there are a nearby friend.
+
 |Components | JavaScript components created by React that are used like building blocks of code.
 
 |Tests | Tests included in the web application to ensure the proper functioning of the React components (folder not yet).
