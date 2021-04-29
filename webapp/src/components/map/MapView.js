@@ -79,7 +79,7 @@ const MapView = () => {
     return (
         <div>
             <div className="logged-in-panel">
-                <h2>{t('MapOfLocations')}</h2>
+                <h2 style={{ marginTop: "150px" }}>{t('MapOfLocations')}</h2>
             </div>
         <div className="user-map-panel">
             <MapContainer center={mapCenter} zoom={9} style={{ height: "100vh" }}>

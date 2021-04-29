@@ -50,7 +50,9 @@ const resources = {
           "FindNearFriends": "Find near friends",
           "navBarService" : "Choose POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+          "CurrentLocation": "Your current location is",
+          "CalculatingLocation": "Calculating your location"
         }
     },
     es: {
@@ -100,7 +102,9 @@ const resources = {
           "FindNearFriends": "Encuentra amigos cercanos",
           "navBarService" : "Elegir POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+          "CurrentLocation": "Tu ubicación actual es",
+          "CalculatingLocation": "Calculando tu ubicación"
       }
     }
 };
