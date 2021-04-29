@@ -9,11 +9,11 @@ h1 {
   font-family: Georgia, serif;
   text-transform: uppercase;
   font-weight: 400;
-} 
+}
 
-input[type = "email"],
-.App-content input[type= "string"],
-.App-content input[type= "password"] {
+input[type="email"],
+.App-content input[type="string"],
+.App-content input[type="password"] {
   background: none;
   display: block;
   margin: 20px auto;
@@ -26,14 +26,14 @@ input[type = "email"],
   transition: 0.25s;
 }
 
-input[type= "email"]:focus,
-.App-content input[type= "string"]:focus,
-.App-content input[type= "password"]:focus {
+input[type="email"]:focus,
+.App-content input[type="string"]:focus,
+.App-content input[type="password"]:focus {
   width: 280px;
   border-color: #2ecc71;
 }
 
-input[type = "submit"] {
+input[type="submit"] {
   background: none;
   display: block;
   margin: 20px auto;
@@ -47,6 +47,6 @@ input[type = "submit"] {
   cursor: pointer;
 }
 
-input[type= "submit"]:hover {
+input[type="submit"]:hover {
   background: #2ecc71;
 }
