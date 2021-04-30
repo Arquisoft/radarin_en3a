@@ -18,7 +18,7 @@ const resources = {
           "navBarLocations": "Locations",
           "navBarFriends": "Friends",
         "InitialWelcomeMessage": "You are logged out of your POD.",
-        "registerFormTitle": "Get your SOLID pod",
+        "registerFormTitle": "Get your pod",
         "InitSession": "Session started as: ",
         "AdminDelete": "Delete",
         "AdminList": "Users List",
@@ -50,7 +50,10 @@ const resources = {
           "FindNearFriends": "Find near friends",
           "navBarService" : "Choose POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+          "CurrentLocation": "Your current location is",
+          "CalculatingLocation": "Calculating your location",
+          "FilterLocations":"Filter locations by tag"
         }
     },
     es: {
@@ -68,7 +71,7 @@ const resources = {
           "navBarLocations": "Ubicaciones",
           "navBarFriends": "Amigos",
         "InitialWelcomeMessage": "Te has desvinculado de tu POD.",
-        "registerFormTitle": "Consigue SOLID pod",
+        "registerFormTitle": "Consigue tu pod",
         "InitSession": "Sesión iniciada como: ",
         "AdminDelete": "Borrar",
         "AdminList": "Lista de Usuarios",
@@ -100,7 +103,10 @@ const resources = {
           "FindNearFriends": "Encuentra amigos cercanos",
           "navBarService" : "Elegir POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+          "CurrentLocation": "Tu ubicación actual es",
+          "CalculatingLocation": "Calculando tu ubicación",
+          "FilterLocations": "Filtrar ubicaciones por etiqueta"
       }
     }
 };

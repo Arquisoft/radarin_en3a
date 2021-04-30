@@ -16,7 +16,6 @@ function RegUserComponent(props) {
         await removeUser(user);
         usersList = await getUsers();
         $('li').remove("#"+user);
-        //window.location.reload(false);
     }
 
     if(usersList.length === 0){return <h3>{t('MessageAdmin')}</h3>}

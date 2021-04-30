@@ -29,7 +29,7 @@ function WelcomeAuth() {
                 <br/>
                 <br/>
                 <h3>{t('WebIdIs')}</h3>
-                <h4>{ session.info.webId }</h4>
+                <h5>{ session.info.webId }</h5>
             </CombinedDataProvider>
         </div>
     );

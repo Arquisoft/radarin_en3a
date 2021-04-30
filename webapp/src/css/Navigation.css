@@ -2,8 +2,12 @@
   margin-top: 0 !important;
 }
 
-.btn-outline-dark {
-  color: rgba(0, 0, 0, 0.5) !important;
+.nav-link{
+    margin-top: .85rem !important;
+}
+
+.btn-outline-dark{
+    color: rgba(0,0,0,.5) !important;
 }
 
 .btn-outline-dark:hover {
@@ -74,6 +78,8 @@
   background-color: navy;
 }
 
-.notification-button {
-  background-color: grey;
+.notification-button{
+    background-color: transparent;
+    position: absolute;
+    right: 10em;
 }

@@ -29,7 +29,7 @@ const MapView = () => {
     }, []);
 
     //TODO center map on last location in the POD
-    let mapCenter = [43.542, -6.594];
+    let mapCenter =[43.542, -6.594];
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -60,9 +60,14 @@ const MapView = () => {
         setLocationList(list);
     }
 
+    async function centerMapToCurrentLocation(){
+        console.log("about to center based on current location");
+    }
+
 
     useEffect(() => {
        updateLocationList();
+       centerMapToCurrentLocation();
        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
@@ -74,7 +79,7 @@ const MapView = () => {
     return (
         <div>
             <div className="logged-in-panel">
-                <h2>{t('MapOfLocations')}</h2>
+                <h2 style={{ marginTop: "150px" }}>{t('MapOfLocations')}</h2>
             </div>
         <div className="user-map-panel">
             <MapContainer center={mapCenter} zoom={9} style={{ height: "100vh" }}>

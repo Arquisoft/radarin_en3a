@@ -30,3 +30,21 @@ body {
   width: 80%;
   margin: 50px auto 0;
 }
+
+#location-text-input{
+    margin-bottom: 50px;
+}
+
+h6{
+    margin-bottom: 40px;
+}
+
+#filter-input{
+    padding: 10px;
+    width: 20em;
+}
+
+#search-icon{
+    filter: invert(100%);
+    width: 2em;
+}

@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
@@ -16,7 +15,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import {getDefaultSession, logout} from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
-import {CombinedDataProvider, Text, useSession} from "@inrupt/solid-ui-react";
+import {CombinedDataProvider, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
 import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
 import "react-toastify/dist/ReactToastify.css";
@@ -26,8 +25,8 @@ import { FOAF } from "@inrupt/vocab-common-rdf";
 import {
     getSolidDataset, getThing, getUrlAll,
 } from "@inrupt/solid-client";
-import not from "../../assets/notificación.png";
-import notRed from "../../assets/notificaciónPunto.png";
+import not from "../../assets/notification.png";
+import notRed from "../../assets/notification_dot.png";
 import Popover from '@material-ui/core/Popover';
 import UserNotification from "./UserNotification";
 
@@ -61,13 +60,12 @@ function NavAuthenticated(){
         let promises = await getFriendsForPOD().then(function(list){return list;});
         promises.forEach(friend => amigos.push(friend));
         setAmigo(amigo);
-        var mensaje = await nearFriends(amigos,webId)
+        let mensaje = await nearFriends(amigos,webId)
         if(mensaje !== "No nearby user"){
             amigo.push(mensaje);
             toast(mensaje);
             setNotificaciones(notRed);
         }
-        console.log(amigo);
     }
 
     useEffect(() => {
@@ -76,7 +74,7 @@ function NavAuthenticated(){
             let usuario = await getUserByWebId(webId);
             if(usuario == null){
                 usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
-                console.log(usuario);
+                //console.log(usuario);
                 setRole(usuario.role);
             }else{
                 await addLocation(usuario._id, position.coords.longitude, position.coords.latitude );
@@ -149,6 +147,7 @@ function NavAuthenticated(){
                                             height="40"
                                             className="d-inline-block align-top"
                                             alt="notificacion"
+                                            style={{backgroundColor: "transparent"}}
                                         />
                             </Button>
                             <Popover
@@ -179,14 +178,6 @@ function NavAuthenticated(){
                 >
 
                 <div>
-                    <div className="logged-in-msg-panel">
-                        <span>{t('InitSession')}</span>
-                        <Text
-                            properties={[
-                                "http://www.w3.org/2006/vcard/ns#fn",
-                                "http://xmlns.com/foaf/0.1/name",]}
-                        />
-                    </div>
                     <div id="container" style={{ backgroundColor: "black"}}>
                         <Route exact path="/profile" component={WelcomeAuth}/>
                         <Route exact path="/map" component={MapView}/>

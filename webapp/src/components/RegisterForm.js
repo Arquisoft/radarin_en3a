@@ -11,6 +11,7 @@ function RegisterForm() {
             <Card.Body>
                 <Card.Title className="register-title">{t('registerFormTitle')}</Card.Title>
                 <Button className="register-btn" variant="primary" href="https://solidcommunity.net/register" block>Solid Community</Button>
+                <Button className="register-btn" variant="primary" href="https://inrupt.net/register" block>Inrupt</Button>
             </Card.Body>
         </Card>
     );
