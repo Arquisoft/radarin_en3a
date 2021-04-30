@@ -52,7 +52,7 @@ const resources = {
           "navBarSolid" :"Solid",
           "navBarInrupt" :"Inrupt",
           "CurrentLocation": "Your current location is",
-          "CalculatingLocation": "Calculating your location",
+          "CalculatingLocation": "Calculating your location...",
           "FilterLocations":"Filter locations by tag"
         }
     },
@@ -105,7 +105,7 @@ const resources = {
           "navBarSolid" :"Solid",
           "navBarInrupt" :"Inrupt",
           "CurrentLocation": "Tu ubicación actual es",
-          "CalculatingLocation": "Calculando tu ubicación",
+          "CalculatingLocation": "Calculando tu ubicación...",
           "FilterLocations": "Filtrar ubicaciones por etiqueta"
       }
     }

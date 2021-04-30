@@ -20,9 +20,5 @@ global.navigator.geolocation = mockGeolocation;
        <AddLocation />
     </I18nextProvider>
   );
-  const button = c.getAllByRole("button");
-  expect(button).toHaveLength(1);
-  expect(c.getAllByText(i18n.getDataByLanguage('en').translation.GetCurrentLocation)).toBeDefined();
-  fireEvent.click(button[0]); 
-
+  expect(c.getAllByText(i18n.getDataByLanguage('en').translation.CalculatingLocation)).toBeDefined();
 });

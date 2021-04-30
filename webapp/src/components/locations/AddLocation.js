@@ -53,7 +53,7 @@ function AddLocation() {
             return (
                 <div>
                     <h4>
-                        {t('CalculatingLocation')}...
+                        {t('CalculatingLocation')}
                     </h4>
                 </div>);
         }
