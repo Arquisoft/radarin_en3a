@@ -5,7 +5,19 @@
 
 === Overview
 
+image:07-Deployment-Diagram.png["Deployment diagram for the Radarin application"]
+
+.Motivation
 In this case the deployment view will be different depending on the stage the project is in. For the development and testing the environment will be hosted locally by each student, but for the production phase,
 the project will be deployed on a Docker container and hosted on Heroku. Below you can find a deployment diagram showing the mapping of the different building blocks of the system to its infrastructure during the production stage.
 
-image:07-Deployment-Diagram.png["Deployment diagram for the Radarin application"]
+.Queality and/or Performance Features
+As both are going to be run as a web aplication, the user will need a network connection to be able to use the app. The app does not take much space because it also use the user provider and a databese hosted in the cloud. The app needs to talk with this services and store the minimun data, so it should not take a lot of bandwidth.
+
+.Mapping of Building Blocks to infrastructure
+* User device: the digital device computer or mobile phone used to enter a browser in order to interact with the application.
+* The web application
+* Both Heroku and Docker, where the app is deployed
+* The database that is used for the correct work of the app
+* The Pod provider and the user pods where the information is going to be stored (locations, timestamps, ...)
+
