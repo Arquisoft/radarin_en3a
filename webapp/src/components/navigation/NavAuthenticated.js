@@ -154,7 +154,6 @@ function NavAuthenticated() {
                             alt="notificacion"
                             style={{ backgroundColor: "transparent" }}
                         />
-                            <p className="radarin-title">Radarin</p>
                         </Button>
 
                         <Popover
