@@ -91,6 +91,9 @@ function MarkerGenerator(props) {
         let latitudeParsed = parseFloat(coordinatesSplit[0]);
         let longitudeParsed = parseFloat(coordinatesSplit[1]);
         let tagForMarker = coordinatesSplit[2];
+        if(tagForMarker === ""){
+            tagForMarker = "No tag";
+        }
         let timestampOfThing = locThing._entities[7];
         let timestampOfThingSplit = timestampOfThing.split("^");
         let timestampOfThingFormatted = timestampOfThingSplit[0];

@@ -64,7 +64,10 @@ const resources = {
           "helpFriendsTitle":"How to see your friends list",
           "helpFriends":"To see your friends list, click on 'Friends' ",
           "helpNotificationsTitle":"Notifications",
-          "helpNotifications":"When you have a notification, the bell will have a red dot, click on the bell to see them."
+          "helpNotifications":"When you have a notification, the bell will have a red dot, click on the bell to see them.",
+          "CurrentLocation": "Your current location is",
+          "CalculatingLocation": "Calculating your location...",
+          "FilterLocations":"Filter locations by tag"
         }
     },
     es: {
@@ -117,6 +120,7 @@ const resources = {
           "navBarSolid" :"Solid",
           "navBarInrupt" :"Inrupt",
 
+
           "helpLanguageTitle":"Lenguaje",
           "helpLanguage":"Para cambiar el lenguaje haga click en el recuadro gris al lado de 'Perfil' y selecciona el que quieras.",
           "helpLogInTitle":"Cómo iniciar y salir de la sesión",
@@ -128,7 +132,10 @@ const resources = {
           "helpFriendsTitle":"Cómo ver tu lista de amigos",
           "helpFriends":"Para ver la lista de amigos, haga click en 'Amigos'",
           "helpNotificationsTitle":"Notificaciones",
-          "helpNotifications":"Cuando tenga una notificación, la campana tendrás un círculo rojo. Haga click en la campana para abrir un desplegable con las notificaciones."
+          "helpNotifications":"Cuando tenga una notificación, la campana tendrás un círculo rojo. Haga click en la campana para abrir un desplegable con las notificaciones.",
+          "CurrentLocation": "Tu ubicación actual es",
+          "CalculatingLocation": "Calculando tu ubicación...",
+          "FilterLocations": "Filtrar ubicaciones por etiqueta"
       }
     }
 };

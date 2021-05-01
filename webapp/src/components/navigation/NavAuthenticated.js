@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React, {useState, useEffect} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
@@ -15,7 +16,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { getDefaultSession, logout } from "@inrupt/solid-client-authn-browser";
 import { useTranslation } from 'react-i18next';
-import { CombinedDataProvider, Text, useSession } from "@inrupt/solid-ui-react";
+import {CombinedDataProvider, useSession} from "@inrupt/solid-ui-react";
 import ManageUsers from '../admin/ManageUsers';
 import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
 import "react-toastify/dist/ReactToastify.css";
@@ -61,22 +62,24 @@ function NavAuthenticated() {
         let promises = await getFriendsForPOD().then(function (list) { return list; });
         promises.forEach(friend => amigos.push(friend));
         setAmigo(amigo);
-        var mensaje = await nearFriends(amigos, webId)
-        if (mensaje !== "No nearby user") {
+
+        let mensaje = await nearFriends(amigos,webId)
+        if(mensaje !== "No nearby user"){
+
             amigo.push(mensaje);
             toast(mensaje);
             setNotificaciones(notRed);
         }
-        console.log(amigo);
     }
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(async function (position) {
             console.log("Esto es lo que le estamos añadiendo al usuario: " + webId + " localización longitud: " + position.coords.longitude + " latitud: " + position.coords.latitude);
             let usuario = await getUserByWebId(webId);
-            if (usuario == null) {
-                usuario = await addUser(webId, position.coords.longitude, position.coords.latitude);
-                console.log(usuario);
+
+            if(usuario == null){
+                usuario = await addUser(webId, position.coords.longitude, position.coords.latitude );
+                //console.log(usuario);
                 setRole(usuario.role);
             } else {
                 await addLocation(usuario._id, position.coords.longitude, position.coords.latitude);
@@ -151,14 +154,43 @@ function NavAuthenticated() {
                             alt="notificacion"
                             style={{ backgroundColor: "transparent" }}
                         />
-                        </Button>
-                        <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
+                        <p className="radarin-title">Radarin</p>
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <DropdownButton id="dropdown-item-button" style={{margin: "16px"}} variant="secondary" title={t('navBarLanguage')}>
+                            <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
+                        </DropdownButton>
+
+                        <Nav className="mr-auto">
+                            {(() => {
+                                if (role != null && role === "Admin") {
+                                    return (
+                                        <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                                    );
+                                }
+                            })()}
+                            <Nav.Link  id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
+                            <Nav.Link  className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                            <Button className="notification-button" onClick={handleClick}><img
+                                            src={notificaciones}
+                                            width="40"
+                                            height="40"
+                                            className="d-inline-block align-top"
+                                            alt="notificacion"
+                                            style={{backgroundColor: "transparent"}}
+                                        />
+                            </Button>
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                 vertical: 'bottom',
                                 horizontal: 'center',
                             }}
                             transformOrigin={{
@@ -181,20 +213,13 @@ function NavAuthenticated() {
             >
 
                 <div>
-                    <div className="logged-in-msg-panel">
-                        <span>{t('InitSession')}</span>
-                        <Text
-                            properties={[
-                                "http://www.w3.org/2006/vcard/ns#fn",
-                                "http://xmlns.com/foaf/0.1/name",]}
-                        />
-                    </div>
-                    <div id="container" style={{ backgroundColor: "black" }}>
-                        <Route exact path="/profile" component={WelcomeAuth} />
-                        <Route exact path="/map" component={MapView} />
-                        <Route exact path="/locations" component={LocationsView} />
-                        <Route exact path="/friends" component={FriendsView} />
-                        <Route exact path="/manageUsers" component={ManageUsers} />
+
+                    <div id="container" style={{ backgroundColor: "black"}}>
+                        <Route exact path="/profile" component={WelcomeAuth}/>
+                        <Route exact path="/map" component={MapView}/>
+                        <Route exact path="/locations" component={LocationsView}/>
+                        <Route exact path="/friends" component={FriendsView}/>
+                        <Route exact path="/manageUsers" component={ManageUsers}/> 
                         <Route exact path="/help" component={Help} />
                         <Redirect path="/" exact to="/profile" />
                     </div>
