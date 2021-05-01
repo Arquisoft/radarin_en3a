@@ -1,6 +1,6 @@
 import React from "react";
 import "react-native-gesture-handler";
-import { StyleSheet, Text, View, TouchableOpacity, Linking } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
   container: {

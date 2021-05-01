@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Navigation from "../components/navigation/Navigation";
 import i18n from "../i18n";
-import { I18nextProvider } from "react-i18next"
+import { I18nextProvider } from "react-i18next";
 
 test("check that language is changing", async () => {
   const issuer = "sergioen3a";
