@@ -1,12 +1,9 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import languageHelp from '../../assets/languajeGuide.png';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import languageHelp from "../../assets/languajeGuide.png";
 
 function Help(props) {
     const { t, i18n } = useTranslation();
-    const changeLanguage = (lng) => {
-        i18n.changeLanguage(lng);
-    };
     return (
         <div className="Help page">
             <div/>
