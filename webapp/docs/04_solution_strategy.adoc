@@ -1,40 +1,23 @@
 [[section-solution-strategy]]
 == Solution Strategy
+In order to this project with the requirements explained earlier, we have to make some decisions regarding the aplication and how to aproach the problem we encounter in the development of this project.
 
-
-// [role="arc42help"]
-// ****
-// .Contents
-// A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
-
-// * technology decisions
-// * decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-// * decisions on how to achieve key quality goals
-// * relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
-
-// .Motivation
-// These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
-
-// .Form
-// Keep the explanation of these key decisions short.
-
-// Motivate what you have decided and why you decided that way,
-// based upon your problem statement, the quality goals and key constraints.
-// Refer to details in the following sections.
-// ****
-=== Technology Used
 === Technology Decisions
-==== Development tools
-===== Languages, frameworks and Libraries
+In order to develop the aplication with the constraints required we had to chose some technologies that will help us do so.
+* *Web aplication that is adaptable.* At first we decided to do both a web application and a mobile application. However, we found that the later gave us a lot of problems (using react native). We did not have the time to solve them for the final project so we decided to do a web application with all the functionality instead.
+* *Monitoring* For this we are using Prometheous and Grafana, this was decided because it was well explaind in the laboratories.
+* *Testint* To test the correct purpose of the aplication we are using the E2E test, the Gatling test and the react testing library.
+* *Web application development* For the development of the application we choose to use react, express and node.js. The squeleton of the app was provided to us with this technologies so we continued to use them.
+* *Application deployment* We are using Docker and Heroku, as this is a requirement for this app.
+* *Bootstrap* This library was use for some components of the application, as the popover.
+* *Database* We choose to use the mongoDB database, this was the one choosen in the squeleton of the app so we choose to continue using this.
+* *Login with pods* To log in with pods we decided to use @inrupt/solid-ui-react library.
+* *Map* To implement the map we use a library called leaflet. At first we decided to use Google Maps but with leaflet this was easier to do.
+* *Notifications* To use the notifications we uses the library react-tostify.
+* *Other libraries* Some other libraries where used, but for the main requirements this ones are the most important. For example, solid libraries that will be employed for user data management.
 
-This section is to be updated as new technologies are incorporated into the project.
-
-* Solid: As the core idea of the project is to used the Solid approach to develop a program, the Solid libraries are employed for user data management, in what are called "user pods".
-* React: For interface design and development, our initial choice is React, which is a Javascript library for interface programming.
-* React Native: this is the version of React used to develop for mobile devices.
-* Leaflet: we'll use this Javascript library for doing the maps.
-
-===== IDEs
+=== Development tools
+==== IDEs
 
 Mainly, we use Visual Studio Code, for its versatility to work on many different languajes and document formats. It also provides git integration, which is very useful for version control.
 

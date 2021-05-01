@@ -10,7 +10,6 @@ The members of our team are:
 * Raúl Núñez García
 * Armando Campa Martínez
 * Francisco Manuel Fernández Suárez
-* Kaan Ipek
 
 === Requirements Overview
 
@@ -30,10 +29,11 @@ The other requirements the application will have are:
 
 |===
 |Priority|Goal|Description
-| 1 | Security | It will not store personal information about the user, it will ask permission to access this information.
-| 2 | Usability | The final application should be easy to use for the first time for new users.
+| 1 | Usability | The final application should be easy to use for the first time for new users. This means that a normal user with no experience with this application could work without any problems with it.
+| 2 | Security | The application will not lead to any security problems. It will not store personal information about the user, it will ask permission to access this information.
 | 3 | Efficiency | The final application should work with small waiting times and doing its functionality without any error.
-| 4 | Testability | We should be able to create and run test to check that the application works as needed.
+| 4 | Availability | The application has to be accesible for the user 24/7. There are not time frames where the application will not work.
+| 5 | Testability | The app will be tested so we know that it behaves as it should and have the minimal unsuspected errors.
 |===
 
 
@@ -43,8 +43,9 @@ The other requirements the application will have are:
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| Teacher | labra@uniovi.es | Oversee the project and check that the requirements are met
-| Developer team | The ones developing the app | Make an usable application and learn about software architecture.
+| Teacher | Teachers of the Software Architecture course | Oversee the project and check that the requirements are met. Help with the application giving us tips of how to make hour app better for the final user.
+| Developer team | The ones developing the app | Make an usable application and learn about software architecture. Furthermore, as we are working in teams it will also teach us how to work in them.
 | End Users | People that use the final application | They want a funcitonal application that is easy to use, that does not use information unless they want to.
 | Administrators | Users that have admin priviledges | They will manage the users and other data throught the web application.
+| SOLID comunity | People of the solid comunity that works with it daily | They are a group of people working with SOLID that are interested in making the product better. They could find errors in the code and help us via the forum when we are developing the application.
 |===

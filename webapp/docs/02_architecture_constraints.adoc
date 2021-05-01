@@ -1,5 +1,6 @@
 [[section-architecture-constraints]]
 == Project Constraints
+In this section we are going to describe the different constraints the project has.
 
 === Technical constraints
 [options="header",cols="1,2"]
@@ -9,6 +10,7 @@
 | _Notification system_ | The project will notify the users when a friend of theirs is located nearby.
 | _Compliance with the SOLID protocol_ | The project will have to use the SOLID user pods as the only way for data retrieval, and therefore it will have to be compatible with the SOLID technology.
 | _Deployment_ | The project will be ultimately deployed from Docker containers and on Heroku as a continuous integration solution.
+| _Monitoring system_ | The project will have some kind of monitoring system, this will analyse the performance of the application, detect posible errors ...
 |===
 
 === Organizational constraints
@@ -16,7 +18,7 @@
 |===
 |Constraint|Details
 | _Time frame_ | The project will have to be developed during the second semester of the academic year, and will have to be finished by the 13th laboratory session.
-| _Developer team_ | The team is formed by 7 students of the ASW course.
+| _Developer team_ | The team is formed by 6 students of the ASW course.
 | _Testing_ | The project will have be thoroughly tested to assure the expected quality is met. The testing process will include unit tests, acceptance tests and load tests.
 |===
 
@@ -24,6 +26,6 @@
 [options="header",cols="1,2"]
 |===
 |Constraint|Details
-| _Version control_ | _The development of the project will be done with the git version control system using GitHub as the platform._
-| _Documentation_ | _The documentation for the project will be done using the Arc42 templates, and it will use Asciidoctor for publishing purposes._
+| _Version control_ | The development of the project will be done with the git version control system using GitHub as the platform.
+| _Documentation_ | The documentation for the project will be done using the Arc42 templates, and it will use Asciidoctor for publishing purposes.
 |===
