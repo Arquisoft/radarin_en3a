@@ -1,6 +1,6 @@
 const express = require("express");
 
-const User = require("./models/User");
+const User = require("./models/userModel");
 const router = express.Router();
 const async = require("async");
 
@@ -73,7 +73,6 @@ router.post("/locations/add", async(req, res) => {
     res.send(user);
 });
 
-
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
   }
@@ -125,6 +124,8 @@ router.post("/users/findNearest", async(req, res) => {
     
 
 });
+
+
 
 module.exports = router;
 
