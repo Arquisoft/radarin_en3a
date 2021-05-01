@@ -14,7 +14,9 @@ import {useSession} from "@inrupt/solid-ui-react";
 
 import Button from "react-bootstrap/Button";
 import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
-import SignUp from "../SignUp";
+import SignUp from '../SignUp';
+import Help from "../help/Help.js";
+
 
 function Navigation () {
     const { t, i18n } = useTranslation();
@@ -30,6 +32,7 @@ function Navigation () {
     let [currentIssuerText, setIssuerText] = useState(t("navBarService"));
 
 
+
     useEffect(() => {
         handleIncomingRedirect({
             restorePreviousSession: true,
@@ -37,6 +40,7 @@ function Navigation () {
             setWebId(info.webId);
         });
     }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
+
 
     const autoCompleteSolidLogin = (name) => {
         setIssuerText("Solid");
@@ -54,6 +58,7 @@ function Navigation () {
         userUrl = end;
     }
 
+
     const handleLogin = (e) => {
         if(!userUrl.startsWith("https://")){
             if(currentIssuerText === "Inrupt"){
@@ -70,6 +75,7 @@ function Navigation () {
             clientName: "Radarin app",
         });
     };
+
 
     const { session } = useSession();
 
@@ -93,6 +99,7 @@ function Navigation () {
                             </Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">
+
                                 <DropdownButton id="dropdown-item-button" style={{margin: "16px"}} variant="secondary" title={t("navBarLanguage")}>
                                     <Dropdown.Item as="button" onClick={() => changeLanguage("en")}>{t("navBarLanguageEn")}</Dropdown.Item>
                                     <Dropdown.Item as="button" onClick={() => changeLanguage("es")}>{t("navBarLanguageEs")}</Dropdown.Item>
@@ -117,18 +124,26 @@ function Navigation () {
                                                             setIssuer(e.target.value);
                                                         }}
                                                     />
+
                                                     <Button className="log-in-btn" onClick={(e) => handleLogin(e)}>{t("navBarLogIn")}</Button>
+
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <Nav.Link  className="mt-1 mr-2" href="#/help">{t('navBarHelp')}</Nav.Link> 
+
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
                         <Route exact path="/" component={WelcomeNoAuth} />
                         <Route exact path="/register" component={SignUp} />
+
+                        <Route exact path="/help" component={Help} />
                         <Redirect path="/" exact to="/" />
-                    </div>)};
+                    </div>)}
+
         </div>
     </HashRouter>)
 }

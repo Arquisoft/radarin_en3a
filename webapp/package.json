@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^12.6.0",
     "bootstrap": "^4.5.3",
     "choco": "^0.2.1",
+    "chokidar": "^2.1.8",
     "express": "^4.17.1",
     "i18next": "^19.9.2",
     "i18next-browser-languagedetector": "^6.1.0",
@@ -24,6 +25,7 @@
     "jest-dev-server": "^4.4.0",
     "jquery": "^3.6.0",
     "leaflet": "^1.7.1",
+    "material-ui-popup-state": "^1.8.3",
     "react": "^17.0.2",
     "react-alert": "^7.0.2",
     "react-bootstrap": "^1.4.3",
@@ -34,7 +36,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-toastify": "^7.0.3",
-    "solid-auth-cli": "^1.0.15",
+    "solid-auth-cli": "^0.1.6",
     "solid-auth-client": "^2.5.5",
     "solid-file-client": "^1.2.4",
     "web-vitals": "^0.2.4"
@@ -67,8 +69,16 @@
   },
   "devDependencies": {
     "@solid/query-ldflex": "^2.11.3",
+    "eslint-plugin-jest": "^24.3.6",
     "expect-puppeteer": "^4.4.0",
     "puppeteer": "^5.5.0",
     "shx": "^0.3.3"
-  }
+  },
+  "description": "In this case we are using React for the webapp. Lets create the app in the directory webapp with the following command (make sure you have npm installed in your system):\r ```\r npx create-react-app webapp\r ```\r At this point we can already run the app with:\r ```\r cd webapp\r npm start\r ```\r The app will launch and it will be listening in port 3000. At this point this app is a Hello World app in React.",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "author": "",
+  "license": "ISC"
 }
