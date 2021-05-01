@@ -4,17 +4,17 @@ In order to this project with the requirements explained earlier, we have to mak
 
 === Technology Decisions
 In order to develop the aplication with the constraints required we had to chose some technologies that will help us do so.
-* Web aplication that is adaptable: At first we decided to do both a web application and a mobile application. However, we found that the later gave us a lot of problems (using react native). We did not have the time to solve them for the final project so we decided to do a web application with all the functionality instead.
-* Monitoring: For this we are using Prometheous and Grafana, this was decided because it was well explaind in the laboratories.
-* Testing: To test the correct purpose of the aplication we are using the E2E test, the Gatling test and the react testing library.
-* Web application development: For the development of the application we choose to use react, express and node.js. The squeleton of the app was provided to us with this technologies so we continued to use them.
-* Application deployment: We are using Docker and Heroku, as this is a requirement for this app.
-* Bootstrap: This library was use for some components of the application, as the popover.
-* Database: We choose to use the mongoDB database, this was the one choosen in the squeleton of the app so we choose to continue using this.
-* Login with pods: To log in with pods we decided to use @inrupt/solid-ui-react library.
-* Map: To implement the map we use a library called leaflet. At first we decided to use Google Maps but with leaflet this was easier to do.
-* Notifications: To use the notifications we uses the library react-tostify.
-* Other libraries: Some other libraries where used, but for the main requirements this ones are the most important. For example, solid libraries that will be employed for user data management.
+ * Web aplication that is adaptable: At first we decided to do both a web application and a mobile application. However, we found that the later gave us a lot of problems (using react native). We did not have the time to solve them for the final project so we decided to do a web application with all the functionality instead.
+ * Monitoring: For this we are using Prometheous and Grafana, this was decided because it was well explaind in the laboratories.
+ * Testing: To test the correct purpose of the aplication we are using the E2E test, the Gatling test and the react testing library.
+ * Web application development: For the development of the application we choose to use react, express and node.js. The squeleton of the app was provided to us with this technologies so we continued to use them.
+ * Application deployment: We are using Docker and Heroku, as this is a requirement for this app.
+ * Bootstrap: This library was use for some components of the application, as the popover.
+ * Database: We choose to use the mongoDB database, this was the one choosen in the squeleton of the app so we choose to continue using this.
+ * Login with pods: To log in with pods we decided to use @inrupt/solid-ui-react library.
+ * Map: To implement the map we use a library called leaflet. At first we decided to use Google Maps but with leaflet this was easier to do.
+ * Notifications: To use the notifications we uses the library react-tostify.
+ * Other libraries: Some other libraries where used, but for the main requirements this ones are the most important. For example, solid libraries that will be employed for user data management.
 
 === Development tools
 ==== IDEs
