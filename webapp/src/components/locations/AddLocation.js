@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import "../../css/AddLocation.css";
 import {useTranslation} from "react-i18next";
 import {useSession} from "@inrupt/solid-ui-react";
@@ -37,23 +37,23 @@ function AddLocation() {
         if([currentLatitude].toString() !== "") {
             return (
                 <div>
-                    <h4>{t('CurrentLocation')}:</h4>
+                    <h4>{t("CurrentLocation")}:</h4>
                     <br/>
-                    <h6>{t('lat')} <span id="lat-span">{currentLatitude}</span> {t('deg')}, {t('long')} <span id="long-span">{currentLongitude}</span> {t('long')}</h6>
-                    <p>{t('timestamp')} {currentTimestamp}</p>
+                    <h6>{t("lat")} <span id="lat-span">{currentLatitude}</span> {t("deg")}, {t("long")} <span id="long-span">{currentLongitude}</span> {t("long")}</h6>
+                    <p>{t("timestamp")} {currentTimestamp}</p>
                 </div>);
         }else if(!locationAvailable){
             return (
                 <div>
                 <h4>
-                    { t('LocationNotAvailable')}
+                    { t("LocationNotAvailable")}
                 </h4>
                 </div>);
         }else{
             return (
                 <div>
                     <h4>
-                        {t('CalculatingLocation')}
+                        {t("CalculatingLocation")}
                     </h4>
                 </div>);
         }

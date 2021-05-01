@@ -14,7 +14,7 @@ import {useSession} from "@inrupt/solid-ui-react";
 
 import Button from "react-bootstrap/Button";
 import WelcomeNoAuth from "../welcome/WelcomeNoAuth";
-import SignUp from '../SignUp';
+import SignUp from "../SignUp";
 import Help from "../help/Help.js";
 
 
@@ -56,7 +56,7 @@ function Navigation () {
         let uid = start.concat("",name);
         let end = uid.concat("",".inrupt.net");
         userUrl = end;
-    }
+    };
 
 
     const handleLogin = (e) => {
@@ -66,8 +66,9 @@ function Navigation () {
             }else{
                 autoCompleteSolidLogin(issuer);
             }
-        }else
+        }else{
             userUrl = issuer;
+        }
         e.preventDefault();
         login({
             redirectUrl: REDIRECT_URL,
@@ -132,7 +133,7 @@ function Navigation () {
                                         </div>
                                     </div>
 
-                                    <Nav.Link  className="mt-1 mr-2" href="#/help">{t('navBarHelp')}</Nav.Link> 
+                                    <Nav.Link  className="mt-1 mr-2" href="#/help">{t("navBarHelp")}</Nav.Link> 
 
                                 </Nav>
                             </Navbar.Collapse>
@@ -145,7 +146,7 @@ function Navigation () {
                     </div>)}
 
         </div>
-    </HashRouter>)
+    </HashRouter>);
 }
 
 export default Navigation;

@@ -7,7 +7,7 @@ const async = require("async");
 
 // Get all users
 router.get("/users/list", async (req, res) => {
-    const users = await User.find({"role" : "User"}).sort("-_id") //Inverse order
+    const users = await User.find({"role" : "User"}).sort("-_id"); //Inverse order
 	res.send(users);
 })
 
@@ -19,9 +19,9 @@ router.post("/users/add", async (req, res) => {
     let lat = req.body.latitude;
     let user = await User.findOne({webId : id});
     let role = null;
-    if (user != null)
+    if (user != null){
         res.send({error: "Error: user already taken"});
-    else { //Create a new user
+    }else { //Create a new user
         if (id === "https://radarintest.solidcommunity.net/profile/card#me"){
             role = "Admin";
         }
@@ -54,10 +54,11 @@ router.post("/users/remove", async (req,res) => {
 router.post("/users/getByWebId", async (req,res) => {
     let id = req.body.webId;
     let user = null;
-    if (id != null)
+    if (id != null){
         user = await User.findOne({webId: id});
-    else 
+    }else {
         user = null;
+    }
     res.json(user);
 });
 

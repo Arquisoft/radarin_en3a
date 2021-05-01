@@ -50,7 +50,7 @@ function FriendMarkerGenerator(props) {
                 return;
             }
             let retrievedFriends = await getFriendsForPOD().then(function(list){return list;});
-            retrievedFriends.forEach(friend => friendList.push(friend));
+            retrievedFriends.forEach((friend) => friendList.push(friend));
             await retrieveFriendLocations();
         })();
     });
@@ -64,7 +64,7 @@ function FriendMarkerGenerator(props) {
                     <b>{friend.friendId}</b>
                 </Popup>
             </Marker>
-        </div>)
+        </div>);
     });
 }
 

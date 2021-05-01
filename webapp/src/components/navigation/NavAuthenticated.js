@@ -1,24 +1,24 @@
 
-import React, { useState, useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Route, Redirect } from "react-router-dom";
 import MapView from "../map/MapView";
 import LocationsView from "../locations/LocationsView";
-import WelcomeAuth from '../welcome/WelcomeAuth';
+import WelcomeAuth from "../welcome/WelcomeAuth";
 import FriendsView from "../friends/FriendsView";
-import '../../css/Navigation.css';
-import 'leaflet/dist/leaflet.css';
+import "../../css/Navigation.css";
+import "leaflet/dist/leaflet.css";
 import "../../css/MapView.css";
 import logo from "../../assets/simple_logo.png";
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Nav from 'react-bootstrap/Nav';
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { getDefaultSession, logout } from "@inrupt/solid-client-authn-browser";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { CombinedDataProvider, useSession } from "@inrupt/solid-ui-react";
-import ManageUsers from '../admin/ManageUsers';
-import { addLocation, addUser, getUserByWebId } from '../../api/api.js';
+import ManageUsers from "../admin/ManageUsers";
+import { addLocation, addUser, getUserByWebId } from "../../api/api.js";
 import "react-toastify/dist/ReactToastify.css";
 import { nearFriends } from "../../api/api.js";
 import { toast } from "react-toastify";
@@ -28,7 +28,7 @@ import {
 } from "@inrupt/solid-client";
 import not from "../../assets/notification.png";
 import notRed from "../../assets/notification_dot.png";
-import Popover from '@material-ui/core/Popover';
+import Popover from "@material-ui/core/Popover";
 import UserNotification from "./UserNotification";
 import Help from "../help/Help.js";
 
@@ -44,7 +44,7 @@ function NavAuthenticated() {
     const [role, setRole] = useState(null);
     const [webId, setWebId] = useState(getDefaultSession().info.webId);
 
-    const [amigo, setAmigo] = useState([])
+    const [amigo, setAmigo] = useState([]);
     const [notificaciones, setNotificaciones] = useState(not);
 
     async function getFriendsForPOD() {
@@ -57,13 +57,13 @@ function NavAuthenticated() {
         return promises;
     }
 
-    async function FindNearFriends() {
+    async function findNearFriends() {
         let amigos = [];
         let promises = await getFriendsForPOD().then(function (list) { return list; });
-        promises.forEach(friend => amigos.push(friend));
+        promises.forEach((friend) => amigos.push(friend));
         setAmigo(amigo);
 
-        let mensaje = await nearFriends(amigos, webId)
+        let mensaje = await nearFriends(amigos, webId);
         if (mensaje !== "No nearby user") {
 
             amigo.push(mensaje);
@@ -74,7 +74,6 @@ function NavAuthenticated() {
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(async function (position) {
-            console.log("Esto es lo que le estamos añadiendo al usuario: " + webId + " localización longitud: " + position.coords.longitude + " latitud: " + position.coords.latitude);
             let usuario = await getUserByWebId(webId);
 
             if (usuario == null) {
@@ -86,7 +85,7 @@ function NavAuthenticated() {
                 setRole(usuario.role);
             }
             const interval = setInterval(() => {
-                FindNearFriends();
+                findNearFriends();
             }, 30000);
             return () => clearInterval(interval);
         });
@@ -112,7 +111,7 @@ function NavAuthenticated() {
     };
 
     const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    const id = open ? "simple-popover" : undefined;
 
     return (
         <div>
@@ -129,23 +128,23 @@ function NavAuthenticated() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <DropdownButton id="dropdown-item-button" style={{ margin: "16px" }} variant="secondary" title={t('navBarLanguage')}>
-                        <Dropdown.Item as="button" onClick={() => changeLanguage('en')}>{t('navBarLanguageEn')}</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => changeLanguage('es')}>{t('navBarLanguageEs')}</Dropdown.Item>
+                    <DropdownButton id="dropdown-item-button" style={{ margin: "16px" }} variant="secondary" title={t("navBarLanguage")}>
+                        <Dropdown.Item as="button" onClick={() => changeLanguage("en")}>{t("navBarLanguageEn")}</Dropdown.Item>
+                        <Dropdown.Item as="button" onClick={() => changeLanguage("es")}>{t("navBarLanguageEs")}</Dropdown.Item>
                     </DropdownButton>
 
                     <Nav className="mr-auto">
                         {(() => {
                             if (role != null && role === "Admin") {
                                 return (
-                                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t('AdminList')}</Nav.Link>
+                                    <Nav.Link className="mt-1 mr-2" href="#/manageUsers">{t("AdminList")}</Nav.Link>
                                 );
                             }
                         })()}
-                        <Nav.Link id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t('navBarProfile')}</Nav.Link>
-                        <Nav.Link className="mt-1 mr-2" href="#/map">{t('navBarMap')}</Nav.Link>
-                        <Nav.Link className="mt-1 mr-2" href="#/locations">{t('navBarLocations')}</Nav.Link>
-                        <Nav.Link className="mt-1 mr-2" href="#/friends">{t('navBarFriends')}</Nav.Link>
+                        <Nav.Link id="profile-nav-link" className="mt-1 mr-2" href="#/profile">{t("navBarProfile")}</Nav.Link>
+                        <Nav.Link className="mt-1 mr-2" href="#/map">{t("navBarMap")}</Nav.Link>
+                        <Nav.Link className="mt-1 mr-2" href="#/locations">{t("navBarLocations")}</Nav.Link>
+                        <Nav.Link className="mt-1 mr-2" href="#/friends">{t("navBarFriends")}</Nav.Link>
                         <Button className="notification-button" onClick={handleClick}><img
                             src={notificaciones}
                             width="40"
@@ -162,20 +161,20 @@ function NavAuthenticated() {
                             anchorEl={anchorEl}
                             onClose={handleClose}
                             anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'center',
+                                vertical: "bottom",
+                                horizontal: "center",
                             }}
                             transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center',
+                                vertical: "top",
+                                horizontal: "center",
                             }}
                         >
                             <ul>
                                 <UserNotification notif={amigo} />
                             </ul>
                         </Popover>
-                        <Nav.Link className="mt-1 mr-2" href="#/help">{t('navBarHelp')}</Nav.Link>
-                        <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t('navBarLogOut')}</Button>
+                        <Nav.Link className="mt-1 mr-2" href="#/help">{t("navBarHelp")}</Nav.Link>
+                        <Button className="log-out-btn" onClick={(e) => handleLogout(e)}>{t("navBarLogOut")}</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -198,7 +197,7 @@ function NavAuthenticated() {
                 </div>
             </CombinedDataProvider>
         </div>
-    )
+    );
 }
 
 export default NavAuthenticated;

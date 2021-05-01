@@ -1,9 +1,9 @@
 import React, { useEffect, useState} from "react";
 import {MapContainer, TileLayer} from "react-leaflet";
-import 'leaflet/dist/leaflet.css';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import L from 'leaflet';
+import "leaflet/dist/leaflet.css";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import L from "leaflet";
 import {
     createSolidDataset,
     getSolidDataset,
@@ -22,6 +22,19 @@ const MapView = () => {
     const [locationList, setLocationList] = useState();
     const { t } = useTranslation();
     const [, updateState] = React.useState();
+
+    async function updateLocationList(){
+        const profileDataset = await getSolidDataset(session.info.webId, {
+            fetch: session.fetch,
+        });
+        const profileThing = getThing(profileDataset, session.info.webId);
+        const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
+        const pod = podsUrls[0];
+        const containerUri = `${pod}radarin/`;
+        const list = await getOrCreateLocationList(containerUri, session.fetch);
+        setLocationList(list);
+    }
+
     const forceUpdate = React.useCallback(function(){
         updateState({});
         updateLocationList();
@@ -48,18 +61,6 @@ const MapView = () => {
         }
     }
 
-    async function updateLocationList(){
-        const profileDataset = await getSolidDataset(session.info.webId, {
-            fetch: session.fetch,
-        });
-        const profileThing = getThing(profileDataset, session.info.webId);
-        const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
-        const pod = podsUrls[0];
-        const containerUri = `${pod}radarin/`;
-        const list = await getOrCreateLocationList(containerUri, session.fetch);
-        setLocationList(list);
-    }
-
     async function centerMapToCurrentLocation(){
         console.log("about to center based on current location");
     }
@@ -79,7 +80,7 @@ const MapView = () => {
     return (
         <div>
             <div className="logged-in-panel">
-                <h2 style={{ marginTop: "150px" }}>{t('MapOfLocations')}</h2>
+                <h2 style={{ marginTop: "150px" }}>{t("MapOfLocations")}</h2>
             </div>
         <div className="user-map-panel">
             <MapContainer center={mapCenter} zoom={9} style={{ height: "100vh" }}>

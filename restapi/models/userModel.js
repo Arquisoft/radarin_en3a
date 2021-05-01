@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.set('useCreateIndex', true)
+mongoose.set("useCreateIndex", true);
 const UserSchema = new mongoose.Schema({
     webId: String,
     longitude: Number,
@@ -11,4 +11,4 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

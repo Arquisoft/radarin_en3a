@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function LogIn({navigation}) {
+/* export default function LogIn({navigation}) {
   return (
     <View style={styles.container}>
         <Text style={{fontSize: 16, color: "white", marginHorizontal:20}}
@@ -32,4 +32,4 @@ export default function LogIn({navigation}) {
         </View>  
     </View>
   );
-}
+}*/

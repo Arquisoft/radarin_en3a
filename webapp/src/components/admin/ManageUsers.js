@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import '../../css/Navigation.css';
-import {getUsers} from "../../api/api.js"
+import React, {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
+import "../../css/Navigation.css";
+import {getUsers} from "../../api/api.js";
 import RegUserComponent from "./RegUserComponent";
 
 function ManageUsers () {
@@ -18,7 +18,7 @@ function ManageUsers () {
 
     return(
         <div className="registered-user-container">
-            <h2>{t('AdminList')}</h2>
+            <h2>{t("AdminList")}</h2>
             <ul>
                 <RegUserComponent usersList={usersList}/>
             </ul>

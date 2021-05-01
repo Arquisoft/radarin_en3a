@@ -29,6 +29,23 @@ function MarkerGenerator(props) {
                 "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF"
     });
 
+    async function getOrCreateLocationList(containerUri, fetch) {
+        const indexUrl = `${containerUri}locations.ttl`;
+        try {
+            return await getSolidDataset(indexUrl, {fetch});
+        } catch (error) {
+            if (error.statusCode === 404) {
+                return await saveSolidDatasetAt(
+                    indexUrl,
+                    createSolidDataset(),
+                    {
+                        fetch,
+                    }
+                );
+            }
+        }
+    }
+
     const { fetch } = useSession();
     useEffect(() => {
         if (session){
@@ -56,23 +73,6 @@ function MarkerGenerator(props) {
         reloadMapView();
     };
 
-    async function getOrCreateLocationList(containerUri, fetch) {
-        const indexUrl = `${containerUri}locations.ttl`;
-        try {
-            return await getSolidDataset(indexUrl, {fetch});
-        } catch (error) {
-            if (error.statusCode === 404) {
-                return await saveSolidDatasetAt(
-                    indexUrl,
-                    createSolidDataset(),
-                    {
-                        fetch,
-                    }
-                );
-            }
-        }
-    }
-
     function DeleteButton({ locToDelete }) {
         return (
             <Button className="delete-button btn-danger" style={{ marginLeft: "15px"}} onClick={() => deleteLocation(locToDelete)}>
@@ -82,11 +82,11 @@ function MarkerGenerator(props) {
     }
 
     if(locationThings.length === 0){
-        return <h3>No locations currently saved on your POD</h3>
+        return (<h3>No locations currently saved on your POD</h3>);
     }
     return locationThings.map(function(locThing,index){
         let coordinatesOfThing = locThing._entities[5];
-        coordinatesOfThing = coordinatesOfThing.replace(/^"(.*)"$/, '$1');
+        coordinatesOfThing = coordinatesOfThing.replace(/^"(.*)"$/, "$1");
         let coordinatesSplit = coordinatesOfThing.split(" / ");
         let latitudeParsed = parseFloat(coordinatesSplit[0]);
         let longitudeParsed = parseFloat(coordinatesSplit[1]);
@@ -97,7 +97,7 @@ function MarkerGenerator(props) {
         let timestampOfThing = locThing._entities[7];
         let timestampOfThingSplit = timestampOfThing.split("^");
         let timestampOfThingFormatted = timestampOfThingSplit[0];
-        timestampOfThingFormatted = timestampOfThingFormatted.replace(/^"(.*)"$/, '$1');
+        timestampOfThingFormatted = timestampOfThingFormatted.replace(/^"(.*)"$/, "$1");
         timestampOfThingFormatted = timestampOfThingFormatted.split(".")[0];
         timestampOfThingFormatted = timestampOfThingFormatted.replace("T"," ");
         let coordinatesForCurrentMarker = [ latitudeParsed, longitudeParsed];
@@ -109,7 +109,7 @@ function MarkerGenerator(props) {
                 <DeleteButton locToDelete={locThing}/>
             </Popup>
         </Marker>
-    </div>)
+    </div>);
     });
 }
 
