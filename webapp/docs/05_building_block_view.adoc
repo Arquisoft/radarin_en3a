@@ -18,6 +18,7 @@ The general structure of the system is an application, where users can know that
 
 
 image:05_building_blocks-EN-1.png["Level 1"]
+
 Contained Building Blocks::
 [options="header",cols="1,2"]
 |===
