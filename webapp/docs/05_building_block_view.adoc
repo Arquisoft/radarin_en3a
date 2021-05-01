@@ -42,6 +42,7 @@ Contained Building Blocks::
 
 === Level 3
 image:05_building_blocks-EN-3.png["Level 3"]
+
 Contained Building Blocks::
 [options="header",cols="1,3"]
 |===
