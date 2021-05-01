@@ -1,13 +1,13 @@
 const express = require("express");
 
-const userModel = require("./models/userModel");
+const User = require("./models/User");
 const router = express.Router();
 const async = require("async");
 
 
 // Get all users
 router.get("/users/list", async (req, res) => {
-    const users = await userModel.find({"role" : "User"}).sort("-_id") //Inverse order
+    const users = await User.find({"role" : "User"}).sort("-_id") //Inverse order
 	res.send(users);
 })
 
@@ -17,7 +17,7 @@ router.post("/users/add", async (req, res) => {
     let id = req.body.webId;
     let long = req.body.longitude;
     let lat = req.body.latitude;
-    let user = await userModel.findOne({webId : id});
+    let user = await User.findOne({webId : id});
     let role = null;
     if (user != null)
         res.send({error: "Error: user already taken"});
@@ -46,7 +46,7 @@ router.post("/users/add", async (req, res) => {
 //Delete a specific user
 router.post("/users/remove", async (req,res) => {
     let id = req.body.webId;
-    let user = await userModel.deleteOne({webId: id});
+    let user = await User.deleteOne({webId: id});
     res.json(user);
 });
 
@@ -55,7 +55,7 @@ router.post("/users/getByWebId", async (req,res) => {
     let id = req.body.webId;
     let user = null;
     if (id != null)
-        user = await userModel.findOne({webId: id});
+        user = await User.findOne({webId: id});
     else 
         user = null;
     res.json(user);
@@ -64,7 +64,7 @@ router.post("/users/getByWebId", async (req,res) => {
 //Add a location to a specific user
 router.post("/locations/add", async(req, res) => {
     let id = req.body._id;
-    let user = await userModel.findById(id);
+    let user = await User.findById(id);
     if(user != null){
         user.longitude = req.body.longitude;
         user.latitude = req.body.latitude;
@@ -96,11 +96,11 @@ function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
 router.post("/users/findNearest", async(req, res) => {
     let friends = req.body.friends;
     let id = req.body.webId;
-    let user = await userModel.findOne({webId: id});
+    let user = await User.findOne({webId: id});
     let nearUser = null;
     let distance = 0;
     async.each(friends, async function(nearFriend){
-        const friend = await userModel.findOne({webId: nearFriend});
+        const friend = await User.findOne({webId: nearFriend});
         if(friend != null){
             let dis = distanceInKmBetweenEarthCoordinates(user.latitude,user.longitude,friend.latitude,friend.longitude);
             if(nearUser == null){
