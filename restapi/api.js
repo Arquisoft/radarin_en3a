@@ -9,7 +9,7 @@ const async = require("async");
 router.get("/users/list", async (req, res) => {
     const users = await userModel.find({"role" : "User"}).sort("-_id") //Inverse order
 	res.send(users);
-});
+})
 
 //register a new user / update location
 router.post("/users/add", async (req, res) => {
@@ -19,9 +19,9 @@ router.post("/users/add", async (req, res) => {
     let lat = req.body.latitude;
     let user = await userModel.findOne({webId : id});
     let role = null;
-    if (user != null){
+    if (user != null)
         res.send({error: "Error: user already taken"});
-    } else { //Create a new user
+    else { //Create a new user
         if (id === "https://radarintest.solidcommunity.net/profile/card#me"){
             role = "Admin";
         }
@@ -54,11 +54,10 @@ router.post("/users/remove", async (req,res) => {
 router.post("/users/getByWebId", async (req,res) => {
     let id = req.body.webId;
     let user = null;
-    if (id != null){
+    if (id != null)
         user = await userModel.findOne({webId: id});
-    }else {
+    else 
         user = null;
-    }
     res.json(user);
 });
 
@@ -73,6 +72,7 @@ router.post("/locations/add", async(req, res) => {
     }
     res.send(user);
 });
+
 
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
@@ -125,7 +125,6 @@ router.post("/users/findNearest", async(req, res) => {
     
 
 });
-
 
 module.exports = router;
 
