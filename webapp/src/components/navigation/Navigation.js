@@ -118,6 +118,7 @@ function Navigation () {
                                             <div>
                                                 <form>
                                                     <input
+                                                        name="userName"
                                                         placeholder={t("LogInPlaceholder")}
                                                         type="text"
                                                         value={issuer}
