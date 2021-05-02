@@ -13,7 +13,7 @@ defineFeature(feature, test => {
     
     beforeEach(async () => {
         await global.page.goto('http://localhost:3000'),
-        setDefaultOptions({ timeout: 10000 })
+        setDefaultOptions({ timeout: 10000 });
     });
 
     test('The user is already registered with a pod and logs in Radarin', ({given,when,then}) => {
