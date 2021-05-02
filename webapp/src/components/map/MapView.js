@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from "react";
-import {MapContainer, TileLayer} from "react-leaflet";
+import {MapContainer, TileLayer, useMap} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
@@ -41,8 +41,7 @@ const MapView = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    //TODO center map on last location in the POD
-    let mapCenter =[43.542, -6.594];
+    let [mapCenter] = useState([43.542, -6.594]);
 
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
@@ -61,14 +60,23 @@ const MapView = () => {
         }
     }
 
-    async function centerMapToCurrentLocation(){
-        console.log("about to center based on current location");
+    function LocationCenter() {
+        const map = useMap();
+        useEffect(() => {
+            map.locate().on("locationfound", function (e) {
+                if(e !== null && e !== undefined) {
+                    map.flyTo(e.latlng, map.getZoom());
+                }
+            });
+        }, [map]);
+
+        return null;
     }
+
 
 
     useEffect(() => {
        updateLocationList();
-       centerMapToCurrentLocation();
        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
@@ -84,6 +92,7 @@ const MapView = () => {
             </div>
         <div className="user-map-panel">
             <MapContainer center={mapCenter} zoom={9} style={{ height: "100vh" }}>
+                <LocationCenter/>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
