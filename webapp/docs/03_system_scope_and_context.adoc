@@ -20,7 +20,7 @@ The minimum information consists of the location and the time stamp, leaving the
 
 === Technical Context
 
-For this app, we are using the solid pods to store information about each of the users so they can later access to add or modify their data once authenticated, JavaScript using React libarary to develop the user interfaces for the web and the mobile application.
+For this app, we are using the solid pods to store information about each of the users so they can later access to add or modify their data once authenticated, JavaScript using React library to develop the user interfaces for the web and the mobile application.
 
 
 
@@ -29,10 +29,10 @@ For this app, we are using the solid pods to store information about each of the
 |Item|Details
 | Customer | The person that uses the app and interacts with other users. This is done with the web application.
 | Admin | The administrator, that is a special user of our aplication, can list users and delete any of them. There will be only one instance of this user. For this purpose it is hardcoded into the database so no security problems happen.
-| Radarin Server | Where the web application is running. The users are able to interact with this and comunicate with the PODS and the REST API.
+| Radarin Server | Where the web application is running. The users are able to interact with this and communicate with the PODS and the REST API.
 | POD | The solid POD that stores the customer's data and there's one per user. 
 | API | i.e Google Maps to get details about the location in the map.
 | Https | Communication protocol for data requests and responses.
-| SOLID / INRUPT | Provider of the pods, this is external to our app. The application is able to comunicate with this services to extract the information needed.
+| SOLID / INRUPT | Provider of the pods, this is external to our app. The application is able to communicate with this services to extract the information needed.
 |===
 

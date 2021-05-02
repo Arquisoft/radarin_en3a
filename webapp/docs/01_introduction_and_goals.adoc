@@ -46,6 +46,6 @@ The other requirements the application will have are:
 | Teacher | Teachers of the Software Architecture course | Oversee the project and check that the requirements are met. Help with the application giving us tips of how to make hour app better for the final user.
 | Developer team | The ones developing the app | Make an usable application and learn about software architecture. Furthermore, as we are working in teams it will also teach us how to work in them.
 | End Users | People that use the final application | They want a funcitonal application that is easy to use, that does not use information unless they want to.
-| Administrators | Users that have admin priviledges | They will manage the users and other data throught the web application.
-| SOLID comunity | People of the solid comunity that works with it daily | They are a group of people working with SOLID that are interested in making the product better. They could find errors in the code and help us via the forum when we are developing the application.
+| Administrators | Users that have admin privileges | They will manage the users and other data throught the web application.
+| SOLID community | People of the solid community that works with it daily | They are a group of people working with SOLID that are interested in making the product better. They could find errors in the code and help us via the forum when we are developing the application.
 |===

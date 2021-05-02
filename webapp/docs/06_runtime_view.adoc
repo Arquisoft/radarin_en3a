@@ -1,6 +1,6 @@
 [[section-runtime-view]]
 == Runtime View
-In this section we will explain how the different blocks of the app work together and how they comunicate with each other.
+In this section we will explain how the different blocks of the app work together and how they communicate with each other.
 
 === Log in
 
@@ -11,14 +11,14 @@ The next diagrams shows how the login works in the app.
 3.Then the user presses log in. Then is redirected to the log in of the pod provider.
 4.Logs in to the pod.
 5.The app talks to the database, if the user is already in the database we overwrite the location and the timestamp. If the user is new we enter a new one in the database.
-5.Enter the aplication.
+5.Enter the application.
 
 === Sign up
 
 1.Enter Sign Up window.
-2.Click in the provider of the pod that we want to use. This redirect us to the page to register en solidcommunity or inrupt.
+2.Click in the provider of the pod that we want to use. This redirect us to the page to register in Solid Community or Inrupt.
 3.We register in the pod provider following the steps of each one.
-4.The pod is created no information appart from the one that is provided in the login is stored.
+4.The pod is created no information apart from the one that is provided in the login is stored.
 
 === UserMap
 Once we are inside the app.
@@ -30,7 +30,7 @@ Once we are inside the app.
 
 1. Gets the location of the user
 2. User adds if they want a tag
-3. This information is send to the database and it overwrite the location and the timestamp There
+3. This information is send to the database and it overwrites the previous location and timestamp values present there
 4. The location is also stored in the pod of the user.
 5. In this view we retrieve from the user pod the locations and show them
 
