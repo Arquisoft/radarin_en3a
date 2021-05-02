@@ -1,87 +1,52 @@
 [[section-runtime-view]]
 == Runtime View
-
-
-[role="arc42help"]
-****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
-
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
-
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
-
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
-
-.Form
-There are many notations for describing scenarios, e.g.
-
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
-* ...
-
-****
-
-This section is aimed to explain the different runtime views of the application. In the following diagram an inteface mockup can be seen.
-
-image:webapp mockup editable.png["Mockup interface"]
+In this section we will explain how the different blocks of the app work together and how they communicate with each other.
 
 === Log in
 
 The next diagrams shows how the login works in the app.
 
-1.The user presses the login button.
-
-2.The user is redirected to solidcommunity to choose a provider.
-
-3.Then the user inserts his/her credentials abd presses log in.
-
-4.The pod allow or deny the authentication.
-
-image:login.png["Login diagram"]
-
-image:login.png["login"]
+1.The user selects the provider of the pod.
+2.The user enters the username of the pod.
+3.Then the user presses log in. Then is redirected to the log in of the pod provider.
+4.Logs in to the pod.
+5.The app talks to the database, if the user is already in the database we overwrite the location and the timestamp. If the user is new we enter a new one in the database.
+5.Enter the application.
 
 === Sign up
 
-The application provides you the funcionality to sign up in solidcommunity in order to get a pod.
-To do that, the user goes into sign up section and presses solidcommunity button, which redirects you to solidcommunity provider. Then, you need to fill the register form and go back to the app to log in when registered.
-
-image:login.png["register"]
+1.Enter Sign Up window.
+2.Click in the provider of the pod that we want to use. This redirect us to the page to register in Solid Community or Inrupt.
+3.We register in the pod provider following the steps of each one.
+4.The pod is created no information apart from the one that is provided in the login is stored.
 
 === UserMap
-
-The application contains a map view. When opening this view, the user can see the his or her stored locations on a map.
-To do this, the user needs to be logged in.
-
-image:login.png["map"]
+Once we are inside the app.
+1. Talk to the pod of the user and retrieve the list of the locations
+2. Talk to the pod of the user and search the friends, after this retrieve the information of the locations of the friends
+3. Add markers in the map with the locations retrieved
 
 === Locations
 
-This is a view where you can manage your locations. 
-This view allows you to get your current location, save it to the pod and also shows all your stored locations in a list, where you are able to delete them.
-To do this, the user needs to be logged in.
-
-image:login.png["locations"]
+1. Gets the location of the user
+2. User adds if they want a tag
+3. This information is send to the database and it overwrites the previous location and timestamp values present there
+4. The location is also stored in the pod of the user.
+5. In this view we retrieve from the user pod the locations and show them
 
 === Friends
 
-This is a view in which the user is able to see his or her list of friends. 
-The user is able to see the name and picture of each friend, and access its pod profile by clicking on it.
-To do this, the user needs to be logged in.
-
-image:login.png["friends"]
+1. Enter the user pod and retrieve the list of friends
+2. Show them in the screen
 
 === Profile
 
-This is a view where the user is able to see his or her profile in the application.
+1. Enter the user pod
+2. Ask for the information about itself and send it as a result to the view.
 
-image:login.png["welcome"]
+=== Notifications
+
+1. Enter the user pod 
+2. Ask for friends and retrieve them
+3. Ask the database with friend is the nearest (we store the last location in the database)
+4. Retrieve the user that is nearest

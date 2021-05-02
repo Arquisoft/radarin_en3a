@@ -1,40 +1,24 @@
 [[section-solution-strategy]]
 == Solution Strategy
+In order to this project with the requirements explained earlier, we have to make some decisions regarding the application and how to approach the problem we encounter in the development of this project.
 
-
-// [role="arc42help"]
-// ****
-// .Contents
-// A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
-
-// * technology decisions
-// * decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-// * decisions on how to achieve key quality goals
-// * relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
-
-// .Motivation
-// These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
-
-// .Form
-// Keep the explanation of these key decisions short.
-
-// Motivate what you have decided and why you decided that way,
-// based upon your problem statement, the quality goals and key constraints.
-// Refer to details in the following sections.
-// ****
-=== Technology Used
 === Technology Decisions
-==== Development tools
-===== Languages, frameworks and Libraries
+In order to develop the application with the constraints required we had to chose some technologies that will help us do so:
 
-This section is to be updated as new technologies are incorporated into the project.
+* Web application that is adaptable: At first we decided to do both a web application and a mobile application. However, we found that the later gave us a lot of problems (using react native). We did not have the time to solve them for the final project so we decided to do a web application with all the functionality instead.
+* Monitoring: For this we are using Prometheus and Grafana, this was decided because it was well explained in the laboratories.
+* Testing: To test the correct purpose of the application we are using the E2E test, the Gatling test and the react testing library.
+* Web application development: For the development of the application we choose to use react, express and node.js. The skeleton of the app was provided to us with this technologies so we continued to use them.
+* Application deployment: We are using Docker and Heroku, as this is a requirement for this app.
+* Bootstrap: This library was use for some components of the application, as the popover.
+* Database: We choose to use the mongoDB database, this was the one chosen in the skeleton of the app so we choose to continue using this.
+* Login with pods: To log in with pods we decided to use the @inrupt/solid-client-authn-browser library, and in order to achieve easy to use Solid components, we chose the @inrupt/@inrupt/solid-ui-react library.
+* Map: To implement the map we use a library called leaflet. At first we decided to use Google Maps but with leaflet this was easier to do.
+* Notifications: To use the notifications we uses the library react-tostify.
+* Other libraries: Some other libraries where used, but for the main requirements this ones are the most important. For example, solid libraries that will be employed for user data management.
 
-* Solid: As the core idea of the project is to used the Solid approach to develop a program, the Solid libraries are employed for user data management, in what are called "user pods".
-* React: For interface design and development, our initial choice is React, which is a Javascript library for interface programming.
-* React Native: this is the version of React used to develop for mobile devices.
-* Leaflet: we'll use this Javascript library for doing the maps.
-
-===== IDEs
+=== Development tools
+==== IDEs
 
 Mainly, we use Visual Studio Code, for its versatility to work on many different languajes and document formats. It also provides git integration, which is very useful for version control.
 
@@ -46,7 +30,7 @@ For diagrams and other visuals, our initial choice is draw.io, a quite useful to
 
 Due to the weekly nature of the laboratory classes, the team can work in a semi-agile way. That is, we are not using from the start a specific variant such as Kanban, but the timing allows us to split work among us and set a constant time frame to work, as a sprint.
 
-The sprints consist on the week in-between laboratory classes. In each class a meeting is held (online, due to Covid-19 regulations), and it works as an end-of-sprint meeting as well as a meeting to decide the next assignments. Additional meetings may be held as way of tracking progress and group-decission taking. The meetings logs are registered in the GitHub repository wiki.
+The sprints consist on the week in-between laboratory classes. In each class a meeting is held (online, due to Covid-19 regulations), and it works as an end-of-sprint meeting as well as a meeting to decide the next assignments. Additional meetings may be held as way of tracking progress and group-decision taking. The meetings logs are registered in the GitHub repository wiki.
 The team is also connected via other channels such as Microsoft Teams for small updates and decisions.
 
 Initially, personal git branches were made, with everyone making pull requests to the master branch. Later, it was decided that it was best to make a branch for each implementation (one for the webapp, one for the restapi, and so on), seeing as we swapped branches to work together on multiple things. They were periodically committed to the master branch.

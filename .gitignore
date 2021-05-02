@@ -17,5 +17,7 @@ yarn-error.log*
 restapi/node_modules
 restapi/data
 
+AppMovile/node_modules
+
 .eslintcache
 node_modules

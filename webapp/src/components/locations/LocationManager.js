@@ -11,6 +11,7 @@ import React, {useEffect, useState} from "react";
 import {Table, TableColumn, useSession, useThing} from "@inrupt/solid-ui-react";
 import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
+import searchIcon from "../../assets/search.png";
 
 function LocationManager(props) {
 
@@ -103,26 +104,32 @@ function LocationManager(props) {
         const { thing } = useThing();
         return (
             <Button className="delete-button btn-danger" onClick={() => deleteTodo(thing)}>
-                {t('Delete')}
+                {t("Delete")}
             </Button>
         );
     }
 
+    let [filter,setLocationFilter] = useState("");
+    function changeFilter(){
+        let newFilterValue = document.getElementById("filter-input").value;
+        setLocationFilter(newFilterValue);
+    }
 
     return (<div>
-        <Button className="add-location-button" onClick={getLocationAndSave}>{t('AddCurrentLocation')}</Button><br/>
+        <Button className="add-location-button" onClick={getLocationAndSave}>{t("AddCurrentLocation")}</Button><br/>
         <div className="locations-displayed-panel">
-            <h3>{t('YourLocations')}</h3>
-            <h6>{t('LocationCount1')}{locationThings.length} {t('LocationCount2')}</h6>
-            <Table className="table locations-table" things={thingsArray}>
-                <TableColumn property={TEXT_PREDICATE} header={t('LocationCoordinates')}
+            <h3>{t("YourLocations")}</h3>
+            <h6>{t("LocationCount1")}{locationThings.length} {t("LocationCount2")}</h6>
+            <img id="search-icon" src={searchIcon} alt=""/><input id="filter-input" type="text" placeholder={t("FilterLocations")} onChange={changeFilter}/>
+            <Table className="table locations-table" things={thingsArray} filter={filter}>
+                <TableColumn property={TEXT_PREDICATE} header={t("LocationCoordinates")} filterable
                              body={function({ value }) {
-                                 let separateCoords = value.split(" / ")
-                                 return "Lat:" + separateCoords[0] + "  Lon: " + separateCoords[1]
+                                 let separateCoords = value.split(" / ");
+                                 return "Lat:" + separateCoords[0] + "  Lon: " + separateCoords[1];
                              }
                              }
                 />
-                <TableColumn property={TEXT_PREDICATE} header={t('Tag')}
+                <TableColumn property={TEXT_PREDICATE} header={t("Tag")}
                              body={function({ value }) {
                                  let separateCoords = value.split(" / ")
                                  if(separateCoords[2] === ""){
@@ -136,7 +143,7 @@ function LocationManager(props) {
                 <TableColumn
                     property={CREATED_PREDICATE}
                     dataType="datetime"
-                    header={t('CreatedAt')}
+                    header={t("CreatedAt")}
                     body={({ value }) => value.toUTCString()}
                 />
                 <TableColumn

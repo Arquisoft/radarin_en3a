@@ -1,4 +1,7 @@
-html, body, .App, .App>div {
+html,
+body,
+.App,
+.App > div {
   width: 100vw;
   height: 100%;
   min-height: 100%;
@@ -7,8 +10,8 @@ html, body, .App, .App>div {
   margin: 0;
 }
 
-#container{
-  background-color: rgb(40,44,52) !important;
+#container {
+  background-color: rgb(40, 44, 52) !important;
 }
 
 .App {
@@ -22,24 +25,24 @@ html, body, .App, .App>div {
   background-color: #282c34;
 }
 
-.logged-in-panel{
+.logged-in-panel {
   width: 100%;
   height: 100%;
   margin-top: 100px;
   color: white !important;
 }
 
-.log-out-btn{
+.log-out-btn {
   margin-top: 100px;
   background-color: #007bff;
   border: 1px solid black;
-  color: rgba(0,0,0,.7);
+  color: rgba(0, 0, 0, 0.7);
   padding: 10px 20px;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
-.log-out-btn:hover{
-  background-color:#343a40;
+.log-out-btn:hover {
+  background-color: #343a40;
   border: 1px solid white;
   color: white;
 }
@@ -55,7 +58,8 @@ html, body, .App, .App>div {
   }
 }
 
-.InitialWelcome, .App-header {
+.InitialWelcome,
+.App-header {
   min-height: 20vh;
   flex-direction: row;
   align-items: center;
@@ -66,14 +70,14 @@ html, body, .App, .App>div {
 }
 
 .App-content {
-  padding-top:5vh;
+  padding-top: 5vh;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   color: white;
   align-items: center;
 }
 
-.mr-auto{
+.mr-auto {
   float: left;
 }
 
