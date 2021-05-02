@@ -69,7 +69,7 @@ defineFeature(feature, test => {
       await delay(2000);
     });
 
-    then('I should be able to create a solid POD', async () => {      
+    then('I should be able to create an inrupt POD', async () => {      
       await expect(page).toFill('input[name="username"]', username);
       await expect(page).toFill('input[name="password"]', password);
       await expect(page).toFill('input[name="repeat_password"]', password);
