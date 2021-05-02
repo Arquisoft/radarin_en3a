@@ -31,7 +31,7 @@ defineFeature(feature, test => {
             await expect(page).toMatch('Radarin');
             await expect(page).toFill('input[name="userName"]', username);
             await expect(page).toClick('button', {text: 'Log in'});
-            await delay(1000);
+            await delay(2000);
             
             await expect(page).toMatch('Login');
             await expect(page).toFill('input[name="username"]', username);

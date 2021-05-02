@@ -31,20 +31,20 @@ defineFeature(feature, test => {
             await expect(page).toMatch('Radarin');
             await expect(page).toFill('input[name="userName"]', username);
             await expect(page).toClick('button', {text: 'Log in'});
-            await delay(1000);
+            await delay(3000);
             
             await expect(page).toMatch('Login');
             await expect(page).toFill('input[name="username"]', username);
             await expect(page).toFill('input[name="password"]', pass);
             
             await expect(page).toClick('button', {text: 'Log In'});
-            await delay(1000);
+            await delay(5000);
 
-            await expect(page).toClick('button', {text: 'Languages'});
-            await delay(1000);
+            await expect(page).toClick('button', {text: 'Language'});
+            await delay(3000);
             
             await expect(page).toClick('button', {text: 'Spanish'});
-            await delay(1000);
+            await delay(3000);
         });
     
         then('I should see my profile page in Spanish', async () => {
