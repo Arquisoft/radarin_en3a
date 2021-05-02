@@ -24,7 +24,10 @@ import { nearFriends } from "../../api/api.js";
 import { toast } from "react-toastify";
 import { FOAF } from "@inrupt/vocab-common-rdf";
 import {
-    getSolidDataset, getThing, getUrlAll,
+    addDatetime,
+    addStringNoLocale, addUrl,
+    createSolidDataset, createThing,
+    getSolidDataset, getSourceUrl, getThing, getUrlAll, saveSolidDatasetAt, setThing,
 } from "@inrupt/solid-client";
 import not from "../../assets/notification.png";
 import notRed from "../../assets/notification_dot.png";
@@ -46,6 +49,13 @@ function NavAuthenticated() {
 
     const [amigo, setAmigo] = useState([]);
     const [notificaciones, setNotificaciones] = useState(not);
+
+    const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
+    const TEXT_PREDICATE = "http://schema.org/text";
+    const CREATED_PREDICATE = "http://www.w3.org/2002/12/cal/ical#created";
+    const TYPE_PREDICATE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+    const TODO_CLASS = "http://www.w3.org/2002/12/cal/ical#Vtodo";
+    const [locationList, setLocationList] = useState();
 
     async function getFriendsForPOD() {
         const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
@@ -72,13 +82,66 @@ function NavAuthenticated() {
         }
     }
 
+    async function getOrCreateLocationList(containerUri, fetch) {
+        const indexUrl = `${containerUri}locations.ttl`;
+        try {
+            return await getSolidDataset(indexUrl, {fetch});
+        } catch (error) {
+            if (error.statusCode === 404) {
+                return await saveSolidDatasetAt(
+                    indexUrl,
+                    createSolidDataset(),
+                    {
+                        fetch,
+                    }
+                );
+            }
+        }
+    }
+
     useEffect(() => {
+        if (locationList !== undefined && sessionStorage.getItem("loginDone") === null) {
+            navigator.geolocation.getCurrentPosition(async function (position) {
+                let textForAdding = position.coords.latitude + " / " + position.coords.longitude + " / No tag";
+                const indexUrl = getSourceUrl(locationList);
+                const locationWithText = addStringNoLocale(createThing(), TEXT_PREDICATE, textForAdding);
+                const locationWithDate = addDatetime(
+                    locationWithText,
+                    CREATED_PREDICATE,
+                    new Date()
+                );
+                const locationWithType = addUrl(locationWithDate, TYPE_PREDICATE, TODO_CLASS);
+                const updatedTodoList = setThing(locationList, locationWithType);
+                const updatedDataset = await saveSolidDatasetAt(indexUrl, updatedTodoList, {
+                    fetch: session.fetch,
+                });
+                setLocationList(updatedDataset);
+                sessionStorage.setItem("loginDone", "true");
+            });
+        }
+    }, [locationList, session.fetch]);
+
+    useEffect(() => {
+        if(sessionStorage.getItem("loginDone") === null) {
+            if (session) {
+                (async () => {
+                    const profileDataset = await getSolidDataset(session.info.webId, {
+                        fetch: session.fetch,
+                    });
+                    const profileThing = getThing(profileDataset, session.info.webId);
+                    const podsUrls = getUrlAll(profileThing, STORAGE_PREDICATE);
+                    const pod = podsUrls[0];
+                    const containerUri = `${pod}radarin/`;
+                    const list = await getOrCreateLocationList(containerUri, session.fetch);
+                    setLocationList(list);
+                    return null;
+                })();
+            }
+        }
         navigator.geolocation.getCurrentPosition(async function (position) {
             let usuario = await getUserByWebId(webId);
-
             if (usuario == null) {
                 usuario = await addUser(webId, position.coords.longitude, position.coords.latitude);
-                //console.log(usuario);
                 setRole(usuario.role);
             } else {
                 await addLocation(usuario._id, position.coords.longitude, position.coords.latitude);
@@ -93,6 +156,7 @@ function NavAuthenticated() {
     }, []);
 
     const handleLogout = (e) => {
+        sessionStorage.clear();
         e.preventDefault();
         logout();
         setWebId(undefined);
