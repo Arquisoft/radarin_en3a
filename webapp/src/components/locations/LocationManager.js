@@ -61,6 +61,7 @@ function LocationManager(props) {
                 const containerUri = `${pod}radarin/`;
                 const list = await getOrCreateLocationList(containerUri, session.fetch);
                 setLocationList(list);
+                return null;
             })();
         }
     }, [session]);
@@ -97,6 +98,9 @@ function LocationManager(props) {
         let latitudeValue = document.getElementById("lat-span").textContent;
         let longitudeValue = document.getElementById("long-span").textContent;
         let locationText = document.getElementById("location-text-input").value;
+        if(locationText === ""){
+            locationText = "No tag";
+        }
         addLocations(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
