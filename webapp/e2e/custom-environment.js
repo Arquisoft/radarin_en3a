@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-var NodeEnvironemnt = require('jest-environment-node');
-var puppeteer = require('puppeteer');
-
-=======
 var NodeEnvironemnt = require("jest-environment-node");
 var puppeteer = require("puppeteer");
->>>>>>> master
 class CustomEnvironment extends NodeEnvironemnt {
     constructor(config, context){
         super(config, context);
