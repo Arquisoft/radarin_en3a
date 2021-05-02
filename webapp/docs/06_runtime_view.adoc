@@ -1,7 +1,6 @@
 [[section-runtime-view]]
 == Runtime View
-
-This section is aimed to explain the different runtime views of the application. In the following diagram an inteface mockup can be seen.
+In this section we will explain how the different blocks of the app work together and how they comunicate with each other.
 
 === Log in
 
@@ -16,10 +15,7 @@ The next diagrams shows how the login works in the app.
 
 === Sign up
 
-The application provides you the funcionality to sign up in solid or inrupt the user chooses one.
-
 1.Enter Sign Up window.
-image:singup.png["register"]
 2.Click in the provider of the pod that we want to use. This redirect us to the page to register en solidcommunity or inrupt.
 3.We register in the pod provider following the steps of each one.
 4.The pod is created no information appart from the one that is provided in the login is stored.
@@ -43,14 +39,10 @@ Once we are inside the app.
 1. Enter the user pod and retrieve the list of friends
 2. Show them in the screen
 
-image:friends.PNG["friends"]
-
 === Profile
 
 1. Enter the user pod
 2. Ask for the information about itself and send it as a result to the view.
-
-image:profile.png["welcome"]
 
 === Notifications
 
