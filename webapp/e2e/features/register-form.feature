@@ -1,11 +1,16 @@
 Feature: Registering a new user
 
-Scenario: The user is not registered in SOLID
-  Given An unregistered user without a POD
-  When I click on the Sign up link
-  Then I should be redirected to http://localhost:3000/#/register
+Scenario: The user create a non existing Solid POD
+ Given An unregistered user without a POD
+ When I click on the Solid Community at the Sign up link
+ Then I should be able to create a solid POD
 
-#Scenario: The user create a non existing Solid POD
-#  Given An unregistered user without a POD
-#  When I click on the 
-#  Then I should be redirected to your Solid POD
+Scenario: The user create an already existing solid POD
+ Given An unregistered user without a POD
+ When I click on the Solid Community at the Sign up link
+ Then I should be told that the user already exists
+
+Scenario: The user create a non existing Inrupt POD
+ Given An unregistered user without a POD
+ When I click on the Solid Community at the Sign up link
+ Then I should be able to create an inrupt POD
