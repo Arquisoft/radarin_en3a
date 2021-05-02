@@ -4,9 +4,9 @@ const {setDefaultOptions} = require('expect-puppeteer');
 const puppeteer = require('puppeteer');
 const select = require('puppeteer-select');
 
-let username = "test333";
-let password = "Radarin333.";
-let name = "RadarinTest333";
+let username = "test338";
+let password = "Radarin338.";
+let name = "RadarinTest338";
 
 function delay(time) {
   return new Promise(function(resolve) { 
@@ -17,7 +17,7 @@ function delay(time) {
 defineFeature(feature, test => {
   
   beforeEach(async () => {
-    await global.page.goto('http://localhost:3000'),
+    let page = await global.page.goto('http://localhost:3000');
     setDefaultOptions({ timeout: 150000 });
   });
 
@@ -103,9 +103,9 @@ defineFeature(feature, test => {
       await expect(page).toFill('input[name="name"]', name);
       await expect(page).toFill('input[name="email"]', "testpurposes@gmail.com");
       await expect(page).toClick('button', {text: 'Register'});
-      await delay(3000);
+      await delay(4000);
       await expect(page).toMatch(name);
-      await delay(3000);
+      await delay(1000);
     });
   });
 });

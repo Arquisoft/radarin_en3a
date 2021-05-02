@@ -10,25 +10,11 @@ function delay(time) {
     });
  }
 
- function fakeLocation(latitude, longitude) {
-    return {
-      onBeforeLoad(win) {
-        cy.stub(win.navigator.geolocation, "getCurrentPosition", (cb, err) => {
-          if (latitude && longitude) {
-            return cb({ coords: { latitude, longitude } });
-          }
-          throw err({ code: 1 }); // 1: rejected, 2: unable, 3: timeout
-        });
-      }
-    };
-  }
-
 defineFeature(feature, test => {
     
     beforeEach(async () => {
-        await global.page.goto('http://localhost:3000'),
-        setDefaultOptions({ timeout: 10000 }),
-        fakeLocation(48,2)
+        let page = await global.page.goto('http://localhost:3000');
+        setDefaultOptions({ timeout: 10000 });
     });
 
     test('The user logs in Radarin and navigate to friends view', ({given,when,then}) => {
@@ -62,19 +48,12 @@ defineFeature(feature, test => {
     
         then('I should enter in radarin friends view', async () => {
             await expect(page).toMatch('Friend list');
-            await delay(2000);
         });
     });
     
     test('The user logs in Radarin and navigate to map view', ({given,when,then}) => {
         
-        let long;
-        let lat;
-        
-        given('An already registered user in the profile page', () => {
-            long = 2;
-            lat = 48;
-        });
+        given('An already registered user in the profile page', () => {});
     
         when('I try to go to different links of the app', async () => {                        
             await delay(2000);
@@ -89,16 +68,14 @@ defineFeature(feature, test => {
     });
 
     test('The user logs in Radarin and navigate to locations view', ({given,when,then}) => {
-    
-       
 
         given('An already registered user in the profile page', () => {});
     
-        when('I try to go to different links of the app', async () => {                        
-            await delay(3000);
+        when('I try to go to different links of the app', async () => { 
+            await delay(2000);                        
             await expect(page).toMatch('Radarin');           
             const locations = await select(page).getElement('a:contains(Locations)');
-            await locations.click();            
+            await locations.click();                       
         });
     
         then('I should enter in radarin locations view', async () => {
