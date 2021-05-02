@@ -38,7 +38,7 @@ defineFeature(feature, test => {
             await expect(page).toFill('input[name="password"]', pass);
             
             await expect(page).toClick('button', {text: 'Log In'});
-            await delay(1000);
+            await delay(2000);
             
         });
     
