@@ -1,0 +1,3 @@
+ INSERT DATA {<#16200621783071786927114831126> <http://schema.org/text> "43.5430032 / -6.5939033 / No tag";
+    <http://www.w3.org/2002/12/cal/ical#created> "2021-05-03T17:16:18.308Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+    a <http://www.w3.org/2002/12/cal/ical#Vtodo>.};
