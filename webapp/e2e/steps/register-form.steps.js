@@ -4,9 +4,9 @@ const {setDefaultOptions} = require("expect-puppeteer");
 const puppeteer = require("puppeteer");
 const select = require("puppeteer-select");
 
-let username = "test339";
-let password = "Radarin339.";
-let name = "RadarinTest339";
+let username = "test340";
+let password = "Radarin340.";
+let name = "RadarinTest340";
 
 function delay(time) {
   return new Promise(function(resolve) { 
