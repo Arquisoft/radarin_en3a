@@ -12,7 +12,7 @@ function delay(time) {
 defineFeature(feature, test => {
     
     beforeEach(async () => {
-        let page = await global.page.goto("http://localhost:3000");
+        await global.page.goto("http://localhost:3000");
         setDefaultOptions({ timeout: 10000 });
     });
 
