@@ -11,6 +11,20 @@ In this section we will explain how the different blocks of the app work togethe
 5.The app talks to the database, if the user is already in the database we overwrite the location and the timestamp. If the user is new we enter a new one in the database.
 6.Enter the application.
 
+[plantuml,"login",svg]
+....
+actor John as u
+participant WebApp as w
+database "John's Pod" as p
+
+u -> w : login
+activate w
+
+w -> p : enter in pod
+
+deactivate wa
+....
+
 === Sign up
 
 1.Enter Sign Up window.
@@ -18,11 +32,43 @@ In this section we will explain how the different blocks of the app work togethe
 3.We register in the pod provider following the steps of each one.
 4.The pod is created no information apart from the one that is provided in the login is stored.
 
+[plantuml,"signin",svg]
+....
+actor John as u
+participant WebApp as w
+database SOLID/INRUPT as s
+
+u -> w : sign in
+activate w
+
+w -> s : create a pod
+
+deactivate wa
+....
+
 === UserMap
 
 1. Talk to the pod of the user and retrieve the list of the locations
 2. Talk to the pod of the user and search the friends, after this retrieve the information of the locations of the friends
 3. Add markers in the map with the locations retrieved
+
+[plantuml,"map",svg]
+....
+actor John as u
+participant WebApp as w
+database "John's Pod" as p
+
+u -> w : log in
+activate wa
+
+u -> w : move to map view
+
+w -> p : ask for locations
+p -> w : send locations
+w -> u : show locations in map
+
+deactivate wa
+....
 
 === Locations
 
@@ -32,15 +78,73 @@ In this section we will explain how the different blocks of the app work togethe
 4. The location is also stored in the pod of the user.
 5. In this view we retrieve from the user pod the locations and show them
 
+[plantuml,"location",svg]
+....
+actor John as u
+participant WebApp as w
+database "John's Pod" as p
+database "mongo" as m
+
+u -> w : log in
+activate wa
+
+u -> w : get location
+u -> w : create tag
+
+w -> p : store location
+w -> m : update location
+p -> w : list locations
+w -> u: show list locations
+
+deactivate wa
+....
+
 === Friends
 
 1. Enter the user pod and retrieve the list of friends
 2. Show them in the screen
 
+[plantuml,"friends",svg]
+....
+actor John as u
+participant WebApp as w
+database "John's Pod" as p
+
+u -> w : log in
+activate wa
+
+u -> w : move to map view
+
+w -> p : ask for locations
+p -> w : return locations
+w -> u : show locations in map
+
+deactivate wa
+....
+
 === Profile
 
 1. Enter the user pod
 2. Ask for the information about itself and send it as a result to the view.
+
+[plantuml,"profile",svg]
+....
+actor John as u
+participant WebApp as w
+database "John's Pod" as p
+
+u -> w : log in
+activate wa
+
+u -> w : move to profile
+
+w -> p : ask for profile information
+p -> w : send profile information
+w -> u : show user info
+
+deactivate wa
+....
+
 
 === Notifications
 
@@ -48,3 +152,20 @@ In this section we will explain how the different blocks of the app work togethe
 2. Ask for friends and retrieve them
 3. Ask the database with friend is the nearest (we store the last location in the database)
 4. Retrieve the user that is nearest
+
+[plantuml,"notifications",svg]
+....
+actor John as u
+participant WebApp as w
+database "John's Pod" as p
+
+u -> w : log in
+activate wa
+
+w -> p : ask for friends
+p -> w : send friends
+w -> w : compute near friend
+w -> u : show locations in map
+
+deactivate wa
+....
