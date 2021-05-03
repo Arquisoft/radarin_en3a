@@ -43,10 +43,10 @@ jobs:
         node-version: 12.14.1
     - run: npm --prefix webapp install
     - run: npm --prefix restapi install
-    # - run: npm --prefix webapp run test:e2e
+    - run: npm --prefix webapp run test:e2e
   deploy-webapp:
     needs: [e2e-tests]
-    # needs: [build-test-webapp, build-test-restapi]
+    needs: [build-test-webapp, build-test-restapi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -63,7 +63,7 @@ jobs:
           API_URI: "https://radarinen3arestapi.herokuapp.com/api"
   deploy-restapi:
     needs: [e2e-tests]
-    # needs: [build-test-webapp, build-test-restapi]
+    needs: [build-test-webapp, build-test-restapi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
