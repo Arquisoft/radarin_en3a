@@ -8,8 +8,8 @@ class CustomEnvironment extends NodeEnvironemnt {
         await super.setup();
         this.global.browser = await puppeteer.launch({
             ignoreHTTPSErrors: true,
-            headless: false,
-            slowMo: 100,
+            headless: true,
+            //slowMo: 100,
             args: ["--window-size=1400,900"]
         });
         this.global.page = await this.global.browser.newPage();
