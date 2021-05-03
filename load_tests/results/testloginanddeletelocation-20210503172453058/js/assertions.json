@@ -1,0 +1,10 @@
+{
+  "simulation": "radarin_en3a.TestLoginAndDeleteLocation",
+  "simulationId": "testloginanddeletelocation",
+  "start": 1620062693058,
+  "description": "",
+  "scenarios": ["TestLoginAndDeleteLocation"],
+  "assertions": [
+
+  ]
+}
