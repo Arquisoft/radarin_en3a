@@ -1,0 +1,1 @@
+{"client_name":"Radarin app","application_type":"web","redirect_uris":["https://radarinen3awebapp.herokuapp.com/"],"subject_type":"pairwise","token_endpoint_auth_method":"client_secret_basic"}

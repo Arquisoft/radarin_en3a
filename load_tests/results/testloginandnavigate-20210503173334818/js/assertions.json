@@ -1,0 +1,10 @@
+{
+  "simulation": "radarin_en3a.TestLoginAndNavigate",
+  "simulationId": "testloginandnavigate",
+  "start": 1620063214818,
+  "description": "",
+  "scenarios": ["TestLoginAndNavigate"],
+  "assertions": [
+
+  ]
+}

@@ -1,0 +1,3 @@
+DELETE DATA {<https://radarintest.solidcommunity.net/radarin/locations.ttl#162006255972707113482327459397> a <http://www.w3.org/2002/12/cal/ical#Vtodo>;
+    <http://schema.org/text> "43.534183999999996 / -6.589027 / No tag";
+    <http://www.w3.org/2002/12/cal/ical#created> "2021-05-03T17:22:39.728Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>.}; 
