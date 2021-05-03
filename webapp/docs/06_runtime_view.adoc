@@ -4,12 +4,12 @@ In this section we will explain how the different blocks of the app work togethe
 
 === Log in
 
-1.The user selects the provider of the pod.
-2.The user enters the username of the pod.
-3.Then the user presses log in. Then is redirected to the log in of the pod provider.
-4.Logs in to the pod.
-5.The app talks to the database, if the user is already in the database we overwrite the location and the timestamp. If the user is new we enter a new one in the database.
-6.Enter the application.
+1. The user selects the provider of the pod.
+2. The user enters the username of the pod.
+3. Then the user presses log in. Then is redirected to the log in of the pod provider.
+4. Logs in to the pod.
+5. The app talks to the database, if the user is already in the database we overwrite the location and the timestamp. If the user is new we enter a new one in the database.
+6. Enter the application.
 
 [plantuml,"login",svg]
 ....
@@ -27,10 +27,10 @@ deactivate wa
 
 === Sign up
 
-1.Enter Sign Up window.
-2.Click in the provider of the pod that we want to use. This redirect us to the page to register in Solid Community or Inrupt.
-3.We register in the pod provider following the steps of each one.
-4.The pod is created no information apart from the one that is provided in the login is stored.
+1. Enter Sign Up window.
+2. Click in the provider of the pod that we want to use. This redirect us to the page to register in Solid Community or Inrupt.
+3. We register in the pod provider following the steps of each one.
+4. The pod is created no information apart from the one that is provided in the login is stored.
 
 [plantuml,"signin",svg]
 ....
