@@ -27,6 +27,7 @@ Contained Building Blocks::
 | Radarin | It's the application. Contains all the functionalities. It is the main part of teh application.
 | POD provider | Provides all the PODs of our users
 | User POD | One for each user. Provides all the information
+| Database | Here we store the minimal information of the application
 |===
 
 === Level 2 
@@ -52,5 +53,6 @@ Contained Building Blocks::
 |Friends List | List of friends of the user
 |Locations | Show a table with the locations of the user
 |Profile | Shows the profile information of the user
-|SOLID | provides the libraries to talk between the user pods and the pod provider. Also talks with the database.
+|SOLID | provides the libraries to talk between the user pods and the pod provider. 
+|Restapi | provides the comunication with the database and the Restapi.
 |===
