@@ -48,9 +48,9 @@ deactivate wa
 
 === UserMap
 
-1. Talk to the pod of the user and retrieve the list of the locations
-2. Talk to the pod of the user and search the friends, after this retrieve the information of the locations of the friends
-3. Add markers in the map with the locations retrieved
+1. Talk to the pod of the user and retrieve the list of the locations.
+2. Talk to the pod of the user and search the friends, after this retrieve the information of the locations of the friends.
+3. Add markers in the map with the locations retrieved.
 
 [plantuml,"map",svg]
 ....
