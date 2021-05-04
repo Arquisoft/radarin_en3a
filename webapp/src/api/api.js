@@ -32,11 +32,10 @@ export async function getUserByWebId(webId){
         body: JSON.stringify({"webId": webId})
     });
     return await response.json();
-};
+}
 
 export async function getUsers(){
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    console.log(apiEndPoint)
     let response = await fetch(apiEndPoint+'/users/list')
     return await response.json();
 }

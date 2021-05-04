@@ -45,7 +45,6 @@ function FriendMarkerGenerator() {
      */
     async function retrieveFriendLocations(){
         for(let i = 0; i < friendList.length; i++){
-            console.log(friendList[i]);
             const friendInAPI = await getUserByWebId(friendList[i]);
             if(friendInAPI != null) {
                 let friendWithDataToAdd = {"friendId": friendList[i], "latitude": friendInAPI.latitude,
