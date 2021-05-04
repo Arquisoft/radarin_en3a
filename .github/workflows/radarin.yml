@@ -5,6 +5,7 @@ on:
     branches: 
       - master 
       # - Help-page 
+      - monitoring-and-profiling
 
 jobs:
   build-test-webapp:
