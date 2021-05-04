@@ -6,6 +6,11 @@ import { useTranslation } from "react-i18next";
 
 function RegisterForm() {
     const { t } = useTranslation();
+
+    /*
+        Component that renders the options for signing up and obtaining a Solid POD from one of two providers,
+        consisting of buttons that link to their register pages
+     */
     return (
         <Card className="register-card" bg="dark" style={{  }}>
             <Card.Body>

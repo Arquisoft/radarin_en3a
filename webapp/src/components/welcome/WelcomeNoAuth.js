@@ -4,6 +4,9 @@ import { Translation } from "react-i18next";
 import "../../css/InitialWelcome.css";
 
 class WelcomeNoAuth extends React.Component {
+    /*
+        Basic welcome component for non-authenticated users, consisting of a welcome message and Radarin's logo
+     */
     render() {
         return (
             <div className="initial-welcome-panel">

@@ -7,6 +7,11 @@ import {useTranslation} from "react-i18next";
 function FriendsView(){
     const friendsOfLoggedUser = useLDflexList(`[${getDefaultSession().info.webId}].friends`);
     const { t } = useTranslation();
+
+    /*
+        Component in charge of rendering the friends with the information retrieved from the logged user's POD,
+        we include the webId, their name if they have it set up and their profile picture if it is available
+     */
     return(
         <div className="friends-main-panel">
         <h2>{t("FriendList")} (total {friendsOfLoggedUser.length})</h2>

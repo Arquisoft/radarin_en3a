@@ -16,6 +16,10 @@ function AddLocation() {
     let [currentTimestamp, setTimestamp] = useState("");
     let locationAvailable = true;
 
+    /*
+        Every 30 seconds we retrieve the user's location and update its values on the screen in order to
+        keep it updated in case of saving it to the POD
+     */
     setInterval(() => {
             if ("geolocation" in navigator) {
                 locationAvailable = true;
@@ -31,8 +35,11 @@ function AddLocation() {
             } else {
                 locationAvailable = false;
             }
-        }, 10000);
+        }, 30000);
 
+    /*
+        Component that displays the current location of the user based on the geolocation API's results
+     */
     function LocationComponent(){
         if([currentLatitude].toString() !== "") {
             return (

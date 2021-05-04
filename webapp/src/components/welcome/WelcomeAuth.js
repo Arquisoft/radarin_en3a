@@ -9,6 +9,10 @@ function WelcomeAuth() {
     const { webId } = session.info;
     const { t } = useTranslation();
 
+    /*
+        Welcome component for authenticated users, consisting on a simple profile with their name, webId and profile
+        image if it is available. All of the information is retrieved from the POD of the logged in user
+     */
     return (
         <div className="logged-in-panel">
             <CombinedDataProvider datasetUrl={webId} thingUrl={webId}>

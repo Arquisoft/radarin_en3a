@@ -57,6 +57,9 @@ function NavAuthenticated() {
     const TODO_CLASS = "http://www.w3.org/2002/12/cal/ical#Vtodo";
     const [locationList, setLocationList] = useState();
 
+    /*
+       Function that retrieves the friends of the user in its Solid POD
+    */
     async function getFriendsForPOD() {
         const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
         const profile = getThing(profileDataset, webId);
@@ -67,6 +70,9 @@ function NavAuthenticated() {
         return promises;
     }
 
+    /*
+        Function in charge of calling the
+    */
     async function findNearFriends() {
         let amigos = [];
         let promises = await getFriendsForPOD().then(function (list) { return list; });
@@ -82,6 +88,10 @@ function NavAuthenticated() {
         }
     }
 
+    /*
+        Function to retrieve the location file from the POD, and in the case of a new user, it creates it
+        automatically
+    */
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
         try {
@@ -99,6 +109,11 @@ function NavAuthenticated() {
         }
     }
 
+    /*
+        For each session, we want to store the location on login in the POD, to do so, we check the sessionStorage
+        and if needed, we retrieve the current location from the geolocation API and store it in the locations file
+        stored in the user's POD
+    */
     useEffect(() => {
         if (locationList !== undefined && sessionStorage.getItem("loginDone") === null) {
             navigator.geolocation.getCurrentPosition(async function (position) {
@@ -121,6 +136,10 @@ function NavAuthenticated() {
         }
     }, [locationList, session.fetch]);
 
+    /*
+        Every 30 seconds we check the location and update its value in the API in order to have the latest one
+        available for our friends. In the case of a new user, first we add it to the database via addUser()
+    */
     useEffect(() => {
         if(sessionStorage.getItem("loginDone") === null) {
             if (session) {
@@ -155,6 +174,11 @@ function NavAuthenticated() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /*
+        Function called when a logout is performed, we clear the sessionStorage in order to be able to save
+        the location on a new login in the case of not closing the tab and perform the logout, lastly, we
+        reload the page
+    */
     const handleLogout = (e) => {
         sessionStorage.clear();
         e.preventDefault();
@@ -165,11 +189,18 @@ function NavAuthenticated() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
+    /*
+        Function called on the click event of the notification icon in order to display the panel, as well
+        as remove the new notifications dot
+    */
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
         setNotificaciones(not);
     };
 
+    /*
+        Function called on the closing of the notification panel in order to change the position of the element
+    */
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -177,6 +208,11 @@ function NavAuthenticated() {
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
 
+    /*
+        Component containing the navbar in the case of authenticated users, each navLink has a route and its
+        specified corresponding component. In the case of a user with Admin role, we also include the ManageUsers
+        component in a route. We also include the notification icon
+    */
     return (
         <div>
             <Navbar collapseOnSelect navbar="dark" bg="primary" expand="lg" fixed="top">

@@ -9,6 +9,9 @@ function ManageUsers () {
     const [usersList, setUserList] = useState([]);
     const { t } = useTranslation();
 
+    /*
+        Function that retrieves the existing users from the API for displaying purposes
+     */
     useEffect(() => {
         (async () => {
             let usuarios =  await getUsers();
@@ -16,6 +19,10 @@ function ManageUsers () {
         })();
     }, []);
 
+    /*
+        In this component we render list elements (instances of RegUserComponent) dynamically based on
+        the users currently registered on the platform
+     */
     return(
         <div className="registered-user-container">
             <h2>{t("AdminList")}</h2>

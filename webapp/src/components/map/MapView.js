@@ -23,6 +23,11 @@ const MapView = () => {
     const { t } = useTranslation();
     const [, updateState] = React.useState();
 
+    /*
+        Default map center, overridden when the user's location is available to the LocationCenter function
+     */
+    let [mapCenter] = useState([43.542, -6.594]);
+
     async function updateLocationList(){
         const profileDataset = await getSolidDataset(session.info.webId, {
             fetch: session.fetch,
@@ -41,8 +46,12 @@ const MapView = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    let [mapCenter] = useState([43.542, -6.594]);
 
+
+    /*
+        Function to retrieve the location file from the POD, and in the case of a new user, it creates it
+        automatically
+     */
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
         try {
@@ -60,6 +69,10 @@ const MapView = () => {
         }
     }
 
+    /*
+        Function to center the map on the current location of the user, it has an instance of the React-leaflet
+        MapContainer component in order to perform the flyTo() method which does the animation
+     */
     function LocationCenter() {
         const map = useMap();
         useEffect(() => {
@@ -74,7 +87,10 @@ const MapView = () => {
     }
 
 
-
+    /*
+        On every render of the component we check the locations to see if we have to perform any updates on the
+        map view or the markers
+     */
     useEffect(() => {
        updateLocationList();
        // eslint-disable-next-line react-hooks/exhaustive-deps

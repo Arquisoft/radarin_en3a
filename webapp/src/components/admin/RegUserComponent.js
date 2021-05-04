@@ -9,14 +9,22 @@ function RegUserComponent(props) {
 
     const { t } = useTranslation();
 
+    //We get the list of registered users as a prop from the parent component, and we use it in the rendering part
     let usersList = props.usersList;
 
+    /*
+        Function that calls the API in order to perform a deletion of a given user from the database of the platform
+     */
     async function deleteUser(user) {
         await removeUser(user);
         usersList = await getUsers();
         $("li").remove("#"+user);
     }
 
+    /*
+        Component that renders the list of users currently registered on the platform, as well as the deletion buttons
+        in the case the administrator wants to remove them from the service
+     */
     if(usersList.length === 0){return <h3>{t("MessageAdmin")}</h3>;}
     return usersList.map(function(user,index){
         return (

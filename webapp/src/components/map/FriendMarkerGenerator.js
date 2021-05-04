@@ -7,7 +7,7 @@ import {getUserByWebId} from "../../api/api";
 import {Marker, Popup} from "react-leaflet";
 
 
-function FriendMarkerGenerator(props) {
+function FriendMarkerGenerator() {
 
     let [friendList] = useState([]);
     let [friendLocationList,setFriendLocationList] = useState([]);
@@ -16,6 +16,10 @@ function FriendMarkerGenerator(props) {
         options: {}
     });
 
+    /*
+        For the friends we use a different marker icon in order to differentiate their locations
+        from the ones of the user
+     */
     const blueIcon = new LeafIcon({
             iconUrl:
                 "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|abcdef&chf=a,s,ee00FFFF"
@@ -24,6 +28,9 @@ function FriendMarkerGenerator(props) {
     const { session } = useSession();
     const webId = session.info.webId;
 
+    /*
+        Function that retrieves the friends of the user in its Solid POD
+     */
     async function getFriendsForPOD(){
         const profileDataset = await getSolidDataset(webId, { fetch: session.fetch });
         const profile = getThing(profileDataset, webId);
@@ -32,6 +39,10 @@ function FriendMarkerGenerator(props) {
         });
     }
 
+    /*
+        Function that calls the API and obtains the last locations of the user's friends in order to use them in
+        the marker generation
+     */
     async function retrieveFriendLocations(){
         for(let i = 0; i < friendList.length; i++){
             console.log(friendList[i]);
@@ -44,6 +55,9 @@ function FriendMarkerGenerator(props) {
         }
     }
 
+    /*
+        On each render we have to check that the friend's locations are updated with their latest values from the API
+     */
     useEffect(() => {
         (async () => {
             if(friendLocationList.length !== 0){
@@ -56,6 +70,10 @@ function FriendMarkerGenerator(props) {
     });
 
 
+    /*
+        Component consisting on a list of Markers with the position specified by the API location values and the
+        Popup leaflet component containing the webID of the friend for a given location
+     */
     return friendLocationList.map(function(friend,index){
         return (<div>
             <Marker key={index} position={[friend.latitude,friend.longitude]} icon={blueIcon}>

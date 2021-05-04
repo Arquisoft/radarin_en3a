@@ -14,6 +14,8 @@ import {useSession} from "@inrupt/solid-ui-react";
 
 
 function MarkerGenerator(props) {
+
+    //We get the list of locations from the parent component as a prop so we don't have to retrieve it twice
     const locationThings = props.locationList ? getThingAll(props.locationList) : [];
     const [locationList, setLocationList] = useState();
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
@@ -21,6 +23,9 @@ function MarkerGenerator(props) {
 
     const { session } = useSession();
 
+    /*
+        For the user's locations we use a different icon in order to differentiate them from the ones of the friends
+     */
     const LeafIcon = L.Icon.extend({
         options: {}
     });
@@ -46,6 +51,10 @@ function MarkerGenerator(props) {
         }
     }
 
+    /*
+        On each render we have to check if new locations have been added to the user's POD in order
+        to render the correct amount of markers in the correct coordinates
+     */
     const { fetch } = useSession();
     useEffect(() => {
         if (session){
@@ -63,6 +72,10 @@ function MarkerGenerator(props) {
         }
     }, [session]);
 
+    /*
+        Function that deletes a given location from the POD and therefore from the map view as well, it forces an
+        update on the view in order to render the changes and not show the deleted location anymore
+     */
     const deleteLocation = async (locationToRemove) => {
         const locationsUrl = getSourceUrl(locationList);
         const updatedTodos = removeThing(locationList, locationToRemove);
@@ -73,6 +86,9 @@ function MarkerGenerator(props) {
         reloadMapView();
     };
 
+    /*
+        Component of the delete button shown inside the popup for each of the user's locations on the map
+     */
     function DeleteButton({ locToDelete }) {
         return (
             <Button className="delete-button btn-danger" style={{ marginLeft: "15px"}} onClick={() => deleteLocation(locToDelete)}>
@@ -81,6 +97,10 @@ function MarkerGenerator(props) {
         );
     }
 
+    /*
+        Main component containing a list of markers created dynamically based on the locations available on the POD,
+        including the Popup with the information about the location and the DeleteButton component
+     */
     if(locationThings.length === 0){
         return (<h3>No locations currently saved on your POD</h3>);
     }

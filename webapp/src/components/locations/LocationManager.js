@@ -13,12 +13,15 @@ import Button from "react-bootstrap/Button";
 import {useTranslation} from "react-i18next";
 import searchIcon from "../../assets/search.png";
 
-function LocationManager(props) {
+function LocationManager() {
 
     const { session } = useSession();
     const [locationList, setLocationList] = useState();
     const { t } = useTranslation();
 
+    /*
+        Predicates and class to specify to the POD what kind of data we're currently using
+     */
     const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
     const TEXT_PREDICATE = "http://schema.org/text";
     const CREATED_PREDICATE = "http://www.w3.org/2002/12/cal/ical#created";
@@ -32,6 +35,15 @@ function LocationManager(props) {
     });
     const { fetch } = useSession();
 
+    /*
+        Variable to store the current filter being applied on the locations' tags
+     */
+    let [filter,setLocationFilter] = useState("");
+
+    /*
+        Function to retrieve the location file from the POD, and in the case of a new user, it creates it
+        automatically
+     */
     async function getOrCreateLocationList(containerUri, fetch) {
         const indexUrl = `${containerUri}locations.ttl`;
         try {
@@ -49,6 +61,9 @@ function LocationManager(props) {
         }
     }
 
+    /*
+        On each render we check to see if we have to update the locations shown in the table
+     */
     useEffect(() => {
         if (session){
             (async () => {
@@ -66,6 +81,9 @@ function LocationManager(props) {
         }
     }, [session]);
 
+    /*
+        Function that adds a given location with its corresponding tag to the POD file of the locations
+     */
     const addLocations = async (text) => {
         const indexUrl = getSourceUrl(locationList);
         const locationWithText = addStringNoLocale(createThing(), TEXT_PREDICATE, text);
@@ -82,6 +100,9 @@ function LocationManager(props) {
         setLocationList(updatedDataset);
     };
 
+    /*
+        Function in charge of removing a given location from the user's POD
+     */
     const deleteLocation = async (locationToRemove) => {
         const locationsUrl = getSourceUrl(locationList);
         const updatedTodos = removeThing(locationList, locationToRemove);
@@ -91,6 +112,10 @@ function LocationManager(props) {
         setLocationList(updatedDataset);
     };
 
+    /*
+        Function that retrieves the location values given by the geolocation API and calls addLocations in order
+        to save the new coordinates in the user's POD
+     */
     function getLocationAndSave(){
         if(document.getElementById("lat-span") === null){
             return;
@@ -104,6 +129,10 @@ function LocationManager(props) {
         addLocations(latitudeValue + " / " + longitudeValue + " / " + locationText);
     }
 
+    /*
+        Component that calls for the deletion of a given location from the POD, it is rendered inside
+        the locations table, one for each location retrieved
+     */
     function DeleteButton({ deleteTodo }) {
         const { thing } = useThing();
         return (
@@ -113,12 +142,18 @@ function LocationManager(props) {
         );
     }
 
-    let [filter,setLocationFilter] = useState("");
+
+    /*
+        Function to change the state of the filter in order to search in the location table
+     */
     function changeFilter(){
         let newFilterValue = document.getElementById("filter-input").value;
         setLocationFilter(newFilterValue);
     }
 
+    /*
+        Main component conformed by the locations table, the filtering input and the delete buttons for each location
+     */
     return (<div>
         <Button className="add-location-button" onClick={getLocationAndSave}>{t("AddCurrentLocation")}</Button><br/>
         <div className="locations-displayed-panel">

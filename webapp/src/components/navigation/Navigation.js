@@ -30,9 +30,11 @@ function Navigation () {
     const [issuer, setIssuer] = useState("");
 
     let [currentIssuerText, setIssuerText] = useState(t("navBarService"));
+    const { session } = useSession();
 
-
-
+    /*
+        Function used to set the webId based on the current user logged in
+     */
     useEffect(() => {
         handleIncomingRedirect({
             restorePreviousSession: true,
@@ -42,6 +44,11 @@ function Navigation () {
     }, [webId]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
+    /*
+        Function to facilitate login by completing the POD url based on the username given, used later on
+        for redirection purposes. In this case it autocompletes the string in order to fit the
+        SolidCommunity URL format for login
+     */
     const autoCompleteSolidLogin = (name) => {
         setIssuerText("Solid");
         let start="https://";
@@ -50,6 +57,11 @@ function Navigation () {
         userUrl = end;
     };
 
+    /*
+        Function to facilitate login by completing the POD url based on the username given, used later on
+        for redirection purposes. In this case it autocompletes the string in order to fit the
+        Inrupt URL format for login
+     */
     const autoCompleteInruptLogin = (name) => {
         setIssuerText("Inrupt");
         let start="https://";
@@ -59,6 +71,10 @@ function Navigation () {
     };
 
 
+    /*
+        Function that performs the login into the Solid POD by taking the url, redirecting to the issuer's page and,
+        in the case of a successful login, redirecting back to the page with the user logged in
+     */
     const handleLogin = (e) => {
         if(!userUrl.startsWith("https://")){
             if(currentIssuerText === "Inrupt"){
@@ -78,8 +94,11 @@ function Navigation () {
     };
 
 
-    const { session } = useSession();
 
+    /*
+        Component containing the navbar for non-authenticated users, including routes for signup, the main welcome
+        component, the about us navLink and the login component
+     */
     return(<HashRouter basename="/">
         <div>
             {session.info.isLoggedIn ? (
