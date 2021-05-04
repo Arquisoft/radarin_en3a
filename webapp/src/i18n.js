@@ -17,8 +17,9 @@ const resources = {
         "navBarPlaceHolder": "Enter your POD user here",
           "navBarLocations": "Locations",
           "navBarFriends": "Friends",
+          "navBarHelp": "Help",
         "InitialWelcomeMessage": "You are logged out of your POD.",
-        "registerFormTitle": "Get your SOLID pod",
+        "registerFormTitle": "Get your pod",
         "InitSession": "Session started as: ",
         "AdminDelete": "Delete",
         "AdminList": "Users List",
@@ -50,7 +51,23 @@ const resources = {
           "FindNearFriends": "Find near friends",
           "navBarService" : "Choose POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+
+          "helpLanguageTitle":"Language",
+          "helpLanguage":"To change the language, click the grey box next to 'Profile' and select the one you want.",
+          "helpLogInTitle":"How to log in and out",
+          "helpLogIn":"To log in: select you pod provider on the grey box next to the white text box. The write your username on the white box and click 'Log In'. Just the name is sufficient.",
+          "helpLocationSaveTitle":"How to save your location ",
+          "helpLocationSave":"To save your location, you first have to be logged in. Once you are, go to the 'Locations' tab. Your location is periodically registered but is not saved unless you set a name for it,and then click on 'Add current location to POD'.",
+          "helpLocationCheckTitle":"How to see your locations",
+          "helpLocationCheck":"To see your saved locations, click on 'Map', and browse the map to see them. Alternatively, in 'Locations' you can see them in form of coordinates with their tags, you can delete them by clicking on 'Delete'. This can not be undone.",
+          "helpFriendsTitle":"How to see your friends list",
+          "helpFriends":"To see your friends list, click on 'Friends' ",
+          "helpNotificationsTitle":"Notifications",
+          "helpNotifications":"When you have a notification, the bell will have a red dot, click on the bell to see them.",
+          "CurrentLocation": "Your current location is",
+          "CalculatingLocation": "Calculating your location...",
+          "FilterLocations":"Filter locations by tag"
         }
     },
     es: {
@@ -67,8 +84,9 @@ const resources = {
         "navBarPlaceHolder": "Introduzca su usuario del POD aquí",
           "navBarLocations": "Ubicaciones",
           "navBarFriends": "Amigos",
+          "navBarHelp": "Ayuda",
         "InitialWelcomeMessage": "Te has desvinculado de tu POD.",
-        "registerFormTitle": "Consigue SOLID pod",
+        "registerFormTitle": "Consigue tu pod",
         "InitSession": "Sesión iniciada como: ",
         "AdminDelete": "Borrar",
         "AdminList": "Lista de Usuarios",
@@ -100,7 +118,24 @@ const resources = {
           "FindNearFriends": "Encuentra amigos cercanos",
           "navBarService" : "Elegir POD",
           "navBarSolid" :"Solid",
-          "navBarInrupt" :"Inrupt"
+          "navBarInrupt" :"Inrupt",
+
+
+          "helpLanguageTitle":"Lenguaje",
+          "helpLanguage":"Para cambiar el lenguaje haga click en el recuadro gris al lado de 'Perfil' y selecciona el que quieras.",
+          "helpLogInTitle":"Cómo iniciar y salir de la sesión",
+          "helpLogIn":"Para iniciar sesión, seleccione su proveedor de PODs en el recuadro gris, después escriba su nombre de usuario en el cuadro de texto blanco, y haga click en 'Iniciar sesión'",
+          "helpLocationSaveTitle":"Cómo guardar la localización",
+          "helpLocationSave":"Para guardar la localización es necesario haber iniciado sesión. Una vez lo haya hecho, haga click en 'Ubicaciones'. Su ubicación se registra periódicamente pero no se guarda salvo que le ponga un nombre a la etiqueta y la guarde. Cuando le haya puesto un nombre haga click en 'Añadir ubicación actua al POD'.",
+          "helpLocationCheckTitle":"Cómo ver las localizaciones guardadas",
+          "helpLocationCheck":"Para consultar las localizaciones guardadas, haga click en 'Mapa' y navegue en el mapa para verlas. Alternativamente, en 'Ubicaciones' puede consultarlas en forma de coordenadas con sus etiquetas, aquí puede borrarlas con el botón 'Eliminar'. Esta acción no es reversible.",
+          "helpFriendsTitle":"Cómo ver tu lista de amigos",
+          "helpFriends":"Para ver la lista de amigos, haga click en 'Amigos'",
+          "helpNotificationsTitle":"Notificaciones",
+          "helpNotifications":"Cuando tenga una notificación, la campana tendrás un círculo rojo. Haga click en la campana para abrir un desplegable con las notificaciones.",
+          "CurrentLocation": "Tu ubicación actual es",
+          "CalculatingLocation": "Calculando tu ubicación...",
+          "FilterLocations": "Filtrar ubicaciones por etiqueta"
       }
     }
 };

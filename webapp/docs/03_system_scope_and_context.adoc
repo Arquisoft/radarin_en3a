@@ -2,7 +2,7 @@
 == System Scope and Context
 Radarin is an app that let's the user know in real time when and where another friend is near by being both notified in their smartphones.
 
-This way, two user friends can chat through the app, maybe meet and share their experiences together.
+This way, two user friends can meet and share their experiences together.
 
 It also allows the user to see it's location history to track the visited places.
 
@@ -14,24 +14,25 @@ image:03_scope.png["Customers running the application"]
 
 The *User* sends information to the application, and once it finds a close *friend*, both are notified that they are close to each other, so they have the chance to interact and (perhaps) meet.
 
-The messages, images, videos and generally the rest of the media they share will be managed by the *solid pod*, in which every user will have a decentralized and individual data storage attached, so they can modify or eliminate everything putting always the security information as the first priority by controlling undesirable accesses.
+The data of the user will be managed by the *solid pod*, in which every user will have a decentralized and individual data storage attached, so they can modify or eliminate everything putting always the security information as the first priority by controlling undesirable accesses.
 
-The minimum information consists of the location and the time stamp, leaving the rest of the data like images, chats, videos, etc to be securely at the pod, where the *application* communicates to let other users see certain parts like messages or multimedia content that the actual owner of an account has as public to let them watch.
+The minimum information consists of the location and the time stamp, leaving the rest of the data to be securely at the pod, where the *application* communicates to let other users see certain parts like messages or multimedia content that the actual owner of an account has as public to let them watch.
 
 === Technical Context
 
-For this app, we are using the solid pods to store information about each of the users so they can later access to add or modify their data once authenticated, JavaScript using React libarary to develop the user interfaces for the web and the mobile application.
+For this app, we are using the solid pods to store information about each of the users so they can later access to add or modify their data once authenticated, JavaScript using React library to develop the user interfaces for the web and the mobile application.
 
 
 
 [options="header",cols="1,2"]
 |===
 |Item|Details
-| Customer | The person that uses the app and interacts with other users.
-| Admin | The administrator that can list users and delete any of them.
-| Radarin Server | Where the web application is running.
-| POD | The solid POD that stores the customer's data and there's one per user.
+| Customer | The person that uses the app and interacts with other users. This is done with the web application.
+| Admin | The administrator, that is a special user of our aplication, can list users and delete any of them. There will be only one instance of this user. For this purpose it is hardcoded into the database so no security problems happen.
+| Radarin Server | Where the web application is running. The users are able to interact with this and communicate with the PODS and the REST API.
+| POD | The solid POD that stores the customer's data and there's one per user. 
 | API | i.e Google Maps to get details about the location in the map.
 | Https | Communication protocol for data requests and responses.
+| SOLID / INRUPT | Provider of the pods, this is external to our app. The application is able to communicate with this services to extract the information needed.
 |===
 

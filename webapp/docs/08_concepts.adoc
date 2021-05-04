@@ -1,5 +1,17 @@
 [[section-concepts]]
 == Cross-cutting Concepts
+=== Domain model
+image:usuario.png["Model"]
+
+* User, a user is identified with its unique web id, this is the id of the users pod. We have the longitude and the latitude the location of this user, this changes frequently. We also have the role (we have a admin role and a normal user).
+
+We have to store our user in a database (mongoDB) so our schema is very similar to the one before.
+user = {
+    webId: <webId of the user>,
+    longitude: <coordinates of the user>,
+    latitude: <coordinates of the user>,
+    role: <admin/normal>
+}
 
 === Design patterns
 
@@ -7,26 +19,33 @@ In order to access and manipulate data in a clean way, the MVC pattern was the c
 
 This way, as it will be developed in React, it is one of the best options for accessing to the solid pods.
 
-Regarding the backend part, there will be a model to define the database skelleton and routes to get every action. This way, a controller will orchestrate the main crud functionality apart from the ones that would be potentially required.
+Regarding the backend part, there will be a model to define the database skeleton (seen above) and routes to get every action. This way, a controller will orchestrate the main crud functionality apart from the ones that would be potentially required.
 
-Once it is required, there can also be applied more design patters as needed.
 
 === Security
-As the architecture of the application is decided, this section will be updated.
 
-It will be a crutial part to deal with, ensuring the user secure accesses via secure https protocol, having all the time validation constraints to avoid undesirable risks.
-
+It will be a crucial part to deal with, ensuring the user's secure accesses via secure https protocol, having all the time validation constraints to avoid undesirable risks.
 Mainly, security is assured thanks to the solid pods in where each user has it's own individual place of safe information by using the authentication solid library.
+The security is also increased because we do not store the passwords of the users that use our application in the database.
+We have also security in the restapi, this is done using the CORS mechanisms. With this we ensure that the api will not be accessed in dangerous ways.
+Furthermore, getting the location of the user will always be ask, so if they find that this is a security risk they can avoid to give us the location.
 
 === Technical decisions
 * In the data model of the restapi, we unified the user model with the location model, since the user is always going to have the latest location available.
-* When dealing with the api in the restapi, we coult just ommit the controller part working directly in the api part thanks to the solid-node-client. This way, we would be able to let the webapp and the mobile app working directly with the pods that this layer provides. 
+* When dealing with the api in the restapi, we could just omit the controller part working directly in the api part thanks to the solid-node-client. This way, we would be able to let the webapp and the mobile app (not longer in production) working directly with the pods that this layer provides.
 * To manage locations, we just use longitude and latitude in order to track the user and it's closest friend.
-* First, we were planning to use geolib to find the nearest friend, but finally we just calculated it directly by taking it's coordinates and returning it's closest friend.
+* First, we were planning to use geolib to find the nearest friend, but finally we just calculated it directly by taking it's coordinates and returning its closest friend.
 * We mainly developed the webapp part as the mobile was having troubles with the login part, so we've put the effort by just putting the webapp to work well.
 
-=== Intenationalization
-From the popular point of view of every application (and specifically for this one which deals with locations and people), it looks like as if it was mandatory to produce a well based multilanguage application, and the best option is always at the beginning of the design. 
+=== Internationalization
+From the popular point of view of every application (and specifically for this one which deals with locations and people), it looks like as if it was mandatory to produce a well based multi-language application, and the best option is always at the beginning of the design.
 
 Otherwise, during it's lifetime it would be much more expensive to trace if the app gets popular in more regions.
+
+=== Notifications
+An important element of the app is to know if the friends are near us. To do this we implemented a notification system. A user gets a notification when a user is near.
+As we implemented this the app is searching for the nearest user and sending a notification to the user so they know they are near. 
+The notification contains the webId of the user that is closest to us so we know who is that person.
+
+
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import './css/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navigation from './components/navigation/Navigation';
+import React from "react";
+import "./css/App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Navigation from "./components/navigation/Navigation";
 import { HashRouter } from "react-router-dom";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 
@@ -15,7 +15,7 @@ class App extends React.Component{
         </HashRouter>
       </div>
         </SessionProvider>
-    )
+    );
   }
 }
 
