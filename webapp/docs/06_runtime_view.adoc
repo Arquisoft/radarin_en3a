@@ -11,7 +11,7 @@ In this section we will explain how the different blocks of the app work togethe
 5. The app talks to the database, if the user is already in the database we overwrite the location and the timestamp. If the user is new we enter a new one in the database.
 6. Enter the application.
 
-image:loginChart.png["lonin"]
+image:loginChart.png["login"]
 
 === Sign up
 
