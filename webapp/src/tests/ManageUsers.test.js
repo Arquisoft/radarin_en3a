@@ -9,6 +9,6 @@ test('check that everything is rendering propertly', async () => {
     <I18nextProvider i18n={i18n}> // actually give translation to your component
        <ManageUsers /> 
     </I18nextProvider>
-  );
+  ); 
   expect(c.getAllByText(i18n.getDataByLanguage('en').translation.AdminList)).toBeDefined();
 });
