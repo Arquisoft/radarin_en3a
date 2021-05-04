@@ -8,6 +8,7 @@ let username = "test340";
 let password = "Radarin340.";
 let name = "RadarinTest340";
 
+//The same function as waiting for navigation but specifying the time
 function delay(time) {
   return new Promise(function(resolve) { 
       setTimeout(resolve, time);
@@ -21,6 +22,7 @@ defineFeature(feature, test => {
     setDefaultOptions({ timeout: 60000 });
   });
 
+  //The user goes to solid community successfully
   test("The user create a non existing Solid POD", ({given,when,then}) => {
 
     given("An unregistered user without a POD", () => {})
@@ -51,6 +53,7 @@ defineFeature(feature, test => {
     });
   });
 
+  //The user is alresy taken in solid
   test("The user create an already existing solid POD", ({given,when,then}) => {
 
     given("An unregistered user without a POD", () => {})
@@ -80,6 +83,7 @@ defineFeature(feature, test => {
     });
   });
 
+  //The user goes to the inrupt register form successfully
   test("The user create a non existing Inrupt POD", ({given,when,then}) => {
 
     given("An unregistered user without a POD", () => {})

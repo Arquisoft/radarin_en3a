@@ -3,6 +3,7 @@ const feature = loadFeature("./features/i18n.feature");
 const {setDefaultOptions} = require("expect-puppeteer");
 const puppeteer = require("puppeteer");
 
+//The same function as waiting for navigation but specifying the time
 function delay(time) {
     return new Promise(function(resolve) { 
         setTimeout(resolve, time);
@@ -16,6 +17,7 @@ defineFeature(feature, test => {
         setDefaultOptions({ timeout: 10000 });
     });
 
+    //We test that the language changes from English to Spanish
     test("Change the language of the application", ({given,when,then}) => {
     
         let username;

@@ -12,11 +12,13 @@ function delay(time) {
 
 defineFeature(feature, test => {
     
+    //The same function as waiting for navigation but specifying the time
     beforeEach(async () => {
         await global.page.goto("http://localhost:3000");
         setDefaultOptions({ timeout: 10000 });
     });
 
+    //We ensure that we can enter into the friends page
     test("The user logs in Radarin and navigate to friends view", ({given,when,then}) => {
     
         let username;
@@ -51,6 +53,7 @@ defineFeature(feature, test => {
         });
     });
     
+    //We ensure that we can enter into the map page
     test("The user logs in Radarin and navigate to map view", ({given,when,then}) => {
         
         given("An already registered user in the profile page", () => {});
@@ -67,6 +70,7 @@ defineFeature(feature, test => {
         }); 
     });
 
+    //We ensure that we can enter into the locations page
     test("The user logs in Radarin and navigate to locations view", ({given,when,then}) => {
 
         given("An already registered user in the profile page", () => {});

@@ -3,6 +3,7 @@ const feature = loadFeature("./features/login-form.feature");
 const {setDefaultOptions} = require("expect-puppeteer");
 const puppeteer = require("puppeteer");
 
+//The same function as waiting for navigation but specifying the time
 function delay(time) {
     return new Promise(function(resolve) { 
         setTimeout(resolve, time);
@@ -16,6 +17,7 @@ defineFeature(feature, test => {
         setDefaultOptions({ timeout: 10000 });
     });
 
+    //A normal login from a registered user
     test("The user is already registered with a pod and logs in Radarin", ({given,when,then}) => {
     
         let username;

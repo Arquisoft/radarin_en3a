@@ -74,10 +74,12 @@ router.post("/locations/add", async(req, res) => {
     res.send(user);
 });
 
+//Convert from degrees to radians
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
   }
-  
+
+//Get the distance in km between two coordinates
 function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
     var earthRadiusKm = 6371;
   
@@ -93,6 +95,7 @@ function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
     return earthRadiusKm * c;
 }
 
+//Find the closest friends
 router.post("/users/findNearest", async(req, res) => {
     let friends = req.body.friends;
     let id = req.body.webId;
