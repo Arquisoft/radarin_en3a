@@ -47,5 +47,27 @@ An important element of the app is to know if the friends are near us. To do thi
 As we implemented this the app is searching for the nearest user and sending a notification to the user so they know they are near. 
 The notification contains the webId of the user that is closest to us so we know who is that person.
 
+=== Testing
+We considered the testing of the application very important, and as such we performed the following tests to ensure the correct functioning of our application and to solve any errors that could arise:
 
+* Unit testing:
+performed by checking that every component of the application works isolated. This is done by only rendering itself without the rest of the components. To achieve this we implemented one test per component in the application, rendering it and making some assertions about it. In this case, the most difficult parts we found were to learn the assertions the react testing library provides and also how to mock different properties of these components,
+which were all new concepts to the developer team and as such had a steep learning curve.
 
+* E2E testing:
+This approach is a technique that tests the entire software product from beginning to end to ensure the application flow behaves as expected. The main goal in this case was to increase the usability of the web application by testing the main scenarios that an average user could face, such as:
+Registering and getting a pod from Solid Community or Inrupt by going to each provider's dedicated page.
+
+** Performing the login action.
+** Ensuring that the translation is well implemented across the different sections of the application.
+** Navigational consistency by interacting with the different views the application offers to the users.
+
+* Load testing: in this case what we want to measure is the performance of the webapp when a certain number of users are interacting with it.
+In our case we measured three different scenarios which we consider to be a good showcase of what the application can do.
+
+** We perform login and add a new location to the POD from the location view.
+** We perform login and delete the newest location saved in the map view.
+** We navigate through all the sections of the webapp to interact with all the functionalities offered.
+
+The number of concurrent users we use for the first two cases is 2 constant users added each two seconds for 30 seconds.
+In the case of the general navigation load test, since the operations are loading components and getting basic information from the POD, and those actions are the most common among users when they are logged in the app, we increased the number of constant users added to 5 in order to get a more realistic view of the performance.
