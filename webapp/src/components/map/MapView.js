@@ -40,12 +40,12 @@ const MapView = () => {
         setLocationList(list);
     }
 
+
     const forceUpdate = React.useCallback(function(){
         updateState({});
         updateLocationList();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
 
 
     /*

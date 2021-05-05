@@ -46,10 +46,19 @@ function FriendMarkerGenerator() {
     async function retrieveFriendLocations(){
         for(let i = 0; i < friendList.length; i++){
             const friendInAPI = await getUserByWebId(friendList[i]);
-            if(friendInAPI != null) {
+            console.log(friendInAPI);
+            console.log("e");
+            if(friendInAPI !== null) {
                 let friendWithDataToAdd = {"friendId": friendList[i], "latitude": friendInAPI.latitude,
                     "longitude" : friendInAPI.longitude};
-                setFriendLocationList([...friendLocationList,friendWithDataToAdd]);
+                console.log(friendWithDataToAdd);
+                console.log(friendLocationList);
+                console.log("a");
+                if(friendLocationList.indexOf(friendWithDataToAdd) < 0) {
+                    friendLocationList.push(friendWithDataToAdd);
+                }
+                setFriendLocationList(friendLocationList);
+                console.log(friendLocationList);
             }
         }
     }
@@ -59,12 +68,11 @@ function FriendMarkerGenerator() {
      */
     useEffect(() => {
         (async () => {
-            if(friendLocationList.length !== 0){
-                return;
+            if(friendLocationList.length === 0){
+                let retrievedFriends = await getFriendsForPOD().then(function(list){return list;});
+                retrievedFriends.forEach((friend) => friendList.push(friend));
+                await retrieveFriendLocations();
             }
-            let retrievedFriends = await getFriendsForPOD().then(function(list){return list;});
-            retrievedFriends.forEach((friend) => friendList.push(friend));
-            await retrieveFriendLocations();
         })();
     });
 
@@ -74,11 +82,15 @@ function FriendMarkerGenerator() {
         Popup leaflet component containing the webID of the friend for a given location
      */
     return friendLocationList.map(function(friend,index){
+        ///console.log("eeey");
+        //console.log(friend);
+        let friendCoordinates = [friend.latitude,friend.longitude];
+        let idFromFriend = friend.friendId;
         return (<div>
-            <Marker key={index} position={[friend.latitude,friend.longitude]} icon={blueIcon}>
+            <Marker key={index} position={friendCoordinates} icon={blueIcon}>
                 <Popup><h6>Friend:</h6>
                     <br/>
-                    <b>{friend.friendId}</b>
+                    <b>{idFromFriend}</b>
                 </Popup>
             </Marker>
         </div>);

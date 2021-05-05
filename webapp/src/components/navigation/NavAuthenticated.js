@@ -160,10 +160,10 @@ function NavAuthenticated() {
         navigator.geolocation.getCurrentPosition(async function (position) {
             let usuario = await getUserByWebId(webId);
             if (usuario == null) {
-                usuario = await addUser(webId, position.coords.longitude, position.coords.latitude);
+                usuario = await addUser(webId, position.coords.latitude, position.coords.longitude);
                 setRole(usuario.role);
             } else {
-                await addLocation(usuario._id, position.coords.longitude, position.coords.latitude);
+                await addLocation(usuario._id, position.coords.latitude, position.coords.longitude);
                 setRole(usuario.role);
             }
             const interval = setInterval(() => {
