@@ -46,19 +46,13 @@ function FriendMarkerGenerator() {
     async function retrieveFriendLocations(){
         for(let i = 0; i < friendList.length; i++){
             const friendInAPI = await getUserByWebId(friendList[i]);
-            console.log(friendInAPI);
-            console.log("e");
             if(friendInAPI !== null) {
                 let friendWithDataToAdd = {"friendId": friendList[i], "latitude": friendInAPI.latitude,
                     "longitude" : friendInAPI.longitude};
-                console.log(friendWithDataToAdd);
-                console.log(friendLocationList);
-                console.log("a");
                 if(friendLocationList.indexOf(friendWithDataToAdd) < 0) {
                     friendLocationList.push(friendWithDataToAdd);
                 }
                 setFriendLocationList(friendLocationList);
-                console.log(friendLocationList);
             }
         }
     }
@@ -82,8 +76,6 @@ function FriendMarkerGenerator() {
         Popup leaflet component containing the webID of the friend for a given location
      */
     return friendLocationList.map(function(friend,index){
-        ///console.log("eeey");
-        //console.log(friend);
         let friendCoordinates = [friend.latitude,friend.longitude];
         let idFromFriend = friend.friendId;
         return (<div>
