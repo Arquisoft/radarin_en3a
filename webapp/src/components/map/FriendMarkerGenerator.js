@@ -7,10 +7,12 @@ import {getUserByWebId} from "../../api/api";
 import {Marker, Popup} from "react-leaflet";
 
 
-function FriendMarkerGenerator() {
+function FriendMarkerGenerator(props) {
 
     let [friendList] = useState([]);
     let [friendLocationList,setFriendLocationList] = useState([]);
+
+    const reloadMapView = props.reloadMapView;
 
     const LeafIcon = L.Icon.extend({
         options: {}
@@ -51,8 +53,9 @@ function FriendMarkerGenerator() {
                     "longitude" : friendInAPI.longitude};
                 if(friendLocationList.indexOf(friendWithDataToAdd) < 0) {
                     friendLocationList.push(friendWithDataToAdd);
+                    setFriendLocationList(friendLocationList);
+                    reloadMapView();
                 }
-                setFriendLocationList(friendLocationList);
             }
         }
     }

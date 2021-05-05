@@ -114,7 +114,7 @@ const MapView = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <MarkerGenerator locationList={locationList} reloadMapView={forceUpdate}/>
-                <FriendMarkerGenerator />
+                <FriendMarkerGenerator reloadMapView={forceUpdate}/>
             </MapContainer>
         </div>
         </div>
