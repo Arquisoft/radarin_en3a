@@ -18,7 +18,7 @@ function RegUserComponent(props) {
     async function deleteUser(user) {
         await removeUser(user);
         usersList = await getUsers();
-        $("li").remove("#"+user);
+        $("li").remove(":contains('"+user+"')");
     }
 
     /*
